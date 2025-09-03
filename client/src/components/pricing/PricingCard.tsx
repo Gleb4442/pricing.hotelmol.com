@@ -125,7 +125,7 @@ export function PricingCard({
           onClick={onSubscribe}
           className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${
             isPopular
-              ? "bg-gradient-to-r from-blue-600 via-blue-500 to-yellow-400 text-white hover:from-blue-700 hover:via-blue-600 hover:to-yellow-500 shadow-2xl py-6 text-lg font-bold hover:shadow-blue-500/25 hover:shadow-2xl"
+              ? "bg-blue-600 text-white hover:bg-blue-700 shadow-2xl py-6 text-lg font-bold hover:shadow-blue-500/25 hover:shadow-2xl"
               : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
           }`}
           data-testid={`subscribe-button-${plan}`}
