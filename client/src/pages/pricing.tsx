@@ -56,20 +56,6 @@ export default function PricingPage() {
                 <h1 className="text-xl font-bold text-foreground">Roomie</h1>
               </div>
             </div>
-            <nav className="hidden md:flex items-center space-x-6">
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Features
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Pricing
-              </a>
-              <a href="#" className="text-muted-foreground hover:text-foreground transition-colors">
-                Support
-              </a>
-              <Button className="bg-primary text-primary-foreground hover:bg-primary/90">
-                Get Started
-              </Button>
-            </nav>
           </div>
         </div>
       </header>
