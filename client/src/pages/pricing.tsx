@@ -53,8 +53,7 @@ export default function PricingPage() {
                 <Bot className="text-primary-foreground w-6 h-6" />
               </div>
               <div>
-                <h1 className="text-xl font-bold text-foreground">AI Hotel Assistant</h1>
-                <p className="text-sm text-muted-foreground">Intelligent hospitality solutions</p>
+                <h1 className="text-xl font-bold text-foreground">Roomie</h1>
               </div>
             </div>
             <nav className="hidden md:flex items-center space-x-6">
@@ -222,7 +221,7 @@ export default function PricingPage() {
                 <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
                   <Bot className="text-primary-foreground w-5 h-5" />
                 </div>
-                <span className="font-bold text-foreground">AI Hotel Assistant</span>
+                <span className="font-bold text-foreground">Roomie</span>
               </div>
               <p className="text-muted-foreground text-sm">
                 Revolutionizing hospitality with intelligent automation and personalized guest
@@ -307,7 +306,7 @@ export default function PricingPage() {
           </div>
           <div className="border-t border-border mt-12 pt-8 text-center">
             <p className="text-muted-foreground text-sm">
-              &copy; 2024 AI Hotel Assistant. All rights reserved.
+              &copy; 2024 Roomie. All rights reserved.
             </p>
           </div>
         </div>
