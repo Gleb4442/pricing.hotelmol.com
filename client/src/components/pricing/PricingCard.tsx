@@ -125,12 +125,12 @@ export function PricingCard({
           onClick={onSubscribe}
           className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${
             isPopular
-              ? "bg-primary text-primary-foreground hover:bg-primary/90"
+              ? "bg-gradient-to-r from-primary to-accent text-white hover:from-primary/90 hover:to-accent/90 shadow-2xl py-6 text-lg font-bold"
               : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
           }`}
           data-testid={`subscribe-button-${plan}`}
         >
-          Subscribe Now
+          {isPopular ? "Подписаться сейчас" : "Subscribe Now"}
         </Button>
       </div>
     </div>
