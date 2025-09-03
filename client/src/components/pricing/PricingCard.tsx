@@ -45,7 +45,7 @@ export function PricingCard({
   const currentPricing = pricing[billingMode];
 
   return (
-    <div className="relative">
+    <div className="relative pt-6">
       {/* Most Popular Badge */}
       {isPopular && (
         <div className="most-popular-badge" data-testid="most-popular-badge">
