@@ -17,29 +17,29 @@ export default function PricingPage() {
   };
 
   const proFeatures = [
-    { text: "AI Guest Assistance" },
-    { text: "Automated Booking Management" },
-    { text: "Multi-language Support" },
-    { text: "Priority Support" },
+    { text: "ИИ помощь гостям" },
+    { text: "Автоматизированное управление бронированием" },
+    { text: "Поддержка нескольких языков" },
+    { text: "Приоритетная поддержка" },
     {
-      text: "Personal Telegram Bot",
-      tooltip: "Get your own branded Telegram bot for guest interactions",
-      addonPricing: { usage: "+0.5¢/request", monthly: "Included" },
+      text: "Персональный Telegram-бот",
+      tooltip: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
+      addonPricing: { usage: "+0,5¢/запрос", monthly: "Включено" },
     },
     {
-      text: "Logo Removal",
-      tooltip: "Remove our branding from guest-facing interfaces",
-      addonPricing: { usage: "+0.5¢/request", monthly: "Included" },
+      text: "Удаление логотипа",
+      tooltip: "Уберите наш брендинг с интерфейсов для гостей",
+      addonPricing: { usage: "+0,5¢/запрос", monthly: "Включено" },
     },
   ];
 
   const premiumFeatures = [
-    { text: "Everything in PRO" },
-    { text: "Advanced Analytics" },
-    { text: "Custom AI Training" },
-    { text: "API Access" },
-    { text: "Dedicated Account Manager" },
-    { text: "White-label Solution" },
+    { text: "Всё что включено в PRO" },
+    { text: "Расширенная аналитика" },
+    { text: "Персональное обучение ИИ" },
+    { text: "Доступ к API" },
+    { text: "Персональный менеджер аккаунта" },
+    { text: "White-label решение" },
   ];
 
   return (
@@ -65,10 +65,10 @@ export default function PricingPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Choose Your <span className="text-primary">AI Assistant</span> Plan
+            Выберите ваш план <span className="text-primary">ИИ Помощника</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Empower your hotel with intelligent automation. Flexible pricing for every property size.
+            Расширьте возможности отеля с помощью интеллектуальной автоматизации. Гибкие тарифы для любого размера собственности.
           </p>
 
           <BillingToggle billingMode={billingMode} onBillingModeChange={setBillingMode} />
@@ -80,7 +80,7 @@ export default function PricingPage() {
           <PricingCard
             plan="pro"
             title="PRO"
-            description="Perfect for growing hotels"
+            description="Идеально для растущих отелей"
             pricing={{
               usage: { current: "7¢", original: "8¢" },
               monthly: { current: "$399", original: "$459" },
@@ -95,7 +95,7 @@ export default function PricingPage() {
           <PricingCard
             plan="premium"
             title="PREMIUM"
-            description="Enterprise-grade solution"
+            description="Корпоративное решение"
             pricing={{
               usage: { current: "30¢" },
               monthly: { current: "$1,499" },
@@ -119,7 +119,7 @@ export default function PricingPage() {
                   className="flex items-center justify-between w-full text-left p-0"
                   data-testid="mobile-info-toggle"
                 >
-                  <h4 className="text-lg font-semibold text-foreground">Billing Information</h4>
+                  <h4 className="text-lg font-semibold text-foreground">Информация о биллинге</h4>
                   <ChevronDown
                     className={`text-muted-foreground transition-transform duration-300 ${
                       mobileInfoOpen ? "rotate-180" : ""
@@ -132,28 +132,28 @@ export default function PricingPage() {
                   className={`${billingMode === "usage" ? "block" : "hidden"}`}
                   data-testid="mobile-usage-info"
                 >
-                  <h5 className="font-medium text-foreground mb-2">Usage-Based Billing</h5>
+                  <h5 className="font-medium text-foreground mb-2">Оплата за использование</h5>
                   <p className="text-muted-foreground text-sm mb-2">
-                    Pay only for what you use. Perfect for seasonal properties.
+                    Платите только за то, что используете. Идеально для сезонных объектов.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• No monthly commitments</li>
-                    <li>• Scale with your demand</li>
-                    <li>• Transparent pricing</li>
+                    <li>• Без месячных обязательств</li>
+                    <li>• Масштабирование по потребности</li>
+                    <li>• Прозрачное ценообразование</li>
                   </ul>
                 </div>
                 <div
                   className={`${billingMode === "monthly" ? "block" : "hidden"}`}
                   data-testid="mobile-monthly-info"
                 >
-                  <h5 className="font-medium text-foreground mb-2">Fixed Monthly Billing</h5>
+                  <h5 className="font-medium text-foreground mb-2">Фиксированная помесячная оплата</h5>
                   <p className="text-muted-foreground text-sm mb-2">
-                    Predictable costs with unlimited usage.
+                    Предсказуемые расходы с неограниченным использованием.
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Unlimited requests</li>
-                    <li>• Budget predictability</li>
-                    <li>• Maximum savings at scale</li>
+                    <li>• Неограниченные запросы</li>
+                    <li>• Предсказуемость бюджета</li>
+                    <li>• Максимальная экономия при масштабе</li>
                   </ul>
                 </div>
               </CollapsibleContent>

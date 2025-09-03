@@ -89,7 +89,7 @@ export function PricingCard({
             </span>
           </div>
           <p className="text-muted-foreground">
-            {billingMode === "usage" ? "per request" : "per month"}
+            {billingMode === "usage" ? "за запрос" : "в месяц"}
           </p>
         </div>
 

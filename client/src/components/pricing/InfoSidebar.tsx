@@ -22,15 +22,15 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-2">
-              Usage-Based Billing
+              Оплата за использование
             </h4>
             <p className="text-muted-foreground text-sm mb-3">
-              Pay only for what you use. Perfect for seasonal properties or those testing AI integration.
+              Платите только за то, что используете. Идеально для сезонных объектов или тестирования ИИ.
             </p>
             <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• No monthly commitments</li>
-              <li>• Scale with your demand</li>
-              <li>• Transparent pricing</li>
+              <li>• Без месячных обязательств</li>
+              <li>• Масштабирование по потребности</li>
+              <li>• Прозрачное ценообразование</li>
             </ul>
           </div>
         </div>
@@ -48,15 +48,15 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-2">
-              Fixed Monthly Billing
+              Фиксированная помесячная оплата
             </h4>
             <p className="text-muted-foreground text-sm mb-3">
-              Predictable costs with unlimited usage. Best for high-volume properties.
+              Предсказуемые расходы с неограниченным использованием. Лучше всего для объектов с высокой нагрузкой.
             </p>
             <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Unlimited requests</li>
-              <li>• Budget predictability</li>
-              <li>• Maximum savings at scale</li>
+              <li>• Неограниченные запросы</li>
+              <li>• Предсказуемость бюджета</li>
+              <li>• Максимальная экономия при масштабе</li>
             </ul>
           </div>
         </div>
@@ -71,10 +71,10 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           data-testid="ai-showcase-image"
         />
         <h4 className="text-lg font-semibold text-foreground mb-2">
-          AI-Powered Automation
+          Автоматизация на основе ИИ
         </h4>
         <p className="text-muted-foreground text-sm">
-          Transform your guest experience with cutting-edge artificial intelligence technology.
+          Трансформируйте опыт ваших гостей с помощью передовых технологий искусственного интеллекта.
         </p>
       </div>
 
@@ -83,11 +83,11 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center" data-testid="uptime-indicator">
             <div className="text-2xl font-bold text-primary">86%</div>
-            <div className="text-sm text-muted-foreground">Uptime</div>
+            <div className="text-sm text-muted-foreground">Время работы</div>
           </div>
           <div className="text-center" data-testid="support-indicator">
             <div className="text-2xl font-bold text-primary">24/7</div>
-            <div className="text-sm text-muted-foreground">Support</div>
+            <div className="text-sm text-muted-foreground">Поддержка</div>
           </div>
         </div>
       </div>
