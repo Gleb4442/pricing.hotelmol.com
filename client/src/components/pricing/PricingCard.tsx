@@ -57,9 +57,15 @@ export function PricingCard({
 
   const calculatePrice = () => {
     const basePriceText = pricing[billingMode].current;
-    const basePrice = billingMode === "usage" 
-      ? parseFloat(basePriceText.replace(/[¢$,]/g, ''))
-      : parseFloat(basePriceText.replace(/[$,]/g, ''));
+    let basePrice;
+    
+    if (billingMode === "usage") {
+      // For usage billing: extract number from "7¢" or "30¢"
+      basePrice = parseFloat(basePriceText.replace(/[¢$,]/g, ''));
+    } else {
+      // For monthly billing: extract number from "$399" or "$1,499"
+      basePrice = parseFloat(basePriceText.replace(/[$,]/g, ''));
+    }
     
     let additionalCost = 0;
     features.forEach((feature, index) => {
@@ -67,8 +73,9 @@ export function PricingCard({
         if (billingMode === "usage") {
           additionalCost += 0.5; // +0.5¢ per request
         } else {
-          // For monthly, we might want to calculate equivalent cost
-          additionalCost += 50; // equivalent monthly cost
+          // For monthly billing, calculate proportional cost
+          // Assuming ~10,000 requests per month for estimation
+          additionalCost += 50; // $50 monthly equivalent for 0.5¢ per request
         }
       }
     });
@@ -78,7 +85,8 @@ export function PricingCard({
     if (billingMode === "usage") {
       return `${totalPrice}¢`;
     } else {
-      return `$${totalPrice.toLocaleString()}`;
+      // Format with commas for thousands
+      return `$${Math.round(totalPrice).toLocaleString()}`;
     }
   };
 
@@ -139,7 +147,7 @@ export function PricingCard({
         {/* Features */}
         <div className="space-y-4 mb-8">
           {features.map((feature, index) => (
-            <div key={index} className="flex items-center space-x-3 relative group">
+            <div key={index} className="flex items-center space-x-3 relative">
               <Check className="text-primary w-5 h-5 flex-shrink-0" />
               <span className="flex-1">{feature.text}</span>
               {feature.tooltip && (
