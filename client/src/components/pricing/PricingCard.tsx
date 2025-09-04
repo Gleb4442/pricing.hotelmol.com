@@ -1,7 +1,8 @@
-import { Check, Info } from "lucide-react";
+import { Check, Info, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BillingMode } from "@/hooks/use-billing-mode";
 import { Tooltip } from "./TooltipProvider";
+import { useState } from "react";
 
 interface PricingFeature {
   text: string;
@@ -42,7 +43,49 @@ export function PricingCard({
   isPopular = false,
   onSubscribe,
 }: PricingCardProps) {
-  const currentPricing = pricing[billingMode];
+  const [addedFeatures, setAddedFeatures] = useState<Set<number>>(new Set());
+  
+  const toggleFeature = (index: number) => {
+    const newAddedFeatures = new Set(addedFeatures);
+    if (newAddedFeatures.has(index)) {
+      newAddedFeatures.delete(index);
+    } else {
+      newAddedFeatures.add(index);
+    }
+    setAddedFeatures(newAddedFeatures);
+  };
+
+  const calculatePrice = () => {
+    const basePriceText = pricing[billingMode].current;
+    const basePrice = billingMode === "usage" 
+      ? parseFloat(basePriceText.replace(/[¢$,]/g, ''))
+      : parseFloat(basePriceText.replace(/[$,]/g, ''));
+    
+    let additionalCost = 0;
+    features.forEach((feature, index) => {
+      if (feature.addonPricing && addedFeatures.has(index)) {
+        if (billingMode === "usage") {
+          additionalCost += 0.5; // +0.5¢ per request
+        } else {
+          // For monthly, we might want to calculate equivalent cost
+          additionalCost += 50; // equivalent monthly cost
+        }
+      }
+    });
+
+    const totalPrice = basePrice + additionalCost;
+    
+    if (billingMode === "usage") {
+      return `${totalPrice}¢`;
+    } else {
+      return `$${totalPrice.toLocaleString()}`;
+    }
+  };
+
+  const currentPricing = {
+    ...pricing[billingMode],
+    current: calculatePrice()
+  };
 
   return (
     <div className="relative pt-6">
@@ -108,14 +151,29 @@ export function PricingCard({
                 </Tooltip>
               )}
               {feature.addonPricing && (
-                <span
-                  className="text-primary text-sm font-medium"
-                  data-testid={`addon-pricing-${index}`}
-                >
-                  {billingMode === "monthly"
-                    ? feature.addonPricing.monthly
-                    : feature.addonPricing.usage}
-                </span>
+                <div className="flex items-center space-x-2">
+                  <span
+                    className="text-primary text-sm font-medium"
+                    data-testid={`addon-pricing-${index}`}
+                  >
+                    {billingMode === "monthly"
+                      ? feature.addonPricing.monthly
+                      : feature.addonPricing.usage}
+                  </span>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => toggleFeature(index)}
+                    className={`w-6 h-6 p-0 rounded-full transition-all duration-200 ${
+                      addedFeatures.has(index)
+                        ? "bg-primary text-white border-primary"
+                        : "bg-background text-muted-foreground border-border hover:border-primary"
+                    }`}
+                    data-testid={`add-feature-${index}`}
+                  >
+                    <Plus className="w-3 h-3" />
+                  </Button>
+                </div>
               )}
             </div>
           ))}
