@@ -60,8 +60,9 @@ export function PricingCard({
     let basePrice;
     
     if (billingMode === "usage") {
-      // For usage billing: extract number from "7¢" or "30¢"
-      basePrice = parseFloat(basePriceText.replace(/[¢$,]/g, ''));
+      // For usage billing: extract number from "7 центов =0.07$" or "30 центов =0.30$"
+      const match = basePriceText.match(/(\d+(?:\.\d+)?)\s*центов/);
+      basePrice = match ? parseFloat(match[1]) : 0;
     } else {
       // For monthly billing: extract number from "$399" or "$1,499"
       basePrice = parseFloat(basePriceText.replace(/[$,]/g, ''));
@@ -71,11 +72,11 @@ export function PricingCard({
     features.forEach((feature, index) => {
       if (feature.addonPricing && addedFeatures.has(index)) {
         if (billingMode === "usage") {
-          additionalCost += 0.5; // +0.5¢ per request
+          additionalCost += 0.5; // +0.5 центов per request
         } else {
           // For monthly billing, calculate proportional cost
           // Assuming ~10,000 requests per month for estimation
-          additionalCost += 50; // $50 monthly equivalent for 0.5¢ per request
+          additionalCost += 50; // $50 monthly equivalent for 0.5 центов per request
         }
       }
     });
@@ -83,7 +84,8 @@ export function PricingCard({
     const totalPrice = basePrice + additionalCost;
     
     if (billingMode === "usage") {
-      return `${totalPrice}¢`;
+      const dollarEquivalent = (totalPrice / 100).toFixed(2);
+      return `${totalPrice} центов =${dollarEquivalent}$`;
     } else {
       // Format with commas for thousands
       return `$${Math.round(totalPrice).toLocaleString()}`;

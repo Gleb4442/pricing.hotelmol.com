@@ -24,12 +24,12 @@ export default function PricingPage() {
     {
       text: "Персональный Telegram-бот",
       tooltip: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
-      addonPricing: { usage: "+0,5¢/запрос", monthly: "Включено" },
+      addonPricing: { usage: "+0,5 центов/запрос", monthly: "Включено" },
     },
     {
       text: "Удаление логотипа",
       tooltip: "Уберите наш брендинг с интерфейсов для гостей",
-      addonPricing: { usage: "+0,5¢/запрос", monthly: "Включено" },
+      addonPricing: { usage: "+0,5 центов/запрос", monthly: "Включено" },
     },
   ];
 
@@ -82,7 +82,7 @@ export default function PricingPage() {
             title="PRO"
             description="Идеально для растущих отелей"
             pricing={{
-              usage: { current: "7¢", original: "8¢" },
+              usage: { current: "7 центов =0.07$", original: "8 центов =0.08$" },
               monthly: { current: "$399", original: "$459" },
             }}
             features={proFeatures}
@@ -97,7 +97,7 @@ export default function PricingPage() {
             title="PREMIUM"
             description="Корпоративное решение"
             pricing={{
-              usage: { current: "30¢" },
+              usage: { current: "30 центов =0.30$" },
               monthly: { current: "$1,499" },
             }}
             features={premiumFeatures}
