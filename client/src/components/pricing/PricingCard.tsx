@@ -148,7 +148,7 @@ export function PricingCard({
           {features.map((feature, index) => (
             <div key={index} className="flex items-center space-x-3 relative">
               <Check className="text-primary w-5 h-5 flex-shrink-0" />
-              <span className="flex-1">{feature.text}</span>
+              <span className="flex-1 text-sm">{feature.text}</span>
               {feature.tooltip && (
                 <Tooltip content={feature.tooltip}>
                   <Info
@@ -158,9 +158,9 @@ export function PricingCard({
                 </Tooltip>
               )}
               {feature.addonPricing && (
-                <div className="flex items-center space-x-2">
+                <div className="flex items-center space-x-2 flex-shrink-0">
                   <span
-                    className="text-primary text-sm font-medium"
+                    className="text-primary text-xs font-medium"
                     data-testid={`addon-pricing-${index}`}
                   >
                     {billingMode === "monthly"
@@ -172,28 +172,28 @@ export function PricingCard({
                       variant="outline"
                       size="sm"
                       onClick={() => toggleFeature(index)}
-                      className={`px-3 py-1 h-auto text-xs rounded-full transition-all duration-200 ${
+                      className={`px-2 py-1 h-auto text-xs rounded-md transition-all duration-200 whitespace-nowrap ${
                         addedFeatures.has(index)
                           ? "bg-green-100 text-green-700 border-green-300"
                           : "bg-background text-muted-foreground border-border hover:border-green-400 hover:text-green-600"
                       }`}
                       data-testid={`add-feature-${index}`}
                     >
-                      {addedFeatures.has(index) ? "Добавлено" : "добавить бесплатно"}
+                      {addedFeatures.has(index) ? "Добавлено" : "добавить"}
                     </Button>
                   ) : (
                     <Button
                       variant="outline"
                       size="sm"
                       onClick={() => toggleFeature(index)}
-                      className={`w-6 h-6 p-0 rounded-full transition-all duration-200 ${
+                      className={`w-5 h-5 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
                         addedFeatures.has(index)
                           ? "bg-primary text-white border-primary"
                           : "bg-background text-muted-foreground border-border hover:border-primary"
                       }`}
                       data-testid={`add-feature-${index}`}
                     >
-                      <Plus className="w-3 h-3" />
+                      <Plus className="w-2.5 h-2.5" />
                     </Button>
                   )}
                 </div>
