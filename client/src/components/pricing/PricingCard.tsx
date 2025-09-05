@@ -144,11 +144,11 @@ export function PricingCard({
         </div>
 
         {/* Features */}
-        <div className="space-y-4 mb-8">
+        <div className="space-y-4 mb-8 px-1">
           {features.map((feature, index) => (
-            <div key={index} className="flex items-center space-x-3 relative">
-              <Check className="text-primary w-5 h-5 flex-shrink-0" />
-              <span className="flex-1 text-sm">{feature.text}</span>
+            <div key={index} className="flex items-center space-x-2 relative">
+              <Check className="text-primary w-4 h-4 flex-shrink-0" />
+              <span className="flex-1 text-sm leading-tight">{feature.text}</span>
               {feature.tooltip && (
                 <Tooltip content={feature.tooltip}>
                   <Info
@@ -172,14 +172,14 @@ export function PricingCard({
                       variant="outline"
                       size="sm"
                       onClick={() => toggleFeature(index)}
-                      className={`px-2 py-1 h-auto text-xs rounded-md transition-all duration-200 whitespace-nowrap ${
+                      className={`px-1.5 py-0.5 h-auto text-xs rounded-md transition-all duration-200 whitespace-nowrap text-center min-w-0 ${
                         addedFeatures.has(index)
                           ? "bg-green-100 text-green-700 border-green-300"
                           : "bg-background text-muted-foreground border-border hover:border-green-400 hover:text-green-600"
                       }`}
                       data-testid={`add-feature-${index}`}
                     >
-                      {addedFeatures.has(index) ? "Добавлено" : "добавить"}
+                      {addedFeatures.has(index) ? "✓" : "+"}
                     </Button>
                   ) : (
                     <Button
