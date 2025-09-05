@@ -73,11 +73,8 @@ export function PricingCard({
       if (feature.addonPricing && addedFeatures.has(index)) {
         if (billingMode === "usage") {
           additionalCost += 0.5; // +0.5 центов per request
-        } else {
-          // For monthly billing, calculate proportional cost
-          // Assuming ~10,000 requests per month for estimation
-          additionalCost += 50; // $50 monthly equivalent for 0.5 центов per request
         }
+        // For monthly billing, additional features are included for free (no cost)
       }
     });
 
@@ -170,19 +167,35 @@ export function PricingCard({
                       ? feature.addonPricing.monthly
                       : feature.addonPricing.usage}
                   </span>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={() => toggleFeature(index)}
-                    className={`w-6 h-6 p-0 rounded-full transition-all duration-200 ${
-                      addedFeatures.has(index)
-                        ? "bg-primary text-white border-primary"
-                        : "bg-background text-muted-foreground border-border hover:border-primary"
-                    }`}
-                    data-testid={`add-feature-${index}`}
-                  >
-                    <Plus className="w-3 h-3" />
-                  </Button>
+                  {billingMode === "monthly" ? (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => toggleFeature(index)}
+                      className={`px-3 py-1 h-auto text-xs rounded-full transition-all duration-200 ${
+                        addedFeatures.has(index)
+                          ? "bg-green-100 text-green-700 border-green-300"
+                          : "bg-background text-muted-foreground border-border hover:border-green-400 hover:text-green-600"
+                      }`}
+                      data-testid={`add-feature-${index}`}
+                    >
+                      {addedFeatures.has(index) ? "Добавлено" : "добавить бесплатно"}
+                    </Button>
+                  ) : (
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => toggleFeature(index)}
+                      className={`w-6 h-6 p-0 rounded-full transition-all duration-200 ${
+                        addedFeatures.has(index)
+                          ? "bg-primary text-white border-primary"
+                          : "bg-background text-muted-foreground border-border hover:border-primary"
+                      }`}
+                      data-testid={`add-feature-${index}`}
+                    >
+                      <Plus className="w-3 h-3" />
+                    </Button>
+                  )}
                 </div>
               )}
             </div>
