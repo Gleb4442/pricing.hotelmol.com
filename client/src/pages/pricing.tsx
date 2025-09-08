@@ -93,7 +93,7 @@ export default function PricingPage() {
             title="PREMIUM"
             description="Корпоративное решение"
             pricing={{
-              usage: { current: "30 центов =0.30$" },
+              usage: { current: "35 центов =0.35$" },
               monthly: { current: "$1,499" },
             }}
             features={premiumFeatures}
