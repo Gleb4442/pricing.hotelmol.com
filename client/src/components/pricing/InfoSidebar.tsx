@@ -83,7 +83,7 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center" data-testid="uptime-indicator">
             <div className="text-2xl font-bold text-primary">86%</div>
-            <div className="text-sm text-muted-foreground">Время работы</div>
+            <div className="text-sm text-muted-foreground">запросов обработанных без участия ресепшн</div>
           </div>
           <div className="text-center" data-testid="support-indicator">
             <div className="text-2xl font-bold text-primary">24/7</div>
