@@ -62,21 +62,6 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
         </div>
       </div>
 
-      {/* AI Features Showcase */}
-      <div className="bg-gradient-to-br from-primary/5 to-accent/5 border border-border rounded-2xl p-6 shadow-lg">
-        <img
-          src={aiAutomationImage}
-          alt="AI-powered automation interface"
-          className="w-full h-32 object-cover rounded-xl mb-4"
-          data-testid="ai-showcase-image"
-        />
-        <h4 className="text-lg font-semibold text-foreground mb-2">
-          Автоматизация на основе ИИ
-        </h4>
-        <p className="text-muted-foreground text-sm">
-          Трансформируйте опыт ваших гостей с помощью передовых технологий искусственного интеллекта.
-        </p>
-      </div>
 
       {/* Trust Indicators */}
       <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
