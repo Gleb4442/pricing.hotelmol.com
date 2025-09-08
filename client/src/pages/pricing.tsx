@@ -13,8 +13,8 @@ export default function PricingPage() {
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
 
   const handleSubscribe = (plan: string) => {
-    // TODO: Implement actual payment processing
-    console.log(`Subscribe to ${plan} plan with ${billingMode} billing`);
+    // Redirect to Telegram for subscription
+    window.open('https://t.me/hotelmindmanager', '_blank');
   };
 
   const proFeatures = [
