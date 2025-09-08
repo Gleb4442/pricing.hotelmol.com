@@ -160,34 +160,44 @@ export default function PricingPage() {
         {/* FAQ Section */}
         <div className="mt-20">
           <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-            Frequently Asked Questions
+            Часто задаваемые вопросы
           </h2>
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                How does AI integration work?
+                Как работает интеграция с ИИ?
               </h4>
               <p className="text-muted-foreground">
-                Our AI seamlessly integrates with your existing hotel management systems, providing
-                intelligent responses to guest inquiries and automating routine tasks.
+                Наш ИИ легко интегрируется с вашими существующими системами управления отелем, предоставляя
+                интеллектуальные ответы на запросы гостей и автоматизируя рутинные задачи.
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                Can I switch between billing modes?
+                Могу ли я переключаться между режимами оплаты?
               </h4>
               <p className="text-muted-foreground">
-                Yes, you can change your billing preference at any time. Changes take effect at the
-                start of your next billing cycle.
+                Да, вы можете изменить предпочтения по оплате в любое время. Изменения вступают в силу
+                с начала следующего расчетного периода.
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                What languages are supported?
+                Какие языки поддерживаются?
               </h4>
               <p className="text-muted-foreground">
-                Our AI supports over 40 languages, ensuring your international guests receive
-                assistance in their preferred language.
+                Наш ИИ поддерживает более 40 языков, обеспечивая международным гостям помощь
+                на их предпочитаемом языке.
+              </p>
+            </div>
+            <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
+              <h4 className="text-lg font-semibold text-foreground mb-2">
+                Чем PRO отличается от PREMIUM в двух словах?
+              </h4>
+              <p className="text-muted-foreground">
+                PRO — «всё необходимое чтобы аввтоматизировать коммуникацию с гостями с помощью ИИ». 
+                PREMIUM — «всё из PRO» + Собственная админ панель, расширенная аналитика, персональное 
+                обучение ИИ на ваших данных, white-label и менеджер аккаунта.
               </p>
             </div>
           </div>
