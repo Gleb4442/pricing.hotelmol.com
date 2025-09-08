@@ -144,60 +144,64 @@ export function PricingCard({
         </div>
 
         {/* Features */}
-        <div className="space-y-4 mb-8 px-2">
+        <div className="space-y-3 mb-8 px-2">
           {features.map((feature, index) => (
-            <div key={index} className="flex items-center space-x-2 relative max-w-full overflow-hidden">
-              <Check className="text-primary w-4 h-4 flex-shrink-0" />
-              <span className="flex-1 text-sm leading-tight min-w-0">{feature.text}</span>
-              {feature.tooltip && (
-                <Tooltip content={feature.tooltip}>
-                  <Info
-                    className="text-muted-foreground w-4 h-4 cursor-help"
-                    data-testid={`tooltip-trigger-${index}`}
-                  />
-                </Tooltip>
-              )}
-              {feature.addonPricing && (
-                <div className="flex items-center space-x-1 flex-shrink-0">
-                  <span
-                    className="text-primary text-xs font-medium whitespace-nowrap"
-                    data-testid={`addon-pricing-${index}`}
-                  >
-                    {billingMode === "monthly"
-                      ? feature.addonPricing.monthly
-                      : feature.addonPricing.usage}
-                  </span>
-                  {billingMode === "monthly" ? (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => toggleFeature(index)}
-                      className={`px-1.5 py-0.5 h-auto text-xs rounded-md transition-all duration-200 whitespace-nowrap text-center min-w-0 ${
-                        addedFeatures.has(index)
-                          ? "bg-green-100 text-green-700 border-green-300"
-                          : "bg-background text-muted-foreground border-border hover:border-green-400 hover:text-green-600"
-                      }`}
-                      data-testid={`add-feature-${index}`}
-                    >
-                      {addedFeatures.has(index) ? "✓" : "+"}
-                    </Button>
-                  ) : (
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => toggleFeature(index)}
-                      className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
-                        addedFeatures.has(index)
-                          ? "bg-primary text-white border-primary"
-                          : "bg-background text-muted-foreground border-border hover:border-primary"
-                      }`}
-                      data-testid={`add-feature-${index}`}
-                    >
-                      <Plus className="w-2 h-2" />
-                    </Button>
+            <div key={index} className="flex items-start space-x-2 relative">
+              <Check className="text-primary w-4 h-4 flex-shrink-0 mt-0.5" />
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center space-x-1 flex-wrap">
+                  <span className="text-sm leading-tight">{feature.text}</span>
+                  {feature.tooltip && (
+                    <Tooltip content={feature.tooltip}>
+                      <Info
+                        className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
+                        data-testid={`tooltip-trigger-${index}`}
+                      />
+                    </Tooltip>
                   )}
                 </div>
-              )}
+                {feature.addonPricing && (
+                  <div className="flex items-center space-x-1 mt-1">
+                    <span
+                      className="text-primary text-xs font-medium"
+                      data-testid={`addon-pricing-${index}`}
+                    >
+                      {billingMode === "monthly"
+                        ? feature.addonPricing.monthly
+                        : feature.addonPricing.usage}
+                    </span>
+                    {billingMode === "monthly" ? (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toggleFeature(index)}
+                        className={`px-1.5 py-0.5 h-auto text-xs rounded-md transition-all duration-200 whitespace-nowrap text-center min-w-0 ${
+                          addedFeatures.has(index)
+                            ? "bg-green-100 text-green-700 border-green-300"
+                            : "bg-background text-muted-foreground border-border hover:border-green-400 hover:text-green-600"
+                        }`}
+                        data-testid={`add-feature-${index}`}
+                      >
+                        {addedFeatures.has(index) ? "✓" : "+"}
+                      </Button>
+                    ) : (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toggleFeature(index)}
+                        className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
+                          addedFeatures.has(index)
+                            ? "bg-primary text-white border-primary"
+                            : "bg-background text-muted-foreground border-border hover:border-primary"
+                        }`}
+                        data-testid={`add-feature-${index}`}
+                      >
+                        <Plus className="w-2 h-2" />
+                      </Button>
+                    )}
+                  </div>
+                )}
+              </div>
             </div>
           ))}
         </div>
