@@ -125,7 +125,7 @@ export function PricingCard({
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-2">
             {currentPricing.original && (
-              <span className="text-2xl text-muted-foreground line-through">
+              <span className="text-sm text-muted-foreground/60 line-through opacity-75">
                 {currentPricing.original}
               </span>
             )}
