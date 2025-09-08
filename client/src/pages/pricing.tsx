@@ -1,9 +1,10 @@
 import { useState } from "react";
-import { Bot, ChevronDown } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { InfoSidebar } from "@/components/pricing/InfoSidebar";
+import robotLogo from "@assets/roomie-robot-logo.svg";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 
@@ -49,8 +50,12 @@ export default function PricingPage() {
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
-                <Bot className="text-primary-foreground w-6 h-6" />
+              <div className="w-10 h-10 rounded-xl flex items-center justify-center overflow-hidden">
+                <img 
+                  src={robotLogo} 
+                  alt="Roomie Robot Logo" 
+                  className="w-8 h-8 object-contain"
+                />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-foreground">Roomie</h1>
@@ -204,8 +209,12 @@ export default function PricingPage() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <div className="w-8 h-8 bg-primary rounded-lg flex items-center justify-center">
-                  <Bot className="text-primary-foreground w-5 h-5" />
+                <div className="w-8 h-8 rounded-lg flex items-center justify-center overflow-hidden">
+                  <img 
+                    src={robotLogo} 
+                    alt="Roomie Robot Logo" 
+                    className="w-6 h-6 object-contain"
+                  />
                 </div>
                 <span className="font-bold text-foreground">Roomie</span>
               </div>
