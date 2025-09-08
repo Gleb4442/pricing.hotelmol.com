@@ -94,7 +94,7 @@ export default function PricingPage() {
             description="Корпоративное решение"
             pricing={{
               usage: { current: "35 центов =0.35$" },
-              monthly: { current: "$1,499" },
+              monthly: { current: "$1,899" },
             }}
             features={premiumFeatures}
             billingMode={billingMode}
