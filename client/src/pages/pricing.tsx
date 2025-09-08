@@ -182,11 +182,10 @@ export default function PricingPage() {
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                Какие языки поддерживаются?
+                Что с безопасностью и персональными данными?
               </h4>
               <p className="text-muted-foreground">
-                Наш ИИ поддерживает более 40 языков, обеспечивая международным гостям помощь
-                на их предпочитаемом языке.
+                Соблюдаем GDPR. Данные шифруются. По запросу заключаем DPA и размещаем данные в нужном регионе (EU/EMEA/US). Ваши данные не используются для обучения общих моделей без вашего согласия.
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
