@@ -144,11 +144,11 @@ export function PricingCard({
         </div>
 
         {/* Features */}
-        <div className="space-y-4 mb-8 px-1">
+        <div className="space-y-4 mb-8 px-2">
           {features.map((feature, index) => (
-            <div key={index} className="flex items-center space-x-2 relative">
+            <div key={index} className="flex items-center space-x-2 relative max-w-full overflow-hidden">
               <Check className="text-primary w-4 h-4 flex-shrink-0" />
-              <span className="flex-1 text-sm leading-tight">{feature.text}</span>
+              <span className="flex-1 text-sm leading-tight min-w-0">{feature.text}</span>
               {feature.tooltip && (
                 <Tooltip content={feature.tooltip}>
                   <Info
@@ -158,9 +158,9 @@ export function PricingCard({
                 </Tooltip>
               )}
               {feature.addonPricing && (
-                <div className="flex items-center space-x-2 flex-shrink-0">
+                <div className="flex items-center space-x-1 flex-shrink-0">
                   <span
-                    className="text-primary text-xs font-medium"
+                    className="text-primary text-xs font-medium whitespace-nowrap"
                     data-testid={`addon-pricing-${index}`}
                   >
                     {billingMode === "monthly"
@@ -186,14 +186,14 @@ export function PricingCard({
                       variant="outline"
                       size="sm"
                       onClick={() => toggleFeature(index)}
-                      className={`w-5 h-5 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
+                      className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
                         addedFeatures.has(index)
                           ? "bg-primary text-white border-primary"
                           : "bg-background text-muted-foreground border-border hover:border-primary"
                       }`}
                       data-testid={`add-feature-${index}`}
                     >
-                      <Plus className="w-2.5 h-2.5" />
+                      <Plus className="w-2 h-2" />
                     </Button>
                   )}
                 </div>
