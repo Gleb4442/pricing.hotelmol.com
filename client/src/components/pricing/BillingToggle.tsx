@@ -8,7 +8,7 @@ interface BillingToggleProps {
 
 export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggleProps) {
   return (
-    <div className="flex flex-col items-center justify-center mb-12 space-y-3">
+    <div className="flex flex-col items-center justify-center mb-6 space-y-3">
       <motion.div 
         className="bg-muted rounded-full p-1 flex items-center relative"
         initial={{ opacity: 0, y: 20 }}
