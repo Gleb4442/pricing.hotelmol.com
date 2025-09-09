@@ -72,7 +72,7 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           </div>
           <div className="text-center" data-testid="support-indicator">
             <div className="text-2xl font-bold text-primary">24/7</div>
-            <div className="text-sm text-muted-foreground">Поддержка</div>
+            <div className="text-sm text-muted-foreground">обслуживание ваших гостей</div>
           </div>
         </div>
       </div>
