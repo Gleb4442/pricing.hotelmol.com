@@ -222,91 +222,14 @@ export default function PricingPage() {
       {/* Footer */}
       <footer className="border-t border-border bg-card mt-20">
         <div className="container mx-auto px-4 py-12">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center mb-4">
-                <span className="font-bold text-foreground text-xl">Roomie</span>
-              </div>
-              <p className="text-muted-foreground text-sm">
-                Revolutionizing hospitality with intelligent automation and personalized guest
-                experiences.
-              </p>
+          <div className="text-center">
+            <div className="flex items-center justify-center mb-4">
+              <span className="font-bold text-foreground text-xl">Roomie</span>
             </div>
-            <div>
-              <h5 className="font-semibold text-foreground mb-4">Product</h5>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Pricing
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    API
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Integration
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-semibold text-foreground mb-4">Support</h5>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Documentation
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Help Center
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Status
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-semibold text-foreground mb-4">Company</h5>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    About
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="hover:text-foreground transition-colors">
-                    Privacy
-                  </a>
-                </li>
-              </ul>
-            </div>
+            <p className="text-muted-foreground text-sm max-w-md mx-auto">
+              Revolutionizing hospitality with intelligent automation and personalized guest
+              experiences.
+            </p>
           </div>
           <div className="border-t border-border mt-12 pt-8 text-center">
             <p className="text-muted-foreground text-sm">
