@@ -8,19 +8,19 @@ interface BillingToggleProps {
 
 export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggleProps) {
   return (
-    <div className="flex flex-col items-center justify-center mb-12 space-y-5">
+    <div className="flex flex-col items-center justify-center mb-12 space-y-3">
       <motion.div 
-        className="bg-gradient-to-r from-muted/50 to-muted rounded-full p-2 flex items-center relative shadow-xl border border-border/50"
+        className="bg-muted rounded-full p-1 flex items-center relative"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         {/* Анимированный фон для активной кнопки */}
         <motion.div
-          className="absolute bg-gradient-to-r from-primary to-blue-600 rounded-full h-[calc(100%-16px)] z-0 shadow-lg"
+          className="absolute bg-primary rounded-full h-[calc(100%-8px)] z-0"
           animate={{
-            x: billingMode === "usage" ? 8 : billingMode === "monthly" ? "calc(100% + 8px)" : 8,
-            width: billingMode === "usage" ? "calc(50% - 12px)" : billingMode === "monthly" ? "calc(50% - 12px)" : "calc(50% - 12px)"
+            x: billingMode === "usage" ? 4 : billingMode === "monthly" ? "calc(100% + 4px)" : 4,
+            width: billingMode === "usage" ? "calc(50% - 6px)" : billingMode === "monthly" ? "calc(50% - 6px)" : "calc(50% - 6px)"
           }}
           transition={{
             type: "spring",
@@ -32,13 +32,13 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         <motion.button
           data-testid="billing-usage-button"
           onClick={() => onBillingModeChange("usage")}
-          className={`relative z-10 px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 ${
+          className={`relative z-10 px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 ${
             billingMode === "usage" 
-              ? "text-white shadow-inner" 
-              : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
+              ? "text-primary-foreground" 
+              : "text-muted-foreground hover:text-foreground"
           }`}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           Оплата за использование
@@ -47,13 +47,13 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         <motion.button
           data-testid="billing-monthly-button"
           onClick={() => onBillingModeChange("monthly")}
-          className={`relative z-10 px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 ${
+          className={`relative z-10 px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 ${
             billingMode === "monthly" 
-              ? "text-white shadow-inner" 
-              : "text-muted-foreground hover:text-foreground hover:bg-muted/30"
+              ? "text-primary-foreground" 
+              : "text-muted-foreground hover:text-foreground"
           }`}
-          whileHover={{ scale: 1.03 }}
-          whileTap={{ scale: 0.97 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           Ежемесячно
@@ -63,44 +63,44 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
       <motion.button
         data-testid="billing-yearly-button"
         onClick={() => onBillingModeChange("yearly")}
-        className={`px-10 py-4 rounded-full text-lg font-bold transition-all duration-300 border-2 ${
+        className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
           billingMode === "yearly" 
-            ? "bg-gradient-to-r from-green-500 to-emerald-600 text-white shadow-2xl border-green-400" 
-            : "bg-gradient-to-r from-muted to-muted/80 text-muted-foreground hover:from-muted/60 hover:to-muted/40 hover:text-foreground border-border hover:border-primary/30"
+            ? "bg-primary text-primary-foreground shadow-lg" 
+            : "bg-muted text-muted-foreground hover:bg-muted/80"
         }`}
         whileHover={{ 
-          scale: 1.08,
+          scale: 1.05,
           boxShadow: billingMode === "yearly" 
-            ? "0 20px 40px rgba(34, 197, 94, 0.3)" 
-            : "0 8px 25px rgba(0,0,0,0.12)"
+            ? "0 10px 25px rgba(0,0,0,0.15)" 
+            : "0 4px 12px rgba(0,0,0,0.1)"
         }}
-        whileTap={{ scale: 0.92 }}
-        initial={{ opacity: 0, y: 15 }}
+        whileTap={{ scale: 0.95 }}
+        initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ 
-          duration: 0.5, 
-          delay: 0.3,
+          duration: 0.4, 
+          delay: 0.2,
           type: "spring",
           stiffness: 300
         }}
       >
-        🎯 Ежегодно
+        Ежегодно
       </motion.button>
       
       <AnimatePresence>
         {billingMode === "yearly" && (
           <motion.div 
-            className="text-base font-bold bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent"
-            initial={{ opacity: 0, y: -15, scale: 0.8 }}
+            className="text-sm text-green-600 font-medium"
+            initial={{ opacity: 0, y: -10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -15, scale: 0.8 }}
+            exit={{ opacity: 0, y: -10, scale: 0.9 }}
             transition={{ 
               type: "spring",
-              stiffness: 500,
+              stiffness: 400,
               damping: 25
             }}
           >
-            💰 Экономия до 20% при годовой оплате
+            Экономия до 20% при годовой оплате
           </motion.div>
         )}
       </AnimatePresence>
