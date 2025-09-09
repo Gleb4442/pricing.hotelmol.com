@@ -32,7 +32,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         <motion.button
           data-testid="billing-usage-button"
           onClick={() => onBillingModeChange("usage")}
-          className={`relative z-10 px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 ${
+          className={`relative z-10 px-8 py-4 rounded-full text-base font-semibold transition-colors duration-200 ${
             billingMode === "usage" 
               ? "text-primary-foreground" 
               : "text-muted-foreground hover:text-foreground"
@@ -47,7 +47,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         <motion.button
           data-testid="billing-monthly-button"
           onClick={() => onBillingModeChange("monthly")}
-          className={`relative z-10 px-6 py-3 rounded-full text-sm font-medium transition-colors duration-200 ${
+          className={`relative z-10 px-8 py-4 rounded-full text-base font-semibold transition-colors duration-200 ${
             billingMode === "monthly" 
               ? "text-primary-foreground" 
               : "text-muted-foreground hover:text-foreground"
@@ -63,11 +63,16 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
       <motion.button
         data-testid="billing-yearly-button"
         onClick={() => onBillingModeChange("yearly")}
-        className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+        className={`px-8 py-4 rounded-full text-base font-semibold transition-all duration-300 ${
           billingMode === "yearly" 
             ? "bg-primary text-primary-foreground shadow-lg" 
             : "bg-muted text-muted-foreground hover:bg-muted/80"
         }`}
+        style={{
+          boxShadow: billingMode === "yearly" 
+            ? "0 4px 12px rgba(0,0,0,0.1)" 
+            : "0 0px 0px rgba(0,0,0,0)"
+        }}
         whileHover={{ 
           scale: 1.05,
           boxShadow: billingMode === "yearly" 
