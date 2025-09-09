@@ -10,6 +10,7 @@ interface PricingFeature {
   addonPricing?: {
     usage: string;
     monthly: string;
+    yearly?: string;
   };
 }
 
@@ -23,6 +24,10 @@ interface PricingCardProps {
       original?: string;
     };
     monthly: {
+      current: string;
+      original?: string;
+    };
+    yearly?: {
       current: string;
       original?: string;
     };
@@ -56,7 +61,9 @@ export function PricingCard({
   };
 
   const calculatePrice = () => {
-    const basePriceText = pricing[billingMode].current;
+    const currentPricing = pricing[billingMode];
+    if (!currentPricing) return ""; // Fallback if pricing is not available
+    const basePriceText = currentPricing.current;
     let basePrice;
     
     if (billingMode === "usage") {
@@ -64,7 +71,7 @@ export function PricingCard({
       const match = basePriceText.match(/(\d+(?:\.\d+)?)\s*центов/);
       basePrice = match ? parseFloat(match[1]) : 0;
     } else {
-      // For monthly billing: extract number from "$399" or "$1,499"
+      // For monthly/yearly billing: extract number from "$399" or "$1,499"
       basePrice = parseFloat(basePriceText.replace(/[$,]/g, ''));
     }
     
@@ -89,10 +96,11 @@ export function PricingCard({
     }
   };
 
-  const currentPricing = {
-    ...pricing[billingMode],
+  const pricingData = pricing[billingMode];
+  const currentPricing = pricingData ? {
+    ...pricingData,
     current: calculatePrice()
-  };
+  } : { current: calculatePrice() };
 
   return (
     <div className="relative pt-6">
@@ -139,7 +147,7 @@ export function PricingCard({
             </span>
           </div>
           <p className="text-muted-foreground">
-            {billingMode === "usage" ? "за запрос" : "в месяц"}
+            {billingMode === "usage" ? "за запрос" : billingMode === "monthly" ? "в месяц" : "в месяц при годовой оплате"}
           </p>
         </div>
 

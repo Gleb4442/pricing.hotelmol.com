@@ -80,6 +80,7 @@ export default function PricingPage() {
             pricing={{
               usage: { current: "7 центов =0.07$", original: "8 центов =0.08$" },
               monthly: { current: "$399", original: "$459" },
+              yearly: { current: "$319", original: "$399" },
             }}
             features={proFeatures}
             billingMode={billingMode}
@@ -95,6 +96,7 @@ export default function PricingPage() {
             pricing={{
               usage: { current: "35 центов =0.35$" },
               monthly: { current: "$1,899" },
+              yearly: { current: "$1,519", original: "$1,899" },
             }}
             features={premiumFeatures}
             billingMode={billingMode}
@@ -150,6 +152,21 @@ export default function PricingPage() {
                     <li>• Неограниченные запросы</li>
                     <li>• Предсказуемость бюджета</li>
                     <li>• Максимальная экономия при масштабе</li>
+                  </ul>
+                </div>
+                <div
+                  className={`${billingMode === "yearly" ? "block" : "hidden"}`}
+                  data-testid="mobile-yearly-info"
+                >
+                  <h5 className="font-medium text-foreground mb-2">Годовая оплата со скидкой</h5>
+                  <p className="text-muted-foreground text-sm mb-2">
+                    Максимальная экономия до 20% при оплате за год вперед.
+                  </p>
+                  <ul className="text-sm text-muted-foreground space-y-1">
+                    <li>• Скидка до 20%</li>
+                    <li>• Приоритетная поддержка</li>
+                    <li>• Неограниченные запросы</li>
+                    <li>• Стабильность цен на год</li>
                   </ul>
                 </div>
               </CollapsibleContent>

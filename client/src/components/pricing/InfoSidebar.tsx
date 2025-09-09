@@ -62,6 +62,33 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
         </div>
       </div>
 
+      <div
+        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 ${
+          billingMode === "yearly" ? "block" : "hidden"
+        }`}
+        data-testid="yearly-info-card"
+      >
+        <div className="flex items-start space-x-4">
+          <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center flex-shrink-0">
+            <BarChart3 className="text-green-600 w-6 h-6" />
+          </div>
+          <div>
+            <h4 className="text-lg font-semibold text-foreground mb-2">
+              Годовая оплата со скидкой
+            </h4>
+            <p className="text-muted-foreground text-sm mb-3">
+              Максимальная экономия до 20% при оплате за год вперед. Идеально для долгосрочного планирования.
+            </p>
+            <ul className="text-sm text-muted-foreground space-y-1">
+              <li>• Скидка до 20%</li>
+              <li>• Приоритетная поддержка</li>
+              <li>• Неограниченные запросы</li>
+              <li>• Стабильность цен на год</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
 
       {/* Trust Indicators */}
       <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
