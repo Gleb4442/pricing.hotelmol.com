@@ -170,7 +170,7 @@ export function PricingCard({
                 </div>
                 {feature.addonPricing && (
                   <div className="flex items-center space-x-1 mt-1">
-                    {billingMode === "yearly" ? (
+                    {billingMode === "yearly" || billingMode === "monthly" ? (
                       <span
                         className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded-md"
                         data-testid={`addon-included-${index}`}
@@ -183,39 +183,21 @@ export function PricingCard({
                           className="text-primary text-xs font-medium"
                           data-testid={`addon-pricing-${index}`}
                         >
-                          {billingMode === "monthly"
-                            ? feature.addonPricing.monthly
-                            : feature.addonPricing.usage}
+                          {feature.addonPricing.usage}
                         </span>
-                        {billingMode === "monthly" ? (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => toggleFeature(index)}
-                            className={`px-1.5 py-0.5 h-auto text-xs rounded-md transition-all duration-200 whitespace-nowrap text-center min-w-0 ${
-                              addedFeatures.has(index)
-                                ? "bg-green-100 text-green-700 border-green-300"
-                                : "bg-background text-muted-foreground border-border hover:border-green-400 hover:text-green-600"
-                            }`}
-                            data-testid={`add-feature-${index}`}
-                          >
-                            {addedFeatures.has(index) ? "✓" : "+"}
-                          </Button>
-                        ) : (
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => toggleFeature(index)}
-                            className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
-                              addedFeatures.has(index)
-                                ? "bg-primary text-white border-primary"
-                                : "bg-background text-muted-foreground border-border hover:border-primary"
-                            }`}
-                            data-testid={`add-feature-${index}`}
-                          >
-                            <Plus className="w-2 h-2" />
-                          </Button>
-                        )}
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={() => toggleFeature(index)}
+                          className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
+                            addedFeatures.has(index)
+                              ? "bg-primary text-white border-primary"
+                              : "bg-background text-muted-foreground border-border hover:border-primary"
+                          }`}
+                          data-testid={`add-feature-${index}`}
+                        >
+                          <Plus className="w-2 h-2" />
+                        </Button>
                       </>
                     )}
                   </div>
