@@ -73,8 +73,9 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const revenueFromSavedRequests = savedRequests * (conversionRate / 100) * avgBookingRevenue * workingDays;
     
     // Экономия на комиссиях OTA (увеличение прямых бронирований на 20%)
-    const directBookingIncrease = actualBookings * 0.2 * avgBookingRevenue * workingDays;
-    const otaSavings = directBookingIncrease * (otaCommission / 100);
+    const directBookingIncrease = actualBookings * 0.2;
+    const directBookingIncreaseRevenue = directBookingIncrease * avgBookingRevenue * workingDays;
+    const otaSavings = directBookingIncreaseRevenue * (otaCommission / 100);
     
     // Экономия времени (2-3 часа в день, стоимость часа администратора)
     const hourlyRate = adminSalary / (workingDays * 8);
@@ -84,7 +85,12 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const salarySavings = mode === 'replace' ? adminSalary * 0.5 : 0; // 50% экономии при частичной замене
     
     const totalSavings = revenueFromSavedRequests + otaSavings + timeSavings + salarySavings - roomieCost;
-    const roi = (totalSavings / roomieCost) * 100;
+    const roi = totalSavings > 0 ? (totalSavings / roomieCost) * 100 : 0;
+    
+    // Дополнительные показатели
+    const savedRequestsPerMonth = savedRequests * workingDays;
+    const additionalDirectBookingsPerMonth = directBookingIncrease * workingDays;
+    const paybackDays = totalSavings > 0 ? Math.ceil((roomieCost / (totalSavings / 30))) : 0;
     
     return {
       revenueFromSavedRequests,
@@ -92,7 +98,10 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       timeSavings,
       salarySavings,
       totalSavings,
-      roi
+      roi,
+      savedRequestsPerMonth,
+      additionalDirectBookingsPerMonth,
+      paybackDays
     };
   };
 
@@ -343,6 +352,9 @@ interface CalculatorFormProps {
     salarySavings: number;
     totalSavings: number;
     roi: number;
+    savedRequestsPerMonth: number;
+    additionalDirectBookingsPerMonth: number;
+    paybackDays: number;
   };
 }
 
@@ -475,44 +487,105 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings }: 
         </div>
 
         {/* Результаты расчёта */}
-        <div className="space-y-3 pt-4 border-t border-primary/20">
-          <h4 className="text-sm font-medium text-foreground">Ваша экономия в месяц:</h4>
-          
-          <div className="space-y-2 text-xs">
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Доход от спасённых заявок:</span>
-              <span className="font-medium text-green-600">{formatNumber(savings.revenueFromSavedRequests)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Экономия на комиссиях OTA:</span>
-              <span className="font-medium text-green-600">{formatNumber(savings.otaSavings)}</span>
-            </div>
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Экономия времени:</span>
-              <span className="font-medium text-green-600">{formatNumber(savings.timeSavings)}</span>
-            </div>
-            {mode === 'replace' && savings.salarySavings > 0 && (
-              <div className="flex justify-between">
-                <span className="text-muted-foreground">Экономия на зарплате:</span>
-                <span className="font-medium text-green-600">{formatNumber(savings.salarySavings)}</span>
+        <div className="space-y-4 pt-4 border-t border-primary/20">
+          {savings.totalSavings > 0 ? (
+            <>
+              {/* Главные показатели */}
+              <div className="space-y-4">
+                <h4 className="text-sm font-medium text-foreground">Ваша экономия:</h4>
+                
+                <div className="grid grid-cols-1 gap-4">
+                  {/* Экономия в месяц */}
+                  <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 rounded-lg p-4 text-center" data-testid="main-savings-monthly">
+                    <div className="text-xs text-muted-foreground mb-1">Экономия в месяц</div>
+                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">{formatNumber(savings.totalSavings)}</div>
+                  </div>
+                  
+                  {/* Окупаемость и ROI */}
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-payback">
+                      <div className="text-xs text-muted-foreground mb-1">Окупаемость</div>
+                      <div className="text-lg font-bold text-primary">{savings.paybackDays} дн.</div>
+                    </div>
+                    <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-roi">
+                      <div className="text-xs text-muted-foreground mb-1">ROI</div>
+                      <div className="text-lg font-bold text-primary">{savings.roi.toFixed(0)}%</div>
+                    </div>
+                  </div>
+                </div>
               </div>
-            )}
-            <div className="flex justify-between">
-              <span className="text-muted-foreground">Стоимость Roomie:</span>
-              <span className="font-medium text-red-500">-{formatNumber(inputs.roomieCost)}</span>
+              
+              {/* Дополнительные показатели */}
+              <div className="space-y-3">
+                <h5 className="text-sm font-medium text-foreground">Дополнительные показатели:</h5>
+                <div className="grid grid-cols-1 gap-3">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3" data-testid="additional-saved-requests">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-muted-foreground">Не потеряете обращений в месяц</span>
+                      <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">{Math.round(savings.savedRequestsPerMonth)}</span>
+                    </div>
+                  </div>
+                  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-3" data-testid="additional-direct-bookings">
+                    <div className="flex justify-between items-center">
+                      <span className="text-xs text-muted-foreground">Дополнительные прямые брони в месяц</span>
+                      <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">{Math.round(savings.additionalDirectBookingsPerMonth)}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Поясняющий текст */}
+              <div className="bg-gradient-to-r from-primary/5 to-orange-50 dark:from-primary/10 dark:to-orange-900/20 rounded-lg p-3" data-testid="explanation-text">
+                <p className="text-xs text-muted-foreground">
+                  <strong className="text-foreground">Почему Roomie даёт +к бронированиям:</strong> отвечает быстрее, не теряет запросы, мягко ведёт к прямой броне, предлагает доп.услуги по делу
+                </p>
+              </div>
+              
+              {/* Детализация */}
+              <details className="space-y-2">
+                <summary className="text-xs font-medium text-foreground cursor-pointer hover:text-primary">Детализация расчётов</summary>
+                <div className="space-y-2 text-xs mt-2" data-testid="calculation-details">
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Доход от спасённых заявок:</span>
+                    <span className="font-medium text-green-600">{formatNumber(savings.revenueFromSavedRequests)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Экономия на комиссиях OTA:</span>
+                    <span className="font-medium text-green-600">{formatNumber(savings.otaSavings)}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Экономия времени:</span>
+                    <span className="font-medium text-green-600">{formatNumber(savings.timeSavings)}</span>
+                  </div>
+                  {mode === 'replace' && savings.salarySavings > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Экономия на зарплате:</span>
+                      <span className="font-medium text-green-600">{formatNumber(savings.salarySavings)}</span>
+                    </div>
+                  )}
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Стоимость Roomie:</span>
+                    <span className="font-medium text-red-500">-{formatNumber(inputs.roomieCost)}</span>
+                  </div>
+                </div>
+              </details>
+            </>
+          ) : (
+            /* Честный блок для неокупаемости */
+            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4" data-testid="unprofitable-warning">
+              <div className="text-center space-y-2">
+                <div className="text-sm font-medium text-red-600 dark:text-red-400" data-testid="text-unprofitable-message">
+                  При этих вводных Roomie не окупается
+                </div>
+                <div className="text-xs text-muted-foreground">
+                  Попробуйте снизить стоимость персонала или уточнить проценты пропусков/конверсии.
+                </div>
+                <div className="text-xs text-red-500 font-medium" data-testid="text-loss-amount">
+                  Убыток: {formatNumber(Math.abs(savings.totalSavings))}/мес
+                </div>
+              </div>
             </div>
-          </div>
-
-          <div className="bg-primary/10 rounded-lg p-3 space-y-1">
-            <div className="flex justify-between items-center">
-              <span className="text-sm font-semibold text-foreground">Итого экономия:</span>
-              <span className="text-lg font-bold text-primary">{formatNumber(savings.totalSavings)}</span>
-            </div>
-            <div className="flex justify-between items-center">
-              <span className="text-xs text-muted-foreground">ROI:</span>
-              <span className="text-sm font-medium text-primary">{savings.roi.toFixed(0)}%</span>
-            </div>
-          </div>
+          )}
         </div>
       </div>
     </TooltipProvider>
