@@ -320,15 +320,17 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
             </CardHeader>
             <CardContent className="pt-0 space-y-4">
               <div className="space-y-3">
-                <Button 
-                  variant="ghost"
-                  onClick={toggleCalculator}
-                  className="w-full text-left justify-between text-primary hover:bg-primary/5"
-                  data-testid="button-toggle-calculator"
-                >
-                  <span>Рассчитать мою экономию</span>
-                  <ChevronDown className={`h-4 w-4 transition-transform ${showCalculator ? 'rotate-180' : ''}`} />
-                </Button>
+                <div className="flex justify-center">
+                  <Button 
+                    variant="default"
+                    onClick={toggleCalculator}
+                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 justify-between min-w-[280px]"
+                    data-testid="button-toggle-calculator"
+                  >
+                    <span>Рассчитать мою экономию</span>
+                    <ChevronDown className={`h-4 w-4 transition-transform ${showCalculator ? 'rotate-180' : ''}`} />
+                  </Button>
+                </div>
                 
                 <Collapsible open={showCalculator} onOpenChange={setShowCalculator}>
                   <CollapsibleContent>
