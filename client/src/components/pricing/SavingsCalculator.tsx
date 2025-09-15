@@ -342,6 +342,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       savings={savings}
                       currencySymbols={currencySymbols}
                       currencyLocales={currencyLocales}
+                      onShareCalculation={handleSaveCalculation}
                     />
                   </CollapsibleContent>
                 </Collapsible>
@@ -595,6 +596,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                         savings={savings}
                         currencySymbols={currencySymbols}
                         currencyLocales={currencyLocales}
+                        onShareCalculation={handleSaveCalculation}
                       />
                     </div>
                   )}
@@ -635,6 +637,7 @@ interface CalculatorFormProps {
   onModeChange: (mode: 'replace' | 'assist') => void;
   currencySymbols: Record<Currency, string>;
   currencyLocales: Record<Currency, string>;
+  onShareCalculation: () => void;
   savings: {
     revenueFromSavedRequests: number;
     otaSavings: number;
@@ -648,7 +651,7 @@ interface CalculatorFormProps {
   };
 }
 
-function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, currencySymbols, currencyLocales }: CalculatorFormProps) {
+function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, currencySymbols, currencyLocales, onShareCalculation }: CalculatorFormProps) {
   const formatNumber = (num: number) => {
     return new Intl.NumberFormat(currencyLocales[inputs.currency], { 
       style: 'currency', 
@@ -883,7 +886,7 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
           savings={savings}
           currency={inputs.currency}
           mode={mode}
-          onShareCalculation={handleSaveCalculation}
+          onShareCalculation={onShareCalculation}
         />
       </div>
     </TooltipProvider>
