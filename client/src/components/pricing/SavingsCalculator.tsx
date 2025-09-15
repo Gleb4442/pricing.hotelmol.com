@@ -653,11 +653,10 @@ interface CalculatorFormProps {
 
 function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, currencySymbols, currencyLocales, onShareCalculation }: CalculatorFormProps) {
   const formatNumber = (num: number) => {
-    return new Intl.NumberFormat(currencyLocales[inputs.currency], { 
-      style: 'currency', 
-      currency: inputs.currency,
-      maximumFractionDigits: 0 
-    }).format(num);
+    const symbol = currencySymbols[inputs.currency];
+    const rounded = Math.round(num);
+    const formatted = rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return `${formatted} ${symbol}`;
   };
 
   const inputFields = [
@@ -911,13 +910,10 @@ function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }
   };
 
   const formatNumber = (num: number) => {
-    const locale = currency === 'RUB' ? 'ru-RU' : currency === 'UAH' ? 'uk-UA' : currency === 'USD' ? 'en-US' : 'de-DE';
-    return new Intl.NumberFormat(locale, {
-      style: 'currency',
-      currency: currency,
-      minimumFractionDigits: 0,
-      maximumFractionDigits: 0,
-    }).format(num);
+    const symbol = currencySymbols[currency];
+    const rounded = Math.round(num);
+    const formatted = rounded.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
+    return `${formatted} ${symbol}`;
   };
 
   // Простые визуализации сравнения
