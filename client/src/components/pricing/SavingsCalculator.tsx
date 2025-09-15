@@ -877,7 +877,236 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
             </div>
           )}
         </div>
+
+        {/* Блок доверия и конверсии */}
+        <TrustAndConversionBlock 
+          savings={savings}
+          currency={inputs.currency}
+          mode={mode}
+          onShareCalculation={handleSaveCalculation}
+        />
       </div>
     </TooltipProvider>
+  );
+}
+
+interface TrustAndConversionBlockProps {
+  savings: any;
+  currency: Currency;
+  mode: 'replace' | 'assist';
+  onShareCalculation: () => void;
+}
+
+function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }: TrustAndConversionBlockProps) {
+  const [isHowWeCountExpanded, setIsHowWeCountExpanded] = useState(false);
+
+  const currencySymbols: Record<Currency, string> = {
+    RUB: '₽',
+    UAH: '₴', 
+    USD: '$',
+    EUR: '€'
+  };
+
+  const formatNumber = (num: number) => {
+    const locale = currency === 'RUB' ? 'ru-RU' : currency === 'UAH' ? 'uk-UA' : currency === 'USD' ? 'en-US' : 'de-DE';
+    return new Intl.NumberFormat(locale, {
+      style: 'currency',
+      currency: currency,
+      minimumFractionDigits: 0,
+      maximumFractionDigits: 0,
+    }).format(num);
+  };
+
+  // Простые визуализации сравнения
+  const humanCosts = mode === 'replace' ? [
+    { label: 'Зарплата в месяц', value: savings.inputs?.adminSalary || 45000 },
+    { label: 'Пропущенные брони', value: savings.revenueFromSavedRequests || 0 },
+    { label: 'Комиссии OTA', value: savings.otaSavings || 0 }
+  ] : [
+    { label: 'Пропущенные брони', value: savings.revenueFromSavedRequests || 0 },
+    { label: 'Комиссии OTA', value: savings.otaSavings || 0 },
+    { label: 'Время на ответы', value: savings.timeSavings || 0 }
+  ];
+
+  const roomieCosts = [
+    { label: 'Стоимость Roomie', value: savings.inputs?.roomieCost || 35910 }
+  ];
+
+  const totalHumanCosts = humanCosts.reduce((sum, item) => sum + item.value, 0);
+  const totalRoomieCosts = roomieCosts.reduce((sum, item) => sum + item.value, 0);
+
+  return (
+    <div className="space-y-6 pt-6 border-t border-primary/20" data-testid="trust-conversion-block">
+      {/* Раскрывающийся блок "Как мы считаем?" */}
+      <Collapsible open={isHowWeCountExpanded} onOpenChange={setIsHowWeCountExpanded}>
+        <CollapsibleTrigger asChild>
+          <Button 
+            variant="ghost" 
+            className="w-full justify-between p-0 h-auto text-left"
+            data-testid="toggle-how-we-count"
+          >
+            <h4 className="text-sm font-medium text-foreground">Как мы считаем?</h4>
+            <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${isHowWeCountExpanded ? 'rotate-180' : ''}`} />
+          </Button>
+        </CollapsibleTrigger>
+        <CollapsibleContent className="space-y-4 pt-4" data-testid="how-we-count-content">
+          <div className="bg-primary/5 rounded-lg p-4 space-y-3">
+            <p className="text-sm text-foreground leading-relaxed">
+              <strong>Простыми словами:</strong> Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, 
+              умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.
+            </p>
+            <p className="text-sm text-foreground leading-relaxed">
+              Плюс экономия на комиссионных OTA и рост допродаж. {mode === 'replace' ? 'Плюс экономия на зарплате администратора. ' : ''}
+              Минус — стоимость Roomie.
+            </p>
+            
+            {/* Формула по-человечески */}
+            <div className="bg-white/50 dark:bg-gray-900/50 rounded-lg p-3 space-y-2">
+              <h5 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Формула расчёта</h5>
+              <div className="text-sm space-y-1">
+                <div className="flex items-center justify-between">
+                  <span className="text-green-600">+ Дополнительная выручка</span>
+                  <span className="text-xs text-muted-foreground">(спасённые заявки × конверсия × средний чек)</span>
+                </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-green-600">+ Экономия на OTA</span>
+                  <span className="text-xs text-muted-foreground">(прямые брони × комиссия)</span>
+                </div>
+                {mode === 'replace' && (
+                  <div className="flex items-center justify-between">
+                    <span className="text-green-600">+ Экономия на зарплате</span>
+                    <span className="text-xs text-muted-foreground">(частичная замена администратора)</span>
+                  </div>
+                )}
+                <div className="flex items-center justify-between border-t pt-1 mt-2">
+                  <span className="text-red-500">- Стоимость Roomie</span>
+                  <span className="text-xs text-muted-foreground">(ежемесячная подписка)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Текст о честности */}
+          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+            <div className="flex items-start space-x-3">
+              <Info className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+              <div className="space-y-2">
+                <h5 className="text-sm font-medium text-amber-800 dark:text-amber-200">О честности расчётов</h5>
+                <p className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
+                  Если ваши цифры покажут нулевой эффект — это тоже результат. Мы не продаём чудеса, мы считаем.
+                  Наша задача — показать реальную картину, а не завлечь красивыми обещаниями.
+                </p>
+              </div>
+            </div>
+          </div>
+        </CollapsibleContent>
+      </Collapsible>
+
+      {/* Простые визуализации сравнения */}
+      {savings.totalSavings > 0 && (
+        <div className="space-y-4">
+          <h5 className="text-sm font-medium text-foreground">Сравнение расходов</h5>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {/* Расходы без Roomie */}
+            <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4" data-testid="costs-without-roomie">
+              <h6 className="text-xs font-medium text-red-700 dark:text-red-300 mb-3">
+                {mode === 'replace' ? 'Расходы человека' : 'Потери без ИИ'}
+              </h6>
+              <div className="space-y-2">
+                {humanCosts.map((cost, index) => (
+                  <div key={index} className="flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">{cost.label}</span>
+                    <span className="text-sm font-medium text-red-600">{formatNumber(cost.value)}</span>
+                  </div>
+                ))}
+                <div className="border-t pt-2 mt-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-foreground">Итого потерь</span>
+                    <span className="text-sm font-bold text-red-600">{formatNumber(totalHumanCosts)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Расходы с Roomie */}
+            <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4" data-testid="costs-with-roomie">
+              <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Расходы с Roomie</h6>
+              <div className="space-y-2">
+                {roomieCosts.map((cost, index) => (
+                  <div key={index} className="flex items-center justify-between">
+                    <span className="text-xs text-muted-foreground">{cost.label}</span>
+                    <span className="text-sm font-medium text-green-600">{formatNumber(cost.value)}</span>
+                  </div>
+                ))}
+                <div className="border-t pt-2 mt-2">
+                  <div className="flex items-center justify-between">
+                    <span className="text-xs font-medium text-foreground">Экономия</span>
+                    <span className="text-sm font-bold text-green-600">{formatNumber(totalHumanCosts - totalRoomieCosts)}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Чек-лист советов */}
+      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 space-y-3" data-testid="tips-checklist">
+        <h5 className="text-sm font-medium text-blue-800 dark:text-blue-200">Как повысить выгоду от Roomie:</h5>
+        <div className="space-y-2">
+          {[
+            "Настройте быстрые ответы на частые вопросы — снизите время реакции",
+            "Обучите Roomie предлагать доп.услуги (трансфер, экскурсии) — увеличите средний чек",
+            "Используйте ночной режим — не теряйте заявки в нерабочие часы",
+            "Ведите статистику пропусков — оптимизируйте настройки под свой отель",
+            "Настройте переход к прямой броне — снижайте комиссии OTA"
+          ].map((tip, index) => (
+            <div key={index} className="flex items-start space-x-2">
+              <div className="h-1.5 w-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+              <span className="text-xs text-blue-700 dark:text-blue-300">{tip}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* CTA блок */}
+      <div className="space-y-4 pt-2">
+        {/* Основная CTA кнопка */}
+        <Button 
+          asChild
+          size="lg" 
+          className="w-full h-12 text-base font-medium"
+          data-testid="cta-try-roomie"
+        >
+          <a 
+            href="https://t.me/hotelmindmanager" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center space-x-2"
+          >
+            <span>Попробовать Roomie</span>
+            <DollarSign className="h-5 w-5" />
+          </a>
+        </Button>
+
+        {/* Вторичная ссылка */}
+        <Button 
+          variant="outline" 
+          size="sm" 
+          onClick={onShareCalculation}
+          className="w-full text-sm h-10"
+          data-testid="cta-share-with-manager"
+        >
+          <Copy className="h-4 w-4 mr-2" />
+          Показать расчёт руководителю
+        </Button>
+
+        {/* Дополнительный текст */}
+        <p className="text-xs text-center text-muted-foreground leading-relaxed">
+          Нажмите "Попробовать Roomie" для связи с нашим менеджером. 
+          Или поделитесь этим расчётом с руководителем для принятия решения.
+        </p>
+      </div>
+    </div>
   );
 }
