@@ -71,54 +71,48 @@ export default function PricingPage() {
           <BillingToggle billingMode={billingMode} onBillingModeChange={setBillingMode} />
         </div>
 
-        {/* Mobile Savings Calculator Banner */}
-        <SavingsCalculator />
+        {/* Pricing Section */}
+        <div className="max-w-7xl mx-auto">
+          <div className="grid lg:grid-cols-3 gap-8">
+            {/* PRO Plan */}
+            <PricingCard
+              plan="pro"
+              title="PRO"
+              description="Идеально для растущих отелей"
+              pricing={{
+                usage: { current: "7 центов =0.07$", original: "8 центов =0.08$" },
+                monthly: { current: "$399", original: "$459" },
+                yearly: { current: "$319", original: "$399" },
+              }}
+              features={proFeatures}
+              billingMode={billingMode}
+              isPopular={true}
+              onSubscribe={() => handleSubscribe("pro")}
+            />
 
-        {/* Pricing Section with Sticky Calculator */}
-        <div className="flex gap-8 max-w-7xl mx-auto">
-          {/* Main Pricing Grid */}
-          <div className="flex-1">
-            <div className="grid lg:grid-cols-3 gap-8">
-              {/* PRO Plan */}
-              <PricingCard
-                plan="pro"
-                title="PRO"
-                description="Идеально для растущих отелей"
-                pricing={{
-                  usage: { current: "7 центов =0.07$", original: "8 центов =0.08$" },
-                  monthly: { current: "$399", original: "$459" },
-                  yearly: { current: "$319", original: "$399" },
-                }}
-                features={proFeatures}
-                billingMode={billingMode}
-                isPopular={true}
-                onSubscribe={() => handleSubscribe("pro")}
-              />
+            {/* PREMIUM Plan */}
+            <PricingCard
+              plan="premium"
+              title="PREMIUM"
+              description="Корпоративное решение"
+              pricing={{
+                usage: { current: "35 центов =0.35$" },
+                monthly: { current: "$1,899" },
+                yearly: { current: "$1,519", original: "$1,899" },
+              }}
+              features={premiumFeatures}
+              billingMode={billingMode}
+              onSubscribe={() => handleSubscribe("premium")}
+            />
 
-              {/* PREMIUM Plan */}
-              <PricingCard
-                plan="premium"
-                title="PREMIUM"
-                description="Корпоративное решение"
-                pricing={{
-                  usage: { current: "35 центов =0.35$" },
-                  monthly: { current: "$1,899" },
-                  yearly: { current: "$1,519", original: "$1,899" },
-                }}
-                features={premiumFeatures}
-                billingMode={billingMode}
-                onSubscribe={() => handleSubscribe("premium")}
-              />
-
-              {/* Information Sidebar */}
-              <InfoSidebar billingMode={billingMode} />
-            </div>
+            {/* Information Sidebar */}
+            <InfoSidebar billingMode={billingMode} />
           </div>
+        </div>
 
-          {/* Sticky Savings Calculator - Desktop Only */}
-          <div className="hidden lg:block w-80 flex-shrink-0">
-            <SavingsCalculator />
-          </div>
+        {/* Savings Calculator */}
+        <div className="mt-16 max-w-4xl mx-auto">
+          <SavingsCalculator />
         </div>
 
         {/* Mobile Responsive Accordion */}
