@@ -348,8 +348,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 </Collapsible>
                 
                 {/* Currency Switcher & Save Button */}
-                <div className="flex space-x-2">
-                  <div className="flex-1 space-y-2">
+                <div className="space-y-3">
+                  <div className="space-y-2">
                     <Label className="text-xs text-foreground">Валюта</Label>
                     <div className="flex bg-muted rounded-md p-1" data-testid="currency-switcher">
                       {(['RUB', 'UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
@@ -374,7 +374,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       onClick={handleSaveCalculation}
                       variant="outline"
                       size="sm"
-                      className="h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
+                      className="w-full h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
                       data-testid="button-save-calculation"
                     >
                       <Copy className="h-3 w-3 mr-1" />
@@ -522,8 +522,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 
                 <div className="space-y-4">
                   {/* Currency Switcher & Save Button Mobile */}
-                  <div className="flex space-x-3 mb-4">
-                    <div className="flex-1 space-y-2">
+                  <div className="space-y-3 mb-4">
+                    <div className="space-y-2">
                       <Label className="text-xs text-foreground">Валюта</Label>
                       <div className="flex bg-muted rounded-md p-1" data-testid="mobile-currency-switcher">
                         {(['RUB', 'UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
@@ -548,7 +548,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                         onClick={handleSaveCalculation}
                         variant="outline"
                         size="sm"
-                        className="h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
+                        className="w-full h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
                         data-testid="button-mobile-save-calculation"
                       >
                         <Copy className="h-3 w-3 mr-1" />
@@ -751,8 +751,8 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
                   <TooltipTrigger>
                     <Info className="h-3 w-3 text-muted-foreground" />
                   </TooltipTrigger>
-                  <TooltipContent className="max-w-xs">
-                    <p className="text-xs">{field.tooltip}</p>
+                  <TooltipContent className="max-w-xs bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 border-gray-700 dark:border-gray-300 shadow-lg">
+                    <p className="text-xs font-medium">{field.tooltip}</p>
                   </TooltipContent>
                 </Tooltip>
               </div>
