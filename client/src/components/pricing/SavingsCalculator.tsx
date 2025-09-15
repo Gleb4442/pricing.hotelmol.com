@@ -13,7 +13,7 @@ interface SavingsCalculatorProps {
   className?: string;
 }
 
-type Currency = 'RUB' | 'UAH' | 'USD' | 'EUR';
+type Currency = 'UAH' | 'USD' | 'EUR';
 
 interface CalculatorInputs {
   dailyRequests: number;
@@ -45,19 +45,17 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     adminSalary: 45000,
     roomieCost: 35910, // 399 USD * 90 RUB/USD
     workingDays: 22,
-    currency: 'RUB'
+    currency: 'USD'
   });
 
   // Currency utilities
   const currencySymbols: Record<Currency, string> = {
-    RUB: '₽',
     UAH: '₴',
     USD: '$',
     EUR: '€'
   };
 
   const currencyLocales: Record<Currency, string> = {
-    RUB: 'ru-RU',
     UAH: 'uk-UA',
     USD: 'en-US',
     EUR: 'de-DE'
@@ -105,7 +103,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 
     // Parse currency
     const currency = urlParams.get('currency') as Currency;
-    if (currency && ['RUB', 'UAH', 'USD', 'EUR'].includes(currency)) {
+    if (currency && ['UAH', 'USD', 'EUR'].includes(currency)) {
       params.currency = currency;
     }
 
@@ -352,7 +350,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   <div className="space-y-2">
                     <Label className="text-xs text-foreground">Валюта</Label>
                     <div className="flex bg-muted rounded-md p-1" data-testid="currency-switcher">
-                      {(['RUB', 'UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
+                      {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
                         <button
                           key={currency}
                           onClick={() => updateInput('currency', currency as any)}
@@ -526,7 +524,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     <div className="space-y-2">
                       <Label className="text-xs text-foreground">Валюта</Label>
                       <div className="flex bg-muted rounded-md p-1" data-testid="mobile-currency-switcher">
-                        {(['RUB', 'UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
+                        {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
                           <button
                             key={currency}
                             onClick={() => updateInput('currency', currency as any)}
@@ -903,7 +901,6 @@ function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }
   const [isHowWeCountExpanded, setIsHowWeCountExpanded] = useState(false);
 
   const currencySymbols: Record<Currency, string> = {
-    RUB: '₽',
     UAH: '₴', 
     USD: '$',
     EUR: '€'
