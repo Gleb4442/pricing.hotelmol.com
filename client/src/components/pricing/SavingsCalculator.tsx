@@ -476,8 +476,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
             <div className="flex items-center space-x-2">
               <Calculator className="h-4 w-4 text-primary" />
               <div>
-                <p className="text-sm font-medium text-foreground">Сколько вы сэкономите с Roomie?</p>
-                <p className="text-xs text-muted-foreground">Честный расчёт за 10 секунд</p>
+                <p className="text-base font-medium text-foreground">Сколько вы сэкономите с Roomie?</p>
+                <p className="text-sm text-muted-foreground">Честный расчёт за 10 секунд</p>
               </div>
             </div>
             <ChevronDown className="h-4 w-4 text-primary" />
@@ -529,26 +529,26 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   </Button>
                 </div>
                 
-                <p className="text-sm text-muted-foreground mb-4">
+                <p className="text-base text-muted-foreground mb-6">
                   Честный расчёт за 10 секунд: без магии, только формулы
                 </p>
 
                 {/* Переключатель режимов */}
-                <div className="flex bg-muted rounded-lg p-1 mb-4">
+                <div className="flex bg-muted rounded-lg p-1 mb-6">
                   <Button
                     variant={mobileCalculatorMode === 'info' ? 'default' : 'ghost'}
-                    size="sm"
+                    size="default"
                     onClick={() => setMobileCalculatorMode('info')}
-                    className="flex-1 text-xs h-8"
+                    className="flex-1 text-sm h-12 font-medium"
                     data-testid="mobile-mode-info"
                   >
                     Информация
                   </Button>
                   <Button
                     variant={mobileCalculatorMode === 'calculator' ? 'default' : 'ghost'}
-                    size="sm"
+                    size="default"
                     onClick={() => setMobileCalculatorMode('calculator')}
-                    className="flex-1 text-xs h-8"
+                    className="flex-1 text-sm h-12 font-medium"
                     data-testid="mobile-mode-calculator"
                   >
                     Калькулятор
@@ -557,15 +557,15 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 
                 <div className="space-y-4">
                   {/* Currency Switcher & Save Button Mobile */}
-                  <div className="space-y-3 mb-4">
-                    <div className="space-y-2">
-                      <Label className="text-xs text-foreground">Валюта</Label>
-                      <div className="flex bg-muted rounded-md p-1" data-testid="mobile-currency-switcher">
+                  <div className="space-y-4 mb-6">
+                    <div className="space-y-3">
+                      <Label className="text-sm font-medium text-foreground">Валюта</Label>
+                      <div className="flex bg-muted rounded-lg p-1" data-testid="mobile-currency-switcher">
                         {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
                           <button
                             key={currency}
                             onClick={() => updateInput('currency', currency as any)}
-                            className={`flex-1 px-2 py-1 text-xs rounded-sm transition-colors ${
+                            className={`flex-1 px-4 py-3 text-sm font-medium rounded-md transition-colors ${
                               inputs.currency === currency
                                 ? 'bg-primary text-primary-foreground'
                                 : 'hover:bg-muted-foreground/10'
@@ -577,46 +577,46 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                         ))}
                       </div>
                     </div>
-                    <div className="space-y-2">
-                      <Label className="text-xs text-foreground">Поделиться</Label>
+                    <div className="space-y-3">
+                      <Label className="text-sm font-medium text-foreground">Поделиться</Label>
                       <Button
                         onClick={handleSaveCalculation}
                         variant="outline"
-                        size="sm"
-                        className="w-full h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
+                        size="default"
+                        className="w-full h-12 px-4 border-primary/30 text-primary hover:bg-primary/5"
                         data-testid="share-calculation-button"
                       >
-                        <Copy className="h-3 w-3 mr-1" />
-                        <span className="text-xs">Поделиться расчётом</span>
+                        <Copy className="h-4 w-4 mr-2" />
+                        <span className="text-sm font-medium">Поделиться расчётом</span>
                       </Button>
                     </div>
                   </div>
 
                   {mobileCalculatorMode === 'info' ? (
-                    <div className="space-y-3 text-sm text-muted-foreground">
+                    <div className="space-y-6 text-base text-muted-foreground">
                       <div>
-                        <h4 className="font-medium text-foreground mb-2">Наша формула экономии:</h4>
-                        <ul className="space-y-2 text-sm">
+                        <h4 className="text-lg font-semibold text-foreground mb-4">Наша формула экономии:</h4>
+                        <ul className="space-y-4 text-base">
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
-                            <span>Экономия времени: 2-4 часа/день × зарплата сотрудника</span>
+                            <span className="text-primary mr-3 text-lg font-bold">•</span>
+                            <span className="leading-relaxed">Экономия времени: 2-4 часа/день × зарплата сотрудника</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
-                            <span>Увеличение прямых бронирований: +15-25%</span>
+                            <span className="text-primary mr-3 text-lg font-bold">•</span>
+                            <span className="leading-relaxed">Увеличение прямых бронирований: +15-25%</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
-                            <span>Снижение комиссий OTA: экономия 10-15%</span>
+                            <span className="text-primary mr-3 text-lg font-bold">•</span>
+                            <span className="leading-relaxed">Снижение комиссий OTA: экономия 10-15%</span>
                           </li>
                           <li className="flex items-start">
-                            <span className="text-primary mr-2">•</span>
-                            <span>Автоматизация рутины: 70% запросов без участия персонала</span>
+                            <span className="text-primary mr-3 text-lg font-bold">•</span>
+                            <span className="leading-relaxed">Автоматизация рутины: 70% запросов без участия персонала</span>
                           </li>
                         </ul>
                       </div>
-                      <div className="bg-primary/10 rounded-lg p-3 mt-4">
-                        <p className="text-sm font-medium text-primary">
+                      <div className="bg-primary/10 rounded-xl p-4 mt-6">
+                        <p className="text-base font-semibold text-primary leading-relaxed">
                           Средняя экономия для отеля на 20 номеров: 108,000-225,000₽/месяц
                         </p>
                       </div>
@@ -774,11 +774,11 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       <div className="space-y-6 mt-4 pt-4 border-t border-primary/20">
 
         {/* Поля ввода */}
-        <div className="grid gap-4">
+        <div className="grid gap-6">
           {inputFields.filter((field) => !(field as any).advanced).map((field) => (
-            <div key={field.key} className="space-y-1">
-              <div className="flex items-center space-x-1">
-                <Label className={`text-xs text-foreground ${(field as any).required ? 'font-semibold' : ''}`}>
+            <div key={field.key} className="space-y-3">
+              <div className="flex items-center space-x-2">
+                <Label className={`text-sm font-medium text-foreground ${(field as any).required ? 'font-semibold' : ''}`}>
                   {field.label}
                   {(field as any).required && <span className="text-red-500 ml-1">*</span>}
                 </Label>
@@ -793,7 +793,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
               </div>
               <div className="relative">
                 {field.prefix && (
-                  <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
+                  <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">
                     {field.prefix}
                   </span>
                 )}
@@ -801,12 +801,12 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   type="number"
                   value={inputs[field.key]}
                   onChange={(e) => onInputChange(field.key, parseFloat(e.target.value) || 0)}
-                  className={`text-xs h-8 ${field.prefix ? 'pl-6' : ''} ${field.suffix ? 'pr-16' : ''} ${(field as any).required && inputs[field.key] === 0 ? 'border-red-300' : ''}`}
+                  className={`text-base h-12 ${field.prefix ? 'pl-8' : ''} ${field.suffix ? 'pr-20' : ''} ${(field as any).required && inputs[field.key] === 0 ? 'border-red-300' : ''}`}
                   placeholder={(field as any).placeholder}
                   data-testid={`input-${field.key}`}
                 />
                 {field.suffix && (
-                  <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
+                  <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">
                     {field.suffix}
                   </span>
                 )}
@@ -817,16 +817,16 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
           {/* Раскрываемое дополнительное поле */}
           <Collapsible>
             <CollapsibleTrigger asChild>
-              <Button variant="ghost" className="w-full text-xs justify-start p-0 h-auto">
-                <span className="text-muted-foreground">+ Дополнительные параметры</span>
+              <Button variant="ghost" className="w-full text-sm justify-start p-4 h-auto">
+                <span className="text-muted-foreground font-medium">+ Показать дополнительные поля</span>
               </Button>
             </CollapsibleTrigger>
             <CollapsibleContent>
-              <div className="mt-3 space-y-4">
+              <div className="mt-6 space-y-6">
                 {inputFields.filter((field) => (field as any).advanced).map((field) => (
-                  <div key={field.key} className="space-y-1">
-                    <div className="flex items-center space-x-1">
-                      <Label className="text-xs text-foreground">{field.label}</Label>
+                  <div key={field.key} className="space-y-3">
+                    <div className="flex items-center space-x-2">
+                      <Label className="text-sm font-medium text-foreground">{field.label}</Label>
                       <Tooltip>
                         <TooltipTrigger>
                           <Info className="h-3 w-3 text-muted-foreground" />
@@ -838,7 +838,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                     </div>
                     <div className="relative">
                       {field.prefix && (
-                        <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
+                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">
                           {field.prefix}
                         </span>
                       )}
@@ -846,12 +846,12 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                         type="number"
                         value={inputs[field.key]}
                         onChange={(e) => onInputChange(field.key, parseFloat(e.target.value) || 0)}
-                        className={`text-xs h-8 ${field.prefix ? 'pl-6' : ''} ${field.suffix ? 'pr-16' : ''}`}
+                        className={`text-base h-12 ${field.prefix ? 'pl-8' : ''} ${field.suffix ? 'pr-20' : ''}`}
                         placeholder={(field as any).placeholder}
                         data-testid={`input-${field.key}`}
                       />
                       {field.suffix && (
-                        <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
+                        <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">
                           {field.suffix}
                         </span>
                       )}
@@ -867,61 +867,61 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
         <div className="space-y-4 pt-4 border-t border-primary/20">
           {/* Проверка заполнения обязательного поля */}
           {inputs.currentBookingsPerMonth === 0 ? (
-            <div className="bg-gray-50 dark:bg-gray-900/20 rounded-lg p-4 text-center" data-testid="empty-bookings-hint">
-              <p className="text-sm text-muted-foreground">
+            <div className="bg-gray-50 dark:bg-gray-900/20 rounded-xl p-6 text-center" data-testid="empty-bookings-hint">
+              <p className="text-base text-muted-foreground leading-relaxed">
                 Введите ваши брони, чтобы увидеть точные цифры
               </p>
             </div>
           ) : (
             <>
               {/* Основные крупные цифры */}
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-2 gap-6">
                 {/* Экономия/мес */}
-                <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 rounded-lg p-4 text-center" data-testid="main-savings-monthly">
-                  <div className="text-xs text-muted-foreground mb-1">Экономия/мес</div>
-                  <div className="text-xl font-bold text-green-600 dark:text-green-400">{formatNumber(savings.totalSavings)}</div>
+                <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 rounded-xl p-6 text-center" data-testid="main-savings-monthly">
+                  <div className="text-sm text-muted-foreground mb-2 font-medium">Экономия/мес</div>
+                  <div className="text-2xl font-bold text-green-600 dark:text-green-400">{formatNumber(savings.totalSavings)}</div>
                 </div>
 
                 {/* Дополнительный заработок/мес */}
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 rounded-lg p-4 text-center" data-testid="main-additional-earnings">
-                  <div className="text-xs text-muted-foreground mb-1">Дополнительный заработок/мес</div>
-                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 rounded-xl p-6 text-center" data-testid="main-additional-earnings">
+                  <div className="text-sm text-muted-foreground mb-2 font-medium">Дополнительный заработок/мес</div>
+                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
                   
                   {/* Пояснительный текст под цифрой */}
-                  <div className="text-xs text-muted-foreground mt-2">
+                  <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
                     +8% к вашим бронированиям за счёт ответов ночью и без ожидания на линии в пиковые часы
                     <br />
-                    <span className="font-medium">Доп. брони/мес: {savings.additionalBookingsPerMonth}</span>
+                    <span className="font-semibold">Доп. брони/мес: {savings.additionalBookingsPerMonth}</span>
                   </div>
                 </div>
               </div>
 
               {/* Итого эффект */}
-              <div className="bg-gradient-to-r from-primary/10 to-orange-100 dark:from-primary/20 dark:to-orange-900/30 rounded-lg p-4 text-center border-2 border-primary/20" data-testid="total-effect">
-                <div className="text-sm text-muted-foreground mb-1">Итого эффект/мес</div>
-                <div className="text-2xl font-bold text-primary">
+              <div className="bg-gradient-to-r from-primary/10 to-orange-100 dark:from-primary/20 dark:to-orange-900/30 rounded-xl p-6 text-center border-2 border-primary/20" data-testid="total-effect">
+                <div className="text-base text-muted-foreground mb-2 font-semibold">Итого эффект/мес</div>
+                <div className="text-3xl font-bold text-primary">
                   {formatNumber(savings.totalEffect)}
                 </div>
-                <div className="text-xs text-muted-foreground mt-1">
+                <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
                   Экономия + Дополнительный заработок - Стоимость Roomie
                 </div>
               </div>
 
               {/* Окупаемость и ROI */}
-              <div className="grid grid-cols-2 gap-3">
-                <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-payback">
-                  <div className="text-xs text-muted-foreground mb-1">Окупаемость</div>
-                  <div className="text-lg font-bold text-primary">{savings.paybackDays} дн.</div>
+              <div className="grid grid-cols-2 gap-4">
+                <div className="bg-primary/10 rounded-xl p-4 text-center" data-testid="main-payback">
+                  <div className="text-sm text-muted-foreground mb-2 font-medium">Окупаемость</div>
+                  <div className="text-xl font-bold text-primary">{savings.paybackDays} дн.</div>
                 </div>
-                <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-roi">
-                  <div className="text-xs text-muted-foreground mb-1">ROI</div>
-                  <div className="text-lg font-bold text-primary">{((savings.totalEffect / inputs.roomieCost) * 100).toFixed(0)}%</div>
+                <div className="bg-primary/10 rounded-xl p-4 text-center" data-testid="main-roi">
+                  <div className="text-sm text-muted-foreground mb-2 font-medium">ROI</div>
+                  <div className="text-xl font-bold text-primary">{((savings.totalEffect / inputs.roomieCost) * 100).toFixed(0)}%</div>
                 </div>
               </div>
 
               {/* Детализация */}
-              <details className="space-y-2">
-                <summary className="text-xs font-medium text-foreground cursor-pointer hover:text-primary">Детализация расчётов</summary>
+              <details className="space-y-4">
+                <summary className="text-sm font-semibold text-foreground cursor-pointer hover:text-primary p-2">Детализация расчётов</summary>
                 <div className="space-y-3 text-xs mt-2" data-testid="calculation-details">
                   {/* Блок 1: Экономия комиссии */}
                   <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded border" data-testid="block-commission">
