@@ -894,65 +894,77 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
           </Collapsible>
         </div>
 
-        {/* Результаты расчёта */}
+        {/* Новая итоговая панель */}
         <div className="space-y-4 pt-4 border-t border-primary/20">
-          {savings.totalSavings > 0 ? (
+          {/* Проверка заполнения обязательного поля */}
+          {inputs.currentBookingsPerMonth === 0 ? (
+            <div className="bg-gray-50 dark:bg-gray-900/20 rounded-lg p-4 text-center" data-testid="empty-bookings-hint">
+              <p className="text-sm text-muted-foreground">
+                Введите ваши брони, чтобы увидеть точные цифры
+              </p>
+            </div>
+          ) : (
             <>
-              {/* Главные показатели */}
-              <div className="space-y-4">
-                <h4 className="text-sm font-medium text-foreground">Ваша экономия:</h4>
-                
-                <div className="grid grid-cols-1 gap-4">
-                  {/* Экономия в месяц */}
-                  <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 rounded-lg p-4 text-center" data-testid="main-savings-monthly">
-                    <div className="text-xs text-muted-foreground mb-1">Экономия в месяц</div>
-                    <div className="text-2xl font-bold text-green-600 dark:text-green-400">{formatNumber(savings.totalSavings)}</div>
-                  </div>
+              {/* Основные крупные цифры */}
+              <div className="grid grid-cols-2 gap-4">
+                {/* Экономия/мес */}
+                <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 rounded-lg p-4 text-center" data-testid="main-savings-monthly">
+                  <div className="text-xs text-muted-foreground mb-1">Экономия/мес</div>
+                  <div className="text-xl font-bold text-green-600 dark:text-green-400">{formatNumber(savings.totalSavings)}</div>
+                </div>
+
+                {/* Дополнительный заработок/мес */}
+                <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 rounded-lg p-4 text-center" data-testid="main-additional-earnings">
+                  <div className="text-xs text-muted-foreground mb-1">Дополнительный заработок/мес</div>
+                  {inputs.bookingIncreasePercent === 0 ? (
+                    <div className="text-xl font-bold text-gray-500">0 {currencySymbols[inputs.currency]}</div>
+                  ) : (
+                    <div className="text-xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
+                  )}
                   
-                  {/* Окупаемость и ROI */}
-                  <div className="grid grid-cols-2 gap-3">
-                    <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-payback">
-                      <div className="text-xs text-muted-foreground mb-1">Окупаемость</div>
-                      <div className="text-lg font-bold text-primary">{savings.paybackDays} дн.</div>
+                  {/* Пояснительный текст под цифрой */}
+                  {inputs.bookingIncreasePercent === 0 ? (
+                    <div className="text-xs text-muted-foreground mt-2">
+                      Наш базовый сценарий — 4% для отелей, где часть обращений уходит ночью
                     </div>
-                    <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-roi">
-                      <div className="text-xs text-muted-foreground mb-1">ROI</div>
-                      <div className="text-lg font-bold text-primary">{savings.roi.toFixed(0)}%</div>
+                  ) : (
+                    <div className="text-xs text-muted-foreground mt-2">
+                      +{inputs.bookingIncreasePercent}% к вашим бронированиям за счёт ответов ночью и без очередей в пике
+                      <br />
+                      <span className="font-medium">Доп. брони/мес: {savings.additionalBookingsPerMonth}</span>
                     </div>
-                  </div>
+                  )}
                 </div>
               </div>
-              
-              {/* Дополнительные показатели */}
-              <div className="space-y-3">
-                <h5 className="text-sm font-medium text-foreground">Дополнительные показатели:</h5>
-                <div className="grid grid-cols-1 gap-3">
-                  <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3" data-testid="additional-saved-requests">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-muted-foreground">Не потеряете обращений в месяц</span>
-                      <span className="text-sm font-semibold text-blue-600 dark:text-blue-400">{Math.round(savings.savedRequestsPerMonth)}</span>
-                    </div>
-                  </div>
-                  <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-3" data-testid="additional-direct-bookings">
-                    <div className="flex justify-between items-center">
-                      <span className="text-xs text-muted-foreground">Дополнительные прямые брони в месяц</span>
-                      <span className="text-sm font-semibold text-orange-600 dark:text-orange-400">{Math.round(savings.additionalDirectBookingsPerMonth)}</span>
-                    </div>
-                  </div>
+
+              {/* Итого эффект */}
+              <div className="bg-gradient-to-r from-primary/10 to-orange-100 dark:from-primary/20 dark:to-orange-900/30 rounded-lg p-4 text-center border-2 border-primary/20" data-testid="total-effect">
+                <div className="text-sm text-muted-foreground mb-1">Итого эффект/мес</div>
+                <div className="text-2xl font-bold text-primary">
+                  {formatNumber(savings.totalEffect)}
+                </div>
+                <div className="text-xs text-muted-foreground mt-1">
+                  Экономия + Дополнительный заработок - Стоимость Roomie
                 </div>
               </div>
-              
-              {/* Поясняющий текст */}
-              <div className="bg-gradient-to-r from-primary/5 to-orange-50 dark:from-primary/10 dark:to-orange-900/20 rounded-lg p-3" data-testid="explanation-text">
-                <p className="text-xs text-muted-foreground">
-                  <strong className="text-foreground">Почему Roomie даёт +к бронированиям:</strong> отвечает быстрее, не теряет запросы, мягко ведёт к прямой броне, предлагает доп.услуги по делу
-                </p>
+
+              {/* Окупаемость и ROI */}
+              <div className="grid grid-cols-2 gap-3">
+                <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-payback">
+                  <div className="text-xs text-muted-foreground mb-1">Окупаемость</div>
+                  <div className="text-lg font-bold text-primary">{savings.paybackDays} дн.</div>
+                </div>
+                <div className="bg-primary/10 rounded-lg p-3 text-center" data-testid="main-roi">
+                  <div className="text-xs text-muted-foreground mb-1">ROI</div>
+                  <div className="text-lg font-bold text-primary">{((savings.totalEffect / inputs.roomieCost) * 100).toFixed(0)}%</div>
+                </div>
               </div>
-              
+
               {/* Детализация */}
               <details className="space-y-2">
                 <summary className="text-xs font-medium text-foreground cursor-pointer hover:text-primary">Детализация расчётов</summary>
                 <div className="space-y-2 text-xs mt-2" data-testid="calculation-details">
+                  <div className="font-medium text-foreground border-b pb-1 mb-2">Экономия:</div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Доход от спасённых заявок:</span>
                     <span className="font-medium text-green-600">{formatNumber(savings.revenueFromSavedRequests)}</span>
@@ -971,28 +983,30 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
                       <span className="font-medium text-green-600">{formatNumber(savings.salarySavings)}</span>
                     </div>
                   )}
+                  
+                  <div className="font-medium text-foreground border-b pb-1 mb-2 mt-3">Дополнительный заработок:</div>
                   <div className="flex justify-between">
+                    <span className="text-muted-foreground">Доп. брони в месяц:</span>
+                    <span className="font-medium text-blue-600">{savings.additionalBookingsPerMonth}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-muted-foreground">Доп. оборот (номера):</span>
+                    <span className="font-medium text-blue-600">{formatNumber(savings.additionalRoomRevenue)}</span>
+                  </div>
+                  {savings.additionalServiceRevenue > 0 && (
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Доп. оборот (услуги):</span>
+                      <span className="font-medium text-blue-600">{formatNumber(savings.additionalServiceRevenue)}</span>
+                    </div>
+                  )}
+                  
+                  <div className="flex justify-between border-t pt-1 mt-2">
                     <span className="text-muted-foreground">Стоимость Roomie:</span>
                     <span className="font-medium text-red-500">-{formatNumber(inputs.roomieCost)}</span>
                   </div>
                 </div>
               </details>
             </>
-          ) : (
-            /* Честный блок для неокупаемости */
-            <div className="bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg p-4" data-testid="unprofitable-warning">
-              <div className="text-center space-y-2">
-                <div className="text-sm font-medium text-red-600 dark:text-red-400" data-testid="text-unprofitable-message">
-                  При этих вводных Roomie не окупается
-                </div>
-                <div className="text-xs text-muted-foreground">
-                  Попробуйте снизить стоимость персонала или уточнить проценты пропусков/конверсии.
-                </div>
-                <div className="text-xs text-red-500 font-medium" data-testid="text-loss-amount">
-                  Убыток: {formatNumber(Math.abs(savings.totalSavings))}/мес
-                </div>
-              </div>
-            </div>
           )}
         </div>
 
