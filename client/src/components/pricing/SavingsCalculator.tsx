@@ -535,24 +535,27 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 </p>
 
                 {/* Переключатель режимов */}
-                <div className="flex bg-muted rounded-lg p-1 mb-6 gap-1">
-                  <Button
-                    variant={mobileCalculatorMode === 'info' ? 'default' : 'ghost'}
-                    size="sm"
-                    onClick={() => setMobileCalculatorMode('info')}
-                    className="text-xs h-9 font-normal px-3 opacity-70"
-                    data-testid="mobile-mode-info"
-                  >
-                    Информация
-                  </Button>
+                <div className="relative flex justify-center mb-6">
+                  {/* Кнопка калькулятор по центру */}
                   <Button
                     variant="default"
                     size="default"
                     onClick={() => setMobileCalculatorMode('calculator')}
-                    className="flex-1 text-base h-12 font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0"
+                    className="text-base h-12 font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0 px-8"
                     data-testid="mobile-mode-calculator"
                   >
                     Калькулятор
+                  </Button>
+                  
+                  {/* Кнопка информация в правом верхнем углу */}
+                  <Button
+                    variant={mobileCalculatorMode === 'info' ? 'default' : 'ghost'}
+                    size="sm"
+                    onClick={() => setMobileCalculatorMode('info')}
+                    className="absolute -top-2 -right-2 text-xs h-7 font-normal px-2 opacity-70 bg-gray-100 hover:bg-gray-200 rounded-full"
+                    data-testid="mobile-mode-info"
+                  >
+                    ℹ️
                   </Button>
                 </div>
 
