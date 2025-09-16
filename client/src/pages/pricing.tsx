@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Globe } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingCard } from "@/components/pricing/PricingCard";
@@ -7,10 +7,12 @@ import { InfoSidebar } from "@/components/pricing/InfoSidebar";
 import { SavingsCalculator } from "@/components/pricing/SavingsCalculator";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function PricingPage() {
   const { billingMode, setBillingMode } = useBillingMode();
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
+  const [language, setLanguage] = useState("ru");
 
   const handleSubscribe = (plan: string) => {
     // Redirect to Telegram for subscription
@@ -52,6 +54,21 @@ export default function PricingPage() {
               <div>
                 <h1 className="text-xl font-bold text-foreground">Roomie</h1>
               </div>
+            </div>
+            
+            {/* Language Selector */}
+            <div className="flex items-center space-x-2">
+              <Globe className="h-4 w-4 text-muted-foreground" />
+              <Select value={language} onValueChange={setLanguage}>
+                <SelectTrigger className="w-20 h-9 text-sm border-0 bg-transparent hover:bg-muted/50" data-testid="language-selector">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="ru" data-testid="language-ru">🇷🇺 RU</SelectItem>
+                  <SelectItem value="ua" data-testid="language-ua">🇺🇦 UA</SelectItem>
+                  <SelectItem value="en" data-testid="language-en">🇺🇸 EN</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
