@@ -17,12 +17,16 @@ type Currency = 'UAH' | 'USD' | 'EUR';
 
 interface CalculatorInputs {
   dailyRequests: number;
-  avgBookingRevenue: number;
+  adr: number; // Средняя цена за номер в сутки (ADR)
+  los: number; // Средняя длительность проживания (LOS)
   otaCommission: number;
+  processingCost: number; // Издержки прямого платежа (эквайринг)
+  baseDirectShare: number; // Базовая доля прямых бронирований (до Roomie), %
+  directShareGrowth: number; // Относительный прирост доли direct, %
+  conversionGrowth: number; // Относительный прирост конверсии, %
   roomieCost: number;
-  workingDays: number;
   currency: Currency;
-  // Новые поля для расчёта дополнительного заработка
+  // Поля для расчёта дополнительного заработка
   currentBookingsPerMonth: number;
   additionalServiceRevenuePerBooking: number;
 }
@@ -37,12 +41,16 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
   
   const [inputs, setInputs] = useState<CalculatorInputs>({
     dailyRequests: 30,
-    avgBookingRevenue: 8000,
+    adr: 4000, // Средняя цена за номер в сутки
+    los: 2, // Средняя длительность проживания в ночах
     otaCommission: 12,
+    processingCost: 2.5, // Эквайринг 2.5%
+    baseDirectShare: 40, // 40% базовая доля прямых бронирований
+    directShareGrowth: 20, // +20% к доле direct
+    conversionGrowth: 0, // Пока 0% прирост конверсии
     roomieCost: 35910, // 399 USD * 90 RUB/USD
-    workingDays: 22,
     currency: 'USD',
-    // Новые поля для расчёта дополнительного заработка
+    // Поля для расчёта дополнительного заработка
     currentBookingsPerMonth: 0, // Сначала пустое, требует заполнения
     additionalServiceRevenuePerBooking: 0 // Дефолт 0
   });
@@ -92,7 +100,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const params: any = {};
     
     // Parse numeric values
-    const numericFields = ['dailyRequests', 'avgBookingRevenue', 'otaCommission', 'roomieCost', 'workingDays', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
+    const numericFields = ['dailyRequests', 'adr', 'los', 'otaCommission', 'processingCost', 'baseDirectShare', 'directShareGrowth', 'conversionGrowth', 'roomieCost', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
     numericFields.forEach(field => {
       const value = urlParams.get(field);
       if (value && !isNaN(Number(value))) {
@@ -248,32 +256,45 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
   const calculateSavings = () => {
     const { 
       dailyRequests, 
-      avgBookingRevenue, 
+      adr,
+      los,
       otaCommission, 
-      roomieCost, 
-      workingDays,
+      processingCost,
+      baseDirectShare,
+      directShareGrowth,
+      conversionGrowth,
+      roomieCost,
       currentBookingsPerMonth,
       additionalServiceRevenuePerBooking
     } = inputs;
     
-    // Используем фиксированные значения
-    const lostRequestsPercent = 30;
-    const conversionRate = 35;
+    // Константы
+    const baseConversionRate = 35; // Фиксированная конверсия 35%
+    const daysInPeriod = 30; // Полные дни месяца
+    const avgBookingRevenue = adr * los; // R = ADR × LOS
     
-    // Учитываем конверсию обращений в бронь
-    const actualBookings = dailyRequests * (conversionRate / 100);
+    // Базовые расчёты
+    const B0 = dailyRequests * (baseConversionRate / 100); // Бронирования/день до Roomie
+    const B1 = B0 * (1 + conversionGrowth / 100); // Бронирования/день после Roomie
+    const s0 = baseDirectShare / 100; // Базовая доля direct
+    const s1 = Math.min(1, s0 * (1 + directShareGrowth / 100)); // Новая доля direct
     
-    // Экономия на потерянных заявках (автоматизация 70% запросов)
-    const savedRequests = (dailyRequests * lostRequestsPercent / 100) * 0.7;
-    const revenueFromSavedRequests = savedRequests * (conversionRate / 100) * avgBookingRevenue * workingDays;
+    // Экономия на комиссии (только переток OTA → Direct)
+    const directOnlyConv = B1 * s0; // Direct если бы только конверсия выросла
+    const direct1 = B1 * s1; // Реальный direct после Roomie
+    const deltaDirectShift = Math.max(0, direct1 - directOnlyConv); // Переток из OTA
     
-    // Экономия на комиссиях OTA (увеличение прямых бронирований на 20%)
-    const directBookingIncrease = actualBookings * 0.2;
-    const directBookingIncreaseRevenue = directBookingIncrease * avgBookingRevenue * workingDays;
-    const otaSavings = directBookingIncreaseRevenue * (otaCommission / 100);
+    // Экономия комиссии/месяц
+    const commissionSavings = deltaDirectShift * avgBookingRevenue * (otaCommission - processingCost) / 100 * daysInPeriod;
+    
+    // Дополнительная прибыль от прироста бронирований
+    const deltaB = B1 - B0; // Прирост бронирований
+    const additionalDirectRevenue = deltaB * s1 * avgBookingRevenue * (1 - processingCost / 100) * daysInPeriod;
+    const additionalOtaRevenue = deltaB * (1 - s1) * avgBookingRevenue * (1 - otaCommission / 100) * daysInPeriod;
+    const additionalRevenueFromConversion = additionalDirectRevenue + additionalOtaRevenue;
     
     // Экономия времени (фиксированная оценка)
-    const timeSavings = 5000; // Примерная экономия времени команды в денежном выражении
+    const timeSavings = 5000;
     
     // Расчёт дополнительного заработка (фиксированно 8% рост)
     const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
@@ -283,25 +304,29 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const additionalServiceRevenue = additionalBookingsPerMonth * additionalServiceRevenuePerBooking;
     const totalAdditionalEarnings = additionalRoomRevenue + additionalServiceRevenue;
     
-    const totalSavings = revenueFromSavedRequests + otaSavings + timeSavings - roomieCost;
+    // Общие показатели
+    const totalSavings = commissionSavings + additionalRevenueFromConversion + timeSavings - roomieCost;
     const roi = totalSavings > 0 ? (totalSavings / roomieCost) * 100 : 0;
     
     // Дополнительные показатели
-    const savedRequestsPerMonth = savedRequests * workingDays;
-    const additionalDirectBookingsPerMonth = directBookingIncrease * workingDays;
+    const additionalDirectBookingsPerMonth = deltaDirectShift * daysInPeriod;
     const totalEffect = totalSavings + totalAdditionalEarnings;
     const paybackDays = totalEffect > 0 ? Math.ceil((roomieCost / (totalEffect / 30))) : 0;
     
     return {
-      revenueFromSavedRequests,
-      otaSavings,
+      // Новая структура результатов
+      commissionSavings,
+      additionalRevenueFromConversion,
       timeSavings,
       totalSavings,
       roi,
-      savedRequestsPerMonth,
       additionalDirectBookingsPerMonth,
       paybackDays,
-      // Новые поля для дополнительного заработка
+      // Совместимость со старым интерфейсом (для отображения)
+      revenueFromSavedRequests: additionalRevenueFromConversion, // Заменяем на новую логику
+      otaSavings: commissionSavings, // Экономия комиссии
+      savedRequestsPerMonth: additionalDirectBookingsPerMonth, // Дополнительные direct бронирования
+      // Поля для дополнительного заработка
       additionalBookingsPerMonth,
       additionalRoomRevenue,
       additionalServiceRevenue,
