@@ -535,21 +535,21 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 </p>
 
                 {/* Переключатель режимов */}
-                <div className="flex bg-muted rounded-lg p-1 mb-6">
+                <div className="flex bg-muted rounded-lg p-1 mb-6 gap-1">
                   <Button
                     variant={mobileCalculatorMode === 'info' ? 'default' : 'ghost'}
-                    size="default"
+                    size="sm"
                     onClick={() => setMobileCalculatorMode('info')}
-                    className="flex-1 text-sm h-12 font-medium"
+                    className="text-xs h-9 font-normal px-3 opacity-70"
                     data-testid="mobile-mode-info"
                   >
                     Информация
                   </Button>
                   <Button
-                    variant={mobileCalculatorMode === 'calculator' ? 'default' : 'ghost'}
+                    variant="default"
                     size="default"
                     onClick={() => setMobileCalculatorMode('calculator')}
-                    className="flex-1 text-sm h-12 font-medium"
+                    className="flex-1 text-base h-12 font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0"
                     data-testid="mobile-mode-calculator"
                   >
                     Калькулятор
