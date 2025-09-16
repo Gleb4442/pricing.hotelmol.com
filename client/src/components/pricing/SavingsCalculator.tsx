@@ -410,10 +410,10 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       variant="outline"
                       size="sm"
                       className="w-full h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
-                      data-testid="button-save-calculation"
+                      data-testid="share-calculation-button"
                     >
                       <Copy className="h-3 w-3 mr-1" />
-                      <span className="text-xs">Скопировать</span>
+                      <span className="text-xs">Поделиться расчётом</span>
                     </Button>
                   </div>
                 </div>
@@ -584,10 +584,10 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                         variant="outline"
                         size="sm"
                         className="w-full h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
-                        data-testid="button-mobile-save-calculation"
+                        data-testid="share-calculation-button"
                       >
                         <Copy className="h-3 w-3 mr-1" />
-                        <span className="text-xs">Скопировать</span>
+                        <span className="text-xs">Поделиться расчётом</span>
                       </Button>
                     </div>
                   </div>
@@ -924,13 +924,13 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 <summary className="text-xs font-medium text-foreground cursor-pointer hover:text-primary">Детализация расчётов</summary>
                 <div className="space-y-3 text-xs mt-2" data-testid="calculation-details">
                   {/* Блок 1: Экономия комиссии */}
-                  <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded border">
+                  <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded border" data-testid="block-commission">
                     <div className="font-medium text-green-800 dark:text-green-200 border-b border-green-200 dark:border-green-700 pb-1 mb-2">
                       💰 Экономия на комиссии (переток OTA → Прямые)
                     </div>
                     <div className="flex justify-between">
                       <span className="text-green-700 dark:text-green-300">Переход с OTA на прямые бронирования:</span>
-                      <span className="font-medium text-green-600 dark:text-green-400">{formatNumber(savings.commissionSavings)}</span>
+                      <span className="font-medium text-green-600 dark:text-green-400" data-testid="value-commission-savings">{formatNumber(savings.commissionSavings)}</span>
                     </div>
                     <div className="text-xs text-green-600 dark:text-green-400 mt-1">
                       Экономия = доп.direct × (комиссия OTA - эквайринг)
@@ -938,13 +938,13 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   </div>
 
                   {/* Блок 2: Дополнительная прибыль */}
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border">
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border" data-testid="block-additional">
                     <div className="font-medium text-blue-800 dark:text-blue-200 border-b border-blue-200 dark:border-blue-700 pb-1 mb-2">
                       📈 Дополнительная прибыль от прироста конверсии
                     </div>
                     <div className="flex justify-between">
                       <span className="text-blue-700 dark:text-blue-300">Новые бронирования от лучшего сервиса:</span>
-                      <span className="font-medium text-blue-600 dark:text-blue-400">{formatNumber(savings.additionalRevenueFromConversion)}</span>
+                      <span className="font-medium text-blue-600 dark:text-blue-400" data-testid="value-additional-revenue">{formatNumber(savings.additionalRevenueFromConversion)}</span>
                     </div>
                     <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">
                       Прибыль = новые брони × доходность каналов
@@ -952,11 +952,11 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   </div>
 
                   {/* Блок 3: Операционная экономия */}
-                  <div className="space-y-1">
+                  <div className="space-y-1" data-testid="block-time">
                     <div className="font-medium text-foreground border-b pb-1 mb-2">⏰ Операционная экономия:</div>
                     <div className="flex justify-between">
                       <span className="text-muted-foreground">Экономия времени команды:</span>
-                      <span className="font-medium text-green-600">{formatNumber(savings.timeSavings)}</span>
+                      <span className="font-medium text-green-600" data-testid="value-time-savings">{formatNumber(savings.timeSavings)}</span>
                     </div>
                   </div>
                   
