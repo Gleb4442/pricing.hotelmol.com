@@ -712,10 +712,36 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       suffix: 'обращений'
     },
     {
-      key: 'avgBookingRevenue' as keyof CalculatorInputs,
-      label: 'Средняя выручка с брони (ADR×ночи)',
-      tooltip: 'Какую среднюю сумму отель получает с одного бронирования? Считайте полную стоимость проживания',
+      key: 'adr' as keyof CalculatorInputs,
+      label: 'Цена за номер в сутки (ADR)',
+      tooltip: 'Средняя цена за номер в сутки без учёта налогов и допуслуг. Это база для расчёта комиссий OTA',
       prefix: currencySymbols[inputs.currency]
+    },
+    {
+      key: 'los' as keyof CalculatorInputs,
+      label: 'Средняя длительность проживания',
+      tooltip: 'Сколько ночей в среднем проводят ваши гости? Обычно 1-3 ночи для городских отелей, 3-7 для курортных',
+      suffix: 'ночей'
+    },
+    {
+      key: 'baseDirectShare' as keyof CalculatorInputs,
+      label: 'Доля прямых бронирований (сейчас)',
+      tooltip: 'Какой процент бронирований приходит напрямую (сайт, телефон), а не через OTA? Обычно 30-50%',
+      suffix: '%'
+    },
+    {
+      key: 'directShareGrowth' as keyof CalculatorInputs,
+      label: 'Прирост доли прямых бронирований',
+      tooltip: 'На сколько процентов Roomie увеличит долю прямых бронирований за счёт качественного сервиса? Обычно +15-25%',
+      suffix: '%',
+      advanced: true
+    },
+    {
+      key: 'processingCost' as keyof CalculatorInputs,
+      label: 'Стоимость эквайринга',
+      tooltip: 'Комиссия банка за обработку платежей на вашем сайте. Обычно 2-3%',
+      suffix: '%',
+      advanced: true
     },
     {
       key: 'additionalServiceRevenuePerBooking' as keyof CalculatorInputs,
