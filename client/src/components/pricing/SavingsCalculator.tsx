@@ -684,6 +684,13 @@ interface CalculatorFormProps {
     savedRequestsPerMonth: number;
     additionalDirectBookingsPerMonth: number;
     paybackDays: number;
+    // Новые поля для дополнительного заработка
+    additionalBookingsPerMonth: number;
+    additionalRoomRevenue: number;
+    additionalServiceRevenue: number;
+    totalAdditionalEarnings: number;
+    totalEffect: number;
+    inputs: CalculatorInputs;
   };
 }
 
@@ -697,6 +704,14 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
 
   const inputFields = [
     {
+      key: 'currentBookingsPerMonth' as keyof CalculatorInputs,
+      label: 'Брони в месяц (сейчас)',
+      tooltip: 'Сколько бронирований вы получаете в месяц сейчас? Это базовое число для расчёта дополнительного заработка',
+      suffix: 'брони',
+      placeholder: 'например, 200',
+      required: true
+    },
+    {
       key: 'dailyRequests' as keyof CalculatorInputs,
       label: 'Обращений в день',
       tooltip: 'Сколько в среднем обращений приходит в день из сайта, мессенджеров и телефона? Если не уверены — оставьте 30',
@@ -704,9 +719,22 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
     },
     {
       key: 'avgBookingRevenue' as keyof CalculatorInputs,
-      label: 'Средний доход с одной брони',
+      label: 'Средняя выручка с брони (ADR×ночи)',
       tooltip: 'Какую среднюю сумму отель получает с одного бронирования? Считайте полную стоимость проживания',
       prefix: currencySymbols[inputs.currency]
+    },
+    {
+      key: 'bookingIncreasePercent' as keyof CalculatorInputs,
+      label: 'Увеличение бронирований с Roomie, %',
+      tooltip: 'Рост за счёт ответов ночью/в нерабочее время и более быстрой реакции. Наш базовый сценарий для отелей — 4%',
+      suffix: '%'
+    },
+    {
+      key: 'additionalServiceRevenuePerBooking' as keyof CalculatorInputs,
+      label: 'Доп. доход от услуг на одну доп. бронь',
+      tooltip: 'Дополнительные услуги (трансферы, экскурсии, питание), которые вы продаёте дополнительным гостям. Если таких услуг нет — оставьте 0',
+      prefix: currencySymbols[inputs.currency],
+      advanced: true
     },
     {
       key: 'lostRequestsPercent' as keyof CalculatorInputs,
@@ -778,10 +806,13 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
 
         {/* Поля ввода */}
         <div className="grid gap-4">
-          {inputFields.map((field) => (
+          {inputFields.filter((field) => !(field as any).advanced).map((field) => (
             <div key={field.key} className="space-y-1">
               <div className="flex items-center space-x-1">
-                <Label className="text-xs text-foreground">{field.label}</Label>
+                <Label className={`text-xs text-foreground ${(field as any).required ? 'font-semibold' : ''}`}>
+                  {field.label}
+                  {(field as any).required && <span className="text-red-500 ml-1">*</span>}
+                </Label>
                 <Tooltip>
                   <TooltipTrigger>
                     <Info className="h-3 w-3 text-muted-foreground" />
@@ -801,7 +832,8 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
                   type="number"
                   value={inputs[field.key]}
                   onChange={(e) => onInputChange(field.key, parseFloat(e.target.value) || 0)}
-                  className={`text-xs h-8 ${field.prefix ? 'pl-6' : ''} ${field.suffix ? 'pr-16' : ''}`}
+                  className={`text-xs h-8 ${field.prefix ? 'pl-6' : ''} ${field.suffix ? 'pr-16' : ''} ${(field as any).required && inputs[field.key] === 0 ? 'border-red-300' : ''}`}
+                  placeholder={(field as any).placeholder}
                   data-testid={`input-${field.key}`}
                 />
                 {field.suffix && (
@@ -812,6 +844,54 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
               </div>
             </div>
           ))}
+
+          {/* Раскрываемое дополнительное поле */}
+          <Collapsible>
+            <CollapsibleTrigger asChild>
+              <Button variant="ghost" className="w-full text-xs justify-start p-0 h-auto">
+                <span className="text-muted-foreground">+ Дополнительные параметры</span>
+              </Button>
+            </CollapsibleTrigger>
+            <CollapsibleContent>
+              <div className="mt-3 space-y-4">
+                {inputFields.filter((field) => (field as any).advanced).map((field) => (
+                  <div key={field.key} className="space-y-1">
+                    <div className="flex items-center space-x-1">
+                      <Label className="text-xs text-foreground">{field.label}</Label>
+                      <Tooltip>
+                        <TooltipTrigger>
+                          <Info className="h-3 w-3 text-muted-foreground" />
+                        </TooltipTrigger>
+                        <TooltipContent className="max-w-xs bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 border-gray-700 dark:border-gray-300 shadow-lg">
+                          <p className="text-xs font-medium">{field.tooltip}</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                    <div className="relative">
+                      {field.prefix && (
+                        <span className="absolute left-2 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
+                          {field.prefix}
+                        </span>
+                      )}
+                      <Input
+                        type="number"
+                        value={inputs[field.key]}
+                        onChange={(e) => onInputChange(field.key, parseFloat(e.target.value) || 0)}
+                        className={`text-xs h-8 ${field.prefix ? 'pl-6' : ''} ${field.suffix ? 'pr-16' : ''}`}
+                        placeholder={(field as any).placeholder}
+                        data-testid={`input-${field.key}`}
+                      />
+                      {field.suffix && (
+                        <span className="absolute right-2 top-1/2 transform -translate-y-1/2 text-xs text-muted-foreground">
+                          {field.suffix}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </CollapsibleContent>
+          </Collapsible>
         </div>
 
         {/* Результаты расчёта */}
