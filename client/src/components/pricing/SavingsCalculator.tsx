@@ -834,7 +834,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   
                   {/* Пояснительный текст под цифрой */}
                   <div className="text-xs text-muted-foreground mt-2">
-                    +8% к вашим бронированиям за счёт ответов ночью и без очередей в пике
+                    +8% к вашим бронированиям за счёт ответов ночью и без ожидания на линии в пиковые часы
                     <br />
                     <span className="font-medium">Доп. брони/мес: {savings.additionalBookingsPerMonth}</span>
                   </div>
