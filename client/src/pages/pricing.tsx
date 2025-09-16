@@ -60,23 +60,23 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-primary/5">
       {/* Header */}
-      <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <header className="border-b border-blue-200 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-blue-500/25">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div>
-                <h1 className="text-xl font-bold text-foreground">Roomie</h1>
+                <h1 className="text-xl font-bold text-white">Roomie</h1>
               </div>
             </div>
             
             {/* Language Switcher Button */}
             <div className="flex items-center space-x-2">
-              <Globe className="h-4 w-4 text-muted-foreground" />
+              <Globe className="h-4 w-4 text-blue-200" />
               <Button
                 variant="ghost"
                 size="sm"
                 onClick={handleLanguageSwitch}
-                className="h-9 px-3 text-sm border-0 bg-transparent hover:bg-muted/50"
+                className="h-9 px-3 text-sm border-0 bg-transparent hover:bg-blue-500/30 text-white hover:text-blue-100"
                 data-testid="language-switcher"
               >
                 <span className="flex items-center space-x-1">
@@ -260,19 +260,19 @@ export default function PricingPage() {
       </main>
 
       {/* Footer */}
-      <footer className="border-t border-border bg-card mt-20">
+      <footer className="border-t border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 mt-20 shadow-2xl shadow-blue-500/20">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
-              <span className="font-bold text-foreground text-xl">Roomie</span>
+              <span className="font-bold text-white text-xl">Roomie</span>
             </div>
-            <p className="text-muted-foreground text-sm max-w-md mx-auto">
+            <p className="text-blue-100 text-sm max-w-md mx-auto">
               Revolutionizing hospitality with intelligent automation and personalized guest
               experiences.
             </p>
           </div>
-          <div className="border-t border-border mt-12 pt-8 text-center">
-            <p className="text-muted-foreground text-sm">
+          <div className="border-t border-blue-600 mt-12 pt-8 text-center">
+            <p className="text-blue-200 text-sm">
               &copy; 2024 Roomie. All rights reserved.
             </p>
           </div>
