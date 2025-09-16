@@ -27,7 +27,6 @@ interface CalculatorInputs {
   currency: Currency;
   // Новые поля для расчёта дополнительного заработка
   currentBookingsPerMonth: number;
-  bookingIncreasePercent: number;
   additionalServiceRevenuePerBooking: number;
 }
 
@@ -52,7 +51,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     currency: 'USD',
     // Новые поля для расчёта дополнительного заработка
     currentBookingsPerMonth: 0, // Сначала пустое, требует заполнения
-    bookingIncreasePercent: 8, // Дефолт 8%
     additionalServiceRevenuePerBooking: 0 // Дефолт 0
   });
 
@@ -101,7 +99,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const params: any = {};
     
     // Parse numeric values
-    const numericFields = ['dailyRequests', 'avgBookingRevenue', 'lostRequestsPercent', 'conversionRate', 'otaCommission', 'adminSalary', 'roomieCost', 'workingDays', 'currentBookingsPerMonth', 'bookingIncreasePercent', 'additionalServiceRevenuePerBooking'];
+    const numericFields = ['dailyRequests', 'avgBookingRevenue', 'lostRequestsPercent', 'conversionRate', 'otaCommission', 'adminSalary', 'roomieCost', 'workingDays', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
     numericFields.forEach(field => {
       const value = urlParams.get(field);
       if (value && !isNaN(Number(value))) {
@@ -275,7 +273,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       roomieCost, 
       workingDays,
       currentBookingsPerMonth,
-      bookingIncreasePercent,
       additionalServiceRevenuePerBooking
     } = inputs;
     
@@ -298,9 +295,9 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     // Экономия на зарплате (только в режиме замены)
     const salarySavings = mode === 'replace' ? adminSalary * 0.5 : 0; // 50% экономии при частичной замене
     
-    // Расчёт дополнительного заработка
+    // Расчёт дополнительного заработка (фиксированно 8% рост)
     const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
-      Math.round(currentBookingsPerMonth * (bookingIncreasePercent / 100)) : 0;
+      Math.round(currentBookingsPerMonth * (8 / 100)) : 0;
     
     const additionalRoomRevenue = additionalBookingsPerMonth * avgBookingRevenue;
     const additionalServiceRevenue = additionalBookingsPerMonth * additionalServiceRevenuePerBooking;
@@ -724,12 +721,6 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
       prefix: currencySymbols[inputs.currency]
     },
     {
-      key: 'bookingIncreasePercent' as keyof CalculatorInputs,
-      label: 'Увеличение бронирований с Roomie, %',
-      tooltip: 'Рост за счёт ответов ночью/в нерабочее время и более быстрой реакции. Наш базовый сценарий для отелей — 8%',
-      suffix: '%'
-    },
-    {
       key: 'additionalServiceRevenuePerBooking' as keyof CalculatorInputs,
       label: 'Доп. доход от услуг на одну доп. бронь',
       tooltip: 'Дополнительные услуги (трансферы, экскурсии, питание), которые вы продаёте дополнительным гостям. Если таких услуг нет — оставьте 0',
@@ -916,24 +907,14 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
                 {/* Дополнительный заработок/мес */}
                 <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 rounded-lg p-4 text-center" data-testid="main-additional-earnings">
                   <div className="text-xs text-muted-foreground mb-1">Дополнительный заработок/мес</div>
-                  {inputs.bookingIncreasePercent === 0 ? (
-                    <div className="text-xl font-bold text-gray-500">0 {currencySymbols[inputs.currency]}</div>
-                  ) : (
-                    <div className="text-xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
-                  )}
+                  <div className="text-xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
                   
                   {/* Пояснительный текст под цифрой */}
-                  {inputs.bookingIncreasePercent === 0 ? (
-                    <div className="text-xs text-muted-foreground mt-2">
-                      Наш базовый сценарий — 8% для отелей, где часть обращений уходит ночью
-                    </div>
-                  ) : (
-                    <div className="text-xs text-muted-foreground mt-2">
-                      +{inputs.bookingIncreasePercent}% к вашим бронированиям за счёт ответов ночью и без очередей в пике
-                      <br />
-                      <span className="font-medium">Доп. брони/мес: {savings.additionalBookingsPerMonth}</span>
-                    </div>
-                  )}
+                  <div className="text-xs text-muted-foreground mt-2">
+                    +8% к вашим бронированиям за счёт ответов ночью и без очередей в пике
+                    <br />
+                    <span className="font-medium">Доп. брони/мес: {savings.additionalBookingsPerMonth}</span>
+                  </div>
                 </div>
               </div>
 
