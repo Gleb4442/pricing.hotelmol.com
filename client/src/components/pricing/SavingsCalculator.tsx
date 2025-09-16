@@ -25,6 +25,10 @@ interface CalculatorInputs {
   roomieCost: number;
   workingDays: number;
   currency: Currency;
+  // Новые поля для расчёта дополнительного заработка
+  currentBookingsPerMonth: number;
+  bookingIncreasePercent: number;
+  additionalServiceRevenuePerBooking: number;
 }
 
 export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
@@ -45,7 +49,11 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     adminSalary: 45000,
     roomieCost: 35910, // 399 USD * 90 RUB/USD
     workingDays: 22,
-    currency: 'USD'
+    currency: 'USD',
+    // Новые поля для расчёта дополнительного заработка
+    currentBookingsPerMonth: 0, // Сначала пустое, требует заполнения
+    bookingIncreasePercent: 4, // Дефолт 4%
+    additionalServiceRevenuePerBooking: 0 // Дефолт 0
   });
 
   // Currency utilities
@@ -257,7 +265,19 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 
   // Расчёт экономии
   const calculateSavings = () => {
-    const { dailyRequests, avgBookingRevenue, lostRequestsPercent, conversionRate, otaCommission, adminSalary, roomieCost, workingDays } = inputs;
+    const { 
+      dailyRequests, 
+      avgBookingRevenue, 
+      lostRequestsPercent, 
+      conversionRate, 
+      otaCommission, 
+      adminSalary, 
+      roomieCost, 
+      workingDays,
+      currentBookingsPerMonth,
+      bookingIncreasePercent,
+      additionalServiceRevenuePerBooking
+    } = inputs;
     
     // Учитываем конверсию обращений в бронь
     const actualBookings = dailyRequests * (conversionRate / 100);
@@ -278,13 +298,22 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     // Экономия на зарплате (только в режиме замены)
     const salarySavings = mode === 'replace' ? adminSalary * 0.5 : 0; // 50% экономии при частичной замене
     
+    // Расчёт дополнительного заработка
+    const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
+      Math.round(currentBookingsPerMonth * (bookingIncreasePercent / 100)) : 0;
+    
+    const additionalRoomRevenue = additionalBookingsPerMonth * avgBookingRevenue;
+    const additionalServiceRevenue = additionalBookingsPerMonth * additionalServiceRevenuePerBooking;
+    const totalAdditionalEarnings = additionalRoomRevenue + additionalServiceRevenue;
+    
     const totalSavings = revenueFromSavedRequests + otaSavings + timeSavings + salarySavings - roomieCost;
     const roi = totalSavings > 0 ? (totalSavings / roomieCost) * 100 : 0;
     
     // Дополнительные показатели
     const savedRequestsPerMonth = savedRequests * workingDays;
     const additionalDirectBookingsPerMonth = directBookingIncrease * workingDays;
-    const paybackDays = totalSavings > 0 ? Math.ceil((roomieCost / (totalSavings / 30))) : 0;
+    const totalEffect = totalSavings + totalAdditionalEarnings;
+    const paybackDays = totalEffect > 0 ? Math.ceil((roomieCost / (totalEffect / 30))) : 0;
     
     return {
       revenueFromSavedRequests,
@@ -295,7 +324,14 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       roi,
       savedRequestsPerMonth,
       additionalDirectBookingsPerMonth,
-      paybackDays
+      paybackDays,
+      // Новые поля для дополнительного заработка
+      additionalBookingsPerMonth,
+      additionalRoomRevenue,
+      additionalServiceRevenue,
+      totalAdditionalEarnings,
+      totalEffect,
+      inputs
     };
   };
 
