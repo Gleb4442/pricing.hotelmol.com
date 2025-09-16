@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { Calculator, ChevronDown, X, Info, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLanguage } from "@/hooks/use-language";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -33,6 +34,7 @@ interface CalculatorInputs {
 
 export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
   const { toast } = useToast();
+  const { t } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
   const [showMobileModal, setShowMobileModal] = useState(false);
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
@@ -77,7 +79,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       if (showToast) {
         toast({
-          title: "Данные сохранены на этом устройстве",
+          title: t("data_saved"),
           duration: 2000,
         });
       }
@@ -140,14 +142,14 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     try {
       await navigator.clipboard.writeText(url);
       toast({
-        title: "Ссылка скопирована",
-        description: "Поделитесь расчётом с коллегами",
+        title: t("copy_link_success_title"),
+        description: t("copy_link_success_desc"),
         duration: 3000,
       });
     } catch (error) {
       console.error('Failed to copy to clipboard:', error);
       toast({
-        title: "Не удалось скопировать ссылку — сделайте это вручную",
+        title: t("copy_link_error_title"),
         description: url,
         duration: 5000,
         variant: "destructive"
@@ -349,11 +351,11 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
               <div className="flex items-center space-x-2 mb-2">
                 <Calculator className="h-5 w-5 text-primary" />
                 <CardTitle className="text-lg text-foreground">
-                  Сколько вы сэкономите с Roomie?
+                  {t("calculator_title")}
                 </CardTitle>
               </div>
               <CardDescription className="text-sm text-muted-foreground">
-                Честный расчёт за 10 секунд: без магии, только формулы
+                {t("calculator_description")}
               </CardDescription>
             </CardHeader>
             <CardContent className="pt-0 space-y-4">
@@ -365,7 +367,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 justify-between min-w-[280px]"
                     data-testid="button-toggle-calculator"
                   >
-                    <span>Рассчитать мою экономию</span>
+                    <span>{t("calculate_savings")}</span>
                     <ChevronDown className={`h-4 w-4 transition-transform ${showCalculator ? 'rotate-180' : ''}`} />
                   </Button>
                 </div>
@@ -386,7 +388,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 {/* Currency Switcher & Save Button */}
                 <div className="space-y-3">
                   <div className="space-y-2">
-                    <Label className="text-xs text-foreground">Валюта</Label>
+                    <Label className="text-xs text-foreground">{t("currency_label")}</Label>
                     <div className="flex bg-muted rounded-md p-1" data-testid="currency-switcher">
                       {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
                         <motion.button
@@ -417,7 +419,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <Label className="text-xs text-foreground">Поделиться</Label>
+                    <Label className="text-xs text-foreground">{t("share_label")}</Label>
                     <Button
                       onClick={handleSaveCalculation}
                       variant="outline"
@@ -426,7 +428,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       data-testid="share-calculation-button"
                     >
                       <Copy className="h-3 w-3 mr-1" />
-                      <span className="text-xs">Поделиться расчётом</span>
+                      <span className="text-xs">{t("share_calculation")}</span>
                     </Button>
                   </div>
                 </div>
@@ -435,7 +437,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   className="w-full bg-primary hover:bg-primary/90 text-white"
                   data-testid="button-try-roomie"
                 >
-                  Попробовать Roomie
+                  {t("try_roomie")}
                 </Button>
                 <Button 
                   variant="outline"
@@ -443,7 +445,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   className="w-full border-primary/30 text-primary hover:bg-primary/5"
                   data-testid="button-how-calculate"
                 >
-                  Как мы считаем?
+                  {t("how_we_calculate")}
                 </Button>
               </div>
 
@@ -458,16 +460,16 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   >
                     <div className="space-y-3 text-sm text-muted-foreground">
                       <div>
-                        <h4 className="font-medium text-foreground mb-1">Наша формула экономии:</h4>
+                        <h4 className="font-medium text-foreground mb-1">{t("our_formula")}</h4>
                         <ul className="space-y-1 text-xs">
-                          <li>• Экономия времени: 2-4 часа/день × зарплата сотрудника</li>
-                          <li>• Увеличение прямых бронирований: +15-25%</li>
-                          <li>• Снижение комиссий OTA: экономия 10-15%</li>
-                          <li>• Автоматизация рутины: 70% запросов без участия персонала</li>
+                          <li>• {t("time_savings_formula")}</li>
+                          <li>• {t("direct_bookings_formula")}</li>
+                          <li>• {t("ota_commission_formula")}</li>
+                          <li>• {t("automation_formula")}</li>
                         </ul>
                       </div>
                       <div className="text-xs text-primary font-medium">
-                        Средняя экономия для отеля на 20 номеров: 108,000-225,000₽/месяц
+                        {t("average_savings")}
                       </div>
                     </div>
                   </motion.div>
@@ -489,8 +491,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
             <div className="flex items-center space-x-2">
               <Calculator className="h-4 w-4 text-primary" />
               <div>
-                <p className="text-base font-medium text-foreground">Сколько вы сэкономите с Roomie?</p>
-                <p className="text-sm text-muted-foreground">Честный расчёт за 10 секунд</p>
+                <p className="text-base font-medium text-foreground">{t("calculator_title")}</p>
+                <p className="text-sm text-muted-foreground">{t("calculator_description")}</p>
               </div>
             </div>
             <ChevronDown className="h-4 w-4 text-primary" />
@@ -530,7 +532,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   <div className="flex items-center space-x-2">
                     <Calculator className="h-5 w-5 text-primary" />
                     <h3 className="text-lg font-semibold text-foreground">
-                      Сколько вы сэкономите с Roomie?
+                      {t("calculator_title")}
                     </h3>
                   </div>
                   <Button 
@@ -544,7 +546,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 </div>
                 
                 <p className="text-base text-muted-foreground mb-6">
-                  Честный расчёт за 10 секунд: без магии, только формулы
+                  {t("calculator_description")}
                 </p>
 
                 {/* Переключатель режимов */}
@@ -557,7 +559,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     className="text-base h-12 font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0 px-8"
                     data-testid="mobile-mode-calculator"
                   >
-                    Калькулятор
+                    {t("calculator_action")}
                   </Button>
                   
                   {/* Кнопка информация в правом верхнем углу */}
@@ -576,7 +578,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   {/* Currency Switcher & Save Button Mobile */}
                   <div className="space-y-4 mb-6">
                     <div className="space-y-3">
-                      <Label className="text-sm font-medium text-foreground">Валюта</Label>
+                      <Label className="text-sm font-medium text-foreground">{t("currency_label")}</Label>
                       <div className="flex bg-muted rounded-lg p-1" data-testid="mobile-currency-switcher">
                         {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
                           <motion.button
@@ -607,7 +609,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       </div>
                     </div>
                     <div className="space-y-3">
-                      <Label className="text-sm font-medium text-foreground">Поделиться</Label>
+                      <Label className="text-sm font-medium text-foreground">{t("share_label")}</Label>
                       <Button
                         onClick={handleSaveCalculation}
                         variant="outline"
@@ -616,7 +618,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                         data-testid="share-calculation-button"
                       >
                         <Copy className="h-4 w-4 mr-2" />
-                        <span className="text-sm font-medium">Поделиться расчётом</span>
+                        <span className="text-sm font-medium">{t("share_calculation")}</span>
                       </Button>
                     </div>
                   </div>
@@ -624,29 +626,29 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   {mobileCalculatorMode === 'info' ? (
                     <div className="space-y-6 text-base text-muted-foreground">
                       <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-4">Наша формула экономии:</h4>
+                        <h4 className="text-lg font-semibold text-foreground mb-4">{t("our_formula")}</h4>
                         <ul className="space-y-4 text-base">
                           <li className="flex items-start">
                             <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">Экономия времени: 2-4 часа/день × зарплата сотрудника</span>
+                            <span className="leading-relaxed">{t("time_savings_formula")}</span>
                           </li>
                           <li className="flex items-start">
                             <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">Увеличение прямых бронирований: +15-25%</span>
+                            <span className="leading-relaxed">{t("direct_bookings_formula")}</span>
                           </li>
                           <li className="flex items-start">
                             <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">Снижение комиссий OTA: экономия 10-15%</span>
+                            <span className="leading-relaxed">{t("ota_commission_formula")}</span>
                           </li>
                           <li className="flex items-start">
                             <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">Автоматизация рутины: 70% запросов без участия персонала</span>
+                            <span className="leading-relaxed">{t("automation_formula")}</span>
                           </li>
                         </ul>
                       </div>
                       <div className="bg-primary/10 rounded-xl p-4 mt-6">
                         <p className="text-base font-semibold text-primary leading-relaxed">
-                          Средняя экономия для отеля на 20 номеров: 108,000-225,000₽/месяц
+                          {t("average_savings")}
                         </p>
                       </div>
                     </div>
@@ -669,7 +671,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       className="w-full bg-primary hover:bg-primary/90 text-white"
                       data-testid="button-mobile-try-roomie"
                     >
-                      Попробовать Roomie
+                      {t("try_roomie")}
                     </Button>
                     <Button 
                       variant="outline"
@@ -677,7 +679,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       className="w-full"
                       data-testid="button-mobile-close"
                     >
-                      Закрыть
+                      {t("close")}
                     </Button>
                   </div>
                 </div>
@@ -722,6 +724,7 @@ interface CalculatorFormProps {
 }
 
 function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, currencyLocales, onShareCalculation }: CalculatorFormProps) {
+  const { t } = useLanguage();
   const formatNumber = (num: number) => {
     const symbol = currencySymbols[inputs.currency];
     const rounded = Math.round(num);
@@ -732,21 +735,21 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
   const inputFields = [
     {
       key: 'currentBookingsPerMonth' as keyof CalculatorInputs,
-      label: 'Брони в месяц (сейчас)',
+      label: t('bookings_per_month_current'),
       tooltip: 'Сколько бронирований вы получаете в месяц сейчас? Это базовое число для расчёта дополнительного заработка',
-      suffix: 'брони',
+      suffix: t('bookings_suffix'),
       placeholder: 'например, 200',
       required: true
     },
     {
       key: 'dailyRequests' as keyof CalculatorInputs,
-      label: 'Обращений в день',
+      label: t('daily_requests_label'),
       tooltip: 'Сколько в среднем обращений приходит в день из сайта, мессенджеров и телефона? Если не уверены — оставьте 30',
       suffix: 'обращений'
     },
     {
       key: 'adr' as keyof CalculatorInputs,
-      label: 'Цена за номер в сутки (ADR)',
+      label: t('adr_label'),
       tooltip: 'Средняя цена за номер в сутки без учёта налогов и допуслуг. Это база для расчёта комиссий OTA',
       prefix: currencySymbols[inputs.currency]
     },
@@ -758,13 +761,13 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
     },
     {
       key: 'baseDirectShare' as keyof CalculatorInputs,
-      label: 'Доля прямых бронирований (сейчас)',
+      label: t('direct_share_current'),
       tooltip: 'Какой процент бронирований приходит напрямую (сайт, телефон), а не через OTA? Обычно 30-50%',
       suffix: '%'
     },
     {
       key: 'directShareGrowth' as keyof CalculatorInputs,
-      label: 'Прирост доли прямых бронирований',
+      label: t('direct_share_growth_label'),
       tooltip: 'На сколько процентов Roomie увеличит долю прямых бронирований за счёт качественного сервиса? Обычно +15-25%',
       suffix: '%',
       advanced: true
@@ -898,7 +901,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
           {inputs.currentBookingsPerMonth === 0 ? (
             <div className="bg-white rounded-xl p-6 text-center border border-gray-200" data-testid="empty-bookings-hint">
               <p className="text-base text-muted-foreground leading-relaxed">
-                Введите ваши брони, чтобы увидеть точные цифры
+                {t('enter_bookings_message')}
               </p>
             </div>
           ) : (
@@ -907,7 +910,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
               <div className="grid grid-cols-2 gap-6">
                 {/* Экономия/мес */}
                 <div className="bg-white border-2 border-green-200 rounded-xl p-6 text-center" data-testid="main-savings-monthly">
-                  <div className="text-sm text-muted-foreground mb-2 font-medium">Экономия/мес</div>
+                  <div className="text-sm text-muted-foreground mb-2 font-medium">{t('savings_per_month')}</div>
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400">{formatNumber(savings.totalSavings)}</div>
                 </div>
 
@@ -920,7 +923,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
                     +8% к вашим бронированиям за счёт ответов ночью и без ожидания на линии в пиковые часы
                     <br />
-                    <span className="font-semibold">Доп. брони/мес: {savings.additionalBookingsPerMonth}</span>
+                    <span className="font-semibold">{t('additional_bookings_per_month')}: {savings.additionalBookingsPerMonth}</span>
                   </div>
                 </div>
               </div>
@@ -955,10 +958,10 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   {/* Блок 1: Экономия комиссии */}
                   <div className="bg-white border-2 border-green-200 p-3 rounded" data-testid="block-commission">
                     <div className="font-medium text-green-800 dark:text-green-200 border-b border-green-200 dark:border-green-700 pb-1 mb-2">
-                      💰 Экономия на комиссии (переток OTA → Прямые)
+                      {t('commission_savings_tooltip')}
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-green-700 dark:text-green-300">Переход с OTA на прямые бронирования:</span>
+                      <span className="text-green-700 dark:text-green-300">{t('ota_to_direct_transition')}</span>
                       <span className="font-medium text-green-600 dark:text-green-400" data-testid="value-commission-savings">{formatNumber(savings.commissionSavings)}</span>
                     </div>
                     <div className="text-xs text-green-600 dark:text-green-400 mt-1">
@@ -972,7 +975,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                       📈 Дополнительная прибыль от прироста конверсии
                     </div>
                     <div className="flex justify-between">
-                      <span className="text-blue-700 dark:text-blue-300">Новые бронирования от лучшего сервиса:</span>
+                      <span className="text-blue-700 dark:text-blue-300">{t('new_bookings_better_service')}</span>
                       <span className="font-medium text-blue-600 dark:text-blue-400" data-testid="value-additional-revenue">{formatNumber(savings.additionalRevenueFromConversion)}</span>
                     </div>
                     <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">
@@ -984,14 +987,14 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   <div className="space-y-1" data-testid="block-time">
                     <div className="font-medium text-foreground border-b pb-1 mb-2">⏰ Операционная экономия:</div>
                     <div className="flex justify-between">
-                      <span className="text-muted-foreground">Экономия времени команды:</span>
+                      <span className="text-muted-foreground">{t("results_time_savings_label")}</span>
                       <span className="font-medium text-green-600" data-testid="value-time-savings">{formatNumber(savings.timeSavings)}</span>
                     </div>
                   </div>
                   
-                  <div className="font-medium text-foreground border-b pb-1 mb-2 mt-3">Дополнительный заработок:</div>
+                  <div className="font-medium text-foreground border-b pb-1 mb-2 mt-3">{t("results_additional_bookings_title")}</div>
                   <div className="flex justify-between">
-                    <span className="text-muted-foreground">Доп. брони в месяц:</span>
+                    <span className="text-muted-foreground">{t("results_additional_bookings")}</span>
                     <span className="font-medium text-blue-600">{savings.additionalBookingsPerMonth}</span>
                   </div>
                   <div className="flex justify-between">
@@ -1033,6 +1036,7 @@ interface TrustAndConversionBlockProps {
 }
 
 function TrustAndConversionBlock({ savings, currency, onShareCalculation }: TrustAndConversionBlockProps) {
+  const { t } = useLanguage();
   const [isHowWeCountExpanded, setIsHowWeCountExpanded] = useState(false);
 
   const currencySymbols: Record<Currency, string> = {
@@ -1050,13 +1054,13 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
 
   // Простые визуализации сравнения
   const humanCosts = [
-    { label: 'Пропущенные брони', value: savings.revenueFromSavedRequests || 0 },
-    { label: 'Комиссии OTA', value: savings.otaSavings || 0 },
-    { label: 'Время на ответы', value: savings.timeSavings || 0 }
+    { label: t('missed_bookings'), value: savings.revenueFromSavedRequests || 0 },
+    { label: t('ota_commissions'), value: savings.otaSavings || 0 },
+    { label: t('response_time'), value: savings.timeSavings || 0 }
   ];
 
   const roomieCosts = [
-    { label: 'Стоимость Roomie', value: savings.inputs?.roomieCost || 35910 }
+    { label: t('roomie_cost_label'), value: savings.inputs?.roomieCost || 35910 }
   ];
 
   const totalHumanCosts = humanCosts.reduce((sum, item) => sum + item.value, 0);
@@ -1072,7 +1076,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
             className="w-full justify-between p-0 h-auto text-left"
             data-testid="toggle-how-we-count"
           >
-            <h4 className="text-sm font-medium text-foreground">Как мы считаем?</h4>
+            <h4 className="text-sm font-medium text-foreground">{t("how_we_calculate")}</h4>
             <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${isHowWeCountExpanded ? 'rotate-180' : ''}`} />
           </Button>
         </CollapsibleTrigger>
@@ -1142,7 +1146,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
                 ))}
                 <div className="border-t pt-2 mt-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-foreground">Итого потерь</span>
+                    <span className="text-xs font-medium text-foreground">{t('total_losses')}</span>
                     <span className="text-sm font-bold text-red-600">{formatNumber(totalHumanCosts)}</span>
                   </div>
                 </div>
@@ -1161,7 +1165,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
                 ))}
                 <div className="border-t pt-2 mt-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-foreground">Экономия</span>
+                    <span className="text-xs font-medium text-foreground">{t('savings_label')}</span>
                     <span className="text-sm font-bold text-green-600">{formatNumber(totalHumanCosts - totalRoomieCosts)}</span>
                   </div>
                 </div>

@@ -1,5 +1,6 @@
 import { TrendingUp, Calendar, BarChart3, Clock } from "lucide-react";
 import { BillingMode } from "@/hooks/use-billing-mode";
+import { useLanguage } from "@/hooks/use-language";
 import aiAutomationImage from "@assets/freepik__a-digital-piece-of-art-showing-cyborg-chatbot-hand__73253_1756866266252.jpg";
 
 interface InfoSidebarProps {
@@ -7,6 +8,8 @@ interface InfoSidebarProps {
 }
 
 export function InfoSidebar({ billingMode }: InfoSidebarProps) {
+  const { t, tArray } = useLanguage();
+  
   return (
     <div className="lg:row-span-1 space-y-6">
       {/* Usage Info Card */}
@@ -22,15 +25,15 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-2">
-              Оплата за использование
+              {t("info_usage_title")}
             </h4>
             <p className="text-muted-foreground text-sm mb-3">
-              Платите только за то, что используете. Идеально для сезонных объектов или тестирования ИИ.
+              {t("info_usage_description")}
             </p>
             <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Без месячных обязательств</li>
-              <li>• Масштабирование по потребности</li>
-              <li>• Прозрачное ценообразование</li>
+              {tArray("info_usage_benefits").map((benefit, index) => (
+                <li key={index}>• {benefit}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -48,15 +51,15 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-2">
-              Фиксированная помесячная оплата
+              {t("info_monthly_title")}
             </h4>
             <p className="text-muted-foreground text-sm mb-3">
-              Предсказуемые расходы с неограниченным использованием. Лучше всего для объектов с высокой нагрузкой.
+              {t("info_monthly_description")}
             </p>
             <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Неограниченные запросы</li>
-              <li>• Предсказуемость бюджета</li>
-              <li>• Максимальная экономия при масштабе</li>
+              {tArray("info_monthly_benefits").map((benefit, index) => (
+                <li key={index}>• {benefit}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -74,16 +77,15 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-2">
-              Годовая оплата со скидкой
+              {t("info_yearly_title")}
             </h4>
             <p className="text-muted-foreground text-sm mb-3">
-              Максимальная экономия до 20% при оплате за год вперед. Идеально для долгосрочного планирования.
+              {t("info_yearly_description")}
             </p>
             <ul className="text-sm text-muted-foreground space-y-1">
-              <li>• Скидка до 20%</li>
-              <li>• Приоритетная поддержка</li>
-              <li>• Неограниченные запросы</li>
-              <li>• Стабильность цен на год</li>
+              {tArray("info_yearly_benefits").map((benefit, index) => (
+                <li key={index}>• {benefit}</li>
+              ))}
             </ul>
           </div>
         </div>
@@ -95,11 +97,11 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center" data-testid="uptime-indicator">
             <div className="text-2xl font-bold text-primary">86%</div>
-            <div className="text-sm text-muted-foreground">запросов обработанных без участия ресепшн</div>
+            <div className="text-sm text-muted-foreground">{t("requests_handled")}</div>
           </div>
           <div className="text-center" data-testid="support-indicator">
             <div className="text-2xl font-bold text-primary">24/7</div>
-            <div className="text-sm text-muted-foreground">обслуживание ваших гостей</div>
+            <div className="text-sm text-muted-foreground">{t("guest_service")}</div>
           </div>
         </div>
       </div>

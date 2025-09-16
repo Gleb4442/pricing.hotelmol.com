@@ -132,6 +132,64 @@ export const translations = {
     currency_label: "Валюта",
     data_saved: "Данные сохранены на этом устройстве",
     yearly_savings: "Экономия до 20% при годовой оплате",
+    
+    // Trust Indicators
+    requests_handled: "запросов обработанных без участия ресепшн",
+    guest_service: "обслуживание ваших гостей",
+    
+    // Calculator Additional Text
+    calculate_savings: "Рассчитать мою экономию",
+    how_we_calculate: "Как мы считаем?",
+    share_calculation: "Поделиться расчётом",
+    share_label: "Поделиться",
+    our_formula: "Наша формула экономии:",
+    time_savings_formula: "Экономия времени: 2-4 часа/день × зарплата сотрудника",
+    direct_bookings_formula: "Увеличение прямых бронирований: +15-25%",
+    ota_commission_formula: "Снижение комиссий OTA: экономия 10-15%",
+    automation_formula: "Автоматизация рутины: 70% запросов без участия персонала",
+    average_savings: "Средняя экономия для отеля на 20 номеров: 108,000-225,000₽/месяц",
+    
+    // Toast Messages
+    copy_link_success_title: "Ссылка скопирована",
+    copy_link_success_desc: "Поделитесь расчётом с коллегами",
+    copy_link_error_title: "Не удалось скопировать ссылку — сделайте это вручную",
+    
+    // Additional UI Text
+    try_roomie: "Попробовать Roomie",
+    close: "Закрыть",
+    additional_room_revenue: "Доп. оборот (номера):",
+    additional_service_revenue: "Доп. оборот (услуги):",
+    roomie_cost_label: "Стоимость Roomie:",
+    missed_bookings: "Пропущенные брони",
+    ota_commissions: "Комиссии OTA",
+    response_time: "Время на ответы",
+    calculation_explanation: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
+    calculation_additional: "Плюс экономия на комиссионных OTA и рост допродаж. Минус — стоимость Roomie.",
+    
+    // Pricing Labels
+    addon_pricing_usage: "+0,5 центов/запрос",
+    addon_pricing_included: "Включено",
+    price_7_cents: "7 центов =0.07$",
+    price_8_cents: "8 центов =0.08$",
+    price_35_cents: "35 центов =0.35$",
+    
+    // Calculator Form Labels
+    bookings_per_month_current: "Брони в месяц (сейчас)",
+    bookings_suffix: "брони",
+    direct_share_current: "Доля прямых бронирований (сейчас)",
+    direct_share_growth_label: "Прирост доли прямых бронирований",
+    
+    // Calculator Results
+    enter_bookings_message: "Введите ваши брони, чтобы увидеть точные цифры",
+    savings_per_month: "Экономия/мес",
+    additional_bookings_per_month: "Доп. брони/мес",
+    total_losses: "Итого потерь",
+    savings_label: "Экономия",
+    commission_savings_tooltip: "Экономия на комиссии (переток OTA → Прямые)",
+    ota_to_direct_transition: "Переход с OTA на прямые бронирования:",
+    new_bookings_better_service: "Новые бронирования от лучшего сервиса:",
+    daily_requests_label: "Обращений в день",
+    adr_label: "Цена за номер в сутки (ADR)",
   },
   
   ua: {
@@ -267,6 +325,64 @@ export const translations = {
     currency_label: "Валюта",
     data_saved: "Дані збережені на цьому пристрої",
     yearly_savings: "Економія до 20% при річній оплаті",
+    
+    // Trust Indicators
+    requests_handled: "запитів оброблено без участі ресепшен",
+    guest_service: "обслуговування ваших гостей",
+    
+    // Calculator Additional Text
+    calculate_savings: "Розрахувати мою економію",
+    how_we_calculate: "Як ми рахуємо?",
+    share_calculation: "Поділитися розрахунком",
+    share_label: "Поділитися",
+    our_formula: "Наша формула економії:",
+    time_savings_formula: "Економія часу: 2-4 години/день × зарплата співробітника",
+    direct_bookings_formula: "Збільшення прямих бронювань: +15-25%",
+    ota_commission_formula: "Зменшення комісій OTA: економія 10-15%",
+    automation_formula: "Автоматизація рутини: 70% запитів без участі персоналу",
+    average_savings: "Середня економія для готелю на 20 номерів: 108,000-225,000₴/місяць",
+    
+    // Toast Messages
+    copy_link_success_title: "Посилання скопійовано",
+    copy_link_success_desc: "Поділіться розрахунком з колегами",
+    copy_link_error_title: "Не вдалося скопіювати посилання — зробіть це вручну",
+    
+    // Additional UI Text
+    try_roomie: "Спробувати Roomie",
+    close: "Закрити",
+    additional_room_revenue: "Дод. оборот (номери):",
+    additional_service_revenue: "Дод. оборот (послуги):",
+    roomie_cost_label: "Вартість Roomie:",
+    missed_bookings: "Пропущені бронювання",
+    ota_commissions: "Комісії OTA",
+    response_time: "Час на відповіді",
+    calculation_explanation: "Ми беремо ваші звернення на місяць, віднімаємо частку пропусків у людини та у ШІ, помножуємо на конверсію в бронювання та середній чек. Різниця — це додатковий дохід.",
+    calculation_additional: "Плюс економія на комісійних OTA та зростання допродажів. Мінус — вартість Roomie.",
+    
+    // Pricing Labels
+    addon_pricing_usage: "+0,5 центів/запит",
+    addon_pricing_included: "Включено",
+    price_7_cents: "7 центів =0.07$",
+    price_8_cents: "8 центів =0.08$",
+    price_35_cents: "35 центів =0.35$",
+    
+    // Calculator Form Labels
+    bookings_per_month_current: "Бронювання на місяць (зараз)",
+    bookings_suffix: "бронювання",
+    direct_share_current: "Частка прямих бронювань (зараз)",
+    direct_share_growth_label: "Приріст частки прямих бронювань",
+    
+    // Calculator Results
+    enter_bookings_message: "Введіть ваші бронювання, щоб побачити точні цифри",
+    savings_per_month: "Економія/міс",
+    additional_bookings_per_month: "Дод. бронювання/міс",
+    total_losses: "Усього втрат",
+    savings_label: "Економія",
+    commission_savings_tooltip: "Економія на комісії (перетік OTA → Прямі)",
+    ota_to_direct_transition: "Перехід з OTA на прямі бронювання:",
+    new_bookings_better_service: "Нові бронювання від кращого сервісу:",
+    daily_requests_label: "Звернень на день",
+    adr_label: "Ціна за номер на добу (ADR)",
   },
   
   en: {
@@ -402,6 +518,64 @@ export const translations = {
     currency_label: "Currency",
     data_saved: "Data saved on this device",
     yearly_savings: "Save up to 20% with annual payment",
+    
+    // Trust Indicators
+    requests_handled: "requests handled without reception staff",
+    guest_service: "guest service coverage",
+    
+    // Calculator Additional Text
+    calculate_savings: "Calculate my savings",
+    how_we_calculate: "How we calculate?",
+    share_calculation: "Share calculation",
+    share_label: "Share",
+    our_formula: "Our savings formula:",
+    time_savings_formula: "Time savings: 2-4 hours/day × employee salary",
+    direct_bookings_formula: "Direct bookings increase: +15-25%",
+    ota_commission_formula: "OTA commission reduction: 10-15% savings",
+    automation_formula: "Routine automation: 70% of requests without staff involvement",
+    average_savings: "Average savings for a 20-room hotel: $3,000-6,000/month",
+    
+    // Toast Messages
+    copy_link_success_title: "Link copied",
+    copy_link_success_desc: "Share the calculation with colleagues",
+    copy_link_error_title: "Failed to copy link — please do it manually",
+    
+    // Additional UI Text
+    try_roomie: "Try Roomie",
+    close: "Close",
+    additional_room_revenue: "Additional room revenue:",
+    additional_service_revenue: "Additional service revenue:",
+    roomie_cost_label: "Roomie cost:",
+    missed_bookings: "Missed bookings",
+    ota_commissions: "OTA commissions",
+    response_time: "Response time",
+    calculation_explanation: "We take your monthly inquiries, subtract the percentage of missed calls by humans and AI, multiply by conversion to bookings and average check. The difference is additional revenue.",
+    calculation_additional: "Plus savings on OTA commissions and additional service sales. Minus Roomie cost.",
+    
+    // Pricing Labels
+    addon_pricing_usage: "+0.5 cents/request",
+    addon_pricing_included: "Included",
+    price_7_cents: "7 cents =0.07$",
+    price_8_cents: "8 cents =0.08$",
+    price_35_cents: "35 cents =0.35$",
+    
+    // Calculator Form Labels
+    bookings_per_month_current: "Bookings per month (current)",
+    bookings_suffix: "bookings",
+    direct_share_current: "Direct bookings share (current)",
+    direct_share_growth_label: "Direct bookings share growth",
+    
+    // Calculator Results
+    enter_bookings_message: "Enter your bookings to see exact figures",
+    savings_per_month: "Savings/month",
+    additional_bookings_per_month: "Additional bookings/month",
+    total_losses: "Total losses",
+    savings_label: "Savings",
+    commission_savings_tooltip: "Commission savings (OTA → Direct transition)",
+    ota_to_direct_transition: "Transition from OTA to direct bookings:",
+    new_bookings_better_service: "New bookings from better service:",
+    daily_requests_label: "Daily requests",
+    adr_label: "Average daily rate (ADR)",
   }
 } as const;
 

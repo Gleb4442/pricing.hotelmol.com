@@ -41,12 +41,12 @@ export default function PricingPage() {
     {
       text: t("feature_telegram_bot"),
       tooltip: t("tooltip_telegram_bot"),
-      addonPricing: { usage: "+0,5 центов/запрос", monthly: "Включено" },
+      addonPricing: { usage: t("addon_pricing_usage"), monthly: t("addon_pricing_included") },
     },
     {
       text: t("feature_remove_logo"),
       tooltip: t("tooltip_remove_logo"),
-      addonPricing: { usage: "+0,5 центов/запрос", monthly: "Включено" },
+      addonPricing: { usage: t("addon_pricing_usage"), monthly: t("addon_pricing_included") },
     },
   ];
 
@@ -113,7 +113,7 @@ export default function PricingPage() {
               title={t("plan_pro_title")}
               description={t("plan_pro_description")}
               pricing={{
-                usage: { current: "7 центов =0.07$", original: "8 центов =0.08$" },
+                usage: { current: t("price_7_cents"), original: t("price_8_cents") },
                 monthly: { current: "$399", original: "$459" },
                 yearly: { current: "$319", original: "$399" },
               }}
@@ -129,7 +129,7 @@ export default function PricingPage() {
               title={t("plan_premium_title")}
               description={t("plan_premium_description")}
               pricing={{
-                usage: { current: "35 центов =0.35$" },
+                usage: { current: t("price_35_cents") },
                 monthly: { current: "$1,899" },
                 yearly: { current: "$1,519", original: "$1,899" },
               }}
