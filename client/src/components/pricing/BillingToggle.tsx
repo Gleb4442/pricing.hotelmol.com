@@ -1,4 +1,5 @@
 import { BillingMode } from "@/hooks/use-billing-mode";
+import { useLanguage } from "@/hooks/use-language";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface BillingToggleProps {
@@ -7,6 +8,8 @@ interface BillingToggleProps {
 }
 
 export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggleProps) {
+  const { t } = useLanguage();
+  
   return (
     <div className="flex flex-col items-center justify-center mb-6 space-y-3">
       <motion.div 
@@ -41,7 +44,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
-          Оплата за использование
+          {t("billing_usage")}
         </motion.button>
         
         <motion.button
@@ -56,7 +59,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           whileTap={{ scale: 0.98 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
-          Ежемесячно
+          {t("billing_monthly")}
         </motion.button>
       </motion.div>
       
@@ -89,7 +92,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           stiffness: 300
         }}
       >
-        Ежегодно
+        {t("billing_yearly")}
       </motion.button>
       
       <AnimatePresence>

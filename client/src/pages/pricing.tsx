@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ChevronDown, Globe } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
+import { useLanguage } from "@/hooks/use-language";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { InfoSidebar } from "@/components/pricing/InfoSidebar";
@@ -10,13 +11,13 @@ import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/component
 
 export default function PricingPage() {
   const { billingMode, setBillingMode } = useBillingMode();
+  const { language, setLanguage, t, tArray } = useLanguage();
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
-  const [language, setLanguage] = useState("ru");
 
   const languages = [
-    { code: "ru", flag: "🇷🇺", label: "RU" },
-    { code: "ua", flag: "🇺🇦", label: "UA" },
-    { code: "en", flag: "🇺🇸", label: "EN" }
+    { code: "ru" as const, flag: "🇷🇺", label: "RU" },
+    { code: "ua" as const, flag: "🇺🇦", label: "UA" },
+    { code: "en" as const, flag: "🇺🇸", label: "EN" }
   ];
 
   const handleLanguageSwitch = () => {
@@ -33,28 +34,28 @@ export default function PricingPage() {
   };
 
   const proFeatures = [
-    { text: "ИИ помощь гостям" },
-    { text: "Автоматизированное управление бронированием" },
-    { text: "Поддержка нескольких языков" },
-    { text: "Приоритетная поддержка" },
+    { text: t("feature_ai_help") },
+    { text: t("feature_booking_automation") },
+    { text: t("feature_multilang") },
+    { text: t("feature_priority_support") },
     {
-      text: "Персональный Telegram-бот",
-      tooltip: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
+      text: t("feature_telegram_bot"),
+      tooltip: t("tooltip_telegram_bot"),
       addonPricing: { usage: "+0,5 центов/запрос", monthly: "Включено" },
     },
     {
-      text: "Удаление логотипа",
-      tooltip: "Уберите наш брендинг с интерфейсов для гостей",
+      text: t("feature_remove_logo"),
+      tooltip: t("tooltip_remove_logo"),
       addonPricing: { usage: "+0,5 центов/запрос", monthly: "Включено" },
     },
   ];
 
   const premiumFeatures = [
-    { text: "Всё что включено в PRO" },
-    { text: "Расширенная аналитика" },
-    { text: "Персональное обучение ИИ" },
-    { text: "Персональный менеджер аккаунта" },
-    { text: "Индивидуальный дизайн виджета с брендингом вашей компании" },
+    { text: t("feature_all_pro") },
+    { text: t("feature_analytics") },
+    { text: t("feature_ai_training") },
+    { text: t("feature_account_manager") },
+    { text: t("feature_custom_design") },
   ];
 
   return (
@@ -65,7 +66,7 @@ export default function PricingPage() {
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <div>
-                <h1 className="text-xl font-bold text-white">Roomie</h1>
+                <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
               </div>
             </div>
             
@@ -94,10 +95,10 @@ export default function PricingPage() {
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Выберите ваш план <span className="text-primary">ИИ Помощника</span>
+            {t("hero_title")} <span className="text-primary">{t("hero_title_highlight")}</span>
           </h1>
           <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Расширьте возможности отеля с помощью интеллектуальной автоматизации. Гибкие тарифы для любого размера собственности.
+            {t("hero_description")}
           </p>
 
           <BillingToggle billingMode={billingMode} onBillingModeChange={setBillingMode} />
@@ -109,8 +110,8 @@ export default function PricingPage() {
             {/* PRO Plan */}
             <PricingCard
               plan="pro"
-              title="PRO"
-              description="Идеально для растущих отелей"
+              title={t("plan_pro_title")}
+              description={t("plan_pro_description")}
               pricing={{
                 usage: { current: "7 центов =0.07$", original: "8 центов =0.08$" },
                 monthly: { current: "$399", original: "$459" },
@@ -125,8 +126,8 @@ export default function PricingPage() {
             {/* PREMIUM Plan */}
             <PricingCard
               plan="premium"
-              title="PREMIUM"
-              description="Корпоративное решение"
+              title={t("plan_premium_title")}
+              description={t("plan_premium_description")}
               pricing={{
                 usage: { current: "35 центов =0.35$" },
                 monthly: { current: "$1,899" },
@@ -157,7 +158,7 @@ export default function PricingPage() {
                   className="flex items-center justify-between w-full text-left p-0"
                   data-testid="mobile-info-toggle"
                 >
-                  <h4 className="text-lg font-semibold text-foreground">Информация о биллинге</h4>
+                  <h4 className="text-lg font-semibold text-foreground">{t("mobile_info_title")}</h4>
                   <ChevronDown
                     className={`text-muted-foreground transition-transform duration-300 ${
                       mobileInfoOpen ? "rotate-180" : ""
@@ -170,43 +171,42 @@ export default function PricingPage() {
                   className={`${billingMode === "usage" ? "block" : "hidden"}`}
                   data-testid="mobile-usage-info"
                 >
-                  <h5 className="font-medium text-foreground mb-2">Оплата за использование</h5>
+                  <h5 className="font-medium text-foreground mb-2">{t("mobile_usage_info")}</h5>
                   <p className="text-muted-foreground text-sm mb-2">
-                    Платите только за то, что используете. Идеально для сезонных объектов.
+                    {t("info_usage_description")}
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Без месячных обязательств</li>
-                    <li>• Масштабирование по потребности</li>
-                    <li>• Прозрачное ценообразование</li>
+                    {tArray("info_usage_benefits").map((benefit, index) => (
+                      <li key={index}>• {benefit}</li>
+                    ))}
                   </ul>
                 </div>
                 <div
                   className={`${billingMode === "monthly" ? "block" : "hidden"}`}
                   data-testid="mobile-monthly-info"
                 >
-                  <h5 className="font-medium text-foreground mb-2">Фиксированная помесячная оплата</h5>
+                  <h5 className="font-medium text-foreground mb-2">{t("mobile_monthly_info")}</h5>
                   <p className="text-muted-foreground text-sm mb-2">
-                    Предсказуемые расходы с неограниченным использованием.
+                    {t("info_monthly_description")}
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Неограниченные запросы</li>
-                    <li>• Предсказуемость бюджета</li>
-                    <li>• Максимальная экономия при масштабе</li>
+                    {tArray("info_monthly_benefits").map((benefit, index) => (
+                      <li key={index}>• {benefit}</li>
+                    ))}
                   </ul>
                 </div>
                 <div
                   className={`${billingMode === "yearly" ? "block" : "hidden"}`}
                   data-testid="mobile-yearly-info"
                 >
-                  <h5 className="font-medium text-foreground mb-2">Годовая оплата со скидкой</h5>
+                  <h5 className="font-medium text-foreground mb-2">{t("mobile_yearly_info")}</h5>
                   <p className="text-muted-foreground text-sm mb-2">
-                    Максимальная экономия до 20% при оплате за год вперед.
+                    {t("info_yearly_description")}
                   </p>
                   <ul className="text-sm text-muted-foreground space-y-1">
-                    <li>• Скидка до 20%</li>
-                    <li>• Приоритетная поддержка</li>
-                    <li>• Неограниченные запросы</li>
-                    <li>• Стабильность цен на год</li>
+                    {tArray("info_yearly_benefits").map((benefit, index) => (
+                      <li key={index}>• {benefit}</li>
+                    ))}
                   </ul>
                 </div>
               </CollapsibleContent>
@@ -217,42 +217,39 @@ export default function PricingPage() {
         {/* FAQ Section */}
         <div className="mt-20">
           <h2 className="text-3xl font-bold text-center text-foreground mb-12">
-            Часто задаваемые вопросы
+            {t("faq_title")}
           </h2>
           <div className="max-w-3xl mx-auto space-y-6">
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                Как работает интеграция с ИИ?
+                {t("faq_integration_question")}
               </h4>
               <p className="text-muted-foreground">
-                Подключаемся к вашему PMS и каналам через API. Базовый запуск занимает 1 рабочий день и не мешает работе ресепшна. Ассистент бережно соблюдает политики тарифов, стоп-сейлы и правила отмен
+                {t("faq_integration_answer")}
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                Могу ли я переключаться между режимами оплаты?
+                {t("faq_billing_question")}
               </h4>
               <p className="text-muted-foreground">
-                Да, вы можете изменить предпочтения по оплате в любое время. Изменения вступают в силу
-                с начала следующего расчетного периода.
+                {t("faq_billing_answer")}
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                Что с безопасностью и персональными данными?
+                {t("faq_security_question")}
               </h4>
               <p className="text-muted-foreground">
-                Соблюдаем GDPR. Данные шифруются. По запросу заключаем DPA и размещаем данные в нужном регионе (EU/EMEA/US). Ваши данные не используются для обучения общих моделей без вашего согласия.
+                {t("faq_security_answer")}
               </p>
             </div>
             <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
               <h4 className="text-lg font-semibold text-foreground mb-2">
-                Чем PRO отличается от PREMIUM в двух словах?
+                {t("faq_plans_question")}
               </h4>
               <p className="text-muted-foreground">
-                PRO — «всё необходимое чтобы аввтоматизировать коммуникацию с гостями с помощью ИИ». 
-                PREMIUM — «всё из PRO» + Собственная админ панель, расширенная аналитика, персональное 
-                обучение ИИ на ваших данных, white-label и менеджер аккаунта.
+                {t("faq_plans_answer")}
               </p>
             </div>
           </div>
@@ -264,16 +261,15 @@ export default function PricingPage() {
         <div className="container mx-auto px-4 py-12">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
-              <span className="font-bold text-white text-xl">Roomie</span>
+              <span className="font-bold text-white text-xl">{t("company_name")}</span>
             </div>
             <p className="text-blue-100 text-sm max-w-md mx-auto">
-              Revolutionizing hospitality with intelligent automation and personalized guest
-              experiences.
+              {t("footer_description")}
             </p>
           </div>
           <div className="border-t border-blue-600 mt-12 pt-8 text-center">
             <p className="text-blue-200 text-sm">
-              &copy; 2024 Roomie. All rights reserved.
+              {t("footer_copyright")}
             </p>
           </div>
         </div>
