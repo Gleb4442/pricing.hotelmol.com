@@ -670,15 +670,19 @@ interface CalculatorFormProps {
   currencyLocales: Record<Currency, string>;
   onShareCalculation: () => void;
   savings: {
-    revenueFromSavedRequests: number;
-    otaSavings: number;
+    // Новая структура результатов
+    commissionSavings: number;
+    additionalRevenueFromConversion: number;
     timeSavings: number;
     totalSavings: number;
     roi: number;
-    savedRequestsPerMonth: number;
     additionalDirectBookingsPerMonth: number;
     paybackDays: number;
-    // Новые поля для дополнительного заработка
+    // Совместимость со старым интерфейсом
+    revenueFromSavedRequests: number;
+    otaSavings: number;
+    savedRequestsPerMonth: number;
+    // Поля для дополнительного заработка
     additionalBookingsPerMonth: number;
     additionalRoomRevenue: number;
     additionalServiceRevenue: number;
@@ -918,19 +922,42 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
               {/* Детализация */}
               <details className="space-y-2">
                 <summary className="text-xs font-medium text-foreground cursor-pointer hover:text-primary">Детализация расчётов</summary>
-                <div className="space-y-2 text-xs mt-2" data-testid="calculation-details">
-                  <div className="font-medium text-foreground border-b pb-1 mb-2">Экономия:</div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Доход от спасённых заявок:</span>
-                    <span className="font-medium text-green-600">{formatNumber(savings.revenueFromSavedRequests)}</span>
+                <div className="space-y-3 text-xs mt-2" data-testid="calculation-details">
+                  {/* Блок 1: Экономия комиссии */}
+                  <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded border">
+                    <div className="font-medium text-green-800 dark:text-green-200 border-b border-green-200 dark:border-green-700 pb-1 mb-2">
+                      💰 Экономия на комиссии (переток OTA → Прямые)
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-green-700 dark:text-green-300">Переход с OTA на прямые бронирования:</span>
+                      <span className="font-medium text-green-600 dark:text-green-400">{formatNumber(savings.commissionSavings)}</span>
+                    </div>
+                    <div className="text-xs text-green-600 dark:text-green-400 mt-1">
+                      Экономия = доп.direct × (комиссия OTA - эквайринг)
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Экономия на комиссиях OTA:</span>
-                    <span className="font-medium text-green-600">{formatNumber(savings.otaSavings)}</span>
+
+                  {/* Блок 2: Дополнительная прибыль */}
+                  <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border">
+                    <div className="font-medium text-blue-800 dark:text-blue-200 border-b border-blue-200 dark:border-blue-700 pb-1 mb-2">
+                      📈 Дополнительная прибыль от прироста конверсии
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-blue-700 dark:text-blue-300">Новые бронирования от лучшего сервиса:</span>
+                      <span className="font-medium text-blue-600 dark:text-blue-400">{formatNumber(savings.additionalRevenueFromConversion)}</span>
+                    </div>
+                    <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">
+                      Прибыль = новые брони × доходность каналов
+                    </div>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Экономия времени:</span>
-                    <span className="font-medium text-green-600">{formatNumber(savings.timeSavings)}</span>
+
+                  {/* Блок 3: Операционная экономия */}
+                  <div className="space-y-1">
+                    <div className="font-medium text-foreground border-b pb-1 mb-2">⏰ Операционная экономия:</div>
+                    <div className="flex justify-between">
+                      <span className="text-muted-foreground">Экономия времени команды:</span>
+                      <span className="font-medium text-green-600">{formatNumber(savings.timeSavings)}</span>
+                    </div>
                   </div>
                   
                   <div className="font-medium text-foreground border-b pb-1 mb-2 mt-3">Дополнительный заработок:</div>
