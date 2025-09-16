@@ -52,7 +52,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     currency: 'USD',
     // Новые поля для расчёта дополнительного заработка
     currentBookingsPerMonth: 0, // Сначала пустое, требует заполнения
-    bookingIncreasePercent: 4, // Дефолт 4%
+    bookingIncreasePercent: 8, // Дефолт 8%
     additionalServiceRevenuePerBooking: 0 // Дефолт 0
   });
 
@@ -726,7 +726,7 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
     {
       key: 'bookingIncreasePercent' as keyof CalculatorInputs,
       label: 'Увеличение бронирований с Roomie, %',
-      tooltip: 'Рост за счёт ответов ночью/в нерабочее время и более быстрой реакции. Наш базовый сценарий для отелей — 4%',
+      tooltip: 'Рост за счёт ответов ночью/в нерабочее время и более быстрой реакции. Наш базовый сценарий для отелей — 8%',
       suffix: '%'
     },
     {
@@ -925,7 +925,7 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
                   {/* Пояснительный текст под цифрой */}
                   {inputs.bookingIncreasePercent === 0 ? (
                     <div className="text-xs text-muted-foreground mt-2">
-                      Наш базовый сценарий — 4% для отелей, где часть обращений уходит ночью
+                      Наш базовый сценарий — 8% для отелей, где часть обращений уходит ночью
                     </div>
                   ) : (
                     <div className="text-xs text-muted-foreground mt-2">
