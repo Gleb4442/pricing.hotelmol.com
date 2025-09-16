@@ -21,7 +21,6 @@ interface CalculatorInputs {
   lostRequestsPercent: number;
   conversionRate: number;
   otaCommission: number;
-  adminSalary: number;
   roomieCost: number;
   workingDays: number;
   currency: Currency;
@@ -37,7 +36,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
   const [touchStartY, setTouchStartY] = useState<number | null>(null);
   const [showCalculator, setShowCalculator] = useState(false);
   const [mobileCalculatorMode, setMobileCalculatorMode] = useState<'info' | 'calculator'>('info');
-  const [mode, setMode] = useState<'replace' | 'assist'>('assist'); // 'replace' = замена администратора, 'assist' = помощь команде
   
   const [inputs, setInputs] = useState<CalculatorInputs>({
     dailyRequests: 30,
@@ -45,7 +43,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     lostRequestsPercent: 15,
     conversionRate: 20,
     otaCommission: 12,
-    adminSalary: 45000,
     roomieCost: 35910, // 399 USD * 90 RUB/USD
     workingDays: 22,
     currency: 'USD',
@@ -70,7 +67,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
   // Utility functions
   const STORAGE_KEY = 'roomie-calculator-data';
 
-  const saveToLocalStorage = useCallback((data: CalculatorInputs & { mode: string }, showToast = false) => {
+  const saveToLocalStorage = useCallback((data: CalculatorInputs, showToast = false) => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
       if (showToast) {
@@ -84,7 +81,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     }
   }, [toast]);
 
-  const loadFromLocalStorage = useCallback((): Partial<CalculatorInputs & { mode: string }> => {
+  const loadFromLocalStorage = useCallback((): Partial<CalculatorInputs> => {
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       return saved ? JSON.parse(saved) : {};
@@ -94,12 +91,12 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     }
   }, []);
 
-  const parseUrlParams = useCallback((): Partial<CalculatorInputs & { mode: string }> => {
+  const parseUrlParams = useCallback((): Partial<CalculatorInputs> => {
     const urlParams = new URLSearchParams(window.location.search);
     const params: any = {};
     
     // Parse numeric values
-    const numericFields = ['dailyRequests', 'avgBookingRevenue', 'lostRequestsPercent', 'conversionRate', 'otaCommission', 'adminSalary', 'roomieCost', 'workingDays', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
+    const numericFields = ['dailyRequests', 'avgBookingRevenue', 'lostRequestsPercent', 'conversionRate', 'otaCommission', 'roomieCost', 'workingDays', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
     numericFields.forEach(field => {
       const value = urlParams.get(field);
       if (value && !isNaN(Number(value))) {
@@ -113,11 +110,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       params.currency = currency;
     }
 
-    // Parse mode
-    const modeParam = urlParams.get('mode');
-    if (modeParam && ['replace', 'assist'].includes(modeParam)) {
-      params.mode = modeParam;
-    }
 
     return params;
   }, []);
@@ -129,14 +121,13 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     Object.entries(inputs).forEach(([key, value]) => {
       params.set(key, value.toString());
     });
-    params.set('mode', mode);
     
     return `${baseUrl}?${params.toString()}`;
-  }, [inputs, mode]);
+  }, [inputs]);
 
   const handleSaveCalculation = useCallback(async () => {
     const url = generateSharableUrl();
-    const saveData = { ...inputs, mode };
+    const saveData = { ...inputs };
     
     // Save to localStorage with toast notification
     saveToLocalStorage(saveData, true);
@@ -157,7 +148,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
         variant: "destructive"
       });
     }
-  }, [generateSharableUrl, toast, inputs, mode, saveToLocalStorage]);
+  }, [generateSharableUrl, toast, inputs, saveToLocalStorage]);
 
   // Initialize data from URL params or localStorage on component mount
   useEffect(() => {
@@ -173,11 +164,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 
       // Update inputs
       Object.entries(mergedData).forEach(([key, value]) => {
-        if (key === 'mode') {
-          if (value !== mode) {
-            setMode(value as 'replace' | 'assist');
-          }
-        } else if (key in newInputs && value !== newInputs[key as keyof CalculatorInputs]) {
+        if (key in newInputs && value !== newInputs[key as keyof CalculatorInputs]) {
           (newInputs as any)[key] = value;
           hasChanges = true;
         }
@@ -189,11 +176,11 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     }
   }, []); // Run only once on mount
 
-  // Auto-save to localStorage when inputs or mode change (silently)
+  // Auto-save to localStorage when inputs change (silently)
   useEffect(() => {
-    const saveData = { ...inputs, mode };
+    const saveData = { ...inputs };
     saveToLocalStorage(saveData, false); // false = no toast notification
-  }, [inputs, mode, saveToLocalStorage]);
+  }, [inputs, saveToLocalStorage]);
 
   const handleTryRoomie = () => {
     window.open('https://t.me/hotelmindmanager', '_blank');
@@ -269,7 +256,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       lostRequestsPercent, 
       conversionRate, 
       otaCommission, 
-      adminSalary, 
       roomieCost, 
       workingDays,
       currentBookingsPerMonth,
@@ -288,12 +274,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const directBookingIncreaseRevenue = directBookingIncrease * avgBookingRevenue * workingDays;
     const otaSavings = directBookingIncreaseRevenue * (otaCommission / 100);
     
-    // Экономия времени (2-3 часа в день, стоимость часа администратора)
-    const hourlyRate = adminSalary / (workingDays * 8);
-    const timeSavings = 2.5 * hourlyRate * workingDays;
-    
-    // Экономия на зарплате (только в режиме замены)
-    const salarySavings = mode === 'replace' ? adminSalary * 0.5 : 0; // 50% экономии при частичной замене
+    // Экономия времени (фиксированная оценка)
+    const timeSavings = 5000; // Примерная экономия времени команды в денежном выражении
     
     // Расчёт дополнительного заработка (фиксированно 8% рост)
     const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
@@ -303,7 +285,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const additionalServiceRevenue = additionalBookingsPerMonth * additionalServiceRevenuePerBooking;
     const totalAdditionalEarnings = additionalRoomRevenue + additionalServiceRevenue;
     
-    const totalSavings = revenueFromSavedRequests + otaSavings + timeSavings + salarySavings - roomieCost;
+    const totalSavings = revenueFromSavedRequests + otaSavings + timeSavings - roomieCost;
     const roi = totalSavings > 0 ? (totalSavings / roomieCost) * 100 : 0;
     
     // Дополнительные показатели
@@ -316,7 +298,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       revenueFromSavedRequests,
       otaSavings,
       timeSavings,
-      salarySavings,
       totalSavings,
       roi,
       savedRequestsPerMonth,
@@ -369,9 +350,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   <CollapsibleContent>
                     <CalculatorForm 
                       inputs={inputs}
-                      mode={mode}
                       onInputChange={updateInput}
-                      onModeChange={setMode}
                       savings={savings}
                       currencySymbols={currencySymbols}
                       currencyLocales={currencyLocales}
@@ -623,9 +602,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     <div className="max-h-96 overflow-y-auto">
                       <CalculatorForm 
                         inputs={inputs}
-                        mode={mode}
                         onInputChange={updateInput}
-                        onModeChange={setMode}
                         savings={savings}
                         currencySymbols={currencySymbols}
                         currencyLocales={currencyLocales}
@@ -665,9 +642,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 // Компонент формы калькулятора с интерактивными полями
 interface CalculatorFormProps {
   inputs: CalculatorInputs;
-  mode: 'replace' | 'assist';
   onInputChange: (field: keyof CalculatorInputs, value: number | Currency) => void;
-  onModeChange: (mode: 'replace' | 'assist') => void;
   currencySymbols: Record<Currency, string>;
   currencyLocales: Record<Currency, string>;
   onShareCalculation: () => void;
@@ -675,7 +650,6 @@ interface CalculatorFormProps {
     revenueFromSavedRequests: number;
     otaSavings: number;
     timeSavings: number;
-    salarySavings: number;
     totalSavings: number;
     roi: number;
     savedRequestsPerMonth: number;
@@ -691,7 +665,7 @@ interface CalculatorFormProps {
   };
 }
 
-function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, currencySymbols, currencyLocales, onShareCalculation }: CalculatorFormProps) {
+function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, currencyLocales, onShareCalculation }: CalculatorFormProps) {
   const formatNumber = (num: number) => {
     const symbol = currencySymbols[inputs.currency];
     const rounded = Math.round(num);
@@ -746,13 +720,6 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
       suffix: '%'
     },
     {
-      key: 'adminSalary' as keyof CalculatorInputs,
-      label: 'Зарплата администратора',
-      tooltip: 'Зарплата сотрудника, который работает с гостями и бронированиями. Учитывайте все выплаты и налоги',
-      prefix: currencySymbols[inputs.currency],
-      suffix: '/мес'
-    },
-    {
       key: 'roomieCost' as keyof CalculatorInputs,
       label: 'Стоимость Roomie',
       tooltip: 'Выберите подходящий тариф Roomie из представленных выше планов',
@@ -764,36 +731,6 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
   return (
     <TooltipProvider>
       <div className="space-y-6 mt-4 pt-4 border-t border-primary/20">
-        {/* Переключатель режима */}
-        <div className="space-y-2">
-          <Label className="text-sm font-medium text-foreground">Режим работы</Label>
-          <div className="flex items-center space-x-3">
-            <Button
-              variant={mode === 'assist' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => onModeChange('assist')}
-              className="text-xs"
-              data-testid="mode-assist"
-            >
-              Помощь команде
-            </Button>
-            <Button
-              variant={mode === 'replace' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => onModeChange('replace')}
-              className="text-xs"
-              data-testid="mode-replace"
-            >
-              Замена администратора
-            </Button>
-          </div>
-          <p className="text-xs text-muted-foreground">
-            {mode === 'assist' 
-              ? 'Roomie помогает команде, экономия на зарплате не учитывается'
-              : 'Roomie частично заменяет администратора, учитывается экономия на зарплате'
-            }
-          </p>
-        </div>
 
         {/* Поля ввода */}
         <div className="grid gap-4">
@@ -958,12 +895,6 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
                     <span className="text-muted-foreground">Экономия времени:</span>
                     <span className="font-medium text-green-600">{formatNumber(savings.timeSavings)}</span>
                   </div>
-                  {mode === 'replace' && savings.salarySavings > 0 && (
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Экономия на зарплате:</span>
-                      <span className="font-medium text-green-600">{formatNumber(savings.salarySavings)}</span>
-                    </div>
-                  )}
                   
                   <div className="font-medium text-foreground border-b pb-1 mb-2 mt-3">Дополнительный заработок:</div>
                   <div className="flex justify-between">
@@ -995,7 +926,6 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
         <TrustAndConversionBlock 
           savings={savings}
           currency={inputs.currency}
-          mode={mode}
           onShareCalculation={onShareCalculation}
         />
       </div>
@@ -1006,11 +936,10 @@ function CalculatorForm({ inputs, mode, onInputChange, onModeChange, savings, cu
 interface TrustAndConversionBlockProps {
   savings: any;
   currency: Currency;
-  mode: 'replace' | 'assist';
   onShareCalculation: () => void;
 }
 
-function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }: TrustAndConversionBlockProps) {
+function TrustAndConversionBlock({ savings, currency, onShareCalculation }: TrustAndConversionBlockProps) {
   const [isHowWeCountExpanded, setIsHowWeCountExpanded] = useState(false);
 
   const currencySymbols: Record<Currency, string> = {
@@ -1027,11 +956,7 @@ function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }
   };
 
   // Простые визуализации сравнения
-  const humanCosts = mode === 'replace' ? [
-    { label: 'Зарплата в месяц', value: savings.inputs?.adminSalary || 45000 },
-    { label: 'Пропущенные брони', value: savings.revenueFromSavedRequests || 0 },
-    { label: 'Комиссии OTA', value: savings.otaSavings || 0 }
-  ] : [
+  const humanCosts = [
     { label: 'Пропущенные брони', value: savings.revenueFromSavedRequests || 0 },
     { label: 'Комиссии OTA', value: savings.otaSavings || 0 },
     { label: 'Время на ответы', value: savings.timeSavings || 0 }
@@ -1065,7 +990,7 @@ function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }
               умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.
             </p>
             <p className="text-sm text-foreground leading-relaxed">
-              Плюс экономия на комиссионных OTA и рост допродаж. {mode === 'replace' ? 'Плюс экономия на зарплате администратора. ' : ''}
+              Плюс экономия на комиссионных OTA и рост допродаж. 
               Минус — стоимость Roomie.
             </p>
             
@@ -1081,12 +1006,6 @@ function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }
                   <span className="text-green-600">+ Экономия на OTA</span>
                   <span className="text-xs text-muted-foreground">(прямые брони × комиссия)</span>
                 </div>
-                {mode === 'replace' && (
-                  <div className="flex items-center justify-between">
-                    <span className="text-green-600">+ Экономия на зарплате</span>
-                    <span className="text-xs text-muted-foreground">(частичная замена администратора)</span>
-                  </div>
-                )}
                 <div className="flex items-center justify-between border-t pt-1 mt-2">
                   <span className="text-red-500">- Стоимость Roomie</span>
                   <span className="text-xs text-muted-foreground">(ежемесячная подписка)</span>
@@ -1119,7 +1038,7 @@ function TrustAndConversionBlock({ savings, currency, mode, onShareCalculation }
             {/* Расходы без Roomie */}
             <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4" data-testid="costs-without-roomie">
               <h6 className="text-xs font-medium text-red-700 dark:text-red-300 mb-3">
-                {mode === 'replace' ? 'Расходы человека' : 'Потери без ИИ'}
+                Потери без ИИ
               </h6>
               <div className="space-y-2">
                 {humanCosts.map((cost, index) => (
