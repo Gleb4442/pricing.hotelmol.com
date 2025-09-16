@@ -396,18 +396,18 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                             setClickedCurrency(currency);
                             setTimeout(() => setClickedCurrency(null), 300);
                           }}
-                          className={`flex-1 px-2 py-1 text-xs rounded-sm transition-colors ${
+                          className={`flex-1 px-2 py-1 text-xs rounded-sm transition-all duration-300 ${
                             inputs.currency === currency
-                              ? 'bg-primary text-primary-foreground'
-                              : 'hover:bg-muted-foreground/10'
+                              ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border-2 border-blue-400'
+                              : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
                           }`}
                           data-testid={`currency-${currency.toLowerCase()}`}
                           whileTap={{ scale: 0.95 }}
                           animate={{
                             scale: clickedCurrency === currency ? [1, 1.1, 1] : 1,
-                            backgroundColor: clickedCurrency === currency 
-                              ? ['rgba(59, 130, 246, 0.1)', 'rgba(59, 130, 246, 0.3)', 'rgba(59, 130, 246, 0.1)']
-                              : undefined
+                            boxShadow: inputs.currency === currency 
+                              ? '0 8px 25px rgba(59, 130, 246, 0.4)'
+                              : '0 2px 8px rgba(0, 0, 0, 0.1)'
                           }}
                           transition={{
                             duration: 0.3,
@@ -589,18 +589,18 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                               setClickedCurrency(currency);
                               setTimeout(() => setClickedCurrency(null), 300);
                             }}
-                            className={`flex-1 px-4 py-3 text-sm font-medium rounded-md transition-colors ${
+                            className={`flex-1 px-4 py-3 text-sm font-medium rounded-md transition-all duration-300 ${
                               inputs.currency === currency
-                                ? 'bg-primary text-primary-foreground'
-                                : 'hover:bg-muted-foreground/10'
+                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border-2 border-blue-400 font-semibold'
+                                : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
                             }`}
                             data-testid={`mobile-currency-${currency.toLowerCase()}`}
                             whileTap={{ scale: 0.95 }}
                             animate={{
                               scale: clickedCurrency === currency ? [1, 1.15, 1] : 1,
-                              backgroundColor: clickedCurrency === currency 
-                                ? ['rgba(59, 130, 246, 0.1)', 'rgba(59, 130, 246, 0.4)', 'rgba(59, 130, 246, 0.1)']
-                                : undefined
+                              boxShadow: inputs.currency === currency 
+                                ? '0 10px 30px rgba(59, 130, 246, 0.4)'
+                                : '0 2px 8px rgba(0, 0, 0, 0.1)'
                             }}
                             transition={{
                               duration: 0.3,
