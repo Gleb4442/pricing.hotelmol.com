@@ -343,7 +343,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       {/* Desktop Sticky Card */}
       <div className={`hidden lg:block ${className}`}>
         <div className="sticky top-24">
-          <Card className="bg-gradient-to-br from-primary/5 to-orange-50 dark:from-primary/10 dark:to-orange-900/20 border-primary/20 shadow-lg">
+          <Card className="bg-white dark:bg-white border-primary/20 shadow-lg">
             <CardHeader className="pb-4">
               <div className="flex items-center space-x-2 mb-2">
                 <Calculator className="h-5 w-5 text-primary" />
@@ -498,20 +498,21 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
               transition={{ type: "spring", damping: 30, stiffness: 400 }}
-              className="w-full h-full bg-card shadow-xl flex flex-col"
+              className="w-full h-full bg-white shadow-xl flex flex-col"
+              style={{ backgroundColor: 'white' }}
               onClick={(e) => e.stopPropagation()}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
               data-testid="mobile-modal-content"
             >
-              <div className="flex-1 flex flex-col h-full">
+              <div className="flex-1 flex flex-col h-full bg-white">
                 {/* Swipe indicator */}
                 <div className="flex justify-center py-2">
                   <div className="w-12 h-1 bg-muted-foreground/30 rounded-full" />
                 </div>
                 
-                <div className="flex-1 p-6 overflow-y-auto">
+                <div className="flex-1 p-6 overflow-y-auto bg-white">
                 <div className="flex items-center justify-between mb-4">
                   <div className="flex items-center space-x-2">
                     <Calculator className="h-5 w-5 text-primary" />
@@ -867,7 +868,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
         <div className="space-y-4 pt-4 border-t border-primary/20">
           {/* Проверка заполнения обязательного поля */}
           {inputs.currentBookingsPerMonth === 0 ? (
-            <div className="bg-gray-50 dark:bg-gray-900/20 rounded-xl p-6 text-center" data-testid="empty-bookings-hint">
+            <div className="bg-white rounded-xl p-6 text-center border border-gray-200" data-testid="empty-bookings-hint">
               <p className="text-base text-muted-foreground leading-relaxed">
                 Введите ваши брони, чтобы увидеть точные цифры
               </p>
@@ -877,13 +878,13 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
               {/* Основные крупные цифры */}
               <div className="grid grid-cols-2 gap-6">
                 {/* Экономия/мес */}
-                <div className="bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/30 rounded-xl p-6 text-center" data-testid="main-savings-monthly">
+                <div className="bg-white border-2 border-green-200 rounded-xl p-6 text-center" data-testid="main-savings-monthly">
                   <div className="text-sm text-muted-foreground mb-2 font-medium">Экономия/мес</div>
                   <div className="text-2xl font-bold text-green-600 dark:text-green-400">{formatNumber(savings.totalSavings)}</div>
                 </div>
 
                 {/* Дополнительный заработок/мес */}
-                <div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/30 rounded-xl p-6 text-center" data-testid="main-additional-earnings">
+                <div className="bg-white border-2 border-blue-200 rounded-xl p-6 text-center" data-testid="main-additional-earnings">
                   <div className="text-sm text-muted-foreground mb-2 font-medium">Дополнительный заработок/мес</div>
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
                   
@@ -897,7 +898,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
               </div>
 
               {/* Итого эффект */}
-              <div className="bg-gradient-to-r from-primary/10 to-orange-100 dark:from-primary/20 dark:to-orange-900/30 rounded-xl p-6 text-center border-2 border-primary/20" data-testid="total-effect">
+              <div className="bg-white rounded-xl p-6 text-center border-2 border-primary/30" data-testid="total-effect">
                 <div className="text-base text-muted-foreground mb-2 font-semibold">Итого эффект/мес</div>
                 <div className="text-3xl font-bold text-primary">
                   {formatNumber(savings.totalEffect)}
@@ -909,11 +910,11 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
 
               {/* Окупаемость и ROI */}
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-primary/10 rounded-xl p-4 text-center" data-testid="main-payback">
+                <div className="bg-white border border-primary/30 rounded-xl p-4 text-center" data-testid="main-payback">
                   <div className="text-sm text-muted-foreground mb-2 font-medium">Окупаемость</div>
                   <div className="text-xl font-bold text-primary">{savings.paybackDays} дн.</div>
                 </div>
-                <div className="bg-primary/10 rounded-xl p-4 text-center" data-testid="main-roi">
+                <div className="bg-white border border-primary/30 rounded-xl p-4 text-center" data-testid="main-roi">
                   <div className="text-sm text-muted-foreground mb-2 font-medium">ROI</div>
                   <div className="text-xl font-bold text-primary">{((savings.totalEffect / inputs.roomieCost) * 100).toFixed(0)}%</div>
                 </div>
@@ -924,7 +925,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 <summary className="text-sm font-semibold text-foreground cursor-pointer hover:text-primary p-2">Детализация расчётов</summary>
                 <div className="space-y-3 text-xs mt-2" data-testid="calculation-details">
                   {/* Блок 1: Экономия комиссии */}
-                  <div className="bg-green-50 dark:bg-green-900/20 p-3 rounded border" data-testid="block-commission">
+                  <div className="bg-white border-2 border-green-200 p-3 rounded" data-testid="block-commission">
                     <div className="font-medium text-green-800 dark:text-green-200 border-b border-green-200 dark:border-green-700 pb-1 mb-2">
                       💰 Экономия на комиссии (переток OTA → Прямые)
                     </div>
@@ -938,7 +939,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   </div>
 
                   {/* Блок 2: Дополнительная прибыль */}
-                  <div className="bg-blue-50 dark:bg-blue-900/20 p-3 rounded border" data-testid="block-additional">
+                  <div className="bg-white border-2 border-blue-200 p-3 rounded" data-testid="block-additional">
                     <div className="font-medium text-blue-800 dark:text-blue-200 border-b border-blue-200 dark:border-blue-700 pb-1 mb-2">
                       📈 Дополнительная прибыль от прироста конверсии
                     </div>
@@ -1059,7 +1060,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
             </p>
             
             {/* Формула по-человечески */}
-            <div className="bg-white/50 dark:bg-gray-900/50 rounded-lg p-3 space-y-2">
+            <div className="bg-white rounded-lg p-3 space-y-2 border border-gray-200">
               <h5 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Формула расчёта</h5>
               <div className="text-sm space-y-1">
                 <div className="flex items-center justify-between">
