@@ -7,12 +7,25 @@ import { InfoSidebar } from "@/components/pricing/InfoSidebar";
 import { SavingsCalculator } from "@/components/pricing/SavingsCalculator";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 export default function PricingPage() {
   const { billingMode, setBillingMode } = useBillingMode();
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const [language, setLanguage] = useState("ru");
+
+  const languages = [
+    { code: "ru", flag: "🇷🇺", label: "RU" },
+    { code: "ua", flag: "🇺🇦", label: "UA" },
+    { code: "en", flag: "🇺🇸", label: "EN" }
+  ];
+
+  const handleLanguageSwitch = () => {
+    const currentIndex = languages.findIndex(lang => lang.code === language);
+    const nextIndex = (currentIndex + 1) % languages.length;
+    setLanguage(languages[nextIndex].code);
+  };
+
+  const currentLanguage = languages.find(lang => lang.code === language);
 
   const handleSubscribe = (plan: string) => {
     // Redirect to Telegram for subscription
@@ -56,19 +69,21 @@ export default function PricingPage() {
               </div>
             </div>
             
-            {/* Language Selector */}
+            {/* Language Switcher Button */}
             <div className="flex items-center space-x-2">
               <Globe className="h-4 w-4 text-muted-foreground" />
-              <Select value={language} onValueChange={setLanguage}>
-                <SelectTrigger className="w-20 h-9 text-sm border-0 bg-transparent hover:bg-muted/50" data-testid="language-selector">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="ru" data-testid="language-ru">🇷🇺 RU</SelectItem>
-                  <SelectItem value="ua" data-testid="language-ua">🇺🇦 UA</SelectItem>
-                  <SelectItem value="en" data-testid="language-en">🇺🇸 EN</SelectItem>
-                </SelectContent>
-              </Select>
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleLanguageSwitch}
+                className="h-9 px-3 text-sm border-0 bg-transparent hover:bg-muted/50"
+                data-testid="language-switcher"
+              >
+                <span className="flex items-center space-x-1">
+                  <span>{currentLanguage?.flag}</span>
+                  <span>{currentLanguage?.label}</span>
+                </span>
+              </Button>
             </div>
           </div>
         </div>
