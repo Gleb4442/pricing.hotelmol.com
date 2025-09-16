@@ -18,7 +18,6 @@ type Currency = 'UAH' | 'USD' | 'EUR';
 interface CalculatorInputs {
   dailyRequests: number;
   avgBookingRevenue: number;
-  lostRequestsPercent: number;
   conversionRate: number;
   otaCommission: number;
   roomieCost: number;
@@ -40,7 +39,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
   const [inputs, setInputs] = useState<CalculatorInputs>({
     dailyRequests: 30,
     avgBookingRevenue: 8000,
-    lostRequestsPercent: 15,
     conversionRate: 20,
     otaCommission: 12,
     roomieCost: 35910, // 399 USD * 90 RUB/USD
@@ -96,7 +94,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const params: any = {};
     
     // Parse numeric values
-    const numericFields = ['dailyRequests', 'avgBookingRevenue', 'lostRequestsPercent', 'conversionRate', 'otaCommission', 'roomieCost', 'workingDays', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
+    const numericFields = ['dailyRequests', 'avgBookingRevenue', 'conversionRate', 'otaCommission', 'roomieCost', 'workingDays', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
     numericFields.forEach(field => {
       const value = urlParams.get(field);
       if (value && !isNaN(Number(value))) {
@@ -253,7 +251,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const { 
       dailyRequests, 
       avgBookingRevenue, 
-      lostRequestsPercent, 
       conversionRate, 
       otaCommission, 
       roomieCost, 
@@ -261,6 +258,9 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       currentBookingsPerMonth,
       additionalServiceRevenuePerBooking
     } = inputs;
+    
+    // Используем фиксированное значение 30%
+    const lostRequestsPercent = 30;
     
     // Учитываем конверсию обращений в бронь
     const actualBookings = dailyRequests * (conversionRate / 100);
@@ -700,12 +700,6 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       tooltip: 'Дополнительные услуги (трансферы, экскурсии, питание), которые вы продаёте дополнительным гостям. Если таких услуг нет — оставьте 0',
       prefix: currencySymbols[inputs.currency],
       advanced: true
-    },
-    {
-      key: 'lostRequestsPercent' as keyof CalculatorInputs,
-      label: 'Сколько обращений теряется',
-      tooltip: 'Какой процент потенциальных гостей не получает ответ или получает его слишком поздно? В среднем 10-20%',
-      suffix: '%'
     },
     {
       key: 'conversionRate' as keyof CalculatorInputs,
