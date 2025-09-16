@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from "react";
-import { Calculator, ChevronDown, X, Info, Copy, DollarSign } from "lucide-react";
+import { Calculator, ChevronDown, X, Info, Copy } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -1171,17 +1171,16 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
         <Button 
           asChild
           size="lg" 
-          className="w-full h-12 text-base font-medium"
+          className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0"
           data-testid="cta-try-roomie"
         >
           <a 
             href="https://t.me/hotelmindmanager" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex items-center justify-center space-x-2"
+            className="flex items-center justify-center"
           >
             <span>Попробовать Roomie</span>
-            <DollarSign className="h-5 w-5" />
           </a>
         </Button>
 
