@@ -404,10 +404,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                           data-testid={`currency-${currency.toLowerCase()}`}
                           whileTap={{ scale: 0.95 }}
                           animate={{
-                            scale: clickedCurrency === currency ? [1, 1.1, 1] : 1,
-                            boxShadow: inputs.currency === currency 
-                              ? '0 8px 25px rgba(59, 130, 246, 0.4)'
-                              : '0 2px 8px rgba(0, 0, 0, 0.1)'
+                            scale: clickedCurrency === currency ? [1, 1.1, 1] : 1
                           }}
                           transition={{
                             duration: 0.3,
@@ -597,10 +594,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                             data-testid={`mobile-currency-${currency.toLowerCase()}`}
                             whileTap={{ scale: 0.95 }}
                             animate={{
-                              scale: clickedCurrency === currency ? [1, 1.15, 1] : 1,
-                              boxShadow: inputs.currency === currency 
-                                ? '0 10px 30px rgba(59, 130, 246, 0.4)'
-                                : '0 2px 8px rgba(0, 0, 0, 0.1)'
+                              scale: clickedCurrency === currency ? [1, 1.15, 1] : 1
                             }}
                             transition={{
                               duration: 0.3,
