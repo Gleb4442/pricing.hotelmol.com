@@ -764,54 +764,6 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
             </div>
           ))}
 
-          {/* Раскрываемое дополнительное поле */}
-          <Collapsible>
-            <CollapsibleTrigger asChild>
-              <Button variant="ghost" className="w-full text-sm justify-start p-4 h-auto">
-                <span className="text-muted-foreground font-medium">{t('show_additional_fields')}</span>
-              </Button>
-            </CollapsibleTrigger>
-            <CollapsibleContent>
-              <div className="mt-6 space-y-6">
-                {inputFields.filter((field) => (field as any).advanced).map((field) => (
-                  <div key={field.key} className="space-y-3">
-                    <div className="flex items-center space-x-2">
-                      <Label className="text-sm font-medium text-foreground">{field.label}</Label>
-                      <Tooltip>
-                        <TooltipTrigger>
-                          <Info className="h-3 w-3 text-muted-foreground" />
-                        </TooltipTrigger>
-                        <TooltipContent className="max-w-xs bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900 border-gray-700 dark:border-gray-300 shadow-lg">
-                          <p className="text-xs font-medium">{field.tooltip}</p>
-                        </TooltipContent>
-                      </Tooltip>
-                    </div>
-                    <div className="relative">
-                      {field.prefix && (
-                        <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">
-                          {field.prefix}
-                        </span>
-                      )}
-                      <Input
-                        type="number"
-                        min="0"
-                        value={inputs[field.key]}
-                        onChange={(e) => onInputChange(field.key, Math.max(0, parseFloat(e.target.value) || 0))}
-                        className={`text-base h-12 ${field.prefix ? 'pl-8' : ''} ${field.suffix ? 'pr-20' : ''}`}
-                        placeholder={(field as any).placeholder}
-                        data-testid={`input-${field.key}`}
-                      />
-                      {field.suffix && (
-                        <span className="absolute right-3 top-1/2 transform -translate-y-1/2 text-sm text-muted-foreground">
-                          {field.suffix}
-                        </span>
-                      )}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </CollapsibleContent>
-          </Collapsible>
         </div>
 
         {/* Новая итоговая панель */}
