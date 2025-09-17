@@ -384,41 +384,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     />
                   </CollapsibleContent>
                 </Collapsible>
-                
-                {/* Currency Switcher & Save Button */}
-                <div className="space-y-3">
-                  <div className="space-y-2">
-                    <Label className="text-xs text-foreground">{t("currency_label")}</Label>
-                    <div className="flex bg-muted rounded-md p-1" data-testid="currency-switcher">
-                      {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
-                        <motion.button
-                          key={currency}
-                          onClick={() => {
-                            updateInput('currency', currency as any);
-                            setClickedCurrency(currency);
-                            setTimeout(() => setClickedCurrency(null), 300);
-                          }}
-                          className={`flex-1 px-2 py-1 text-xs rounded-sm transition-all duration-300 ${
-                            inputs.currency === currency
-                              ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border-2 border-blue-400'
-                              : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
-                          }`}
-                          data-testid={`currency-${currency.toLowerCase()}`}
-                          whileTap={{ scale: 0.95 }}
-                          animate={{
-                            scale: clickedCurrency === currency ? [1, 1.1, 1] : 1
-                          }}
-                          transition={{
-                            duration: 0.3,
-                            ease: "easeOut"
-                          }}
-                        >
-                          {currency}
-                        </motion.button>
-                      ))}
-                    </div>
-                  </div>
-                </div>
                 <Button 
                   onClick={handleTryRoomie}
                   className="w-full bg-primary hover:bg-primary/90 text-white"
@@ -572,40 +537,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 </div>
 
                 <div className="space-y-4">
-                  {/* Currency Switcher & Save Button Mobile */}
-                  <div className="space-y-4 mb-6">
-                    <div className="space-y-3">
-                      <Label className="text-sm font-medium text-foreground">{t("currency_label")}</Label>
-                      <div className="flex bg-muted rounded-lg p-1" data-testid="mobile-currency-switcher">
-                        {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
-                          <motion.button
-                            key={currency}
-                            onClick={() => {
-                              updateInput('currency', currency as any);
-                              setClickedCurrency(currency);
-                              setTimeout(() => setClickedCurrency(null), 300);
-                            }}
-                            className={`flex-1 px-4 py-3 text-sm font-medium rounded-md transition-all duration-300 ${
-                              inputs.currency === currency
-                                ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border-2 border-blue-400 font-semibold'
-                                : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
-                            }`}
-                            data-testid={`mobile-currency-${currency.toLowerCase()}`}
-                            whileTap={{ scale: 0.95 }}
-                            animate={{
-                              scale: clickedCurrency === currency ? [1, 1.15, 1] : 1
-                            }}
-                            transition={{
-                              duration: 0.3,
-                              ease: "easeOut"
-                            }}
-                          >
-                            {currency}
-                          </motion.button>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
 
                   {mobileCalculatorMode === 'info' ? (
                     <div className="space-y-6 text-base text-muted-foreground">
@@ -849,6 +780,30 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
             </CollapsibleTrigger>
             <CollapsibleContent>
               <div className="mt-6 space-y-6">
+                {/* Выбор валюты */}
+                <div className="space-y-3">
+                  <Label className="text-sm font-medium text-foreground">{t("currency_label")}</Label>
+                  <div className="flex bg-muted rounded-md p-1" data-testid="currency-switcher">
+                    {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
+                      <motion.button
+                        key={currency}
+                        onClick={() => {
+                          onInputChange('currency', currency as any);
+                        }}
+                        className={`flex-1 px-3 py-2 text-sm font-medium rounded-sm transition-all duration-300 ${
+                          inputs.currency === currency
+                            ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border-2 border-blue-400'
+                            : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
+                        }`}
+                        data-testid={`currency-${currency.toLowerCase()}`}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {currency}
+                      </motion.button>
+                    ))}
+                  </div>
+                </div>
+                
                 {inputFields.filter((field) => (field as any).advanced).map((field) => (
                   <div key={field.key} className="space-y-3">
                     <div className="flex items-center space-x-2">
