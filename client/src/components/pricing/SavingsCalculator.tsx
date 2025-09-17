@@ -426,6 +426,16 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 >
                   {t("try_roomie")}
                 </Button>
+                <Button
+                  onClick={handleSaveCalculation}
+                  variant="outline"
+                  size="sm"
+                  className="w-full h-10 border-primary/30 text-primary hover:bg-primary/5"
+                  data-testid="share-calculation-button"
+                >
+                  <Copy className="h-4 w-4 mr-2" />
+                  <span className="text-sm">{t("share_calculation")}</span>
+                </Button>
                 <Button 
                   variant="outline"
                   onClick={handleHowWeCalculate}
@@ -646,6 +656,16 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       data-testid="button-mobile-try-roomie"
                     >
                       {t("try_roomie")}
+                    </Button>
+                    <Button
+                      onClick={handleSaveCalculation}
+                      variant="outline"
+                      size="default"
+                      className="w-full h-12 border-primary/30 text-primary hover:bg-primary/5"
+                      data-testid="mobile-share-calculation-button"
+                    >
+                      <Copy className="h-4 w-4 mr-2" />
+                      <span className="text-sm font-medium">{t("share_calculation")}</span>
                     </Button>
                     <Button 
                       variant="outline"
@@ -1189,6 +1209,18 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
           >
             <span>{t('try_roomie')}</span>
           </a>
+        </Button>
+
+        {/* Кнопка поделиться расчетом */}
+        <Button
+          onClick={onShareCalculation}
+          variant="outline"
+          size="lg"
+          className="w-full h-12 border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-600 dark:text-blue-300 dark:hover:bg-blue-900/20"
+          data-testid="cta-share-calculation"
+        >
+          <Copy className="h-4 w-4 mr-2" />
+          <span className="text-sm font-medium">{t('share_calculation')}</span>
         </Button>
 
         {/* Дополнительный текст */}
