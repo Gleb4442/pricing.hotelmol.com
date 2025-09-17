@@ -753,6 +753,48 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
           </div>
         </div>
 
+        {/* Вспомогательный текст с объяснением */}
+        <div className="bg-primary/5 rounded-lg p-4 space-y-3">
+          <p className="text-sm text-foreground leading-relaxed">
+            <strong>{t('simple_words')}</strong> {t('formula_explanation_main')}
+          </p>
+          <p className="text-sm text-foreground leading-relaxed">
+            {t('formula_explanation_additional')}
+          </p>
+          
+          {/* Формула расчёта */}
+          <div className="bg-white rounded-lg p-3 space-y-2 border border-gray-200">
+            <h5 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('formula_title')}</h5>
+            <div className="text-sm space-y-1">
+              <div className="flex items-center justify-between">
+                <span className="text-green-600">+ {t('additional_revenue')}</span>
+                <span className="text-xs text-muted-foreground">{t('saved_requests_formula')}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-green-600">+ {t('ota_savings')}</span>
+                <span className="text-xs text-muted-foreground">{t('direct_bookings_commission')}</span>
+              </div>
+              <div className="flex items-center justify-between border-t pt-1 mt-2">
+                <span className="text-red-500">- {t('roomie_cost_field_label')}</span>
+                <span className="text-xs text-muted-foreground">{t('monthly_subscription')}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        {/* О честности расчётов */}
+        <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+          <div className="flex items-start space-x-3">
+            <Info className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
+            <div className="space-y-2">
+              <h5 className="text-sm font-medium text-amber-800 dark:text-amber-200">{t('trust_title')}</h5>
+              <p className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
+                {t('trust_description')}
+              </p>
+            </div>
+          </div>
+        </div>
+
         {/* Поля ввода */}
         <div className="grid gap-6">
           {inputFields.filter((field) => !(field as any).advanced).map((field) => (
