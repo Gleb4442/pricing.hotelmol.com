@@ -107,35 +107,6 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
         </div>
       </div>
 
-      {/* Benefits Block */}
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 shadow-lg" data-testid="benefits-block">
-        <h5 className="text-sm font-medium text-blue-800 dark:text-blue-200 mb-3">{t('your_benefits')}</h5>
-        <Accordion type="multiple" className="w-full space-y-2">
-          {[
-            { title: t('benefit_free_connection'), desc: t('benefit_free_connection_desc') },
-            { title: t('benefit_no_cancellation_fee'), desc: t('benefit_no_cancellation_fee_desc') },
-            { title: t('benefit_personal_manager'), desc: t('benefit_personal_manager_desc') },
-            { title: t('benefit_free_updates'), desc: t('benefit_free_updates_desc') },
-            { title: t('benefit_24_7_support'), desc: t('benefit_24_7_support_desc') },
-            { title: t('benefit_no_hidden_fees'), desc: t('benefit_no_hidden_fees_desc') }
-          ].map((benefit, index) => (
-            <AccordionItem 
-              key={index} 
-              value={`item-${index}`}
-              className="border-0 bg-transparent"
-              data-testid={`benefit-item-${index}`}
-            >
-              <AccordionTrigger className="flex items-start space-x-2 py-2 px-0 hover:no-underline text-left">
-                <div className="h-1.5 w-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
-                <span className="text-xs font-medium text-blue-800 dark:text-blue-200 flex-1">{benefit.title}</span>
-              </AccordionTrigger>
-              <AccordionContent className="pb-2 pt-0">
-                <p className="text-xs text-blue-700 dark:text-blue-300 ml-4">{benefit.desc}</p>
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </div>
     </div>
   );
 }
