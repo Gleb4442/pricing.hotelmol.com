@@ -105,6 +105,29 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
           </div>
         </div>
       </div>
+
+      {/* Benefits Block */}
+      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-6 space-y-3 shadow-lg" data-testid="benefits-block">
+        <h5 className="text-sm font-medium text-blue-800 dark:text-blue-200">{t('your_benefits')}</h5>
+        <div className="space-y-3">
+          {[
+            { title: t('benefit_free_connection'), desc: t('benefit_free_connection_desc') },
+            { title: t('benefit_no_cancellation_fee'), desc: t('benefit_no_cancellation_fee_desc') },
+            { title: t('benefit_personal_manager'), desc: t('benefit_personal_manager_desc') },
+            { title: t('benefit_free_updates'), desc: t('benefit_free_updates_desc') },
+            { title: t('benefit_24_7_support'), desc: t('benefit_24_7_support_desc') },
+            { title: t('benefit_no_hidden_fees'), desc: t('benefit_no_hidden_fees_desc') }
+          ].map((benefit, index) => (
+            <div key={index} className="space-y-1">
+              <div className="flex items-start space-x-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+                <span className="text-xs font-medium text-blue-800 dark:text-blue-200">{benefit.title}</span>
+              </div>
+              <p className="text-xs text-blue-700 dark:text-blue-300 ml-4">{benefit.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
