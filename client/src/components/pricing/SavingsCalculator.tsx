@@ -384,13 +384,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     />
                   </CollapsibleContent>
                 </Collapsible>
-                <Button 
-                  onClick={handleTryRoomie}
-                  className="w-full bg-primary hover:bg-primary/90 text-white"
-                  data-testid="button-try-roomie"
-                >
-                  {t("try_roomie")}
-                </Button>
                 <Button
                   onClick={handleSaveCalculation}
                   variant="outline"
