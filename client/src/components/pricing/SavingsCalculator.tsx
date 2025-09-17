@@ -25,7 +25,6 @@ interface CalculatorInputs {
   baseDirectShare: number; // Базовая доля прямых бронирований (до Roomie), %
   directShareGrowth: number; // Относительный прирост доли direct, %
   conversionGrowth: number; // Относительный прирост конверсии, %
-  roomieCost: number;
   currency: Currency;
   // Поля для расчёта дополнительного заработка
   currentBookingsPerMonth: number;
@@ -51,7 +50,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     baseDirectShare: 40, // 40% базовая доля прямых бронирований
     directShareGrowth: 20, // +20% к доле direct
     conversionGrowth: 0, // Пока 0% прирост конверсии
-    roomieCost: 35910, // 399 USD * 90 RUB/USD
     currency: 'USD',
     // Поля для расчёта дополнительного заработка
     currentBookingsPerMonth: 0, // Сначала пустое, требует заполнения
@@ -103,7 +101,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const params: any = {};
     
     // Parse numeric values
-    const numericFields = ['dailyRequests', 'adr', 'los', 'otaCommission', 'processingCost', 'baseDirectShare', 'directShareGrowth', 'conversionGrowth', 'roomieCost', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
+    const numericFields = ['dailyRequests', 'adr', 'los', 'otaCommission', 'processingCost', 'baseDirectShare', 'directShareGrowth', 'conversionGrowth', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
     numericFields.forEach(field => {
       const value = urlParams.get(field);
       if (value && !isNaN(Number(value))) {
@@ -266,7 +264,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       baseDirectShare,
       directShareGrowth,
       conversionGrowth,
-      roomieCost,
       currentBookingsPerMonth,
       additionalServiceRevenuePerBooking
     } = inputs;
@@ -308,13 +305,11 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const totalAdditionalEarnings = additionalRoomRevenue + additionalServiceRevenue;
     
     // Общие показатели
-    const totalSavings = commissionSavings + additionalRevenueFromConversion + timeSavings - roomieCost;
-    const roi = totalSavings > 0 ? (totalSavings / roomieCost) * 100 : 0;
+    const totalSavings = commissionSavings + additionalRevenueFromConversion + timeSavings;
     
     // Дополнительные показатели
     const additionalDirectBookingsPerMonth = deltaDirectShift * daysInPeriod;
     const totalEffect = totalSavings + totalAdditionalEarnings;
-    const paybackDays = totalEffect > 0 ? Math.ceil((roomieCost / (totalEffect / 30))) : 0;
     
     return {
       // Новая структура результатов
@@ -322,9 +317,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       additionalRevenueFromConversion,
       timeSavings,
       totalSavings,
-      roi,
       additionalDirectBookingsPerMonth,
-      paybackDays,
       // Совместимость со старым интерфейсом (для отображения)
       revenueFromSavedRequests: additionalRevenueFromConversion, // Заменяем на новую логику
       otaSavings: commissionSavings, // Экономия комиссии
@@ -616,9 +609,7 @@ interface CalculatorFormProps {
     additionalRevenueFromConversion: number;
     timeSavings: number;
     totalSavings: number;
-    roi: number;
     additionalDirectBookingsPerMonth: number;
-    paybackDays: number;
     // Совместимость со старым интерфейсом
     revenueFromSavedRequests: number;
     otaSavings: number;
@@ -701,13 +692,6 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       label: t('ota_commission_label'),
       tooltip: 'Какую комиссию платите сайтам бронирования (Booking.com, Airbnb)? Обычно 10-15%',
       suffix: '%'
-    },
-    {
-      key: 'roomieCost' as keyof CalculatorInputs,
-      label: t('roomie_cost_field_label'),
-      tooltip: 'Выберите подходящий тариф Roomie из представленных выше планов',
-      prefix: currencySymbols[inputs.currency],
-      suffix: t('per_month_suffix')
     }
   ];
 
@@ -870,21 +854,10 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   {formatNumber(savings.totalEffect)}
                 </div>
                 <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                  Экономия + Дополнительный заработок - Стоимость Roomie
+                  Экономия + Дополнительный заработок
                 </div>
               </div>
 
-              {/* Окупаемость и ROI */}
-              <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white border border-primary/30 rounded-xl p-4 text-center" data-testid="main-payback">
-                  <div className="text-sm text-muted-foreground mb-2 font-medium">Окупаемость</div>
-                  <div className="text-xl font-bold text-primary">{savings.paybackDays} дн.</div>
-                </div>
-                <div className="bg-white border border-primary/30 rounded-xl p-4 text-center" data-testid="main-roi">
-                  <div className="text-sm text-muted-foreground mb-2 font-medium">ROI</div>
-                  <div className="text-xl font-bold text-primary">{((savings.totalEffect / inputs.roomieCost) * 100).toFixed(0)}%</div>
-                </div>
-              </div>
 
               {/* Детализация */}
               <details className="space-y-4">
@@ -943,10 +916,6 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                     </div>
                   )}
                   
-                  <div className="flex justify-between border-t pt-1 mt-2">
-                    <span className="text-muted-foreground">{t('roomie_cost_field_label')}:</span>
-                    <span className="font-medium text-red-500">-{formatNumber(inputs.roomieCost)}</span>
-                  </div>
                 </div>
               </details>
             </>
@@ -994,12 +963,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
     { label: t('response_time'), value: savings.timeSavings || 0 }
   ];
 
-  const roomieCosts = [
-    { label: t('roomie_cost_label'), value: savings.inputs?.roomieCost || 35910 }
-  ];
-
   const totalHumanCosts = humanCosts.reduce((sum, item) => sum + item.value, 0);
-  const totalRoomieCosts = roomieCosts.reduce((sum, item) => sum + item.value, 0);
 
   return (
     <div className="space-y-6 pt-6 border-t border-primary/20" data-testid="trust-conversion-block">
@@ -1085,21 +1049,13 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
               </div>
             </div>
 
-            {/* Расходы с Roomie */}
-            <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4" data-testid="costs-with-roomie">
-              <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Расходы с Roomie</h6>
-              <div className="space-y-2">
-                {roomieCosts.map((cost, index) => (
-                  <div key={index} className="flex items-center justify-between">
-                    <span className="text-xs text-muted-foreground">{cost.label}</span>
-                    <span className="text-sm font-medium text-green-600">{formatNumber(cost.value)}</span>
-                  </div>
-                ))}
-                <div className="border-t pt-2 mt-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-medium text-foreground">{t('savings_label')}</span>
-                    <span className="text-sm font-bold text-green-600">{formatNumber(totalHumanCosts - totalRoomieCosts)}</span>
-                  </div>
+            {/* Общая экономия */}
+            <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4" data-testid="total-savings">
+              <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Общая экономия</h6>
+              <div className="border-t pt-2 mt-2">
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-medium text-foreground">{t('savings_label')}</span>
+                  <span className="text-sm font-bold text-green-600">{formatNumber(totalHumanCosts)}</span>
                 </div>
               </div>
             </div>
