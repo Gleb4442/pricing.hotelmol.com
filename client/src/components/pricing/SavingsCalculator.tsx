@@ -672,7 +672,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
     {
       key: 'baseDirectShare' as keyof CalculatorInputs,
       label: t('direct_share_current'),
-      tooltip: 'Какой процент бронирований приходит напрямую (сайт, телефон), а не через OTA? Обычно 30-50%',
+      tooltip: 'Какой процент бронирований приходит напрямую (сайт, телефон), а не через OTA?',
       suffix: '%'
     },
     {
