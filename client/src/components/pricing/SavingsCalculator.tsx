@@ -1209,7 +1209,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
             rel="noopener noreferrer"
             className="flex items-center justify-center"
           >
-            <span>Попробовать Roomie</span>
+            <span>{t('try_roomie')}</span>
           </a>
         </Button>
 
@@ -1222,13 +1222,12 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
           data-testid="cta-share-with-manager"
         >
           <Copy className="h-4 w-4 mr-2" />
-          Показать расчёт руководителю
+          {t('show_calculation_to_manager')}
         </Button>
 
         {/* Дополнительный текст */}
         <p className="text-xs text-center text-muted-foreground leading-relaxed">
-          Нажмите "Попробовать Roomie" для связи с нашим менеджером. 
-          Или поделитесь этим расчётом с руководителем для принятия решения.
+          {t('contact_manager_text')}
         </p>
       </div>
     </div>

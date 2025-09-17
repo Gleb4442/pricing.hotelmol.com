@@ -190,6 +190,10 @@ export const translations = {
     new_bookings_better_service: "Новые бронирования от лучшего сервиса:",
     daily_requests_label: "Обращений в день",
     adr_label: "Цена за номер в сутки (ADR)",
+    subscribe_now: "Подписаться сейчас",
+    show_calculation_to_manager: "Показать расчёт руководителю",
+    contact_manager_text: "Нажмите \"Попробовать Roomie\" для связи с нашим менеджером. Или поделитесь этим расчётом с руководителем для принятия решения.",
+    included: "включено",
   },
   
   ua: {
@@ -383,6 +387,10 @@ export const translations = {
     new_bookings_better_service: "Нові бронювання від кращого сервісу:",
     daily_requests_label: "Звернень на день",
     adr_label: "Ціна за номер на добу (ADR)",
+    subscribe_now: "Підписатися зараз",
+    show_calculation_to_manager: "Показати розрахунок керівнику",
+    contact_manager_text: "Натисніть \"Спробувати Roomie\" для зв'язку з нашим менеджером. Або поділіться цим розрахунком з керівником для прийняття рішення.",
+    included: "включено",
   },
   
   en: {
@@ -576,6 +584,10 @@ export const translations = {
     new_bookings_better_service: "New bookings from better service:",
     daily_requests_label: "Daily requests",
     adr_label: "Average daily rate (ADR)",
+    subscribe_now: "Subscribe now",
+    show_calculation_to_manager: "Show calculation to manager",
+    contact_manager_text: "Click \"Try Roomie\" to contact our manager. Or share this calculation with your manager for decision making.",
+    included: "included",
   }
 } as const;
 

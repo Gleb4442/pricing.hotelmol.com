@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { BillingMode } from "@/hooks/use-billing-mode";
 import { Tooltip } from "./TooltipProvider";
 import { useState } from "react";
+import { useLanguage } from "@/hooks/use-language";
 
 interface PricingFeature {
   text: string;
@@ -48,6 +49,7 @@ export function PricingCard({
   isPopular = false,
   onSubscribe,
 }: PricingCardProps) {
+  const { t } = useLanguage();
   const [addedFeatures, setAddedFeatures] = useState<Set<number>>(new Set());
   
   const toggleFeature = (index: number) => {
@@ -175,7 +177,7 @@ export function PricingCard({
                         className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded-md"
                         data-testid={`addon-included-${index}`}
                       >
-                        включено
+                        {t('included')}
                       </span>
                     ) : (
                       <>
@@ -216,7 +218,7 @@ export function PricingCard({
           }`}
           data-testid={`subscribe-button-${plan}`}
         >
-          {isPopular ? "Подписаться сейчас" : "Подписаться сейчас"}
+          {t('subscribe_now')}
         </Button>
       </div>
     </div>
