@@ -418,19 +418,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       ))}
                     </div>
                   </div>
-                  <div className="space-y-2">
-                    <Label className="text-xs text-foreground">{t("share_label")}</Label>
-                    <Button
-                      onClick={handleSaveCalculation}
-                      variant="outline"
-                      size="sm"
-                      className="w-full h-8 px-3 border-primary/30 text-primary hover:bg-primary/5"
-                      data-testid="share-calculation-button"
-                    >
-                      <Copy className="h-3 w-3 mr-1" />
-                      <span className="text-xs">{t("share_calculation")}</span>
-                    </Button>
-                  </div>
                 </div>
                 <Button 
                   onClick={handleTryRoomie}
@@ -607,19 +594,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                           </motion.button>
                         ))}
                       </div>
-                    </div>
-                    <div className="space-y-3">
-                      <Label className="text-sm font-medium text-foreground">{t("share_label")}</Label>
-                      <Button
-                        onClick={handleSaveCalculation}
-                        variant="outline"
-                        size="default"
-                        className="w-full h-12 px-4 border-primary/30 text-primary hover:bg-primary/5"
-                        data-testid="share-calculation-button"
-                      >
-                        <Copy className="h-4 w-4 mr-2" />
-                        <span className="text-sm font-medium">{t("share_calculation")}</span>
-                      </Button>
                     </div>
                   </div>
 
