@@ -745,7 +745,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       key: 'dailyRequests' as keyof CalculatorInputs,
       label: t('daily_requests_label'),
       tooltip: 'Сколько в среднем обращений приходит в день из сайта, мессенджеров и телефона? Если не уверены — оставьте 30',
-      suffix: 'обращений'
+      suffix: t('requests_suffix')
     },
     {
       key: 'adr' as keyof CalculatorInputs,
@@ -755,9 +755,9 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
     },
     {
       key: 'los' as keyof CalculatorInputs,
-      label: 'Средняя длительность проживания',
+      label: t('average_stay_duration'),
       tooltip: 'Сколько ночей в среднем проводят ваши гости? Обычно 1-3 ночи для городских отелей, 3-7 для курортных',
-      suffix: 'ночей'
+      suffix: t('nights_suffix')
     },
     {
       key: 'baseDirectShare' as keyof CalculatorInputs,
@@ -774,14 +774,14 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
     },
     {
       key: 'processingCost' as keyof CalculatorInputs,
-      label: 'Стоимость эквайринга',
+      label: t('processing_cost_label'),
       tooltip: 'Комиссия банка за обработку платежей на вашем сайте. Обычно 2-3%',
       suffix: '%',
       advanced: true
     },
     {
       key: 'additionalServiceRevenuePerBooking' as keyof CalculatorInputs,
-      label: 'Доп. доход от услуг на одну доп. бронь',
+      label: t('additional_service_revenue_label'),
       tooltip: 'Дополнительные услуги (трансферы, экскурсии, питание), которые вы продаёте дополнительным гостям. Если таких услуг нет — оставьте 0',
       prefix: currencySymbols[inputs.currency],
       advanced: true
@@ -797,7 +797,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       label: 'Стоимость Roomie',
       tooltip: 'Выберите подходящий тариф Roomie из представленных выше планов',
       prefix: currencySymbols[inputs.currency],
-      suffix: '/мес'
+      suffix: t('per_month_suffix')
     }
   ];
 
@@ -850,7 +850,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
           <Collapsible>
             <CollapsibleTrigger asChild>
               <Button variant="ghost" className="w-full text-sm justify-start p-4 h-auto">
-                <span className="text-muted-foreground font-medium">+ Показать дополнительные поля</span>
+                <span className="text-muted-foreground font-medium">{t('show_additional_fields')}</span>
               </Button>
             </CollapsibleTrigger>
             <CollapsibleContent>

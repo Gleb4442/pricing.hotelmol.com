@@ -194,6 +194,13 @@ export const translations = {
     show_calculation_to_manager: "Показать расчёт руководителю",
     contact_manager_text: "Нажмите \"Попробовать Roomie\" для связи с нашим менеджером. Или поделитесь этим расчётом с руководителем для принятия решения.",
     included: "включено",
+    average_stay_duration: "Средняя длительность проживания",
+    processing_cost_label: "Стоимость эквайринга",
+    additional_service_revenue_label: "Доп. доход от услуг на одну доп. бронь",
+    show_additional_fields: "+ Показать дополнительные поля",
+    requests_suffix: "обращений",
+    nights_suffix: "ночей",
+    per_month_suffix: "/мес",
   },
   
   ua: {
@@ -391,6 +398,13 @@ export const translations = {
     show_calculation_to_manager: "Показати розрахунок керівнику",
     contact_manager_text: "Натисніть \"Спробувати Roomie\" для зв'язку з нашим менеджером. Або поділіться цим розрахунком з керівником для прийняття рішення.",
     included: "включено",
+    average_stay_duration: "Середня тривалість проживання",
+    processing_cost_label: "Вартість еквайрингу",
+    additional_service_revenue_label: "Дод. дохід від послуг на одне дод. бронювання",
+    show_additional_fields: "+ Показати додаткові поля",
+    requests_suffix: "звернень",
+    nights_suffix: "ночей",
+    per_month_suffix: "/міс",
   },
   
   en: {
@@ -588,6 +602,13 @@ export const translations = {
     show_calculation_to_manager: "Show calculation to manager",
     contact_manager_text: "Click \"Try Roomie\" to contact our manager. Or share this calculation with your manager for decision making.",
     included: "included",
+    average_stay_duration: "Average stay duration",
+    processing_cost_label: "Processing cost",
+    additional_service_revenue_label: "Additional service revenue per booking",
+    show_additional_fields: "+ Show additional fields",
+    requests_suffix: "requests",
+    nights_suffix: "nights",
+    per_month_suffix: "/month",
   }
 } as const;
 
