@@ -430,9 +430,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                           <li>• {t("automation_formula")}</li>
                         </ul>
                       </div>
-                      <div className="text-xs text-primary font-medium">
-                        {t("average_savings")}
-                      </div>
                     </div>
                   </motion.div>
                 </CollapsibleContent>
@@ -560,11 +557,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                             <span className="leading-relaxed">{t("automation_formula")}</span>
                           </li>
                         </ul>
-                      </div>
-                      <div className="bg-primary/10 rounded-xl p-4 mt-6">
-                        <p className="text-base font-semibold text-primary leading-relaxed">
-                          {t("average_savings")}
-                        </p>
                       </div>
                     </div>
                   ) : (
