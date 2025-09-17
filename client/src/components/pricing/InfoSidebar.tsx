@@ -12,7 +12,7 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
   const { t, tArray } = useLanguage();
   
   return (
-    <div className="lg:row-span-1 space-y-6 lg:mt-16">
+    <div className="lg:row-span-1 space-y-6 lg:mt-6">
       {/* Usage Info Card */}
       <div
         className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 ${
