@@ -102,6 +102,19 @@ export const translations = {
     trust_title: "О честности расчётов",
     trust_description: "Если ваши цифры покажут нулевой эффект — это тоже результат. Мы не продаём чудеса, мы считаем. Наша задача — показать реальную картину, а не завлечь красивыми обещаниями.",
     
+    // Formula Explanation
+    simple_words: "Простыми словами:",
+    formula_explanation_main: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
+    formula_explanation_additional: "Плюс экономия на комиссионных OTA и рост допродаж. Минус — стоимость Roomie.",
+    formula_title: "Формула расчёта",
+    additional_revenue: "Дополнительная выручка",
+    saved_requests_formula: "(спасённые заявки × конверсия × средний чек)",
+    ota_savings: "Экономия на OTA",
+    direct_bookings_commission: "(прямые брони × комиссия)",
+    monthly_subscription: "(ежемесячная подписка)",
+    costs_comparison: "Сравнение расходов",
+    losses_without_ai: "Потери без ИИ",
+    
     // Mobile Info
     mobile_info_title: "Информация о биллинге",
     mobile_usage_info: "Оплата за использование",
@@ -324,6 +337,19 @@ export const translations = {
     trust_title: "Про чесність розрахунків",
     trust_description: "Якщо ваші цифри покажуть нульовий ефект — це теж результат. Ми не продаємо чудеса, ми рахуємо. Наше завдання — показати реальну картину, а не заманити красивими обіцянками.",
     
+    // Formula Explanation
+    simple_words: "Простими словами:",
+    formula_explanation_main: "Ми беремо ваші звернення в місяць, віднімаємо частку пропусків у людини і у ШІ, помножуємо на конверсію в бронювання і середній чек. Різниця — це додаткова виручка.",
+    formula_explanation_additional: "Плюс економія на комісійних OTA і зростання допродажів. Мінус — вартість Roomie.",
+    formula_title: "Формула розрахунку",
+    additional_revenue: "Додаткова виручка",
+    saved_requests_formula: "(врятовані заявки × конверсія × середній чек)",
+    ota_savings: "Економія на OTA",
+    direct_bookings_commission: "(прямі броні × комісія)",
+    monthly_subscription: "(щомісячна підписка)",
+    costs_comparison: "Порівняння витрат",
+    losses_without_ai: "Втрати без ШІ",
+    
     // Mobile Info
     mobile_info_title: "Інформація про білінг",
     mobile_usage_info: "Оплата за використання",
@@ -545,6 +571,19 @@ export const translations = {
     // Trust Statement
     trust_title: "About calculation honesty",
     trust_description: "If your numbers show zero effect — that's also a result. We don't sell miracles, we calculate. Our task is to show the real picture, not lure with beautiful promises.",
+    
+    // Formula Explanation
+    simple_words: "In simple words:",
+    formula_explanation_main: "We take your monthly inquiries, subtract the percentage of missed inquiries by humans and AI, multiply by booking conversion and average check. The difference is additional revenue.",
+    formula_explanation_additional: "Plus savings on OTA commissions and upselling growth. Minus Roomie cost.",
+    formula_title: "Calculation formula",
+    additional_revenue: "Additional revenue",
+    saved_requests_formula: "(saved inquiries × conversion × average check)",
+    ota_savings: "OTA savings",
+    direct_bookings_commission: "(direct bookings × commission)",
+    monthly_subscription: "(monthly subscription)",
+    costs_comparison: "Cost comparison",
+    losses_without_ai: "Losses without AI",
     
     // Mobile Info
     mobile_info_title: "Billing information",

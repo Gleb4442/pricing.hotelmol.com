@@ -1031,29 +1031,27 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
         <CollapsibleContent className="space-y-4 pt-4" data-testid="how-we-count-content">
           <div className="bg-primary/5 rounded-lg p-4 space-y-3">
             <p className="text-sm text-foreground leading-relaxed">
-              <strong>Простыми словами:</strong> Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, 
-              умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.
+              <strong>{t('simple_words')}</strong> {t('formula_explanation_main')}
             </p>
             <p className="text-sm text-foreground leading-relaxed">
-              Плюс экономия на комиссионных OTA и рост допродаж. 
-              Минус — стоимость Roomie.
+              {t('formula_explanation_additional')}
             </p>
             
             {/* Формула по-человечески */}
             <div className="bg-white rounded-lg p-3 space-y-2 border border-gray-200">
-              <h5 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">Формула расчёта</h5>
+              <h5 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('formula_title')}</h5>
               <div className="text-sm space-y-1">
                 <div className="flex items-center justify-between">
-                  <span className="text-green-600">+ Дополнительная выручка</span>
-                  <span className="text-xs text-muted-foreground">(спасённые заявки × конверсия × средний чек)</span>
+                  <span className="text-green-600">+ {t('additional_revenue')}</span>
+                  <span className="text-xs text-muted-foreground">{t('saved_requests_formula')}</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-green-600">+ Экономия на OTA</span>
-                  <span className="text-xs text-muted-foreground">(прямые брони × комиссия)</span>
+                  <span className="text-green-600">+ {t('ota_savings')}</span>
+                  <span className="text-xs text-muted-foreground">{t('direct_bookings_commission')}</span>
                 </div>
                 <div className="flex items-center justify-between border-t pt-1 mt-2">
                   <span className="text-red-500">- {t('roomie_cost_field_label')}</span>
-                  <span className="text-xs text-muted-foreground">(ежемесячная подписка)</span>
+                  <span className="text-xs text-muted-foreground">{t('monthly_subscription')}</span>
                 </div>
               </div>
             </div>
@@ -1064,10 +1062,9 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
             <div className="flex items-start space-x-3">
               <Info className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
               <div className="space-y-2">
-                <h5 className="text-sm font-medium text-amber-800 dark:text-amber-200">О честности расчётов</h5>
+                <h5 className="text-sm font-medium text-amber-800 dark:text-amber-200">{t('trust_title')}</h5>
                 <p className="text-sm text-amber-700 dark:text-amber-300 leading-relaxed">
-                  Если ваши цифры покажут нулевой эффект — это тоже результат. Мы не продаём чудеса, мы считаем.
-                  Наша задача — показать реальную картину, а не завлечь красивыми обещаниями.
+                  {t('trust_description')}
                 </p>
               </div>
             </div>
@@ -1078,12 +1075,12 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
       {/* Простые визуализации сравнения */}
       {savings.totalSavings > 0 && (
         <div className="space-y-4">
-          <h5 className="text-sm font-medium text-foreground">Сравнение расходов</h5>
+          <h5 className="text-sm font-medium text-foreground">{t('costs_comparison')}</h5>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {/* Расходы без Roomie */}
             <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-4" data-testid="costs-without-roomie">
               <h6 className="text-xs font-medium text-red-700 dark:text-red-300 mb-3">
-                Потери без ИИ
+                {t('losses_without_ai')}
               </h6>
               <div className="space-y-2">
                 {humanCosts.map((cost, index) => (
