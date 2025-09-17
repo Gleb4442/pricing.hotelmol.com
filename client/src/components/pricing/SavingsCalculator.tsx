@@ -764,8 +764,9 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 )}
                 <Input
                   type="number"
+                  min="0"
                   value={inputs[field.key]}
-                  onChange={(e) => onInputChange(field.key, parseFloat(e.target.value) || 0)}
+                  onChange={(e) => onInputChange(field.key, Math.max(0, parseFloat(e.target.value) || 0))}
                   className={`text-base h-12 ${field.prefix ? 'pl-8' : ''} ${field.suffix ? 'pr-20' : ''} ${(field as any).required && inputs[field.key] === 0 ? 'border-red-300' : ''}`}
                   placeholder={(field as any).placeholder}
                   data-testid={`input-${field.key}`}
@@ -809,8 +810,9 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                       )}
                       <Input
                         type="number"
+                        min="0"
                         value={inputs[field.key]}
-                        onChange={(e) => onInputChange(field.key, parseFloat(e.target.value) || 0)}
+                        onChange={(e) => onInputChange(field.key, Math.max(0, parseFloat(e.target.value) || 0))}
                         className={`text-base h-12 ${field.prefix ? 'pl-8' : ''} ${field.suffix ? 'pr-20' : ''}`}
                         placeholder={(field as any).placeholder}
                         data-testid={`input-${field.key}`}
