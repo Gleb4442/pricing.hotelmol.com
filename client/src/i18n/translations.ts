@@ -201,6 +201,11 @@ export const translations = {
     requests_suffix: "обращений",
     nights_suffix: "ночей",
     per_month_suffix: "/мес",
+    per_month: "в месяц",
+    per_month_yearly: "в месяц при годовой оплате",
+    per_request: "за запрос",
+    ota_commission_label: "Комиссия OTA",
+    roomie_cost_field_label: "Стоимость Roomie",
   },
   
   ua: {
@@ -405,6 +410,11 @@ export const translations = {
     requests_suffix: "звернень",
     nights_suffix: "ночей",
     per_month_suffix: "/міс",
+    per_month: "на місяць",
+    per_month_yearly: "на місяць при річній оплаті",
+    per_request: "за запит",
+    ota_commission_label: "Комісія OTA",
+    roomie_cost_field_label: "Вартість Roomie",
   },
   
   en: {
@@ -609,6 +619,11 @@ export const translations = {
     requests_suffix: "requests",
     nights_suffix: "nights",
     per_month_suffix: "/month",
+    per_month: "per month",
+    per_month_yearly: "per month with yearly payment",
+    per_request: "per request",
+    ota_commission_label: "OTA commission",
+    roomie_cost_field_label: "Roomie cost",
   }
 } as const;
 

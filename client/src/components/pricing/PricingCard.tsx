@@ -149,7 +149,7 @@ export function PricingCard({
             </span>
           </div>
           <p className="text-muted-foreground">
-            {billingMode === "usage" ? "за запрос" : billingMode === "monthly" ? "в месяц" : "в месяц при годовой оплате"}
+            {billingMode === "usage" ? t('per_request') : billingMode === "monthly" ? t('per_month') : t('per_month_yearly')}
           </p>
         </div>
 

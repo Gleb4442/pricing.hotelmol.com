@@ -788,13 +788,13 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
     },
     {
       key: 'otaCommission' as keyof CalculatorInputs,
-      label: 'Комиссия OTA',
+      label: t('ota_commission_label'),
       tooltip: 'Какую комиссию платите сайтам бронирования (Booking.com, Airbnb)? Обычно 10-15%',
       suffix: '%'
     },
     {
       key: 'roomieCost' as keyof CalculatorInputs,
-      label: 'Стоимость Roomie',
+      label: t('roomie_cost_field_label'),
       tooltip: 'Выберите подходящий тариф Roomie из представленных выше планов',
       prefix: currencySymbols[inputs.currency],
       suffix: t('per_month_suffix')
@@ -1009,7 +1009,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                   )}
                   
                   <div className="flex justify-between border-t pt-1 mt-2">
-                    <span className="text-muted-foreground">Стоимость Roomie:</span>
+                    <span className="text-muted-foreground">{t('roomie_cost_field_label')}:</span>
                     <span className="font-medium text-red-500">-{formatNumber(inputs.roomieCost)}</span>
                   </div>
                 </div>
@@ -1104,7 +1104,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
                   <span className="text-xs text-muted-foreground">(прямые брони × комиссия)</span>
                 </div>
                 <div className="flex items-center justify-between border-t pt-1 mt-2">
-                  <span className="text-red-500">- Стоимость Roomie</span>
+                  <span className="text-red-500">- {t('roomie_cost_field_label')}</span>
                   <span className="text-xs text-muted-foreground">(ежемесячная подписка)</span>
                 </div>
               </div>
