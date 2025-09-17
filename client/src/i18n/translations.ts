@@ -159,7 +159,7 @@ export const translations = {
     time_savings_formula: "Экономия времени: 2-4 часа/день × зарплата сотрудника",
     direct_bookings_formula: "Увеличение прямых бронирований: +15-25%",
     ota_commission_formula: "Снижение комиссий OTA: экономия 10-15%",
-    automation_formula: "Автоматизация рутины: 70% запросов без участия персонала",
+    automation_formula: "Автоматизация рутины: более 80% запросов без участия персонала",
     average_savings: "Средняя экономия для отеля на 20 номеров: 108,000-225,000₽/месяц",
     
     // Toast Messages
@@ -394,7 +394,7 @@ export const translations = {
     time_savings_formula: "Економія часу: 2-4 години/день × зарплата співробітника",
     direct_bookings_formula: "Збільшення прямих бронювань: +15-25%",
     ota_commission_formula: "Зменшення комісій OTA: економія 10-15%",
-    automation_formula: "Автоматизація рутини: 70% запитів без участі персоналу",
+    automation_formula: "Автоматизація рутини: понад 80% запитів без участі персоналу",
     average_savings: "Середня економія для готелю на 20 номерів: 108,000-225,000₴/місяць",
     
     // Toast Messages
@@ -629,7 +629,7 @@ export const translations = {
     time_savings_formula: "Time savings: 2-4 hours/day × employee salary",
     direct_bookings_formula: "Direct bookings increase: +15-25%",
     ota_commission_formula: "OTA commission reduction: 10-15% savings",
-    automation_formula: "Routine automation: 70% of requests without staff involvement",
+    automation_formula: "Routine automation: over 80% of requests without staff involvement",
     average_savings: "Average savings for a 20-room hotel: $3,000-6,000/month",
     
     // Toast Messages
