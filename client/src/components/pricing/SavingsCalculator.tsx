@@ -1217,18 +1217,6 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
           </a>
         </Button>
 
-        {/* Вторичная ссылка */}
-        <Button 
-          variant="outline" 
-          size="sm" 
-          onClick={onShareCalculation}
-          className="w-full text-sm h-10"
-          data-testid="cta-share-with-manager"
-        >
-          <Copy className="h-4 w-4 mr-2" />
-          {t('show_calculation_to_manager')}
-        </Button>
-
         {/* Дополнительный текст */}
         <p className="text-xs text-center text-muted-foreground leading-relaxed">
           {t('contact_manager_text')}
