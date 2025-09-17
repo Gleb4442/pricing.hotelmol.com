@@ -1175,20 +1175,24 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
         </div>
       )}
 
-      {/* Чек-лист советов */}
-      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 space-y-3" data-testid="tips-checklist">
-        <h5 className="text-sm font-medium text-blue-800 dark:text-blue-200">Как повысить выгоду от Roomie:</h5>
-        <div className="space-y-2">
+      {/* Блок выгод */}
+      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 space-y-3" data-testid="benefits-block">
+        <h5 className="text-sm font-medium text-blue-800 dark:text-blue-200">{t('your_benefits')}</h5>
+        <div className="space-y-3">
           {[
-            "Настройте быстрые ответы на частые вопросы — снизите время реакции",
-            "Обучите Roomie предлагать доп.услуги (трансфер, экскурсии) — увеличите средний чек",
-            "Используйте ночной режим — не теряйте заявки в нерабочие часы",
-            "Ведите статистику пропусков — оптимизируйте настройки под свой отель",
-            "Настройте переход к прямой броне — снижайте комиссии OTA"
-          ].map((tip, index) => (
-            <div key={index} className="flex items-start space-x-2">
-              <div className="h-1.5 w-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
-              <span className="text-xs text-blue-700 dark:text-blue-300">{tip}</span>
+            { title: t('benefit_free_connection'), desc: t('benefit_free_connection_desc') },
+            { title: t('benefit_no_cancellation_fee'), desc: t('benefit_no_cancellation_fee_desc') },
+            { title: t('benefit_personal_manager'), desc: t('benefit_personal_manager_desc') },
+            { title: t('benefit_free_updates'), desc: t('benefit_free_updates_desc') },
+            { title: t('benefit_24_7_support'), desc: t('benefit_24_7_support_desc') },
+            { title: t('benefit_no_hidden_fees'), desc: t('benefit_no_hidden_fees_desc') }
+          ].map((benefit, index) => (
+            <div key={index} className="space-y-1">
+              <div className="flex items-start space-x-2">
+                <div className="h-1.5 w-1.5 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
+                <span className="text-xs font-medium text-blue-800 dark:text-blue-200">{benefit.title}</span>
+              </div>
+              <p className="text-xs text-blue-700 dark:text-blue-300 ml-4">{benefit.desc}</p>
             </div>
           ))}
         </div>
