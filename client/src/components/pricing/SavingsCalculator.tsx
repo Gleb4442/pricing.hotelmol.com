@@ -395,14 +395,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   <Copy className="h-4 w-4 mr-2" />
                   <span className="text-sm">{t("share_calculation")}</span>
                 </Button>
-                <Button 
-                  variant="outline"
-                  onClick={handleHowWeCalculate}
-                  className="w-full border-primary/30 text-primary hover:bg-primary/5"
-                  data-testid="button-how-calculate"
-                >
-                  {t("how_we_calculate")}
-                </Button>
               </div>
 
               <Collapsible open={isExpanded} onOpenChange={setIsExpanded}>
