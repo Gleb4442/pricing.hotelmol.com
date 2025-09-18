@@ -946,7 +946,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
 
             {/* Общая экономия */}
             <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4" data-testid="total-savings">
-              <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Общая экономия</h6>
+              <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Общая экономия +дополнительный заработок</h6>
               <div className="border-t pt-2 mt-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-medium text-foreground">{t('savings_label')} +дополнительный заработок</span>
