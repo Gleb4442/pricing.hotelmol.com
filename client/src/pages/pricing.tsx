@@ -290,7 +290,7 @@ export default function PricingPage() {
       </main>
 
       {/* Demo Button */}
-      <div className="py-16 text-center">
+      <div className="py-16 text-center space-y-4">
         <Button 
           asChild
           size="lg" 
@@ -305,6 +305,24 @@ export default function PricingPage() {
           >
             <span className="whitespace-nowrap">{t("try_demo")}</span>
             <span className="text-sm font-normal opacity-80 whitespace-nowrap">{t("no_registration")}</span>
+          </a>
+        </Button>
+        
+        {/* Presentation Button */}
+        <Button 
+          asChild
+          variant="outline"
+          size="lg"
+          className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 text-base font-medium shadow-md rounded-lg"
+          data-testid="button-presentation"
+        >
+          <a 
+            href="/attached_assets/Революція%20в%20гостинності%20з%20Roomie%20(6)_1758167610668.pdf" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex items-center justify-center"
+          >
+            <span>{t("view_presentation")}</span>
           </a>
         </Button>
       </div>

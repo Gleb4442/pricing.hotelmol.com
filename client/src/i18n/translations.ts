@@ -238,6 +238,7 @@ export const translations = {
     // Demo button
     try_demo: "Попробовать ДЭМО",
     no_registration: "без регистрации",
+    view_presentation: "Посмотреть презентацию",
   },
   
   ua: {
@@ -477,6 +478,7 @@ export const translations = {
     // Demo button
     try_demo: "Спробувати ДЕМО",
     no_registration: "без реєстрації",
+    view_presentation: "Переглянути презентацію",
   },
   
   en: {
@@ -716,6 +718,7 @@ export const translations = {
     // Demo button
     try_demo: "Try DEMO",
     no_registration: "no registration",
+    view_presentation: "View presentation",
   }
 } as const;
 
