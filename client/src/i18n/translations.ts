@@ -114,7 +114,7 @@ export const translations = {
     guest_neglect_cost: "Стоимость невнимания к гостю",
     guest_neglect_formula: "(обращения в день × 80 USD × 30 дней)",
     monthly_subscription: "(ежемесячная подписка)",
-    costs_comparison: "Сравнение расходов",
+    costs_comparison: "Сравнение потерь",
     losses_without_ai: "Потери без ИИ",
     
     // Mobile Info
@@ -354,7 +354,7 @@ export const translations = {
     ota_savings: "Економія на OTA",
     direct_bookings_commission: "(прямі броні × комісія)",
     monthly_subscription: "(щомісячна підписка)",
-    costs_comparison: "Порівняння витрат",
+    costs_comparison: "Порівняння втрат",
     losses_without_ai: "Втрати без ШІ",
     
     // Mobile Info
@@ -594,7 +594,7 @@ export const translations = {
     ota_savings: "OTA savings",
     direct_bookings_commission: "(direct bookings × commission)",
     monthly_subscription: "(monthly subscription)",
-    costs_comparison: "Cost comparison",
+    costs_comparison: "Loss comparison",
     losses_without_ai: "Losses without AI",
     
     // Mobile Info
