@@ -67,8 +67,8 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
       </div>
 
       <div
-        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 ${
-          billingMode === "yearly" ? "block" : "hidden"
+        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 hidden md:block ${
+          billingMode === "yearly" ? "" : "!hidden"
         }`}
         data-testid="yearly-info-card"
       >
@@ -94,7 +94,7 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
 
 
       {/* Trust Indicators */}
-      <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
+      <div className="bg-card border border-border rounded-2xl p-6 shadow-lg hidden md:block">
         <div className="grid grid-cols-2 gap-4">
           <div className="text-center" data-testid="uptime-indicator">
             <div className="text-2xl font-bold text-primary">86%</div>
