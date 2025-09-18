@@ -819,65 +819,6 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
               </div>
 
 
-              {/* Детализация */}
-              <details className="space-y-4">
-                <summary className="text-sm font-semibold text-foreground cursor-pointer hover:text-primary p-2">Детализация расчётов</summary>
-                <div className="space-y-3 text-xs mt-2" data-testid="calculation-details">
-                  {/* Блок 1: Экономия комиссии */}
-                  <div className="bg-white border-2 border-green-200 p-3 rounded" data-testid="block-commission">
-                    <div className="font-medium text-green-800 dark:text-green-200 border-b border-green-200 dark:border-green-700 pb-1 mb-2">
-                      {t('commission_savings_tooltip')}
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-green-700 dark:text-green-300">{t('ota_to_direct_transition')}</span>
-                      <span className="font-medium text-green-600 dark:text-green-400" data-testid="value-commission-savings">{formatNumber(savings.commissionSavings)}</span>
-                    </div>
-                    <div className="text-xs text-green-600 dark:text-green-400 mt-1">
-                      Экономия = доп.direct × (комиссия OTA - эквайринг)
-                    </div>
-                  </div>
-
-                  {/* Блок 2: Дополнительная прибыль */}
-                  <div className="bg-white border-2 border-blue-200 p-3 rounded" data-testid="block-additional">
-                    <div className="font-medium text-blue-800 dark:text-blue-200 border-b border-blue-200 dark:border-blue-700 pb-1 mb-2">
-                      📈 Дополнительная прибыль от прироста конверсии
-                    </div>
-                    <div className="flex justify-between">
-                      <span className="text-blue-700 dark:text-blue-300">{t('new_bookings_better_service')}</span>
-                      <span className="font-medium text-blue-600 dark:text-blue-400" data-testid="value-additional-revenue">{formatNumber(savings.additionalRevenueFromConversion)}</span>
-                    </div>
-                    <div className="text-xs text-blue-600 dark:text-blue-400 mt-1">
-                      Прибыль = новые брони × доходность каналов
-                    </div>
-                  </div>
-
-                  {/* Блок 3: Операционная экономия */}
-                  <div className="space-y-1" data-testid="block-time">
-                    <div className="font-medium text-foreground border-b pb-1 mb-2">⏰ Операционная экономия:</div>
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">{t("results_time_savings_label")}</span>
-                      <span className="font-medium text-green-600" data-testid="value-time-savings">{formatNumber(savings.timeSavings)}</span>
-                    </div>
-                  </div>
-                  
-                  <div className="font-medium text-foreground border-b pb-1 mb-2 mt-3">{t("results_additional_bookings_title")}</div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">{t("results_additional_bookings")}</span>
-                    <span className="font-medium text-blue-600">{savings.additionalBookingsPerMonth}</span>
-                  </div>
-                  <div className="flex justify-between">
-                    <span className="text-muted-foreground">Доп. оборот (номера):</span>
-                    <span className="font-medium text-blue-600">{formatNumber(savings.additionalRoomRevenue)}</span>
-                  </div>
-                  {savings.additionalServiceRevenue > 0 && (
-                    <div className="flex justify-between">
-                      <span className="text-muted-foreground">Доп. оборот (услуги):</span>
-                      <span className="font-medium text-blue-600">{formatNumber(savings.additionalServiceRevenue)}</span>
-                    </div>
-                  )}
-                  
-                </div>
-              </details>
             </>
           )}
         </div>
