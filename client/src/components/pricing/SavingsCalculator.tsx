@@ -566,13 +566,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   )}
 
                   <div className="space-y-3 pt-4 border-t border-border">
-                    <Button 
-                      onClick={handleTryRoomie}
-                      className="w-full bg-primary hover:bg-primary/90 text-white"
-                      data-testid="button-mobile-try-roomie"
-                    >
-                      {t("try_roomie")}
-                    </Button>
                     <Button
                       onClick={handleSaveCalculation}
                       variant="outline"
