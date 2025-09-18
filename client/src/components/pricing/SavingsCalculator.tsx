@@ -861,7 +861,8 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
   const humanCosts = [
     { label: t('missed_bookings'), value: savings.revenueFromSavedRequests || 0 },
     { label: t('ota_commissions'), value: savings.otaSavings || 0 },
-    { label: t('response_time'), value: savings.timeSavings || 0 }
+    { label: t('response_time'), value: savings.timeSavings || 0 },
+    { label: 'Дополнительный заработок/мес', value: savings.totalAdditionalEarnings || 0 }
   ];
 
   const totalHumanCosts = humanCosts.reduce((sum, item) => sum + item.value, 0);
@@ -955,7 +956,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
               <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Общая экономия</h6>
               <div className="border-t pt-2 mt-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-medium text-foreground">{t('savings_label')}</span>
+                  <span className="text-xs font-medium text-foreground">{t('savings_label')} +дополнительный заработок</span>
                   <span className="text-sm font-bold text-green-600">{formatNumber(totalHumanCosts)}</span>
                 </div>
               </div>
