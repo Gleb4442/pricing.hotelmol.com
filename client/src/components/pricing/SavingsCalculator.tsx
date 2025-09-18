@@ -882,29 +882,6 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
             <p className="text-sm text-foreground leading-relaxed">
               {t('formula_explanation_additional')}
             </p>
-            
-            {/* Формула по-человечески */}
-            <div className="bg-white rounded-lg p-3 space-y-2 border border-gray-200">
-              <h5 className="text-xs font-medium text-muted-foreground uppercase tracking-wide">{t('formula_title')}</h5>
-              <div className="text-sm space-y-1">
-                <div className="flex items-center justify-between">
-                  <span className="text-green-600">+ {t('additional_revenue')}</span>
-                  <span className="text-xs text-muted-foreground">{t('saved_requests_formula')}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-green-600">+ {t('ota_savings')}</span>
-                  <span className="text-xs text-muted-foreground">{t('direct_bookings_commission')}</span>
-                </div>
-                <div className="flex items-center justify-between">
-                  <span className="text-green-600">+ {t('guest_neglect_cost')}</span>
-                  <span className="text-xs text-muted-foreground">{t('guest_neglect_formula')}</span>
-                </div>
-                <div className="flex items-center justify-between border-t pt-1 mt-2">
-                  <span className="text-red-500">- {t('roomie_cost_field_label')}</span>
-                  <span className="text-xs text-muted-foreground">{t('monthly_subscription')}</span>
-                </div>
-              </div>
-            </div>
           </div>
 
           {/* Текст о честности */}
