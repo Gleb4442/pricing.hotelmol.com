@@ -852,7 +852,6 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
 
   // Простые визуализации сравнения
   const humanCosts = [
-    { label: t('missed_bookings'), value: savings.revenueFromSavedRequests || 0 },
     { label: t('ota_commissions'), value: savings.otaSavings || 0 },
     { label: t('response_time'), value: savings.timeSavings || 0 },
     { label: 'Дополнительный заработок/мес', value: savings.totalAdditionalEarnings || 0 }
