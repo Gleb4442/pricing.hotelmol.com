@@ -519,12 +519,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   </Button>
                 </div>
                 
-                {/* Текст под кнопкой калькулятора */}
-                <div className="text-center mb-4">
-                  <p className="text-xl font-medium text-foreground">
-                    {t("how_we_calculate_mobile")}
-                  </p>
-                </div>
 
                 <div className="space-y-4">
 
