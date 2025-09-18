@@ -309,24 +309,6 @@ export default function PricingPage() {
               <span className="text-xs font-normal opacity-80 whitespace-nowrap">{t("no_registration")}</span>
             </a>
           </Button>
-          
-          {/* Presentation Button */}
-          <Button 
-            asChild
-            variant="outline"
-            size="lg"
-            className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 text-base font-medium shadow-md rounded-lg flex-1 sm:flex-initial w-full sm:w-auto"
-            data-testid="button-presentation"
-          >
-            <a 
-              href="/attached_assets/Революція%20в%20гостинності%20з%20Roomie%20(6)_1758167610668.pdf" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center justify-center"
-            >
-              <span>{t("view_presentation")}</span>
-            </a>
-          </Button>
         </div>
       </div>
 
