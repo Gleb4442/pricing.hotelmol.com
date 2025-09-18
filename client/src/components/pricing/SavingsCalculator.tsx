@@ -895,6 +895,10 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
                   <span className="text-green-600">+ {t('ota_savings')}</span>
                   <span className="text-xs text-muted-foreground">{t('direct_bookings_commission')}</span>
                 </div>
+                <div className="flex items-center justify-between">
+                  <span className="text-green-600">+ {t('guest_neglect_cost')}</span>
+                  <span className="text-xs text-muted-foreground">{t('guest_neglect_formula')}</span>
+                </div>
                 <div className="flex items-center justify-between border-t pt-1 mt-2">
                   <span className="text-red-500">- {t('roomie_cost_field_label')}</span>
                   <span className="text-xs text-muted-foreground">{t('monthly_subscription')}</span>
