@@ -532,7 +532,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     <div className="space-y-4 text-base text-muted-foreground">
                       {/* Заголовок с иконкой */}
                       <div className="text-center mb-4">
-                        <h4 className="text-xl font-semibold text-primary mb-2">
+                        <h4 className="text-lg font-semibold text-primary mb-2">
                           {(t as any)("simple_explanation_mobile_structured").intro}
                         </h4>
                       </div>
@@ -875,7 +875,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
             className="w-full justify-between p-0 h-auto text-left"
             data-testid="toggle-how-we-count"
           >
-            <h4 className="text-sm font-medium text-foreground">{t("how_we_calculate")}</h4>
+            <h4 className="text-lg font-medium text-foreground">{t("how_we_calculate")}</h4>
             <ChevronDown className={`h-4 w-4 text-muted-foreground transition-transform ${isHowWeCountExpanded ? 'rotate-180' : ''}`} />
           </Button>
         </CollapsibleTrigger>
