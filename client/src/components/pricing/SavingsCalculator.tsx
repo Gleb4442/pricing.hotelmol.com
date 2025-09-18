@@ -781,12 +781,12 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
 
                 {/* Дополнительный заработок/мес */}
                 <div className="bg-white border-2 border-blue-200 rounded-xl p-6 text-center" data-testid="main-additional-earnings">
-                  <div className="text-sm text-muted-foreground mb-2 font-medium">Дополнительный заработок/мес</div>
+                  <div className="text-sm text-muted-foreground mb-2 font-medium">{t('additional_earnings_per_month')}</div>
                   <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
                   
                   {/* Пояснительный текст под цифрой */}
                   <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                    +8% к вашим бронированиям за счёт ответов ночью и без ожидания на линии в пиковые часы
+                    {t('additional_earnings_explanation')}
                     <br />
                     <span className="font-semibold">{t('additional_bookings_per_month')}: {savings.additionalBookingsPerMonth}</span>
                   </div>
@@ -795,12 +795,12 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
 
               {/* Итого эффект */}
               <div className="bg-white rounded-xl p-6 text-center border-2 border-primary/30" data-testid="total-effect">
-                <div className="text-base text-muted-foreground mb-2 font-semibold">Итого эффект/мес</div>
+                <div className="text-base text-muted-foreground mb-2 font-semibold">{t('total_effect_per_month')}</div>
                 <div className="text-3xl font-bold text-primary">
                   {formatNumber(savings.totalEffect)}
                 </div>
                 <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
-                  Экономия + Дополнительный заработок
+                  {t('savings_plus_additional_earnings')}
                 </div>
               </div>
 
@@ -847,7 +847,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
   const humanCosts = [
     { label: t('ota_commissions'), value: savings.otaSavings || 0 },
     { label: t('response_time'), value: savings.timeSavings || 0 },
-    { label: 'Дополнительный заработок/мес', value: savings.totalAdditionalEarnings || 0 }
+    { label: t('additional_earnings_per_month'), value: savings.totalAdditionalEarnings || 0 }
   ];
 
   const totalHumanCosts = humanCosts.reduce((sum, item) => sum + item.value, 0);
