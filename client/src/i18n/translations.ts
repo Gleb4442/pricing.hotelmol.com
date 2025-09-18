@@ -112,7 +112,7 @@ export const translations = {
     ota_savings: "Экономия на комиссии OTA",
     direct_bookings_commission: "(переток с OTA на прямые × разница комиссий)",
     guest_neglect_cost: "Стоимость невнимания к гостю",
-    guest_neglect_formula: "(обращения в день × 80 USD × 30 дней)",
+    guest_neglect_formula: "(обращения в день × 75 USD)",
     monthly_subscription: "(ежемесячная подписка)",
     costs_comparison: "Сравнение потерь",
     losses_without_ai: "Потери без ИИ",

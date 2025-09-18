@@ -301,8 +301,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const additionalOtaRevenue = deltaB * (1 - s1) * avgBookingRevenue * (1 - otaCommission / 100) * daysInPeriod;
     const additionalRevenueFromConversion = additionalDirectRevenue + additionalOtaRevenue;
     
-    // Стоимость невнимания к гостю (количество обращений в день × 80 USD с конвертацией)
-    const timeSavings = dailyRequests * 80 * currencyRates[currency];
+    // Стоимость невнимания к гостю (количество обращений в день × 75 USD с конвертацией)
+    const timeSavings = dailyRequests * 75 * currencyRates[currency];
     
     // Расчёт дополнительного заработка (фиксированно 8% рост)
     const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
