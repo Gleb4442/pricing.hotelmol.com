@@ -58,7 +58,13 @@ export const translations = {
     calculator_description: "Узнайте, как ИИ-помощник повлияет на ваш бизнес. Все расчёты основаны на реальных данных отельного рынка.",
     calculator_title_mobile: "Сколько вы сэкономите с Roomie?",
     calculator_description_mobile: "Узнайте, как ИИ-помощник повлияет на ваш бизнес. Все расчёты основаны на реальных данных отельного рынка.",
-    simple_explanation_mobile: "Простыми словами: Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирования и средний чек. Разность - это дополнительная выручка.\nПлюс экономия на комиссионных ОТА и рост допродаж. Минус - стоимость Roomie.",
+    simple_explanation_mobile_structured: {
+      intro: "📊 Простыми словами:",
+      formula: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирования и средний чек.",
+      result: "✨ Разность - это дополнительная выручка",
+      benefits: "➕ Экономия на комиссионных ОТА и рост допродаж",
+      cost: "➖ Стоимость Roomie"
+    },
     how_we_calculate_mobile: "Как мы считаем?",
     
     // Calculator Fields
@@ -310,7 +316,13 @@ export const translations = {
     calculator_description: "Дізнайтеся, як ШІ-помічник вплине на ваш бізнес. Всі розрахунки засновані на реальних даних готельного ринку.",
     calculator_title_mobile: "Скільки ви заощадите з Roomie?",
     calculator_description_mobile: "Дізнайтеся, як ШІ-помічник вплине на ваш бізнес. Всі розрахунки засновані на реальних даних готельного ринку.",
-    simple_explanation_mobile: "Простими словами: Ми беремо ваші звернення в місяць, віднімаємо частку пропусків у людини і у ШІ, помножуємо на конверсію в бронювання і середній чек. Різниця - це додаткова виручка.\nПлюс економія на комісійних ОТА і зростання допродажів. Мінус - вартість Roomie.",
+    simple_explanation_mobile_structured: {
+      intro: "📊 Простими словами:",
+      formula: "Ми беремо ваші звернення в місяць, віднімаємо частку пропусків у людини і у ШІ, помножуємо на конверсію в бронювання і середній чек.",
+      result: "✨ Різниця - це додаткова виручка",
+      benefits: "➕ Економія на комісійних ОТА і зростання допродажів",
+      cost: "➖ Вартість Roomie"
+    },
     how_we_calculate_mobile: "Як ми рахуємо?",
     
     // Calculator Fields
@@ -560,7 +572,13 @@ export const translations = {
     calculator_description: "Find out how AI assistant will impact your business. All calculations are based on real hotel market data.",
     calculator_title_mobile: "How much will you save with Roomie?",
     calculator_description_mobile: "Find out how AI assistant will impact your business. All calculations are based on real hotel market data.",
-    simple_explanation_mobile: "In simple terms: We take your monthly inquiries, subtract the miss rate for humans and AI, multiply by booking conversion and average check. The difference is additional revenue.\nPlus savings on OTA commissions and increased upsales. Minus the cost of Roomie.",
+    simple_explanation_mobile_structured: {
+      intro: "📊 In simple terms:",
+      formula: "We take your monthly inquiries, subtract the miss rate for humans and AI, multiply by booking conversion and average check.",
+      result: "✨ The difference is additional revenue",
+      benefits: "➕ Savings on OTA commissions and increased upsales",
+      cost: "➖ Cost of Roomie"
+    },
     how_we_calculate_mobile: "How do we calculate?",
     
     // Calculator Fields
