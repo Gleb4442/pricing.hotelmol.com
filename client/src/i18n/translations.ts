@@ -403,8 +403,8 @@ export const translations = {
     footer_copyright: "© 2024 Roomie. Всі права захищені.",
     
     // Calculator Actions
-    calculator_action: "Калькулятор",
-    information_action: "Інформація",
+    calculator_action: "Калькулятор доходності",
+    information_action: "Інформація", 
     save_data: "Зберегти дані",
     share_results: "Поділитися результатами",
     advanced_settings: "Розширені налаштування",
