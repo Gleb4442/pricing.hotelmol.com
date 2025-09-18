@@ -473,7 +473,13 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                 </div>
                 
                 <div className="flex-1 p-6 overflow-y-auto bg-white">
-                <div className="flex justify-end mb-4">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-2">
+                    <Calculator className="h-5 w-5 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {t("calculator_title_mobile")}
+                    </h3>
+                  </div>
                   <Button 
                     variant="ghost" 
                     size="sm" 
@@ -483,6 +489,10 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
+                
+                <p className="text-base text-muted-foreground mb-6 whitespace-pre-line">
+                  {t("calculator_description_mobile")}
+                </p>
 
                 {/* Переключатель режимов */}
                 <div className="relative flex justify-center mb-6">
