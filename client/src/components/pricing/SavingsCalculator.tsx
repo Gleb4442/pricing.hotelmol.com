@@ -48,7 +48,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     otaCommission: 12,
     processingCost: 2.5, // Эквайринг 2.5%
     baseDirectShare: 40, // 40% базовая доля прямых бронирований
-    directShareGrowth: 15, // +15% к доле direct (фиксированное значение)
+    directShareGrowth: 20, // +20% к доле direct
     conversionGrowth: 0, // Пока 0% прирост конверсии
     currency: 'USD',
     // Поля для расчёта дополнительного заработка
@@ -675,6 +675,13 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       suffix: '%'
     },
     {
+      key: 'directShareGrowth' as keyof CalculatorInputs,
+      label: t('direct_share_growth_label'),
+      tooltip: 'На сколько процентов Roomie увеличит долю прямых бронирований за счёт качественного сервиса? Обычно +15-25%',
+      suffix: '%',
+      advanced: true
+    },
+    {
       key: 'processingCost' as keyof CalculatorInputs,
       label: t('processing_cost_label'),
       tooltip: 'Комиссия банка за обработку платежей на вашем сайте. Обычно 2-3%',
@@ -852,6 +859,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
 
   // Простые визуализации сравнения
   const humanCosts = [
+    { label: t('missed_bookings'), value: savings.revenueFromSavedRequests || 0 },
     { label: t('ota_commissions'), value: savings.otaSavings || 0 },
     { label: t('response_time'), value: savings.timeSavings || 0 },
     { label: 'Дополнительный заработок/мес', value: savings.totalAdditionalEarnings || 0 }
@@ -945,7 +953,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
 
             {/* Общая экономия */}
             <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-4" data-testid="total-savings">
-              <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Общая экономия +дополнительный заработок</h6>
+              <h6 className="text-xs font-medium text-green-700 dark:text-green-300 mb-3">Общая экономия</h6>
               <div className="border-t pt-2 mt-2">
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-medium text-foreground">{t('savings_label')} +дополнительный заработок</span>
