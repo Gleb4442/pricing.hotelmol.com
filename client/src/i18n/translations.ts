@@ -373,7 +373,7 @@ export const translations = {
     // Formula Explanation
     simple_words: "Простими словами:",
     formula_explanation_main: "Ми беремо ваші звернення в місяць, віднімаємо частку пропусків у людини і у ШІ, помножуємо на конверсію в бронювання і середній чек. Різниця — це додаткова виручка.",
-    formula_explanation_additional: "Плюс економія на комісійних OTA і зростання допродажів. Мінус — вартість Roomie.",
+    formula_explanation_additional: "Плюс економія на комісійних OTA і зростання допродажів.",
     formula_title: "Формула розрахунку",
     additional_revenue: "Додаткова виручка",
     saved_requests_formula: "(врятовані заявки × конверсія × середній чек)",
@@ -629,7 +629,7 @@ export const translations = {
     // Formula Explanation
     simple_words: "In simple words:",
     formula_explanation_main: "We take your monthly inquiries, subtract the percentage of missed inquiries by humans and AI, multiply by booking conversion and average check. The difference is additional revenue.",
-    formula_explanation_additional: "Plus savings on OTA commissions and upselling growth. Minus Roomie cost.",
+    formula_explanation_additional: "Plus savings on OTA commissions and upselling growth.",
     formula_title: "Calculation formula",
     additional_revenue: "Additional revenue",
     saved_requests_formula: "(saved inquiries × conversion × average check)",
