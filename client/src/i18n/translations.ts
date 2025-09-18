@@ -61,7 +61,7 @@ export const translations = {
     simple_explanation_mobile_structured: {
       intro: "📊 Простыми словами:",
       formula: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирования и средний чек.",
-      result: "✨ Разность - это дополнительная выручка",
+      result: "Разность - это дополнительная выручка",
       benefits: "➕ Экономия на комиссионных ОТА и рост допродаж"
     },
     how_we_calculate_mobile: "Как мы считаем?",
@@ -318,7 +318,7 @@ export const translations = {
     simple_explanation_mobile_structured: {
       intro: "📊 Простими словами:",
       formula: "Ми беремо ваші звернення в місяць, віднімаємо частку пропусків у людини і у ШІ, помножуємо на конверсію в бронювання і середній чек.",
-      result: "✨ Різниця - це додаткова виручка",
+      result: "Різниця - це додаткова виручка",
       benefits: "➕ Економія на комісійних ОТА і врятовані бронювання"
     },
     how_we_calculate_mobile: "Як ми рахуємо?",
@@ -573,7 +573,7 @@ export const translations = {
     simple_explanation_mobile_structured: {
       intro: "📊 In simple terms:",
       formula: "We take your monthly inquiries, subtract the miss rate for humans and AI, multiply by booking conversion and average check.",
-      result: "✨ The difference is additional revenue",
+      result: "The difference is additional revenue",
       benefits: "➕ Savings on OTA commissions and increased upsales"
     },
     how_we_calculate_mobile: "How do we calculate?",
