@@ -48,7 +48,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     otaCommission: 12,
     processingCost: 2.5, // Эквайринг 2.5%
     baseDirectShare: 40, // 40% базовая доля прямых бронирований
-    directShareGrowth: 20, // +20% к доле direct
+    directShareGrowth: 15, // +15% к доле direct (фиксированное значение)
     conversionGrowth: 0, // Пока 0% прирост конверсии
     currency: 'USD',
     // Поля для расчёта дополнительного заработка
@@ -673,13 +673,6 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       label: t('direct_share_current'),
       tooltip: 'Какой процент бронирований приходит напрямую (сайт, телефон), а не через OTA?',
       suffix: '%'
-    },
-    {
-      key: 'directShareGrowth' as keyof CalculatorInputs,
-      label: t('direct_share_growth_label'),
-      tooltip: 'На сколько процентов Roomie увеличит долю прямых бронирований за счёт качественного сервиса? Обычно +15-25%',
-      suffix: '%',
-      advanced: true
     },
     {
       key: 'processingCost' as keyof CalculatorInputs,
