@@ -105,7 +105,7 @@ export const translations = {
     // Formula Explanation
     simple_words: "Простыми словами:",
     formula_explanation_main: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
-    formula_explanation_additional: "Плюс экономия на комиссионных OTA и рост допродаж. Минус — стоимость Roomie.",
+    formula_explanation_additional: "Плюс экономия на комиссионных OTA и рост допродаж.",
     formula_title: "Формула расчёта",
     additional_revenue: "Дополнительная выручка",
     saved_requests_formula: "(спасённые заявки × конверсия × средний чек)",
@@ -177,7 +177,7 @@ export const translations = {
     ota_commissions: "Комиссии OTA",
     response_time: "Время на ответы",
     calculation_explanation: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
-    calculation_additional: "Плюс экономия на комиссионных OTA и рост допродаж. Минус — стоимость Roomie.",
+    calculation_additional: "Плюс экономия на комиссионных OTA и рост допродаж.",
     
     // Pricing Labels
     addon_pricing_usage: "+0,5 центов/запрос",
