@@ -56,6 +56,8 @@ export const translations = {
     // Calculator
     calculator_title: "Сколько вы сэкономите с Roomie?",
     calculator_description: "Узнайте, как ИИ-помощник повлияет на ваш бизнес. Все расчёты основаны на реальных данных отельного рынка.",
+    calculator_title_mobile: "Как мы считаем?",
+    calculator_description_mobile: "Простыми словами: Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирования и средний чек. Разность - это дополнительная выручка.\nПлюс экономия на комиссионных ОТА и рост допродаж. Минус - стоимость Roomie.",
     
     // Calculator Fields
     field_daily_requests: "Запросов в день",
@@ -304,6 +306,8 @@ export const translations = {
     // Calculator
     calculator_title: "Скільки ви заощадите з Roomie?",
     calculator_description: "Дізнайтеся, як ШІ-помічник вплине на ваш бізнес. Всі розрахунки засновані на реальних даних готельного ринку.",
+    calculator_title_mobile: "Як ми рахуємо?",
+    calculator_description_mobile: "Простими словами: Ми беремо ваші звернення в місяць, віднімаємо частку пропусків у людини і у ШІ, помножуємо на конверсію в бронювання і середній чек. Різниця - це додаткова виручка.\nПлюс економія на комісійних ОТА і зростання допродажів. Мінус - вартість Roomie.",
     
     // Calculator Fields
     field_daily_requests: "Запитів на день",
@@ -550,6 +554,8 @@ export const translations = {
     // Calculator
     calculator_title: "How much will you save with Roomie?",
     calculator_description: "Find out how AI assistant will impact your business. All calculations are based on real hotel market data.",
+    calculator_title_mobile: "How do we calculate?",
+    calculator_description_mobile: "In simple terms: We take your monthly inquiries, subtract the miss rate for humans and AI, multiply by booking conversion and average check. The difference is additional revenue.\nPlus savings on OTA commissions and increased upsales. Minus the cost of Roomie.",
     
     // Calculator Fields
     field_daily_requests: "Daily requests",

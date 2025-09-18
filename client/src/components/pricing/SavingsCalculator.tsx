@@ -477,7 +477,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   <div className="flex items-center space-x-2">
                     <Calculator className="h-5 w-5 text-primary" />
                     <h3 className="text-lg font-semibold text-foreground">
-                      {t("calculator_title")}
+                      {t("calculator_title_mobile")}
                     </h3>
                   </div>
                   <Button 
@@ -490,8 +490,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   </Button>
                 </div>
                 
-                <p className="text-base text-muted-foreground mb-6">
-                  {t("calculator_description")}
+                <p className="text-base text-muted-foreground mb-6 whitespace-pre-line">
+                  {t("calculator_description_mobile")}
                 </p>
 
                 {/* Переключатель режимов */}
