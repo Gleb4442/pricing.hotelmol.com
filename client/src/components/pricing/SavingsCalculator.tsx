@@ -265,8 +265,16 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       directShareGrowth,
       conversionGrowth,
       currentBookingsPerMonth,
-      additionalServiceRevenuePerBooking
+      additionalServiceRevenuePerBooking,
+      currency
     } = inputs;
+    
+    // Курсы валют для конвертации из USD
+    const currencyRates: Record<Currency, number> = {
+      USD: 1.0,
+      EUR: 0.85,
+      UAH: 37.0
+    };
     
     // Константы
     const baseConversionRate = 35; // Фиксированная конверсия 35%
@@ -293,8 +301,8 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     const additionalOtaRevenue = deltaB * (1 - s1) * avgBookingRevenue * (1 - otaCommission / 100) * daysInPeriod;
     const additionalRevenueFromConversion = additionalDirectRevenue + additionalOtaRevenue;
     
-    // Экономия времени (фиксированная оценка)
-    const timeSavings = 5000;
+    // Стоимость невнимания к гостю (количество обращений в день × 80 USD с конвертацией)
+    const timeSavings = dailyRequests * 80 * currencyRates[currency];
     
     // Расчёт дополнительного заработка (фиксированно 8% рост)
     const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
