@@ -303,7 +303,7 @@ export default function PricingPage() {
               href="https://roomie-bot-glebw2008.replit.app" 
               target="_blank" 
               rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center gap-0.5"
+              className="flex flex-col items-center justify-center gap-0"
             >
               <span className="whitespace-nowrap">{t("try_demo")}</span>
               <span className="text-xs font-normal opacity-80 whitespace-nowrap">{t("no_registration")}</span>
