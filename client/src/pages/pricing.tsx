@@ -294,17 +294,17 @@ export default function PricingPage() {
         <Button 
           asChild
           size="lg" 
-          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 text-lg font-semibold shadow-lg"
+          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-12 py-6 text-xl font-semibold shadow-lg h-auto min-h-[80px] rounded-2xl"
           data-testid="button-demo"
         >
           <a 
             href="https://roomie-bot-glebw2008.replit.app" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center"
+            className="flex flex-col items-center justify-center gap-1 w-full"
           >
-            <span>Попробовать ДЭМО</span>
-            <span className="text-sm font-normal opacity-80 mt-1">без регистрации</span>
+            <span className="whitespace-nowrap">{t("try_demo")}</span>
+            <span className="text-sm font-normal opacity-80 whitespace-nowrap">{t("no_registration")}</span>
           </a>
         </Button>
       </div>

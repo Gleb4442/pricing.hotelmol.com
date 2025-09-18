@@ -234,6 +234,10 @@ export const translations = {
     benefit_24_7_support_desc: "Команда поддержки всегда на связи даже ночью, в выходные и праздники",
     benefit_no_hidden_fees: "Без скрытых платежей:",
     benefit_no_hidden_fees_desc: "Фиксированная цена подписки, никаких дополнительных сборов",
+    
+    // Demo button
+    try_demo: "Попробовать ДЭМО",
+    no_registration: "без регистрации",
   },
   
   ua: {
@@ -469,6 +473,10 @@ export const translations = {
     benefit_24_7_support_desc: "Команда підтримки завжди на зв'язку навіть вночі, у вихідні та свята",
     benefit_no_hidden_fees: "Без прихованих платежів:",
     benefit_no_hidden_fees_desc: "Фіксована ціна підписки, ніяких додаткових зборів",
+    
+    // Demo button
+    try_demo: "Спробувати ДЕМО",
+    no_registration: "без реєстрації",
   },
   
   en: {
@@ -704,6 +712,10 @@ export const translations = {
     benefit_24_7_support_desc: "Support team is always available even at night, on weekends and holidays",
     benefit_no_hidden_fees: "No hidden fees:",
     benefit_no_hidden_fees_desc: "Fixed subscription price, no additional charges",
+    
+    // Demo button
+    try_demo: "Try DEMO",
+    no_registration: "no registration",
   }
 } as const;
 
