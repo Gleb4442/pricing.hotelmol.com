@@ -289,42 +289,45 @@ export default function PricingPage() {
         </div>
       </main>
 
-      {/* Demo Button */}
-      <div className="py-16 text-center space-y-4">
-        <Button 
-          asChild
-          size="lg" 
-          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 text-lg font-semibold shadow-lg h-auto min-h-[60px] rounded-xl"
-          data-testid="button-demo"
-        >
-          <a 
-            href="https://roomie-bot-glebw2008.replit.app" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex flex-col items-center justify-center gap-1 w-full"
+      {/* Demo Buttons */}
+      <div className="py-16 text-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
+          {/* Demo Button */}
+          <Button 
+            asChild
+            size="lg"
+            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-6 py-3 text-base font-medium shadow-md rounded-lg flex-1 sm:flex-initial w-full sm:w-auto"
+            data-testid="button-demo"
           >
-            <span className="whitespace-nowrap">{t("try_demo")}</span>
-            <span className="text-sm font-normal opacity-80 whitespace-nowrap">{t("no_registration")}</span>
-          </a>
-        </Button>
-        
-        {/* Presentation Button */}
-        <Button 
-          asChild
-          variant="outline"
-          size="lg"
-          className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 text-base font-medium shadow-md rounded-lg"
-          data-testid="button-presentation"
-        >
-          <a 
-            href="/attached_assets/Революція%20в%20гостинності%20з%20Roomie%20(6)_1758167610668.pdf" 
-            target="_blank" 
-            rel="noopener noreferrer"
-            className="flex items-center justify-center"
+            <a 
+              href="https://roomie-bot-glebw2008.replit.app" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex flex-col items-center justify-center gap-1"
+            >
+              <span className="whitespace-nowrap">{t("try_demo")}</span>
+              <span className="text-xs font-normal opacity-80 whitespace-nowrap">{t("no_registration")}</span>
+            </a>
+          </Button>
+          
+          {/* Presentation Button */}
+          <Button 
+            asChild
+            variant="outline"
+            size="lg"
+            className="border-2 border-blue-600 text-blue-600 hover:bg-blue-600 hover:text-white px-6 py-3 text-base font-medium shadow-md rounded-lg flex-1 sm:flex-initial w-full sm:w-auto"
+            data-testid="button-presentation"
           >
-            <span>{t("view_presentation")}</span>
-          </a>
-        </Button>
+            <a 
+              href="/attached_assets/Революція%20в%20гостинності%20з%20Roomie%20(6)_1758167610668.pdf" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="flex items-center justify-center"
+            >
+              <span>{t("view_presentation")}</span>
+            </a>
+          </Button>
+        </div>
       </div>
 
       {/* Footer */}
