@@ -47,7 +47,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
     los: 2, // Средняя длительность проживания в ночах
     otaCommission: 12,
     processingCost: 2.5, // Эквайринг 2.5%
-    baseDirectShare: 40, // 40% базовая доля прямых бронирований
+    baseDirectShare: 15, // 15% базовая доля прямых бронирований (фиксировано)
     directShareGrowth: 20, // +20% к доле direct
     conversionGrowth: 0, // Пока 0% прирост конверсии
     currency: 'USD',
@@ -667,12 +667,6 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
       label: t('average_stay_duration'),
       tooltip: 'Сколько ночей в среднем проводят ваши гости? Обычно 1-3 ночи для городских отелей, 3-7 для курортных',
       suffix: t('nights_suffix')
-    },
-    {
-      key: 'baseDirectShare' as keyof CalculatorInputs,
-      label: t('direct_share_current'),
-      tooltip: 'Какой процент бронирований приходит напрямую (сайт, телефон), а не через OTA?',
-      suffix: '%'
     },
     {
       key: 'directShareGrowth' as keyof CalculatorInputs,
