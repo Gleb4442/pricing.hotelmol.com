@@ -69,8 +69,8 @@ export function PricingCard({
     let basePrice;
     
     if (billingMode === "usage") {
-      // For usage billing: extract number from "7 центов =0.07$" or "30 центов =0.30$"
-      const match = basePriceText.match(/(\d+(?:\.\d+)?)\s*центов/);
+      // For usage billing: extract number from "7 центов =0.07$" or "7 центів =0.07$"
+      const match = basePriceText.match(/(\d+(?:\.\d+)?)\s*цент(?:ов|ів)/);
       basePrice = match ? parseFloat(match[1]) : 0;
     } else {
       // For monthly/yearly billing: extract number from "$399" or "$1,499"
@@ -91,7 +91,9 @@ export function PricingCard({
     
     if (billingMode === "usage") {
       const dollarEquivalent = (totalPrice / 100).toFixed(2);
-      return `${totalPrice} центов =${dollarEquivalent}$`;
+      // Use the correct word based on the original text language
+      const centWord = basePriceText.includes('центів') ? 'центів' : 'центов';
+      return `${totalPrice} ${centWord} =${dollarEquivalent}$`;
     } else {
       // Format with commas for thousands
       return `$${Math.round(totalPrice).toLocaleString()}`;
