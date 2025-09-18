@@ -523,26 +523,10 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 
                   {mobileCalculatorMode === 'info' ? (
                     <div className="space-y-6 text-base text-muted-foreground">
-                      <div>
-                        <h4 className="text-lg font-semibold text-foreground mb-4">{t("our_formula")}</h4>
-                        <ul className="space-y-4 text-base">
-                          <li className="flex items-start">
-                            <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">{t("time_savings_formula")}</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">{t("direct_bookings_formula")}</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">{t("ota_commission_formula")}</span>
-                          </li>
-                          <li className="flex items-start">
-                            <span className="text-primary mr-3 text-lg font-bold">•</span>
-                            <span className="leading-relaxed">{t("automation_formula")}</span>
-                          </li>
-                        </ul>
+                      <div className="bg-primary/5 rounded-lg p-4">
+                        <p className="text-base text-foreground leading-relaxed whitespace-pre-line">
+                          {t("simple_explanation_mobile")}
+                        </p>
                       </div>
                     </div>
                   ) : (
