@@ -530,12 +530,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
 
                   {mobileCalculatorMode === 'info' ? (
                     <div className="space-y-4 text-base text-muted-foreground">
-                      {/* Заголовок с иконкой */}
-                      <div className="text-center mb-4">
-                        <h4 className="text-base font-semibold text-primary mb-2">
-                          {(t as any)("simple_explanation_mobile_structured").intro}
-                        </h4>
-                      </div>
                       
                       {/* Основная формула */}
                       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border-l-4 border-blue-500">
