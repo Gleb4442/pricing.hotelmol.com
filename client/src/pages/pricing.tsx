@@ -289,6 +289,26 @@ export default function PricingPage() {
         </div>
       </main>
 
+      {/* Demo Button */}
+      <div className="py-16 text-center">
+        <Button 
+          asChild
+          size="lg" 
+          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 text-lg font-semibold shadow-lg"
+          data-testid="button-demo"
+        >
+          <a 
+            href="https://roomie-bot-glebw2008.replit.app" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="flex flex-col items-center justify-center"
+          >
+            <span>Попробовать ДЭМО</span>
+            <span className="text-sm font-normal opacity-80 mt-1">без регистрации</span>
+          </a>
+        </Button>
+      </div>
+
       {/* Footer */}
       <footer className="border-t border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 mt-20 shadow-2xl shadow-blue-500/20">
         <div className="container mx-auto px-4 py-12">
