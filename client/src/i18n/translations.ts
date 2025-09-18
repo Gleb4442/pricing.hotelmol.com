@@ -175,7 +175,7 @@ export const translations = {
     roomie_cost_label: "Стоимость Roomie:",
     missed_bookings: "Пропущенные брони",
     ota_commissions: "Комиссии OTA",
-    response_time: "Время на ответы",
+    response_time: "Стоимость невнимания к гостю",
     calculation_explanation: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
     calculation_additional: "Плюс экономия на комиссионных OTA и рост допродаж.",
     
@@ -410,7 +410,7 @@ export const translations = {
     roomie_cost_label: "Вартість Roomie:",
     missed_bookings: "Пропущені бронювання",
     ota_commissions: "Комісії OTA",
-    response_time: "Час на відповіді",
+    response_time: "Вартість неуваги до гостя",
     calculation_explanation: "Ми беремо ваші звернення на місяць, віднімаємо частку пропусків у людини та у ШІ, помножуємо на конверсію в бронювання та середній чек. Різниця — це додатковий дохід.",
     calculation_additional: "Плюс економія на комісійних OTA та зростання допродажів. Мінус — вартість Roomie.",
     
@@ -645,7 +645,7 @@ export const translations = {
     roomie_cost_label: "Roomie cost:",
     missed_bookings: "Missed bookings",
     ota_commissions: "OTA commissions",
-    response_time: "Response time",
+    response_time: "Cost of guest neglect",
     calculation_explanation: "We take your monthly inquiries, subtract the percentage of missed calls by humans and AI, multiply by conversion to bookings and average check. The difference is additional revenue.",
     calculation_additional: "Plus savings on OTA commissions and additional service sales. Minus Roomie cost.",
     
