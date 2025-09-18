@@ -294,7 +294,7 @@ export default function PricingPage() {
         <Button 
           asChild
           size="lg" 
-          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-12 py-6 text-xl font-semibold shadow-lg h-auto min-h-[80px] rounded-2xl"
+          className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-4 text-lg font-semibold shadow-lg h-auto min-h-[60px] rounded-xl"
           data-testid="button-demo"
         >
           <a 
