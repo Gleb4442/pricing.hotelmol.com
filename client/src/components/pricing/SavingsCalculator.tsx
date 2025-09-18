@@ -532,7 +532,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     <div className="space-y-4 text-base text-muted-foreground">
                       {/* Заголовок с иконкой */}
                       <div className="text-center mb-4">
-                        <h4 className="text-lg font-semibold text-primary mb-2">
+                        <h4 className="text-xl font-semibold text-primary mb-2">
                           {(t as any)("simple_explanation_mobile_structured").intro}
                         </h4>
                       </div>
@@ -545,24 +545,17 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       </div>
                       
                       {/* Результат */}
-                      <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3 border border-green-200 dark:border-green-800">
-                        <p className="text-base font-medium text-green-700 dark:text-green-300 text-center">
+                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border-l-4 border-blue-500">
+                        <p className="text-base font-medium text-foreground text-center">
                           {(t as any)("simple_explanation_mobile_structured").result}
                         </p>
                       </div>
                       
-                      {/* Плюсы и минусы */}
-                      <div className="space-y-3">
-                        <div className="bg-emerald-50 dark:bg-emerald-900/20 rounded-lg p-3 border-l-4 border-emerald-500">
-                          <p className="text-sm text-emerald-700 dark:text-emerald-300">
-                            {(t as any)("simple_explanation_mobile_structured").benefits}
-                          </p>
-                        </div>
-                        <div className="bg-orange-50 dark:bg-orange-900/20 rounded-lg p-3 border-l-4 border-orange-500">
-                          <p className="text-sm text-orange-700 dark:text-orange-300">
-                            {(t as any)("simple_explanation_mobile_structured").cost}
-                          </p>
-                        </div>
+                      {/* Плюсы */}
+                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border-l-4 border-blue-500">
+                        <p className="text-sm text-foreground">
+                          {(t as any)("simple_explanation_mobile_structured").benefits}
+                        </p>
                       </div>
                     </div>
                   ) : (
