@@ -16,7 +16,7 @@ interface PricingFeature {
 }
 
 interface PricingCardProps {
-  plan: "pro" | "premium";
+  plan: "basic" | "pro" | "premium";
   title: string;
   description: string;
   pricing: {

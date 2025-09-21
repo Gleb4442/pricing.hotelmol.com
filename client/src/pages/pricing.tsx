@@ -34,6 +34,13 @@ export default function PricingPage() {
     window.open('https://t.me/hotelmindmanager', '_blank');
   };
 
+  const basicFeatures = [
+    { text: t("feature_online_chat") },
+    { text: t("feature_pms_integration") },
+    { text: t("plan_basic_limits") },
+    { text: t("plan_basic_overage") },
+  ];
+
   const proFeatures = [
     { text: t("feature_ai_help") },
     { text: t("feature_booking_automation") },
@@ -107,7 +114,22 @@ export default function PricingPage() {
 
         {/* Pricing Section */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
+          <div className="grid lg:grid-cols-4 gap-8">
+            {/* BASIC Plan */}
+            <PricingCard
+              plan="basic"
+              title={t("plan_basic_title")}
+              description={t("plan_basic_description")}
+              pricing={{
+                usage: { current: t("price_basic") },
+                monthly: { current: t("price_basic") },
+                yearly: { current: t("price_basic") },
+              }}
+              features={basicFeatures}
+              billingMode={billingMode}
+              onSubscribe={() => handleSubscribe("basic")}
+            />
+
             {/* PRO Plan */}
             <PricingCard
               plan="pro"
