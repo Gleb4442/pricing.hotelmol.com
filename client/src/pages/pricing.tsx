@@ -4,7 +4,6 @@ import { useBillingMode } from "@/hooks/use-billing-mode";
 import { useLanguage } from "@/hooks/use-language";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingCard } from "@/components/pricing/PricingCard";
-import { InfoSidebar } from "@/components/pricing/InfoSidebar";
 import { SavingsCalculator } from "@/components/pricing/SavingsCalculator";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
@@ -114,7 +113,7 @@ export default function PricingPage() {
 
         {/* Pricing Section */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-4 gap-8">
+          <div className="grid lg:grid-cols-3 gap-8">
             {/* BASIC Plan */}
             <PricingCard
               plan="basic"
@@ -137,8 +136,8 @@ export default function PricingPage() {
               description={t("plan_pro_description")}
               pricing={{
                 usage: { current: t("price_7_cents"), original: t("price_8_cents") },
-                monthly: { current: "$399", original: "$459" },
-                yearly: { current: "$319", original: "$399" },
+                monthly: { current: "$299", original: "$359" },
+                yearly: { current: "$239", original: "$299" },
               }}
               features={proFeatures}
               billingMode={billingMode}
@@ -161,8 +160,6 @@ export default function PricingPage() {
               onSubscribe={() => handleSubscribe("premium")}
             />
 
-            {/* Information Sidebar */}
-            <InfoSidebar billingMode={billingMode} />
           </div>
         </div>
 
