@@ -40,31 +40,6 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
         </div>
       </div>
 
-      <div
-        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 ${
-          billingMode === "monthly" ? "block" : "hidden"
-        }`}
-        data-testid="monthly-info-card"
-      >
-        <div className="flex items-start space-x-4">
-          <div className="w-12 h-12 bg-accent/10 rounded-xl flex items-center justify-center flex-shrink-0">
-            <Calendar className="text-accent w-6 h-6" />
-          </div>
-          <div>
-            <h4 className="text-lg font-semibold text-foreground mb-2">
-              {t("info_monthly_title")}
-            </h4>
-            <p className="text-muted-foreground text-sm mb-3">
-              {t("info_monthly_description")}
-            </p>
-            <ul className="text-sm text-muted-foreground space-y-1">
-              {tArray("info_monthly_benefits").map((benefit, index) => (
-                <li key={index}>• {benefit}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </div>
 
       <div
         className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 hidden md:block ${
@@ -93,19 +68,6 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
       </div>
 
 
-      {/* Trust Indicators */}
-      <div className="bg-card border border-border rounded-2xl p-6 shadow-lg hidden md:block">
-        <div className="grid grid-cols-2 gap-4">
-          <div className="text-center" data-testid="uptime-indicator">
-            <div className="text-2xl font-bold text-primary">86%</div>
-            <div className="text-sm text-muted-foreground">{t("requests_handled")}</div>
-          </div>
-          <div className="text-center" data-testid="support-indicator">
-            <div className="text-2xl font-bold text-primary">24/7</div>
-            <div className="text-sm text-muted-foreground">{t("guest_service")}</div>
-          </div>
-        </div>
-      </div>
 
     </div>
   );
