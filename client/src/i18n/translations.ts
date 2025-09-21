@@ -14,6 +14,8 @@ export const translations = {
     billing_yearly: "Ежегодно",
     
     // Pricing Plans
+    plan_basic_title: "BASIC",
+    plan_basic_description: "Базовый план для начинающих",
     plan_pro_title: "PRO",
     plan_pro_description: "Идеально для растущих отелей",
     plan_premium_title: "PREMIUM",
@@ -31,6 +33,8 @@ export const translations = {
     feature_ai_training: "Персональное обучение ИИ",
     feature_account_manager: "Персональный менеджер аккаунта",
     feature_custom_design: "Индивидуальный дизайн виджета с брендингом вашей компании",
+    feature_online_chat: "Online chat",
+    feature_pms_integration: "Интеграция с PMS",
     
     // Tooltips
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
@@ -196,6 +200,9 @@ export const translations = {
     price_7_cents: "7 центов =0.07$",
     price_8_cents: "8 центов =0.08$",
     price_35_cents: "35 центов =0.35$",
+    price_basic: "$49",
+    plan_basic_limits: "150 чатов ≈ 3000 сообщений ≈ 150 000 символов",
+    plan_basic_overage: "После: за каждые 1000 сообщений - 12$",
     
     // Calculator Form Labels
     bookings_per_month_current: "Брони в месяц (сейчас)",
@@ -271,6 +278,8 @@ export const translations = {
     billing_yearly: "Щорічно",
     
     // Pricing Plans
+    plan_basic_title: "BASIC",
+    plan_basic_description: "Базовий план для початківців",
     plan_pro_title: "PRO",
     plan_pro_description: "Ідеально для зростаючих готелів",
     plan_premium_title: "PREMIUM",
@@ -288,6 +297,8 @@ export const translations = {
     feature_ai_training: "Персональне навчання ШІ",
     feature_account_manager: "Персональний менеджер аккаунту",
     feature_custom_design: "Індивідуальний дизайн віджету з брендингом вашої компанії",
+    feature_online_chat: "Online chat",
+    feature_pms_integration: "Інтеграція з PMS",
     
     // Tooltips
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
@@ -451,6 +462,9 @@ export const translations = {
     price_7_cents: "7 центів =0.07$",
     price_8_cents: "8 центів =0.08$",
     price_35_cents: "35 центів =0.35$",
+    price_basic: "$49",
+    plan_basic_limits: "150 чатів ≈ 3000 повідомлень ≈ 150 000 символів",
+    plan_basic_overage: "Після: за кожні 1000 повідомлень - 12$",
     
     // Calculator Form Labels
     bookings_per_month_current: "Бронювання на місяць (зараз)",
@@ -526,6 +540,8 @@ export const translations = {
     billing_yearly: "Yearly",
     
     // Pricing Plans
+    plan_basic_title: "BASIC",
+    plan_basic_description: "Basic plan for beginners",
     plan_pro_title: "PRO",
     plan_pro_description: "Perfect for growing hotels",
     plan_premium_title: "PREMIUM",
@@ -543,6 +559,8 @@ export const translations = {
     feature_ai_training: "Personal AI training",
     feature_account_manager: "Personal account manager",
     feature_custom_design: "Custom widget design with your company branding",
+    feature_online_chat: "Online chat",
+    feature_pms_integration: "PMS integration",
     
     // Tooltips
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",
@@ -706,6 +724,9 @@ export const translations = {
     price_7_cents: "7 cents =0.07$",
     price_8_cents: "8 cents =0.08$",
     price_35_cents: "35 cents =0.35$",
+    price_basic: "$49",
+    plan_basic_limits: "150 chats ≈ 3000 messages ≈ 150 000 characters",
+    plan_basic_overage: "After: for every 1000 messages - 12$",
     
     // Calculator Form Labels
     bookings_per_month_current: "Bookings per month (current)",
