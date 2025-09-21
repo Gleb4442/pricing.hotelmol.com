@@ -200,7 +200,7 @@ export const translations = {
     price_7_cents: "7 центов =0.07$",
     price_8_cents: "8 центов =0.08$",
     price_35_cents: "35 центов =0.35$",
-    price_basic: "$49",
+    price_basic: "$99",
     plan_basic_limits: "150 чатов ≈ 3000 сообщений ≈ 150 000 символов",
     plan_basic_overage: "После: за каждые 1000 сообщений - 12$",
     
@@ -462,7 +462,7 @@ export const translations = {
     price_7_cents: "7 центів =0.07$",
     price_8_cents: "8 центів =0.08$",
     price_35_cents: "35 центів =0.35$",
-    price_basic: "$49",
+    price_basic: "$99",
     plan_basic_limits: "150 чатів ≈ 3000 повідомлень ≈ 150 000 символів",
     plan_basic_overage: "Після: за кожні 1000 повідомлень - 12$",
     
@@ -724,7 +724,7 @@ export const translations = {
     price_7_cents: "7 cents =0.07$",
     price_8_cents: "8 cents =0.08$",
     price_35_cents: "35 cents =0.35$",
-    price_basic: "$49",
+    price_basic: "$99",
     plan_basic_limits: "150 chats ≈ 3000 messages ≈ 150 000 characters",
     plan_basic_overage: "After: for every 1000 messages - 12$",
     
