@@ -45,6 +45,7 @@ export default function PricingPage() {
     { text: t("feature_booking_automation") },
     { text: t("feature_multilang") },
     { text: t("feature_priority_support") },
+    { text: t("plan_pro_limits") },
     {
       text: t("feature_telegram_bot"),
       tooltip: t("tooltip_telegram_bot"),
