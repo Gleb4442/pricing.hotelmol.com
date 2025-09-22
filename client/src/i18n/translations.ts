@@ -35,7 +35,6 @@ export const translations = {
     feature_account_manager: "Персональный менеджер аккаунта",
     feature_custom_design: "Индивидуальный дизайн виджета с брендингом вашей компании",
     feature_online_chat: "Online chat",
-    feature_pms_integration: "Интеграция с PMS",
     
     // Tooltips
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
@@ -302,7 +301,6 @@ export const translations = {
     feature_account_manager: "Персональний менеджер аккаунту",
     feature_custom_design: "Індивідуальний дизайн віджету з брендингом вашої компанії",
     feature_online_chat: "Online chat",
-    feature_pms_integration: "Інтеграція з PMS",
     
     // Tooltips
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
@@ -567,7 +565,6 @@ export const translations = {
     feature_account_manager: "Personal account manager",
     feature_custom_design: "Custom widget design with your company branding",
     feature_online_chat: "Online chat",
-    feature_pms_integration: "PMS integration",
     
     // Tooltips
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",
