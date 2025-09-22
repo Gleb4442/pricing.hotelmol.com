@@ -34,6 +34,9 @@ export default function PricingPage() {
   };
 
   const basicFeatures = [
+    { text: t("feature_ai_help") },
+    { text: t("feature_booking_automation") },
+    { text: t("feature_standard_support") },
     { text: t("feature_online_chat") },
     { text: t("feature_pms_integration") },
   ];
