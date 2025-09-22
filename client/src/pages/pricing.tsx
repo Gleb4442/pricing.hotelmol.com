@@ -158,8 +158,8 @@ export default function PricingPage() {
               description={t("plan_premium_description")}
               pricing={{
                 usage: { current: t("price_35_cents") },
-                monthly: { current: "$1,299" },
-                yearly: { current: "$1,039", original: "$1,299" },
+                monthly: { current: "$1,099" },
+                yearly: { current: "$879", original: "$1,099" },
               }}
               features={premiumFeatures}
               usageLimits={tArray("plan_premium_limits_array")}
