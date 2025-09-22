@@ -113,21 +113,23 @@ export default function PricingPage() {
 
         {/* Pricing Section */}
         <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-3 gap-8">
-            {/* BASIC Plan */}
-            <PricingCard
-              plan="basic"
-              title={t("plan_basic_title")}
-              description={t("plan_basic_description")}
-              pricing={{
-                usage: { current: t("price_basic") },
-                monthly: { current: t("price_basic") },
-                yearly: { current: t("price_basic") },
-              }}
-              features={basicFeatures}
-              billingMode={billingMode}
-              onSubscribe={() => handleSubscribe("basic")}
-            />
+          <div className={`grid gap-8 ${billingMode === "usage" ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}>
+            {/* BASIC Plan - только для monthly и yearly */}
+            {billingMode !== "usage" && (
+              <PricingCard
+                plan="basic"
+                title={t("plan_basic_title")}
+                description={t("plan_basic_description")}
+                pricing={{
+                  usage: { current: t("price_basic") },
+                  monthly: { current: t("price_basic") },
+                  yearly: { current: t("price_basic") },
+                }}
+                features={basicFeatures}
+                billingMode={billingMode}
+                onSubscribe={() => handleSubscribe("basic")}
+              />
+            )}
 
             {/* PRO Plan */}
             <PricingCard
