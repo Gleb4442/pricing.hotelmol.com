@@ -36,8 +36,6 @@ export default function PricingPage() {
   const basicFeatures = [
     { text: t("feature_online_chat") },
     { text: t("feature_pms_integration") },
-    { text: t("plan_basic_limits") },
-    { text: t("plan_basic_overage") },
   ];
 
   const proFeatures = [
@@ -45,7 +43,6 @@ export default function PricingPage() {
     { text: t("feature_booking_automation") },
     { text: t("feature_multilang") },
     { text: t("feature_priority_support") },
-    { text: t("plan_pro_limits") },
     {
       text: t("feature_telegram_bot"),
       tooltip: t("tooltip_telegram_bot"),
