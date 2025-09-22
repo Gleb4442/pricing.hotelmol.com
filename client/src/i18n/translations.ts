@@ -204,6 +204,7 @@ export const translations = {
     plan_basic_limits: "150 чатов ≈ 3000 сообщений ≈ 150 000 символов",
     plan_basic_overage: "После: за каждые 1000 сообщений - 12$",
     plan_pro_limits: "500 чатов ≈ 10 000 сообщений ≈ 500 000 символов",
+    plan_premium_limits: "Безлимитное количество чатов и сообщений",
     
     // Calculator Form Labels
     bookings_per_month_current: "Брони в месяц (сейчас)",
@@ -467,6 +468,7 @@ export const translations = {
     plan_basic_limits: "150 чатів ≈ 3000 повідомлень ≈ 150 000 символів",
     plan_basic_overage: "Після: за кожні 1000 повідомлень - 12$",
     plan_pro_limits: "500 чатів ≈ 10 000 повідомлень ≈ 500 000 символів",
+    plan_premium_limits: "Безлімітна кількість чатів і повідомлень",
     
     // Calculator Form Labels
     bookings_per_month_current: "Бронювання на місяць (зараз)",
@@ -730,6 +732,7 @@ export const translations = {
     plan_basic_limits: "150 chats ≈ 3000 messages ≈ 150 000 characters",
     plan_basic_overage: "After: for every 1000 messages - 12$",
     plan_pro_limits: "500 chats ≈ 10 000 messages ≈ 500 000 characters",
+    plan_premium_limits: "Unlimited chats and messages",
     
     // Calculator Form Labels
     bookings_per_month_current: "Bookings per month (current)",
