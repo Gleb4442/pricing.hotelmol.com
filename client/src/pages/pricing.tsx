@@ -128,7 +128,7 @@ export default function PricingPage() {
                   yearly: { current: t("price_basic") },
                 }}
                 features={basicFeatures}
-                usageLimits={[...tArray("plan_basic_limits_array"), t("plan_basic_overage")]}
+                usageLimits={tArray("plan_basic_limits_array")}
                 billingMode={billingMode}
                 onSubscribe={() => handleSubscribe("basic")}
               />
