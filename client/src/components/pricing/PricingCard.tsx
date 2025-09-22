@@ -34,6 +34,7 @@ interface PricingCardProps {
     };
   };
   features: PricingFeature[];
+  usageLimits?: string[];
   billingMode: BillingMode;
   isPopular?: boolean;
   onSubscribe: () => void;
@@ -45,6 +46,7 @@ export function PricingCard({
   description,
   pricing,
   features,
+  usageLimits,
   billingMode,
   isPopular = false,
   onSubscribe,
@@ -154,6 +156,17 @@ export function PricingCard({
             {billingMode === "usage" ? t('per_request') : billingMode === "monthly" ? t('per_month') : t('per_month_yearly')}
           </p>
         </div>
+
+        {/* Usage Limits */}
+        {usageLimits && usageLimits.length > 0 && (
+          <div className="mb-6 px-2">
+            {usageLimits.map((limit, index) => (
+              <div key={index} className="text-sm text-muted-foreground mb-1">
+                {limit}
+              </div>
+            ))}
+          </div>
+        )}
 
         {/* Features */}
         <div className="space-y-3 mb-8 px-2">
