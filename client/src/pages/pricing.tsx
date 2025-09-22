@@ -140,7 +140,7 @@ export default function PricingPage() {
               title={t("plan_pro_title")}
               description={t("plan_pro_description")}
               pricing={{
-                usage: { current: t("price_7_cents"), original: t("price_8_cents") },
+                usage: { current: t("price_7_cents") },
                 monthly: { current: "$299", original: "$359" },
                 yearly: { current: "$239", original: "$299" },
               }}
