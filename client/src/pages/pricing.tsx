@@ -326,7 +326,7 @@ export default function PricingPage() {
             data-testid="button-demo"
           >
             <a 
-              href="https://roomie-bot-glebw2008.replit.app" 
+              href="https://demo.hotelmind.xyz" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center -space-y-2"
