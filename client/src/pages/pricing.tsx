@@ -145,7 +145,7 @@ export default function PricingPage() {
                 yearly: { current: "$239", original: "$299" },
               }}
               features={proFeatures}
-              usageLimits={[t("plan_pro_limits")]}
+              usageLimits={billingMode !== "usage" ? [t("plan_pro_limits")] : undefined}
               billingMode={billingMode}
               isPopular={true}
               onSubscribe={() => handleSubscribe("pro")}
@@ -162,7 +162,7 @@ export default function PricingPage() {
                 yearly: { current: "$879", original: "$1,099" },
               }}
               features={premiumFeatures}
-              usageLimits={tArray("plan_premium_limits_array")}
+              usageLimits={billingMode !== "usage" ? tArray("plan_premium_limits_array") : undefined}
               billingMode={billingMode}
               onSubscribe={() => handleSubscribe("premium")}
             />
