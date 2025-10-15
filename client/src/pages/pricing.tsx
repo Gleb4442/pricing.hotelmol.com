@@ -5,6 +5,7 @@ import { useLanguage } from "@/hooks/use-language";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { SavingsCalculator } from "@/components/pricing/SavingsCalculator";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
@@ -72,14 +73,15 @@ export default function PricingPage() {
       {/* Header */}
       <header className="border-b border-blue-200 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-blue-500/25">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex items-center justify-between">
+          {/* Desktop: Logo left, Language & Theme right */}
+          <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center">
               <div>
                 <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
               </div>
             </div>
             
-            {/* Language Switcher Button */}
+            {/* Language & Theme Switcher */}
             <div className="flex items-center space-x-2">
               <Globe className="h-4 w-4 text-blue-200" />
               <Button
@@ -94,7 +96,15 @@ export default function PricingPage() {
                   <span>{currentLanguage?.label}</span>
                 </span>
               </Button>
+              <div className="text-white">
+                <ThemeToggle />
+              </div>
             </div>
+          </div>
+
+          {/* Mobile: Centered Roomie only */}
+          <div className="md:hidden flex items-center justify-center">
+            <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
           </div>
         </div>
       </header>
@@ -339,7 +349,7 @@ export default function PricingPage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 mt-20 shadow-2xl shadow-blue-500/20">
+      <footer className="border-t border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 mt-20 shadow-2xl shadow-blue-500/20 pb-20 md:pb-0">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
@@ -356,6 +366,38 @@ export default function PricingPage() {
           </div>
         </div>
       </footer>
+
+      {/* Mobile Fixed Bottom Bar - Language & Theme Switcher */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 border-t border-blue-500/30 shadow-2xl backdrop-blur-sm">
+        <div className="container mx-auto px-4 py-3">
+          <div className="flex items-center justify-center space-x-6">
+            {/* Language Switcher */}
+            <div className="flex items-center space-x-2">
+              <Globe className="h-4 w-4 text-blue-200" />
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={handleLanguageSwitch}
+                className="h-9 px-4 text-sm border-0 bg-transparent hover:bg-blue-500/30 text-white hover:text-blue-100"
+                data-testid="mobile-language-switcher"
+              >
+                <span className="flex items-center space-x-1">
+                  <span>{currentLanguage?.flag}</span>
+                  <span className="font-medium">{currentLanguage?.label}</span>
+                </span>
+              </Button>
+            </div>
+
+            {/* Divider */}
+            <div className="h-8 w-px bg-blue-400/30"></div>
+
+            {/* Theme Switcher */}
+            <div className="text-white">
+              <ThemeToggle />
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
