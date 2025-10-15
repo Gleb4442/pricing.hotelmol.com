@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Globe } from "lucide-react";
+import { ChevronDown } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
 import { useLanguage } from "@/hooks/use-language";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
@@ -82,21 +82,18 @@ export default function PricingPage() {
             </div>
             
             {/* Language Switcher */}
-            <div className="flex items-center space-x-2">
-              <Globe className="h-4 w-4 text-blue-200" />
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleLanguageSwitch}
-                className="h-9 px-3 text-sm border-0 bg-transparent hover:bg-blue-500/30 text-white hover:text-blue-100"
-                data-testid="language-switcher"
-              >
-                <span className="flex items-center space-x-1">
-                  <span>{currentLanguage?.flag}</span>
-                  <span>{currentLanguage?.label}</span>
-                </span>
-              </Button>
-            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleLanguageSwitch}
+              className="h-9 px-3 text-sm border-2 border-blue-300 bg-transparent hover:bg-blue-500/20 text-white hover:text-blue-100"
+              data-testid="language-switcher"
+            >
+              <span className="flex items-center space-x-1">
+                <span>{currentLanguage?.flag}</span>
+                <span>{currentLanguage?.label}</span>
+              </span>
+            </Button>
           </div>
 
           {/* Mobile: Centered Roomie only */}
@@ -365,25 +362,22 @@ export default function PricingPage() {
       </footer>
 
       {/* Mobile Fixed Bottom Bar - Language Switcher */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 border-t border-blue-500/30 shadow-2xl backdrop-blur-sm">
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-blue-500/30 shadow-2xl backdrop-blur-sm">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-end">
             {/* Language Switcher */}
-            <div className="flex items-center space-x-2">
-              <Globe className="h-4 w-4 text-blue-200" />
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={handleLanguageSwitch}
-                className="h-9 px-4 text-sm border-0 bg-transparent hover:bg-blue-500/30 text-white hover:text-blue-100"
-                data-testid="mobile-language-switcher"
-              >
-                <span className="flex items-center space-x-1">
-                  <span>{currentLanguage?.flag}</span>
-                  <span className="font-medium">{currentLanguage?.label}</span>
-                </span>
-              </Button>
-            </div>
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={handleLanguageSwitch}
+              className="h-9 px-4 text-sm border-2 border-blue-400 bg-transparent hover:bg-blue-500/20 text-foreground hover:text-foreground"
+              data-testid="mobile-language-switcher"
+            >
+              <span className="flex items-center space-x-1">
+                <span>{currentLanguage?.flag}</span>
+                <span className="font-medium">{currentLanguage?.label}</span>
+              </span>
+            </Button>
           </div>
         </div>
       </div>
