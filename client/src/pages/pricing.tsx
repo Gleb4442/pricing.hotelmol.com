@@ -81,7 +81,7 @@ export default function PricingPage() {
               </div>
             </div>
             
-            {/* Language & Theme Switcher */}
+            {/* Language Switcher */}
             <div className="flex items-center space-x-2">
               <Globe className="h-4 w-4 text-blue-200" />
               <Button
@@ -96,9 +96,6 @@ export default function PricingPage() {
                   <span>{currentLanguage?.label}</span>
                 </span>
               </Button>
-              <div className="text-white">
-                <ThemeToggle />
-              </div>
             </div>
           </div>
 
@@ -367,10 +364,10 @@ export default function PricingPage() {
         </div>
       </footer>
 
-      {/* Mobile Fixed Bottom Bar - Language & Theme Switcher */}
+      {/* Mobile Fixed Bottom Bar - Language Switcher */}
       <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 border-t border-blue-500/30 shadow-2xl backdrop-blur-sm">
         <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-center space-x-6">
+          <div className="flex items-center justify-end">
             {/* Language Switcher */}
             <div className="flex items-center space-x-2">
               <Globe className="h-4 w-4 text-blue-200" />
@@ -386,14 +383,6 @@ export default function PricingPage() {
                   <span className="font-medium">{currentLanguage?.label}</span>
                 </span>
               </Button>
-            </div>
-
-            {/* Divider */}
-            <div className="h-8 w-px bg-blue-400/30"></div>
-
-            {/* Theme Switcher */}
-            <div className="text-white">
-              <ThemeToggle />
             </div>
           </div>
         </div>
