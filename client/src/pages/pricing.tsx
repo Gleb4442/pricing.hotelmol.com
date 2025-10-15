@@ -343,7 +343,7 @@ export default function PricingPage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 mt-20 shadow-2xl shadow-blue-500/20 pb-20 md:pb-0">
+      <footer className="border-t border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 mt-20 shadow-2xl shadow-blue-500/20">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
@@ -361,26 +361,19 @@ export default function PricingPage() {
         </div>
       </footer>
 
-      {/* Mobile Fixed Bottom Bar - Language Switcher */}
-      <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 border-t border-blue-500/30 shadow-2xl backdrop-blur-sm">
-        <div className="container mx-auto px-4 py-3">
-          <div className="flex items-center justify-end">
-            {/* Language Switcher */}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleLanguageSwitch}
-              className="h-9 px-4 text-sm border-2 border-blue-400 bg-transparent hover:bg-blue-500/20 text-foreground hover:text-foreground"
-              data-testid="mobile-language-switcher"
-            >
-              <span className="flex items-center space-x-1">
-                <span>{currentLanguage?.flag}</span>
-                <span className="font-medium">{currentLanguage?.label}</span>
-              </span>
-            </Button>
-          </div>
-        </div>
-      </div>
+      {/* Mobile Language Switcher */}
+      <Button
+        variant="outline"
+        size="sm"
+        onClick={handleLanguageSwitch}
+        className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-4 text-sm border-2 border-blue-400 bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-foreground shadow-lg"
+        data-testid="mobile-language-switcher"
+      >
+        <span className="flex items-center space-x-1">
+          <span>{currentLanguage?.flag}</span>
+          <span className="font-medium">{currentLanguage?.label}</span>
+        </span>
+      </Button>
     </div>
   );
 }
