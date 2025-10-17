@@ -167,6 +167,7 @@ export default function PricingPage() {
             {/* BASIC Plan - только для monthly и yearly */}
             {billingMode !== "usage" && (
               <PricingCard
+                key={`basic-${hotelType}`}
                 plan="basic"
                 title={t("plan_basic_title")}
                 description={t("plan_basic_description")}
@@ -184,6 +185,7 @@ export default function PricingPage() {
 
             {/* PRO Plan */}
             <PricingCard
+              key={`pro-${hotelType}`}
               plan="pro"
               title={t("plan_pro_title")}
               description={t("plan_pro_description")}
@@ -207,6 +209,7 @@ export default function PricingPage() {
 
             {/* PREMIUM Plan */}
             <PricingCard
+              key={`premium-${hotelType}`}
               plan="premium"
               title={t("plan_premium_title")}
               description={t("plan_premium_description")}
