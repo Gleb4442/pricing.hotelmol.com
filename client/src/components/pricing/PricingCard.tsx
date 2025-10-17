@@ -125,103 +125,105 @@ export function PricingCard({
       )}
 
       <div
-        className={`bg-card border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full ${
+        className={`bg-card border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col ${
           isPopular ? "pricing-card-pro" : "border-border"
         }`}
         data-testid={`pricing-card-${plan}`}
       >
-        <div className="text-center mb-8">
-          <h3 className="text-2xl font-bold text-foreground mb-2">{title}</h3>
-          <p className="text-muted-foreground">{description}</p>
-        </div>
-
-        {/* Pricing Display */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-center space-x-2 mb-2">
-            {currentPricing.original && (
-              <span className="text-sm text-muted-foreground/60 line-through opacity-75">
-                {currentPricing.original}
-              </span>
-            )}
-            <span
-              className={`text-4xl font-bold ${
-                isPopular ? "text-primary" : "text-foreground"
-              }`}
-              data-testid={`${plan}-price-${billingMode}`}
-            >
-              {currentPricing.current}
-            </span>
+        <div className="flex-1 flex flex-col">
+          <div className="text-center mb-8">
+            <h3 className="text-2xl font-bold text-foreground mb-2">{title}</h3>
+            <p className="text-muted-foreground">{description}</p>
           </div>
-          <p className="text-muted-foreground">
-            {billingMode === "usage" ? t('per_request') : billingMode === "monthly" ? t('per_month') : t('per_month_yearly')}
-          </p>
-        </div>
 
-        {/* Usage Limits */}
-        {usageLimits && usageLimits.length > 0 && (
-          <div className="mb-6 px-2">
-            {usageLimits.map((limit, index) => (
-              <div key={index} className="text-sm text-muted-foreground mb-1">
-                {limit}
+          {/* Pricing Display */}
+          <div className="text-center mb-8">
+            <div className="flex items-center justify-center space-x-2 mb-2">
+              {currentPricing.original && (
+                <span className="text-sm text-muted-foreground/60 line-through opacity-75">
+                  {currentPricing.original}
+                </span>
+              )}
+              <span
+                className={`text-4xl font-bold ${
+                  isPopular ? "text-primary" : "text-foreground"
+                }`}
+                data-testid={`${plan}-price-${billingMode}`}
+              >
+                {currentPricing.current}
+              </span>
+            </div>
+            <p className="text-muted-foreground">
+              {billingMode === "usage" ? t('per_request') : billingMode === "monthly" ? t('per_month') : t('per_month_yearly')}
+            </p>
+          </div>
+
+          {/* Usage Limits */}
+          {usageLimits && usageLimits.length > 0 && (
+            <div className="mb-6 px-2">
+              {usageLimits.map((limit, index) => (
+                <div key={index} className="text-sm text-muted-foreground mb-1">
+                  {limit}
+                </div>
+              ))}
+            </div>
+          )}
+
+          {/* Features */}
+          <div className="space-y-3 mb-8 px-2">
+            {features.map((feature, index) => (
+              <div key={index} className="flex items-start space-x-2 relative">
+                <Check className="text-primary w-4 h-4 flex-shrink-0 mt-0.5" />
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center space-x-1 flex-wrap">
+                    <span className="text-sm leading-tight">{feature.text}</span>
+                    {feature.tooltip && (
+                      <Tooltip content={feature.tooltip}>
+                        <Info
+                          className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
+                          data-testid={`tooltip-trigger-${index}`}
+                        />
+                      </Tooltip>
+                    )}
+                  </div>
+                  {feature.addonPricing && (
+                    <div className="flex items-center space-x-1 mt-1">
+                      {billingMode === "yearly" || billingMode === "monthly" ? (
+                        <span
+                          className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded-md"
+                          data-testid={`addon-included-${index}`}
+                        >
+                          {t('included')}
+                        </span>
+                      ) : (
+                        <>
+                          <span
+                            className="text-primary text-xs font-medium"
+                            data-testid={`addon-pricing-${index}`}
+                          >
+                            {feature.addonPricing.usage}
+                          </span>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => toggleFeature(index)}
+                            className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
+                              addedFeatures.has(index)
+                                ? "bg-primary text-white border-primary"
+                                : "bg-background text-muted-foreground border-border hover:border-primary"
+                            }`}
+                            data-testid={`add-feature-${index}`}
+                          >
+                            <Plus className="w-2 h-2" />
+                          </Button>
+                        </>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             ))}
           </div>
-        )}
-
-        {/* Features */}
-        <div className="space-y-3 mb-8 px-2">
-          {features.map((feature, index) => (
-            <div key={index} className="flex items-start space-x-2 relative">
-              <Check className="text-primary w-4 h-4 flex-shrink-0 mt-0.5" />
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center space-x-1 flex-wrap">
-                  <span className="text-sm leading-tight">{feature.text}</span>
-                  {feature.tooltip && (
-                    <Tooltip content={feature.tooltip}>
-                      <Info
-                        className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
-                        data-testid={`tooltip-trigger-${index}`}
-                      />
-                    </Tooltip>
-                  )}
-                </div>
-                {feature.addonPricing && (
-                  <div className="flex items-center space-x-1 mt-1">
-                    {billingMode === "yearly" || billingMode === "monthly" ? (
-                      <span
-                        className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded-md"
-                        data-testid={`addon-included-${index}`}
-                      >
-                        {t('included')}
-                      </span>
-                    ) : (
-                      <>
-                        <span
-                          className="text-primary text-xs font-medium"
-                          data-testid={`addon-pricing-${index}`}
-                        >
-                          {feature.addonPricing.usage}
-                        </span>
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => toggleFeature(index)}
-                          className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
-                            addedFeatures.has(index)
-                              ? "bg-primary text-white border-primary"
-                              : "bg-background text-muted-foreground border-border hover:border-primary"
-                          }`}
-                          data-testid={`add-feature-${index}`}
-                        >
-                          <Plus className="w-2 h-2" />
-                        </Button>
-                      </>
-                    )}
-                  </div>
-                )}
-              </div>
-            </div>
-          ))}
         </div>
 
         <Button
