@@ -203,11 +203,11 @@ export const translations = {
     price_35_cents: "20 центов =0.20$",
     price_basic: "$99",
     plan_basic_limits: "150 чатов ≈ 3000 сообщений ≈ 150 000 символов",
-    plan_basic_limits_array: ["150 000 символов", "≈ 3000 сообщений", "≈ 150 чатов"],
+    plan_basic_limits_array: ["500 сообщений"],
     plan_basic_overage: "После: за каждые 1000 сообщений - 12$",
-    plan_pro_limits: "500 чатов ≈ 10 000 сообщений ≈ 500 000 символов",
+    plan_pro_limits: "1700 сообщений",
     plan_premium_limits: "Безлимитное количество чатов и сообщений",
-    plan_premium_limits_array: ["Безлимитное количество слов", "Безлимитное количество сообщений", "Безлимитное количество чатов"],
+    plan_premium_limits_array: ["В рамках тарифа предусмотрен полный цикл консалтинговых и внедренческих услуг.", "", "Условия и объем предоставляемых услуг рассчитываются индивидуально на основе описания и анализа бизнес-задач клиента.", "", "Итоговое коммерческое предложение подготавливается после согласования требований и целей проекта."],
     
     // Calculator Form Labels
     bookings_per_month_current: "Брони в месяц (сейчас)",
@@ -470,11 +470,11 @@ export const translations = {
     price_35_cents: "20 центів =0.20$",
     price_basic: "$99",
     plan_basic_limits: "150 чатів ≈ 3000 повідомлень ≈ 150 000 символів",
-    plan_basic_limits_array: ["150 000 символів", "≈ 3000 повідомлень", "≈ 150 чатів"],
+    plan_basic_limits_array: ["500 повідомлень"],
     plan_basic_overage: "Після: за кожні 1000 повідомлень - 12$",
-    plan_pro_limits: "500 чатів ≈ 10 000 повідомлень ≈ 500 000 символів",
+    plan_pro_limits: "1700 повідомлень",
     plan_premium_limits: "Безлімітна кількість чатів і повідомлень",
-    plan_premium_limits_array: ["Безлімітна кількість слів", "Безлімітна кількість повідомлень", "Безлімітна кількість чатів"],
+    plan_premium_limits_array: ["В рамках тарифу передбачено повний цикл консалтингових та впровадницьких послуг.", "", "Умови та обсяг послуг, що надаються, розраховуються індивідуально на основі опису та аналізу бізнес-задач клієнта.", "", "Підсумкова комерційна пропозиція готується після узгодження вимог і цілей проєкту."],
     
     // Calculator Form Labels
     bookings_per_month_current: "Бронювання на місяць (зараз)",
@@ -737,11 +737,11 @@ export const translations = {
     price_35_cents: "20 cents =0.20$",
     price_basic: "$99",
     plan_basic_limits: "150 chats ≈ 3000 messages ≈ 150 000 characters",
-    plan_basic_limits_array: ["150 000 characters", "≈ 3000 messages", "≈ 150 chats"],
+    plan_basic_limits_array: ["500 messages"],
     plan_basic_overage: "After: for every 1000 messages - 12$",
-    plan_pro_limits: "500 chats ≈ 10 000 messages ≈ 500 000 characters",
+    plan_pro_limits: "1700 messages",
     plan_premium_limits: "Unlimited chats and messages",
-    plan_premium_limits_array: ["Unlimited words", "Unlimited messages", "Unlimited chats"],
+    plan_premium_limits_array: ["The tariff includes a full cycle of consulting and implementation services.", "", "The terms and scope of services are calculated individually based on the description and analysis of the client's business tasks.", "", "The final commercial proposal is prepared after agreeing on the requirements and objectives of the project."],
     
     // Calculator Form Labels
     bookings_per_month_current: "Bookings per month (current)",
