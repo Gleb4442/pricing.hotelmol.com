@@ -2,6 +2,7 @@ import { useState } from "react";
 import { ChevronDown } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
 import { useLanguage } from "@/hooks/use-language";
+import { useHotelType } from "@/hooks/use-hotel-type";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { SavingsCalculator } from "@/components/pricing/SavingsCalculator";
@@ -13,6 +14,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 export default function PricingPage() {
   const { billingMode, setBillingMode } = useBillingMode();
   const { language, setLanguage, t, tArray } = useLanguage();
+  const { hotelType, toggleHotelType } = useHotelType();
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
 
   const languages = [
@@ -32,6 +34,20 @@ export default function PricingPage() {
   const handleSubscribe = (plan: string) => {
     // Redirect to Telegram for subscription
     window.open('https://t.me/hotelmindmanager', '_blank');
+  };
+
+  // Calculate price with network discount (10% off for PRO and PREMIUM)
+  const getNetworkPrice = (basePrice: string): string => {
+    if (hotelType === "single") return basePrice;
+    
+    // Remove $ and commas, calculate 10% discount
+    const numericPrice = parseFloat(basePrice.replace(/[$,]/g, ''));
+    const discountedPrice = Math.round(numericPrice * 0.9);
+    
+    // Format with $ and commas if needed
+    return discountedPrice >= 1000 
+      ? `$${discountedPrice.toLocaleString()}` 
+      : `$${discountedPrice}`;
   };
 
   const basicFeatures = [
@@ -73,7 +89,7 @@ export default function PricingPage() {
       {/* Header */}
       <header className="border-b border-blue-200 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-blue-500/25">
         <div className="container mx-auto px-4 py-4">
-          {/* Desktop: Logo left, Language & Theme right */}
+          {/* Desktop: Logo left, Hotel Type & Language right */}
           <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center">
               <div>
@@ -81,19 +97,47 @@ export default function PricingPage() {
               </div>
             </div>
             
-            {/* Language Switcher */}
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={handleLanguageSwitch}
-              className="h-9 px-3 text-sm border-2 border-blue-300 bg-transparent hover:bg-blue-500/20 text-white hover:text-blue-100"
-              data-testid="language-switcher"
-            >
-              <span className="flex items-center space-x-1">
-                <span>{currentLanguage?.flag}</span>
-                <span>{currentLanguage?.label}</span>
-              </span>
-            </Button>
+            <div className="flex items-center space-x-3">
+              {/* Hotel Type Toggle */}
+              <div className="flex items-center bg-blue-800/30 rounded-lg p-1">
+                <button
+                  onClick={() => hotelType === "network" && toggleHotelType()}
+                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+                    hotelType === "single"
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "text-blue-200 hover:text-white"
+                  }`}
+                  data-testid="hotel-type-single"
+                >
+                  {t("hotel_type_single")}
+                </button>
+                <button
+                  onClick={() => hotelType === "single" && toggleHotelType()}
+                  className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
+                    hotelType === "network"
+                      ? "bg-blue-600 text-white shadow-md"
+                      : "text-blue-200 hover:text-white"
+                  }`}
+                  data-testid="hotel-type-network"
+                >
+                  {t("hotel_type_network")}
+                </button>
+              </div>
+              
+              {/* Language Switcher */}
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleLanguageSwitch}
+                className="h-9 px-3 text-sm border-2 border-blue-300 bg-transparent hover:bg-blue-500/20 text-white hover:text-blue-100"
+                data-testid="language-switcher"
+              >
+                <span className="flex items-center space-x-1">
+                  <span>{currentLanguage?.flag}</span>
+                  <span>{currentLanguage?.label}</span>
+                </span>
+              </Button>
+            </div>
           </div>
 
           {/* Mobile: Centered Roomie only */}
@@ -145,8 +189,14 @@ export default function PricingPage() {
               description={t("plan_pro_description")}
               pricing={{
                 usage: { current: t("price_7_cents") },
-                monthly: { current: "$299", original: "$359" },
-                yearly: { current: "$239", original: "$299" },
+                monthly: { 
+                  current: getNetworkPrice("$299"), 
+                  original: hotelType === "network" ? "$299" : undefined 
+                },
+                yearly: { 
+                  current: getNetworkPrice("$239"), 
+                  original: hotelType === "network" ? "$239" : undefined 
+                },
               }}
               features={proFeatures}
               usageLimits={billingMode !== "usage" ? [t("plan_pro_limits")] : undefined}
@@ -162,8 +212,14 @@ export default function PricingPage() {
               description={t("plan_premium_description")}
               pricing={{
                 usage: { current: t("price_35_cents") },
-                monthly: { current: "$1,099" },
-                yearly: { current: "$879", original: "$1,099" },
+                monthly: { 
+                  current: getNetworkPrice("$1,099"),
+                  original: hotelType === "network" ? "$1,099" : undefined
+                },
+                yearly: { 
+                  current: getNetworkPrice("$879"), 
+                  original: hotelType === "network" ? "$879" : undefined 
+                },
               }}
               features={premiumFeatures}
               usageLimits={billingMode !== "usage" ? tArray("plan_premium_limits_array") : undefined}

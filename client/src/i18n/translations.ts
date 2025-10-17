@@ -13,6 +13,10 @@ export const translations = {
     billing_monthly: "Ежемесячно",
     billing_yearly: "Ежегодно",
     
+    // Hotel Type Toggle
+    hotel_type_single: "1 отель",
+    hotel_type_network: "Сеть отелей",
+    
     // Pricing Plans
     plan_basic_title: "BASIC",
     plan_basic_description: "Базовый план для начинающих",
@@ -282,6 +286,10 @@ export const translations = {
     billing_monthly: "Щомісячно",
     billing_yearly: "Щорічно",
     
+    // Hotel Type Toggle
+    hotel_type_single: "1 готель",
+    hotel_type_network: "Мережа готелів",
+    
     // Pricing Plans
     plan_basic_title: "BASIC",
     plan_basic_description: "Базовий план для початківців",
@@ -548,6 +556,10 @@ export const translations = {
     billing_usage: "Pay per use",
     billing_monthly: "Monthly",
     billing_yearly: "Yearly",
+    
+    // Hotel Type Toggle
+    hotel_type_single: "1 hotel",
+    hotel_type_network: "Hotel network",
     
     // Pricing Plans
     plan_basic_title: "BASIC",
