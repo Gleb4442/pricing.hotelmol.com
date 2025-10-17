@@ -159,7 +159,7 @@ export default function PricingPage() {
 
         {/* Pricing Section */}
         <div className="max-w-7xl mx-auto">
-          <div className={`grid gap-8 ${billingMode === "usage" ? "lg:grid-cols-2" : "lg:grid-cols-3"}`}>
+          <div className={`grid gap-8 ${billingMode === "usage" ? "lg:grid-cols-1 max-w-md mx-auto" : "lg:grid-cols-3"}`}>
             {/* BASIC Plan - только для monthly и yearly */}
             {billingMode !== "usage" && (
               <PricingCard
@@ -203,26 +203,28 @@ export default function PricingPage() {
               onSubscribe={() => handleSubscribe("pro")}
             />
 
-            {/* PREMIUM Plan */}
-            <PricingCard
-              key={`premium-${hotelType}`}
-              plan="premium"
-              title={t("plan_premium_title")}
-              description={t("plan_premium_description")}
-              pricing={{
-                usage: { current: t("price_35_cents") },
-                monthly: { 
-                  current: "$1,099"
-                },
-                yearly: { 
-                  current: "$879"
-                },
-              }}
-              features={premiumFeatures}
-              usageLimits={billingMode !== "usage" ? tArray("plan_premium_limits_array") : undefined}
-              billingMode={billingMode}
-              onSubscribe={() => handleSubscribe("premium")}
-            />
+            {/* PREMIUM Plan - только для monthly и yearly */}
+            {billingMode !== "usage" && (
+              <PricingCard
+                key={`premium-${hotelType}`}
+                plan="premium"
+                title={t("plan_premium_title")}
+                description={t("plan_premium_description")}
+                pricing={{
+                  usage: { current: t("price_35_cents") },
+                  monthly: { 
+                    current: "$1,099"
+                  },
+                  yearly: { 
+                    current: "$879"
+                  },
+                }}
+                features={premiumFeatures}
+                usageLimits={tArray("plan_premium_limits_array")}
+                billingMode={billingMode}
+                onSubscribe={() => handleSubscribe("premium")}
+              />
+            )}
 
           </div>
         </div>
