@@ -53,6 +53,7 @@ export default function PricingPage() {
   const basicFeatures = [
     { text: t("feature_ai_help") },
     { text: t("feature_booking_automation") },
+    { text: t("feature_multilang") },
     { text: t("feature_standard_support") },
     { text: t("feature_online_chat") },
     { text: t("feature_pms_integration") },
@@ -62,6 +63,7 @@ export default function PricingPage() {
     { text: t("feature_ai_help") },
     { text: t("feature_booking_automation") },
     { text: t("feature_multilang") },
+    { text: t("feature_analytics") },
     { text: t("feature_priority_support") },
     { text: t("feature_pms_integration") },
     {
@@ -76,13 +78,7 @@ export default function PricingPage() {
     },
   ];
 
-  const premiumFeatures = [
-    { text: t("feature_all_pro") },
-    { text: t("feature_analytics") },
-    { text: t("feature_ai_training") },
-    { text: t("feature_account_manager") },
-    { text: t("feature_custom_design") },
-  ];
+  const premiumFeatures: { text: string; tooltip?: string; addonPricing?: { usage: string; monthly: string; } }[] = [];
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-primary/5">
@@ -216,12 +212,10 @@ export default function PricingPage() {
               pricing={{
                 usage: { current: t("price_35_cents") },
                 monthly: { 
-                  current: getNetworkPrice("$1,099"),
-                  original: hotelType === "network" ? "$1,099" : undefined
+                  current: "$1,099"
                 },
                 yearly: { 
-                  current: getNetworkPrice("$879"), 
-                  original: hotelType === "network" ? "$879" : undefined 
+                  current: "$879"
                 },
               }}
               features={premiumFeatures}
