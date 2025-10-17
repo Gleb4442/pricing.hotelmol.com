@@ -111,14 +111,14 @@ export function PricingCard({
   return (
     <div className="relative pt-6">
       {/* Most Popular Badge */}
-      {isPopular && (
+      {isPopular && billingMode !== "usage" && (
         <div className="most-popular-badge" data-testid="most-popular-badge">
           MOST POPULAR
         </div>
       )}
 
       {/* Crown Icon */}
-      {isPopular && (
+      {isPopular && billingMode !== "usage" && (
         <div className="crown-icon" data-testid="crown-icon">
           <span className="text-accent-foreground text-lg">👑</span>
         </div>
