@@ -417,12 +417,12 @@ export default function PricingPage() {
       </footer>
 
       {/* Mobile Hotel Type Toggle */}
-      <div className="md:hidden fixed bottom-20 left-1/2 -translate-x-1/2 sm:bottom-6 sm:left-4 sm:translate-x-0 z-50 flex items-center bg-blue-700 rounded-lg p-1 shadow-lg">
+      <div className="md:hidden fixed bottom-4 left-4 z-50 flex items-center bg-blue-700 rounded-md p-0.5 shadow-md">
         <button
           onClick={() => hotelType === "network" && toggleHotelType()}
-          className={`px-4 py-2.5 min-h-[44px] rounded-md text-xs font-medium transition-all whitespace-nowrap ${
+          className={`px-2.5 py-2 min-h-[44px] rounded text-xs font-medium transition-all whitespace-nowrap ${
             hotelType === "single"
-              ? "bg-blue-600 text-white shadow-md"
+              ? "bg-blue-600 text-white shadow-sm"
               : "bg-blue-700/50 text-blue-100 hover:bg-blue-600/70 hover:text-white"
           }`}
           data-testid="mobile-hotel-type-single"
@@ -431,9 +431,9 @@ export default function PricingPage() {
         </button>
         <button
           onClick={() => hotelType === "single" && toggleHotelType()}
-          className={`px-4 py-2.5 min-h-[44px] rounded-md text-xs font-medium transition-all whitespace-nowrap ${
+          className={`px-2.5 py-2 min-h-[44px] rounded text-xs font-medium transition-all whitespace-nowrap ${
             hotelType === "network"
-              ? "bg-blue-600 text-white shadow-md"
+              ? "bg-blue-600 text-white shadow-sm"
               : "bg-blue-700/50 text-blue-100 hover:bg-blue-600/70 hover:text-white"
           }`}
           data-testid="mobile-hotel-type-network"
