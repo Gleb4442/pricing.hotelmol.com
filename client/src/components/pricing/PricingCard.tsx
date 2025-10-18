@@ -132,7 +132,14 @@ export function PricingCard({
       >
         <div className="flex-1 flex flex-col">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-foreground mb-2">{title}</h3>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <h3 className="text-2xl font-bold text-foreground">{title}</h3>
+              {currentPricing.original && (
+                <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md" data-testid="network-discount-badge">
+                  {t("network_discount_badge")}
+                </span>
+              )}
+            </div>
             <p className="text-muted-foreground">{description}</p>
           </div>
 

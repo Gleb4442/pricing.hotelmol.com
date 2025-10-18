@@ -24,6 +24,7 @@ export const translations = {
     plan_pro_description: "Идеально для растущих отелей",
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Корпоративное решение",
+    network_discount_badge: "-10% для сетей",
     
     // Features
     feature_ai_help: "ИИ помощь гостям",
@@ -297,6 +298,7 @@ export const translations = {
     plan_pro_description: "Ідеально для зростаючих готелів",
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Корпоративне рішення",
+    network_discount_badge: "-10% для мереж",
     
     // Features
     feature_ai_help: "ШІ допомога гостям",
@@ -568,6 +570,7 @@ export const translations = {
     plan_pro_description: "Perfect for growing hotels",
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Enterprise solution",
+    network_discount_badge: "-10% for networks",
     
     // Features
     feature_ai_help: "AI guest assistance",
