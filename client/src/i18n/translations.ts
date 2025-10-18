@@ -561,7 +561,7 @@ export const translations = {
     
     // Hotel Type Toggle
     hotel_type_single: "1 hotel",
-    hotel_type_network: "Hotel network",
+    hotel_type_network: "Hotel chain",
     
     // Pricing Plans
     plan_basic_title: "BASIC",
@@ -570,7 +570,7 @@ export const translations = {
     plan_pro_description: "Perfect for growing hotels",
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Enterprise solution",
-    network_discount_badge: "-10% for networks",
+    network_discount_badge: "-10% for chains",
     
     // Features
     feature_ai_help: "AI guest assistance",
