@@ -152,7 +152,6 @@
     justify-content: center;
     box-shadow: 0 8px 16px -4px rgba(255, 215, 0, 0.4), 0 4px 8px -2px rgba(0, 0, 0, 0.1);
     border: 2px solid white;
-    animation: pulse 2s ease-in-out infinite;
   }
 
   .tooltip-container {
