@@ -117,13 +117,6 @@ export function PricingCard({
         </div>
       )}
 
-      {/* Crown Icon */}
-      {isPopular && billingMode !== "usage" && (
-        <div className="crown-icon" data-testid="crown-icon">
-          <span className="text-accent-foreground text-lg">👑</span>
-        </div>
-      )}
-
       <div
         className={`bg-card border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col ${
           isPopular ? "pricing-card-pro" : "border-border"
