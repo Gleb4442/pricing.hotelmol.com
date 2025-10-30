@@ -71,8 +71,8 @@ export function PricingCard({
     let basePrice;
     
     if (billingMode === "usage") {
-      // For usage billing: extract number from "7 центов =0.07$" or "7 центів =0.07$"
-      const match = basePriceText.match(/(\d+(?:\.\d+)?)\s*цент(?:ов|ів)/);
+      // For usage billing: extract number from "6 центов =0.06$" or "6 центів =0.06$" or "6 cents =0.06$"
+      const match = basePriceText.match(/(\d+(?:\.\d+)?)\s*(?:цент(?:ов|ів|а)?|cents?)/i);
       basePrice = match ? parseFloat(match[1]) : 0;
     } else {
       // For monthly/yearly billing: extract number from "$399" or "$1,499"
@@ -83,7 +83,11 @@ export function PricingCard({
     features.forEach((feature, index) => {
       if (feature.addonPricing && addedFeatures.has(index)) {
         if (billingMode === "usage") {
-          additionalCost += 0.5; // +0.5 центов per request
+          // Extract cost from addonPricing text (e.g., "+1 цент/запрос" or "+0.5 центов/запрос" or "+1 cent/request")
+          const usagePricing = feature.addonPricing.usage;
+          const costMatch = usagePricing.match(/\+?(\d+(?:\.\d+)?)/);
+          const cost = costMatch ? parseFloat(costMatch[1]) : 0;
+          additionalCost += cost;
         }
         // For monthly billing, additional features are included for free (no cost)
       }
@@ -93,8 +97,13 @@ export function PricingCard({
     
     if (billingMode === "usage") {
       const dollarEquivalent = (totalPrice / 100).toFixed(2);
-      // Use the correct word based on the original text language
-      const centWord = basePriceText.includes('центів') ? 'центів' : 'центов';
+      // Determine the correct word based on the original text language
+      let centWord = 'центов'; // default Russian
+      if (basePriceText.includes('центів')) {
+        centWord = 'центів'; // Ukrainian
+      } else if (basePriceText.match(/cents?/i)) {
+        centWord = totalPrice === 1 ? 'cent' : 'cents'; // English (singular/plural)
+      }
       return `${totalPrice} ${centWord} =${dollarEquivalent}$`;
     } else {
       // Format with commas for thousands

@@ -69,13 +69,13 @@ export default function PricingPage() {
     {
       text: t("feature_telegram_bot"),
       tooltip: t("tooltip_telegram_bot"),
-      addonPricing: { usage: t("addon_pricing_usage"), monthly: t("addon_pricing_included") },
     },
     {
       text: t("feature_remove_logo"),
       tooltip: t("tooltip_remove_logo"),
-      addonPricing: { usage: t("addon_pricing_usage"), monthly: t("addon_pricing_included") },
+      addonPricing: { usage: t("addon_pricing_logo_removal"), monthly: t("addon_pricing_included") },
     },
+    { text: t("feature_unique_design") },
   ];
 
   const premiumFeatures: { text: string; tooltip?: string; addonPricing?: { usage: string; monthly: string; } }[] = [];

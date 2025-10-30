@@ -41,6 +41,7 @@ export const translations = {
     feature_account_manager: "Персональный менеджер аккаунта",
     feature_custom_design: "Индивидуальный дизайн виджета с брендингом вашей компании",
     feature_online_chat: "Online chat",
+    feature_unique_design: "Уникальный дизайн",
     
     // Tooltips
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
@@ -202,8 +203,9 @@ export const translations = {
     
     // Pricing Labels
     addon_pricing_usage: "+0,5 центов/запрос",
+    addon_pricing_logo_removal: "+1 цент/запрос",
     addon_pricing_included: "Включено",
-    price_7_cents: "5 центов =0.05$",
+    price_7_cents: "6 центов =0.06$",
     price_8_cents: "8 центов =0.08$",
     price_35_cents: "20 центов =0.20$",
     price_basic: "$99",
@@ -315,6 +317,7 @@ export const translations = {
     feature_account_manager: "Персональний менеджер аккаунту",
     feature_custom_design: "Індивідуальний дизайн віджету з брендингом вашої компанії",
     feature_online_chat: "Online chat",
+    feature_unique_design: "Унікальний дизайн",
     
     // Tooltips
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
@@ -474,8 +477,9 @@ export const translations = {
     
     // Pricing Labels
     addon_pricing_usage: "+0,5 центів/запит",
+    addon_pricing_logo_removal: "+1 цент/запит",
     addon_pricing_included: "Включено",
-    price_7_cents: "5 центів =0.05$",
+    price_7_cents: "6 центів =0.06$",
     price_8_cents: "8 центів =0.08$",
     price_35_cents: "20 центів =0.20$",
     price_basic: "$99",
@@ -587,6 +591,7 @@ export const translations = {
     feature_account_manager: "Personal account manager",
     feature_custom_design: "Custom widget design with your company branding",
     feature_online_chat: "Online chat",
+    feature_unique_design: "Unique design",
     
     // Tooltips
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",
@@ -746,8 +751,9 @@ export const translations = {
     
     // Pricing Labels
     addon_pricing_usage: "+0.5 cents/request",
+    addon_pricing_logo_removal: "+1 cent/request",
     addon_pricing_included: "Included",
-    price_7_cents: "5 cents =0.05$",
+    price_7_cents: "6 cents =0.06$",
     price_8_cents: "8 cents =0.08$",
     price_35_cents: "20 cents =0.20$",
     price_basic: "$99",
