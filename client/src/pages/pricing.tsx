@@ -76,6 +76,7 @@ export default function PricingPage() {
       tooltip: t("tooltip_remove_logo"),
       addonPricing: { usage: t("addon_pricing_usage"), monthly: t("addon_pricing_included") },
     },
+    { text: t("feature_unique_design") },
   ];
 
   const premiumFeatures: { text: string; tooltip?: string; addonPricing?: { usage: string; monthly: string; } }[] = [];
