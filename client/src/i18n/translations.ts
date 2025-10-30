@@ -158,7 +158,7 @@ export const translations = {
     footer_copyright: "© 2024 Roomie. All rights reserved.",
     
     // Calculator Actions
-    calculator_action: "Калькулятор",
+    calculator_action: "Калькулятор доходности",
     information_action: "Информация",
     save_data: "Сохранить данные",
     share_results: "Поделиться результатами",
@@ -430,7 +430,7 @@ export const translations = {
     footer_copyright: "© 2024 Roomie. Всі права захищені.",
     
     // Calculator Actions
-    calculator_action: "Калькулятор",
+    calculator_action: "Калькулятор доходності",
     information_action: "Інформація",
     save_data: "Зберегти дані",
     share_results: "Поділитися результатами",
@@ -702,7 +702,7 @@ export const translations = {
     footer_copyright: "© 2024 Roomie. All rights reserved.",
     
     // Calculator Actions
-    calculator_action: "Calculator",
+    calculator_action: "Profitability Calculator",
     information_action: "Information",
     save_data: "Save data",
     share_results: "Share results",

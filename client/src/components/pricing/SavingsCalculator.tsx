@@ -501,7 +501,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     variant="default"
                     size="default"
                     onClick={() => setMobileCalculatorMode('calculator')}
-                    className="text-base h-12 font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0 px-8"
+                    className="text-base h-14 font-semibold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white border-2 border-blue-400/50 px-8 shadow-lg shadow-blue-500/50 rounded-xl"
                     data-testid="mobile-mode-calculator"
                   >
                     {t("calculator_action")}
