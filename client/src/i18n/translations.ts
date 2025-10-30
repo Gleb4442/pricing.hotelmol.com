@@ -35,7 +35,6 @@ export const translations = {
     feature_pms_integration: "Интеграция с PMS",
     feature_telegram_bot: "Telegram-бот",
     feature_remove_logo: "Удаление логотипа",
-    feature_unique_design: "Уникальный дизайн",
     feature_all_pro: "Всё что включено в PRO",
     feature_analytics: "Расширенная аналитика",
     feature_ai_training: "Персональное обучение ИИ",
@@ -159,7 +158,7 @@ export const translations = {
     footer_copyright: "© 2024 Roomie. All rights reserved.",
     
     // Calculator Actions
-    calculator_action: "Калькулятор доходности",
+    calculator_action: "Калькулятор",
     information_action: "Информация",
     save_data: "Сохранить данные",
     share_results: "Поделиться результатами",
@@ -204,7 +203,7 @@ export const translations = {
     // Pricing Labels
     addon_pricing_usage: "+0,5 центов/запрос",
     addon_pricing_included: "Включено",
-    price_7_cents: "6 центов =0.06$",
+    price_7_cents: "5 центов =0.05$",
     price_8_cents: "8 центов =0.08$",
     price_35_cents: "20 центов =0.20$",
     price_basic: "$99",
@@ -310,7 +309,6 @@ export const translations = {
     feature_pms_integration: "Інтеграція з PMS",
     feature_telegram_bot: "Telegram-бот",
     feature_remove_logo: "Видалення логотипу",
-    feature_unique_design: "Унікальний дизайн",
     feature_all_pro: "Все що включено в PRO",
     feature_analytics: "Розширена аналітика",
     feature_ai_training: "Персональне навчання ШІ",
@@ -432,7 +430,7 @@ export const translations = {
     footer_copyright: "© 2024 Roomie. Всі права захищені.",
     
     // Calculator Actions
-    calculator_action: "Калькулятор доходності",
+    calculator_action: "Калькулятор",
     information_action: "Інформація",
     save_data: "Зберегти дані",
     share_results: "Поділитися результатами",
@@ -477,7 +475,7 @@ export const translations = {
     // Pricing Labels
     addon_pricing_usage: "+0,5 центів/запит",
     addon_pricing_included: "Включено",
-    price_7_cents: "6 центів =0.06$",
+    price_7_cents: "5 центів =0.05$",
     price_8_cents: "8 центів =0.08$",
     price_35_cents: "20 центів =0.20$",
     price_basic: "$99",
@@ -583,7 +581,6 @@ export const translations = {
     feature_pms_integration: "PMS Integration",
     feature_telegram_bot: "Telegram bot",
     feature_remove_logo: "Logo removal",
-    feature_unique_design: "Unique design",
     feature_all_pro: "Everything included in PRO",
     feature_analytics: "Advanced analytics",
     feature_ai_training: "Personal AI training",
@@ -705,7 +702,7 @@ export const translations = {
     footer_copyright: "© 2024 Roomie. All rights reserved.",
     
     // Calculator Actions
-    calculator_action: "Profitability Calculator",
+    calculator_action: "Calculator",
     information_action: "Information",
     save_data: "Save data",
     share_results: "Share results",
@@ -750,7 +747,7 @@ export const translations = {
     // Pricing Labels
     addon_pricing_usage: "+0.5 cents/request",
     addon_pricing_included: "Included",
-    price_7_cents: "6 cents =0.06$",
+    price_7_cents: "5 cents =0.05$",
     price_8_cents: "8 cents =0.08$",
     price_35_cents: "20 cents =0.20$",
     price_basic: "$99",

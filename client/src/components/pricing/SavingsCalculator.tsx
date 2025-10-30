@@ -467,68 +467,57 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
               data-testid="mobile-modal-content"
             >
               <div className="flex-1 flex flex-col h-full bg-white">
-                {/* Swipe indicator - скрыт в режиме калькулятора */}
-                {mobileCalculatorMode !== 'calculator' && (
-                  <div className="flex justify-center py-2">
-                    <div className="w-12 h-1 bg-muted-foreground/30 rounded-full" />
-                  </div>
-                )}
+                {/* Swipe indicator */}
+                <div className="flex justify-center py-2">
+                  <div className="w-12 h-1 bg-muted-foreground/30 rounded-full" />
+                </div>
                 
-                <div className={`flex-1 overflow-y-auto bg-white ${mobileCalculatorMode === 'calculator' ? 'p-2' : 'p-6'}`}>
-                {/* Заголовок - в режиме калькулятора только кнопка закрыть */}
-                <div className={`flex items-center justify-between ${mobileCalculatorMode === 'calculator' ? 'mb-2' : 'mb-4'}`}>
-                  {mobileCalculatorMode !== 'calculator' && (
-                    <div className="flex items-center space-x-2">
-                      <Calculator className="h-5 w-5 text-primary" />
-                      <h3 className="text-lg font-semibold text-foreground">
-                        {t("calculator_title_mobile")}
-                      </h3>
-                    </div>
-                  )}
+                <div className="flex-1 p-6 overflow-y-auto bg-white">
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-2">
+                    <Calculator className="h-5 w-5 text-primary" />
+                    <h3 className="text-lg font-semibold text-foreground">
+                      {t("calculator_title_mobile")}
+                    </h3>
+                  </div>
                   <Button 
                     variant="ghost" 
                     size="sm" 
                     onClick={closeMobileModal}
-                    className={mobileCalculatorMode === 'calculator' ? 'ml-auto' : ''}
                     data-testid="button-close-modal"
                   >
                     <X className="h-4 w-4" />
                   </Button>
                 </div>
                 
-                {/* Описание - скрыто в режиме калькулятора */}
-                {mobileCalculatorMode !== 'calculator' && (
-                  <p className="text-base text-muted-foreground mb-6 whitespace-pre-line">
-                    {t("calculator_description_mobile")}
-                  </p>
-                )}
+                <p className="text-base text-muted-foreground mb-6 whitespace-pre-line">
+                  {t("calculator_description_mobile")}
+                </p>
 
-                {/* Переключатель режимов - скрыт в режиме калькулятора */}
-                {mobileCalculatorMode !== 'calculator' && (
-                  <div className="relative flex justify-center mb-6">
-                    {/* Кнопка калькулятор по центру */}
-                    <Button
-                      variant="default"
-                      size="default"
-                      onClick={() => setMobileCalculatorMode('calculator')}
-                      className="text-base h-14 font-semibold bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white border-2 border-blue-400/50 px-8 shadow-lg shadow-blue-500/50 rounded-xl"
-                      data-testid="mobile-mode-calculator"
-                    >
-                      {t("calculator_action")}
-                    </Button>
-                    
-                    {/* Кнопка информация в правом верхнем углу */}
-                    <Button
-                      variant={mobileCalculatorMode === 'info' ? 'default' : 'ghost'}
-                      size="sm"
-                      onClick={() => setMobileCalculatorMode('info')}
-                      className="absolute -top-2 -right-2 text-xs h-7 font-normal px-2 opacity-70 bg-gray-100 hover:bg-gray-200 rounded-full"
-                      data-testid="mobile-mode-info"
-                    >
-                      ℹ️
-                    </Button>
-                  </div>
-                )}
+                {/* Переключатель режимов */}
+                <div className="relative flex justify-center mb-6">
+                  {/* Кнопка калькулятор по центру */}
+                  <Button
+                    variant="default"
+                    size="default"
+                    onClick={() => setMobileCalculatorMode('calculator')}
+                    className="text-base h-12 font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0 px-8"
+                    data-testid="mobile-mode-calculator"
+                  >
+                    {t("calculator_action")}
+                  </Button>
+                  
+                  {/* Кнопка информация в правом верхнем углу */}
+                  <Button
+                    variant={mobileCalculatorMode === 'info' ? 'default' : 'ghost'}
+                    size="sm"
+                    onClick={() => setMobileCalculatorMode('info')}
+                    className="absolute -top-2 -right-2 text-xs h-7 font-normal px-2 opacity-70 bg-gray-100 hover:bg-gray-200 rounded-full"
+                    data-testid="mobile-mode-info"
+                  >
+                    ℹ️
+                  </Button>
+                </div>
                 
 
                 <div className="space-y-4">
@@ -564,7 +553,7 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                       </div>
                     </div>
                   ) : (
-                    <div className="h-full overflow-y-auto">
+                    <div className="max-h-96 overflow-y-auto">
                       <CalculatorForm 
                         inputs={inputs}
                         onInputChange={updateInput}
@@ -576,42 +565,26 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     </div>
                   )}
 
-                  {/* Кнопки - в режиме калькулятора только кнопка поделиться */}
-                  {mobileCalculatorMode === 'calculator' ? (
-                    <div className="pt-4 border-t border-border">
-                      <Button
-                        onClick={handleSaveCalculation}
-                        variant="outline"
-                        size="default"
-                        className="w-full h-12 border-primary/30 text-primary hover:bg-primary/5"
-                        data-testid="mobile-share-calculation-button"
-                      >
-                        <Copy className="h-4 w-4 mr-2" />
-                        <span className="text-sm font-medium">{t("share_calculation")}</span>
-                      </Button>
-                    </div>
-                  ) : (
-                    <div className="space-y-3 pt-4 border-t border-border">
-                      <Button
-                        onClick={handleSaveCalculation}
-                        variant="outline"
-                        size="default"
-                        className="w-full h-12 border-primary/30 text-primary hover:bg-primary/5"
-                        data-testid="mobile-share-calculation-button"
-                      >
-                        <Copy className="h-4 w-4 mr-2" />
-                        <span className="text-sm font-medium">{t("share_calculation")}</span>
-                      </Button>
-                      <Button 
-                        variant="outline"
-                        onClick={closeMobileModal}
-                        className="w-full"
-                        data-testid="button-mobile-close"
-                      >
-                        {t("close")}
-                      </Button>
-                    </div>
-                  )}
+                  <div className="space-y-3 pt-4 border-t border-border">
+                    <Button
+                      onClick={handleSaveCalculation}
+                      variant="outline"
+                      size="default"
+                      className="w-full h-12 border-primary/30 text-primary hover:bg-primary/5"
+                      data-testid="mobile-share-calculation-button"
+                    >
+                      <Copy className="h-4 w-4 mr-2" />
+                      <span className="text-sm font-medium">{t("share_calculation")}</span>
+                    </Button>
+                    <Button 
+                      variant="outline"
+                      onClick={closeMobileModal}
+                      className="w-full"
+                      data-testid="button-mobile-close"
+                    >
+                      {t("close")}
+                    </Button>
+                  </div>
                 </div>
                 </div>
               </div>
