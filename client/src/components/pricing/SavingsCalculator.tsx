@@ -269,16 +269,8 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
       directShareGrowth,
       conversionGrowth,
       currentBookingsPerMonth,
-      additionalServiceRevenuePerBooking,
-      currency
+      additionalServiceRevenuePerBooking
     } = inputs;
-    
-    // Курсы валют для конвертации из USD
-    const currencyRates: Record<Currency, number> = {
-      USD: 1.0,
-      EUR: 0.85,
-      UAH: 37.0
-    };
     
     // Константы
     const baseConversionRate = 35; // Фиксированная конверсия 35%
@@ -305,9 +297,6 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
     const additionalOtaRevenue = deltaB * (1 - s1) * avgBookingRevenue * (1 - otaCommission / 100) * daysInPeriod;
     const additionalRevenueFromConversion = additionalDirectRevenue + additionalOtaRevenue;
     
-    // Стоимость невнимания к гостю (количество обращений в день × 75 USD с конвертацией)
-    const timeSavings = dailyRequests * 75 * currencyRates[currency];
-    
     // Расчёт дополнительного заработка (фиксированно 8% рост)
     const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
       Math.round(currentBookingsPerMonth * (8 / 100)) : 0;
@@ -317,7 +306,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
     const totalAdditionalEarnings = additionalRoomRevenue + additionalServiceRevenue;
     
     // Общие показатели
-    const totalSavings = commissionSavings + additionalRevenueFromConversion + timeSavings;
+    const totalSavings = commissionSavings + additionalRevenueFromConversion;
     
     // Дополнительные показатели
     const additionalDirectBookingsPerMonth = deltaDirectShift * daysInPeriod;
@@ -327,7 +316,6 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
       // Новая структура результатов
       commissionSavings,
       additionalRevenueFromConversion,
-      timeSavings,
       totalSavings,
       additionalDirectBookingsPerMonth,
       // Совместимость со старым интерфейсом (для отображения)
@@ -524,7 +512,6 @@ interface CalculatorFormProps {
     // Новая структура результатов
     commissionSavings: number;
     additionalRevenueFromConversion: number;
-    timeSavings: number;
     totalSavings: number;
     additionalDirectBookingsPerMonth: number;
     // Совместимость со старым интерфейсом
@@ -763,7 +750,6 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
   // Простые визуализации сравнения
   const humanCosts = [
     { label: t('ota_commissions'), value: savings.otaSavings || 0 },
-    { label: t('response_time'), value: savings.timeSavings || 0 },
     { label: t('additional_earnings_per_month'), value: savings.totalAdditionalEarnings || 0 }
   ];
 

@@ -107,7 +107,6 @@ export const translations = {
     results_empty_bookings: "Введите ваши брони, чтобы увидеть точные цифры",
     results_commission_savings: "💰 Экономия на комиссиях OTA",
     results_additional_revenue: "📈 Дополнительная прибыль от прироста конверсии",
-    results_time_savings: "⏰ Операционная экономия:",
     results_additional_bookings_title: "Дополнительный заработок:",
     results_new_bookings: "Новые бронирования от лучшего сервиса:",
     results_additional_bookings: "Доп. брони в месяц:",
@@ -115,7 +114,6 @@ export const translations = {
     results_additional_service_revenue: "Доп. оборот (услуги):",
     results_roomie_cost: "Стоимость Roomie:",
     results_total_effect: "Общий эффект:",
-    results_time_savings_label: "Экономия времени команды:",
     results_calculation_note: "Прибыль = новые брони × доходность каналов",
     
     // Trust Statement
@@ -131,8 +129,6 @@ export const translations = {
     saved_requests_formula: "(рост конверсии × средний чек)",
     ota_savings: "Экономия на комиссии OTA",
     direct_bookings_commission: "(переток с OTA на прямые × разница комиссий)",
-    guest_neglect_cost: "Стоимость невнимания к гостю",
-    guest_neglect_formula: "(обращения в день × 75 USD)",
     monthly_subscription: "(ежемесячная подписка)",
     costs_comparison: "Сравнение потерь",
     losses_without_ai: "Потери без ИИ",
@@ -178,7 +174,6 @@ export const translations = {
     share_calculation: "Поделиться расчётом",
     share_label: "Поделиться",
     our_formula: "Наша формула экономии:",
-    time_savings_formula: "Экономия времени: 2-4 часа/день × зарплата сотрудника",
     direct_bookings_formula: "Увеличение прямых бронирований: +15-25%",
     ota_commission_formula: "Снижение комиссий OTA: экономия 10-15%",
     automation_formula: "Автоматизация рутины: более 80% запросов без участия персонала",
@@ -195,9 +190,7 @@ export const translations = {
     additional_room_revenue: "Доп. оборот (номера):",
     additional_service_revenue: "Доп. оборот (услуги):",
     roomie_cost_label: "Стоимость Roomie:",
-    missed_bookings: "Пропущенные брони",
     ota_commissions: "Комиссии OTA",
-    response_time: "Стоимость невнимания к гостю",
     calculation_explanation: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
     calculation_additional: "Плюс экономия на комиссионных OTA и рост допродаж.",
     
@@ -383,7 +376,6 @@ export const translations = {
     results_empty_bookings: "Введіть ваші броні, щоб побачити точні цифри",
     results_commission_savings: "💰 Економія на комісіях OTA",
     results_additional_revenue: "📈 Додатковий прибуток від приросту конверсії",
-    results_time_savings: "⏰ Операційна економія:",
     results_additional_bookings_title: "Додатковий заробіток:",
     results_new_bookings: "Нові бронювання від кращого сервісу:",
     results_additional_bookings: "Дод. броні в місяць:",
@@ -391,7 +383,6 @@ export const translations = {
     results_additional_service_revenue: "Дод. оборот (послуги):",
     results_roomie_cost: "Вартість Roomie:",
     results_total_effect: "Загальний ефект:",
-    results_time_savings_label: "Економія часу команди:",
     results_calculation_note: "Прибуток = нові броні × дохідність каналів",
     
     // Trust Statement
@@ -452,7 +443,6 @@ export const translations = {
     share_calculation: "Поділитися розрахунком",
     share_label: "Поділитися",
     our_formula: "Наша формула економії:",
-    time_savings_formula: "Економія часу: 2-4 години/день × зарплата співробітника",
     direct_bookings_formula: "Збільшення прямих бронювань: +15-25%",
     ota_commission_formula: "Зменшення комісій OTA: економія 10-15%",
     automation_formula: "Автоматизація рутини: понад 80% запитів без участі персоналу",
@@ -469,9 +459,7 @@ export const translations = {
     additional_room_revenue: "Дод. оборот (номери):",
     additional_service_revenue: "Дод. оборот (послуги):",
     roomie_cost_label: "Вартість Roomie:",
-    missed_bookings: "Пропущені бронювання",
     ota_commissions: "Комісії OTA",
-    response_time: "Вартість неуваги до гостя",
     calculation_explanation: "Ми беремо ваші звернення на місяць, віднімаємо частку пропусків у людини та у ШІ, помножуємо на конверсію в бронювання та середній чек. Різниця — це додатковий дохід.",
     calculation_additional: "Плюс економія на комісійних OTA та зростання допродажів. Мінус — вартість Roomie.",
     
@@ -657,7 +645,6 @@ export const translations = {
     results_empty_bookings: "Enter your bookings to see exact figures",
     results_commission_savings: "💰 OTA commission savings",
     results_additional_revenue: "📈 Additional revenue from conversion growth",
-    results_time_savings: "⏰ Operational savings:",
     results_additional_bookings_title: "Additional earnings:",
     results_new_bookings: "New bookings from better service:",
     results_additional_bookings: "Additional bookings per month:",
@@ -665,7 +652,6 @@ export const translations = {
     results_additional_service_revenue: "Additional service revenue:",
     results_roomie_cost: "Roomie cost:",
     results_total_effect: "Total effect:",
-    results_time_savings_label: "Team time savings:",
     results_calculation_note: "Profit = new bookings × channel profitability",
     
     // Trust Statement
@@ -726,7 +712,6 @@ export const translations = {
     share_calculation: "Share calculation",
     share_label: "Share",
     our_formula: "Our savings formula:",
-    time_savings_formula: "Time savings: 2-4 hours/day × employee salary",
     direct_bookings_formula: "Direct bookings increase: +15-25%",
     ota_commission_formula: "OTA commission reduction: 10-15% savings",
     automation_formula: "Routine automation: over 80% of requests without staff involvement",
@@ -743,9 +728,7 @@ export const translations = {
     additional_room_revenue: "Additional room revenue:",
     additional_service_revenue: "Additional service revenue:",
     roomie_cost_label: "Roomie cost:",
-    missed_bookings: "Missed bookings",
     ota_commissions: "OTA commissions",
-    response_time: "Cost of guest neglect",
     calculation_explanation: "We take your monthly inquiries, subtract the percentage of missed calls by humans and AI, multiply by conversion to bookings and average check. The difference is additional revenue.",
     calculation_additional: "Plus savings on OTA commissions and additional service sales. Minus Roomie cost.",
     
@@ -931,7 +914,6 @@ export const translations = {
     results_empty_bookings: "Wprowadź swoje rezerwacje, aby zobaczyć dokładne liczby",
     results_commission_savings: "💰 Oszczędności na prowizjach OTA",
     results_additional_revenue: "📈 Dodatkowy przychód ze wzrostu konwersji",
-    results_time_savings: "⏰ Oszczędności operacyjne:",
     results_additional_bookings_title: "Dodatkowe zarobki:",
     results_new_bookings: "Nowe rezerwacje z lepszej obsługi:",
     results_additional_bookings: "Dodatkowe rezerwacje miesięcznie:",
@@ -939,7 +921,6 @@ export const translations = {
     results_additional_service_revenue: "Dodatkowy przychód z usług:",
     results_roomie_cost: "Koszt Roomie:",
     results_total_effect: "Całkowity efekt:",
-    results_time_savings_label: "Oszczędność czasu zespołu:",
     results_calculation_note: "Zysk = nowe rezerwacje × rentowność kanałów",
     
     // Trust Statement
@@ -1000,7 +981,6 @@ export const translations = {
     share_calculation: "Udostępnij obliczenia",
     share_label: "Udostępnij",
     our_formula: "Nasza formuła oszczędności:",
-    time_savings_formula: "Oszczędność czasu: 2-4 godziny/dzień × wynagrodzenie pracownika",
     direct_bookings_formula: "Wzrost rezerwacji bezpośrednich: +15-25%",
     ota_commission_formula: "Redukcja prowizji OTA: 10-15% oszczędności",
     automation_formula: "Automatyzacja rutyny: ponad 80% zapytań bez udziału personelu",
@@ -1017,9 +997,7 @@ export const translations = {
     additional_room_revenue: "Dodatkowy przychód z pokoi:",
     additional_service_revenue: "Dodatkowy przychód z usług:",
     roomie_cost_label: "Koszt Roomie:",
-    missed_bookings: "Utracone rezerwacje",
     ota_commissions: "Prowizje OTA",
-    response_time: "Koszt zaniedbania gości",
     calculation_explanation: "Bierzemy Twoje miesięczne zapytania, odejmujemy procent pominiętych połączeń przez ludzi i AI, mnożymy przez konwersję do rezerwacji i średni czek. Różnica to dodatkowy przychód.",
     calculation_additional: "Plus oszczędności na prowizjach OTA i sprzedaż usług dodatkowych. Minus koszt Roomie.",
     

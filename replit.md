@@ -1,8 +1,8 @@
 # Overview
 
-This is a full-stack web application built as a pricing page for AI hotel services. The application features a modern React frontend with a sleek pricing interface that allows users to toggle between usage-based and monthly billing modes. The frontend is built with Vite, React, TypeScript, and styled using Tailwind CSS with shadcn/ui components. The backend uses Express.js with TypeScript and is configured to work with PostgreSQL via Drizzle ORM.
+This is a full-stack web application built as a pricing page for "Roomie" - an AI hotel services platform. The application features a modern React frontend with a sleek pricing interface that allows users to toggle between usage-based, monthly, and yearly billing modes. The frontend is built with Vite, React, TypeScript, and styled using Tailwind CSS with shadcn/ui components. The backend uses Express.js with TypeScript and is configured to work with PostgreSQL via Drizzle ORM.
 
-The application appears to be designed for a Russian-speaking market, offering AI-powered hotel management services with two main pricing tiers (PRO and PREMIUM). The pricing page includes interactive billing toggles, tooltips, and responsive design elements.
+The application supports multi-language functionality (Russian, Ukrainian, English, Polish - with Ukrainian as default) and offers three pricing tiers (BASIC, PRO, PREMIUM). The pricing page includes interactive billing toggles, tooltips, savings calculator with fullscreen mode, and responsive design elements optimized for both desktop and mobile.
 
 # User Preferences
 
@@ -94,3 +94,32 @@ The application is organized with clear separation of concerns:
 - **Connect-pg-simple**: PostgreSQL session store
 - **Drizzle-zod**: Schema validation integration
 - **Session Management**: PostgreSQL-backed session storage
+
+# Recent Changes
+
+## November 13, 2024
+
+### Removed "Cost of Guest Neglect" Metric from Calculator
+- **Removed**: The arbitrary "timeSavings" metric that calculated `dailyRequests × 75 USD × currencyRates`
+- **Reason**: This fixed $75 per request estimate was too arbitrary and not based on actual hotel metrics
+- **Impact**: Calculator now shows only concrete, measurable metrics:
+  1. OTA Commission Savings (переток OTA → Direct)
+  2. Additional Revenue from Conversion Growth
+  3. Additional Earnings from 8% booking growth
+- **Formula Update**: `totalSavings = commissionSavings + additionalRevenueFromConversion` (removed timeSavings)
+- **Translation Cleanup**: Removed 8 deprecated translation keys from all 4 languages (32 removals total):
+  - time_savings_formula
+  - results_time_savings_label
+  - results_time_savings
+  - guest_neglect_cost & guest_neglect_formula
+  - missed_bookings
+  - response_time
+- **Code Cleanup**: Removed unused `currencyRates` constant and `currency` variable
+- **Status**: ✅ All tests passed, no dead code, production-ready
+
+### Added Polish Language Support
+- **Languages**: Application now supports 4 languages (RU, UA, EN, PL)
+- **Translations**: Added 270+ Polish translations with professional hospitality terminology
+- **Key Terms**: Integracja PMS, Prowizja OTA, Rezerwacja, Asystent AI
+- **UI Integration**: Polish language option (🇵🇱 PL) added to desktop and mobile language switchers
+- **Status**: ✅ Fully tested and working across all UI components
