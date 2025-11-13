@@ -221,28 +221,26 @@ export default function PricingPage() {
               onSubscribe={() => handleSubscribe("pro")}
             />
 
-            {/* PREMIUM Plan - только для monthly и yearly */}
-            {billingMode !== "usage" && (
-              <PricingCard
-                key={`premium-${hotelType}`}
-                plan="premium"
-                title={t("plan_premium_title")}
-                description={t("plan_premium_description")}
-                pricing={{
-                  usage: { current: t("price_35_cents") },
-                  monthly: { 
-                    current: "$1,099"
-                  },
-                  yearly: { 
-                    current: "$879"
-                  },
-                }}
-                features={premiumFeatures}
-                usageLimits={tArray("plan_premium_limits_array")}
-                billingMode={billingMode}
-                onSubscribe={() => handleSubscribe("premium")}
-              />
-            )}
+            {/* PREMIUM Plan */}
+            <PricingCard
+              key={`premium-${hotelType}`}
+              plan="premium"
+              title={t("plan_premium_title")}
+              description={t("plan_premium_description")}
+              pricing={{
+                usage: { current: t("price_35_cents") },
+                monthly: { 
+                  current: "$1,099"
+                },
+                yearly: { 
+                  current: "$879"
+                },
+              }}
+              features={premiumFeatures}
+              usageLimits={billingMode !== "usage" ? tArray("plan_premium_limits_array") : undefined}
+              billingMode={billingMode}
+              onSubscribe={() => handleSubscribe("premium")}
+            />
 
           </div>
         </div>

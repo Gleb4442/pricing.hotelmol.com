@@ -2,7 +2,7 @@
 
 This is a full-stack web application built as a pricing page for "Roomie" - an AI hotel services platform. The application features a modern React frontend with a sleek pricing interface that allows users to toggle between usage-based, monthly, and yearly billing modes. The frontend is built with Vite, React, TypeScript, and styled using Tailwind CSS with shadcn/ui components. The backend uses Express.js with TypeScript and is configured to work with PostgreSQL via Drizzle ORM.
 
-The application supports multi-language functionality (Russian, Ukrainian, English, Polish - with Ukrainian as default) and offers three pricing tiers (BASIC, PRO, PREMIUM). The pricing page includes interactive billing toggles, tooltips, savings calculator with fullscreen mode, and responsive design elements optimized for both desktop and mobile.
+The application supports multi-language functionality (Russian, Ukrainian, English, Polish - with Ukrainian as default) and offers three pricing tiers (BASIC, PRO, PREMIUM). For fixed monthly payment plans, BASIC includes 1500 messages and PRO includes 3000 messages. The pricing page includes interactive billing toggles, tooltips, savings calculator with fullscreen mode, and responsive design elements optimized for both desktop and mobile.
 
 # User Preferences
 
@@ -98,6 +98,13 @@ The application is organized with clear separation of concerns:
 # Recent Changes
 
 ## November 13, 2024
+
+### Updated Message Limits for Fixed Payment Plans
+- **BASIC Plan**: Increased from 500 to **1500 messages** per month
+- **PRO Plan**: Increased from 1700 to **3000 messages** per month
+- **Scope**: Changes apply to fixed monthly/yearly billing modes only (not usage-based)
+- **Translation Updates**: Updated all 4 languages (RU, UA, EN, PL) with new limits
+- **Status**: ✅ All translations updated, application ready for production
 
 ### Removed "Cost of Guest Neglect" Metric from Calculator
 - **Removed**: The arbitrary "timeSavings" metric that calculated `dailyRequests × 75 USD × currencyRates`
