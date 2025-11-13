@@ -10,6 +10,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 
 export default function PricingPage() {
   const { billingMode, setBillingMode } = useBillingMode();
@@ -19,16 +20,10 @@ export default function PricingPage() {
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   const languages = [
-    { code: "ru" as const, flag: "🇷🇺", label: "RU" },
-    { code: "ua" as const, flag: "🇺🇦", label: "UA" },
-    { code: "en" as const, flag: "🇺🇸", label: "EN" }
+    { code: "ru" as const, flag: "🇷🇺", label: "RU", name: "Русский" },
+    { code: "ua" as const, flag: "🇺🇦", label: "UA", name: "Українська" },
+    { code: "en" as const, flag: "🇺🇸", label: "EN", name: "English" }
   ];
-
-  const handleLanguageSwitch = () => {
-    const currentIndex = languages.findIndex(lang => lang.code === language);
-    const nextIndex = (currentIndex + 1) % languages.length;
-    setLanguage(languages[nextIndex].code);
-  };
 
   const currentLanguage = languages.find(lang => lang.code === language);
 
@@ -124,18 +119,37 @@ export default function PricingPage() {
               )}
               
               {/* Language Switcher */}
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={handleLanguageSwitch}
-                className="h-9 px-3 text-sm border-2 border-blue-300 bg-transparent hover:bg-blue-500/20 text-white hover:text-blue-100"
-                data-testid="language-switcher"
-              >
-                <span className="flex items-center space-x-1">
-                  <span>{currentLanguage?.flag}</span>
-                  <span>{currentLanguage?.label}</span>
-                </span>
-              </Button>
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-9 px-3 text-sm border-2 border-blue-300 bg-transparent hover:bg-blue-500/20 text-white hover:text-blue-100"
+                    data-testid="language-switcher"
+                  >
+                    <span className="flex items-center space-x-1">
+                      <span>{currentLanguage?.flag}</span>
+                      <span>{currentLanguage?.label}</span>
+                      <ChevronDown className="h-3 w-3 ml-1" />
+                    </span>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => setLanguage(lang.code)}
+                      className={`cursor-pointer ${language === lang.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
+                      data-testid={`language-option-${lang.code}`}
+                    >
+                      <span className="flex items-center space-x-2">
+                        <span>{lang.flag}</span>
+                        <span>{lang.name}</span>
+                      </span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
 
@@ -448,18 +462,37 @@ export default function PricingPage() {
       )}
 
       {/* Mobile Language Switcher */}
-      <Button
-        variant="outline"
-        size="sm"
-        onClick={handleLanguageSwitch}
-        className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-4 text-sm border-2 border-blue-400 bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-foreground shadow-lg"
-        data-testid="mobile-language-switcher"
-      >
-        <span className="flex items-center space-x-1">
-          <span>{currentLanguage?.flag}</span>
-          <span className="font-medium">{currentLanguage?.label}</span>
-        </span>
-      </Button>
+      <DropdownMenu>
+        <DropdownMenuTrigger asChild>
+          <Button
+            variant="outline"
+            size="sm"
+            className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-4 text-sm border-2 border-blue-400 bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-foreground shadow-lg"
+            data-testid="mobile-language-switcher"
+          >
+            <span className="flex items-center space-x-1">
+              <span>{currentLanguage?.flag}</span>
+              <span className="font-medium">{currentLanguage?.label}</span>
+              <ChevronDown className="h-3 w-3 ml-1" />
+            </span>
+          </Button>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+          {languages.map((lang) => (
+            <DropdownMenuItem
+              key={lang.code}
+              onClick={() => setLanguage(lang.code)}
+              className={`cursor-pointer ${language === lang.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
+              data-testid={`mobile-language-option-${lang.code}`}
+            >
+              <span className="flex items-center space-x-2">
+                <span>{lang.flag}</span>
+                <span>{lang.name}</span>
+              </span>
+            </DropdownMenuItem>
+          ))}
+        </DropdownMenuContent>
+      </DropdownMenu>
     </div>
   );
 }
