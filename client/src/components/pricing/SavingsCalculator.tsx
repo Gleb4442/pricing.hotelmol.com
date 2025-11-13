@@ -12,6 +12,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface SavingsCalculatorProps {
   className?: string;
+  onModalToggle?: (isOpen: boolean) => void;
 }
 
 type Currency = 'UAH' | 'USD' | 'EUR';
@@ -31,7 +32,7 @@ interface CalculatorInputs {
   additionalServiceRevenuePerBooking: number;
 }
 
-export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
+export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalculatorProps) {
   const { toast } = useToast();
   const { t } = useLanguage();
   const [isExpanded, setIsExpanded] = useState(false);
@@ -196,11 +197,14 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
   };
 
   const toggleMobileModal = () => {
-    setShowMobileModal(!showMobileModal);
+    const newState = !showMobileModal;
+    setShowMobileModal(newState);
+    onModalToggle?.(newState);
   };
 
   const closeMobileModal = () => {
     setShowMobileModal(false);
+    onModalToggle?.(false);
   };
 
   // Handle Escape key press
@@ -498,27 +502,6 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                     currencyLocales={currencyLocales}
                     onShareCalculation={handleSaveCalculation}
                   />
-
-                  <div className="space-y-3 pt-4 border-t border-border">
-                    <Button
-                      onClick={handleSaveCalculation}
-                      variant="outline"
-                      size="default"
-                      className="w-full h-12 border-primary/30 text-primary hover:bg-primary/5"
-                      data-testid="mobile-share-calculation-button"
-                    >
-                      <Copy className="h-4 w-4 mr-2" />
-                      <span className="text-sm font-medium">{t("share_calculation")}</span>
-                    </Button>
-                    <Button 
-                      variant="outline"
-                      onClick={closeMobileModal}
-                      className="w-full"
-                      data-testid="button-mobile-close"
-                    >
-                      {t("close")}
-                    </Button>
-                  </div>
                 </div>
                 </div>
               </div>
