@@ -347,7 +347,17 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       {/* Desktop Sticky Card */}
       <div className={`hidden lg:block ${className}`}>
         <div className="sticky top-24">
-          <Card className="bg-white dark:bg-white border-primary/20 shadow-lg">
+          <div className="flex justify-center">
+            <Button 
+              variant="default"
+              onClick={toggleMobileModal}
+              className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              data-testid="button-open-fullscreen-calculator"
+            >
+              {t("calculator_title")}
+            </Button>
+          </div>
+          <Card className="bg-white dark:bg-white border-primary/20 shadow-lg mt-6" style={{ display: 'none' }}>
             <CardHeader className="pb-4">
               <div className="flex items-center space-x-2 mb-2">
                 <Calculator className="h-5 w-5 text-primary" />
@@ -426,31 +436,21 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
       </div>
 
       {/* Mobile Banner */}
-      <div className="lg:hidden mb-6">
-        <div 
+      <div className="lg:hidden mb-6 flex justify-center">
+        <Button 
           onClick={toggleMobileModal}
-          className="bg-gradient-to-r from-primary/10 to-orange-50 dark:from-primary/20 dark:to-orange-900/30 border border-primary/20 rounded-xl p-4 cursor-pointer hover:shadow-md transition-all duration-200"
+          className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white font-semibold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           data-testid="mobile-savings-banner"
         >
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-2">
-              <Calculator className="h-4 w-4 text-primary" />
-              <div>
-                <p className="text-base font-medium text-foreground">{t("calculator_title")}</p>
-                <p className="text-sm text-muted-foreground">{t("calculator_description")}</p>
-              </div>
-            </div>
-            <ChevronDown className="h-4 w-4 text-primary" />
-          </div>
-        </div>
+          {t("calculator_title")}
+        </Button>
       </div>
 
       {/* Mobile Modal */}
       <AnimatePresence>
         {showMobileModal && (
           <div 
-            className="lg:hidden fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center"
-            onClick={closeMobileModal}
+            className="fixed inset-0 bg-white z-50 flex items-center justify-center"
             data-testid="mobile-modal-backdrop"
           >
             <motion.div
@@ -472,98 +472,32 @@ export function SavingsCalculator({ className = "" }: SavingsCalculatorProps) {
                   <div className="w-12 h-1 bg-muted-foreground/30 rounded-full" />
                 </div>
                 
-                <div className="flex-1 p-6 overflow-y-auto bg-white">
-                <div className="flex items-center justify-between mb-4">
-                  <div className="flex items-center space-x-2">
-                    <Calculator className="h-5 w-5 text-primary" />
-                    <h3 className="text-lg font-semibold text-foreground">
-                      {t("calculator_title_mobile")}
-                    </h3>
-                  </div>
+                <div className="flex-1 p-8 overflow-y-auto bg-white max-w-6xl mx-auto w-full">
+                <div className="flex items-center justify-between mb-8">
+                  <h3 className="text-3xl font-bold text-foreground">
+                    {t("calculator_title_mobile")}
+                  </h3>
                   <Button 
                     variant="ghost" 
-                    size="sm" 
+                    size="lg" 
                     onClick={closeMobileModal}
+                    className="hover:bg-gray-100 rounded-full p-2"
                     data-testid="button-close-modal"
                   >
-                    <X className="h-4 w-4" />
-                  </Button>
-                </div>
-                
-                <p className="text-base text-muted-foreground mb-6 whitespace-pre-line">
-                  {t("calculator_description_mobile")}
-                </p>
-
-                {/* Переключатель режимов */}
-                <div className="relative flex justify-center mb-6">
-                  {/* Кнопка калькулятор по центру */}
-                  <Button
-                    variant="default"
-                    size="default"
-                    onClick={() => setMobileCalculatorMode('calculator')}
-                    className="text-base h-12 font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0 px-8"
-                    data-testid="mobile-mode-calculator"
-                  >
-                    {t("calculator_action")}
-                  </Button>
-                  
-                  {/* Кнопка информация в правом верхнем углу */}
-                  <Button
-                    variant={mobileCalculatorMode === 'info' ? 'default' : 'ghost'}
-                    size="sm"
-                    onClick={() => setMobileCalculatorMode('info')}
-                    className="absolute -top-2 -right-2 text-xs h-7 font-normal px-2 opacity-70 bg-gray-100 hover:bg-gray-200 rounded-full"
-                    data-testid="mobile-mode-info"
-                  >
-                    ℹ️
+                    <X className="h-6 w-6" />
                   </Button>
                 </div>
                 
 
-                <div className="space-y-4">
-
-                  {mobileCalculatorMode === 'info' ? (
-                    <div className="space-y-4 text-base text-muted-foreground">
-                      {/* Заголовок только для информационной вкладки */}
-                      <div className="text-center mb-4">
-                        <h4 className="text-xl font-medium text-foreground">
-                          {t("how_we_calculate_mobile")}
-                        </h4>
-                      </div>
-                      
-                      {/* Основная формула */}
-                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 border-l-4 border-blue-500">
-                        <p className="text-base text-foreground leading-relaxed">
-                          {(t as any)("simple_explanation_mobile_structured").formula}
-                        </p>
-                      </div>
-                      
-                      {/* Результат */}
-                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border-l-4 border-blue-500">
-                        <p className="text-base font-medium text-foreground text-center">
-                          {(t as any)("simple_explanation_mobile_structured").result}
-                        </p>
-                      </div>
-                      
-                      {/* Плюсы */}
-                      <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 border-l-4 border-blue-500">
-                        <p className="text-sm text-foreground">
-                          {(t as any)("simple_explanation_mobile_structured").benefits}
-                        </p>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="max-h-96 overflow-y-auto">
-                      <CalculatorForm 
-                        inputs={inputs}
-                        onInputChange={updateInput}
-                        savings={savings}
-                        currencySymbols={currencySymbols}
-                        currencyLocales={currencyLocales}
-                        onShareCalculation={handleSaveCalculation}
-                      />
-                    </div>
-                  )}
+                <div className="space-y-6">
+                  <CalculatorForm 
+                    inputs={inputs}
+                    onInputChange={updateInput}
+                    savings={savings}
+                    currencySymbols={currencySymbols}
+                    currencyLocales={currencyLocales}
+                    onShareCalculation={handleSaveCalculation}
+                  />
 
                   <div className="space-y-3 pt-4 border-t border-border">
                     <Button
