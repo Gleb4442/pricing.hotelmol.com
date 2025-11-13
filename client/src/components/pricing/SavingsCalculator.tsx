@@ -189,7 +189,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
   }, [inputs, saveToLocalStorage]);
 
   const handleTryRoomie = () => {
-    window.open('https://t.me/hotelmindmanager', '_blank');
+    window.open('https://t.me/hotelmolmanager', '_blank');
   };
 
   const handleHowWeCalculate = () => {
@@ -859,7 +859,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
           data-testid="cta-try-roomie"
         >
           <a 
-            href="https://t.me/hotelmindmanager" 
+            href="https://t.me/hotelmolmanager" 
             target="_blank" 
             rel="noopener noreferrer"
             className="flex items-center justify-center"

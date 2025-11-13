@@ -34,7 +34,7 @@ export default function PricingPage() {
 
   const handleSubscribe = (plan: string) => {
     // Redirect to Telegram for subscription
-    window.open('https://t.me/hotelmindmanager', '_blank');
+    window.open('https://t.me/hotelmolmanager', '_blank');
   };
 
   // Calculate price with network discount (10% off for PRO and PREMIUM)
