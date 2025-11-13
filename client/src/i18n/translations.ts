@@ -821,6 +821,280 @@ export const translations = {
     try_demo: "Try DEMO",
     no_registration: "no registration",
     view_presentation: "View presentation",
+  },
+  
+  pl: {
+    // Header
+    company_name: "Roomie",
+    
+    // Hero Section
+    hero_title: "Wybierz swój plan",
+    hero_title_highlight: "Asystenta AI",
+    hero_description: "Rozszerz możliwości hotelu dzięki inteligentnej automatyzacji. Elastyczne ceny dla każdej wielkości obiektu.",
+    
+    // Billing Toggle
+    billing_usage: "Płatność za użycie",
+    billing_monthly: "Miesięcznie",
+    billing_yearly: "Rocznie",
+    
+    // Hotel Type Toggle
+    hotel_type_single: "1 hotel",
+    hotel_type_network: "Sieć hoteli",
+    
+    // Pricing Plans
+    plan_basic_title: "BASIC",
+    plan_basic_description: "Plan podstawowy dla początkujących",
+    plan_pro_title: "PRO",
+    plan_pro_description: "Idealny dla rozwijających się hoteli",
+    plan_premium_title: "PREMIUM",
+    plan_premium_description: "Rozwiązanie korporacyjne",
+    network_discount_badge: "-10% dla sieci",
+    
+    // Features
+    feature_ai_help: "Asystent AI dla gości",
+    feature_booking_automation: "Zautomatyzowane zarządzanie rezerwacjami",
+    feature_multilang: "Wsparcie wielojęzyczne",
+    feature_priority_support: "Menedżer osobisty",
+    feature_standard_support: "Standardowe wsparcie",
+    feature_pms_integration: "Integracja PMS",
+    feature_telegram_bot: "Bot Telegram",
+    feature_remove_logo: "Usunięcie logo",
+    feature_all_pro: "Wszystko z planu PRO",
+    feature_analytics: "Zaawansowana analityka",
+    feature_ai_training: "Osobiste szkolenie AI",
+    feature_account_manager: "Osobisty menedżer konta",
+    feature_custom_design: "Indywidualny projekt widżetu z brandingiem Twojej firmy",
+    feature_online_chat: "Chat online",
+    feature_unique_design: "Unikalny projekt",
+    
+    // Tooltips
+    tooltip_telegram_bot: "Otrzymaj własnego markowego bota Telegram do interakcji z gośćmi",
+    tooltip_remove_logo: "Usuń nasz branding z interfejsów gości",
+    
+    // Buttons
+    btn_subscribe: "Subskrybuj",
+    btn_contact_telegram: "Skontaktuj się przez Telegram",
+    
+    // Info Sidebar
+    info_usage_title: "Płatność za użycie",
+    info_usage_description: "Płać tylko za to, z czego korzystasz. Idealne dla obiektów sezonowych lub testowania AI.",
+    info_usage_benefits: ["Bez zobowiązań miesięcznych", "Skalowanie według potrzeb", "Przejrzyste ceny"],
+    
+    info_monthly_title: "Stała płatność miesięczna",
+    info_monthly_description: "Przewidywalne koszty z nieograniczonym użyciem. Najlepsze dla obiektów o wysokim ruchu.",
+    info_monthly_benefits: ["Nieograniczone zapytania", "Przewidywalność budżetu", "Maksymalne oszczędności przy skali"],
+    
+    info_yearly_title: "Płatność roczna ze zniżką",
+    info_yearly_description: "Maksymalne oszczędności do 20% przy płatności z góry za rok. Idealne do planowania długoterminowego.",
+    info_yearly_benefits: ["Do 20% zniżki", "Wsparcie priorytetowe", "Nieograniczone zapytania", "Stabilność cen przez rok"],
+    
+    // Calculator
+    calculator_title: "Ile zaoszczędzisz z Roomie?",
+    calculator_description: "Dowiedz się, jak asystent AI wpłynie na Twój biznes. Wszystkie obliczenia oparte są na rzeczywistych danych rynku hotelowego.",
+    calculator_title_mobile: "Ile zaoszczędzisz z Roomie?",
+    calculator_description_mobile: "Dowiedz się, jak asystent AI wpłynie na Twój biznes. Wszystkie obliczenia oparte są na rzeczywistych danych rynku hotelowego.",
+    simple_explanation_mobile_structured: {
+      intro: "📊 Prościej mówiąc:",
+      formula: "Bierzemy Twoje miesięczne zapytania, odejmujemy procent pominiętych zapytań przez ludzi i AI, mnożymy przez konwersję rezerwacji i średni czek.",
+      result: "Różnica to dodatkowy przychód",
+      benefits: "➕ Oszczędności na prowizjach OTA i wzrost sprzedaży dodatkowej"
+    },
+    how_we_calculate_mobile: "Jak liczymy?",
+    
+    // Calculator Fields
+    field_daily_requests: "Zapytań dziennie",
+    field_adr: "Średnia stawka dzienna (ADR)",
+    field_los: "Średnia długość pobytu",
+    field_ota_commission: "Prowizja OTA",
+    field_processing_cost: "Koszty płatności bezpośrednich",
+    field_base_direct_share: "Podstawowy udział rezerwacji bezpośrednich",
+    field_direct_share_growth: "Wzrost udziału rezerwacji bezpośrednich",
+    field_conversion_growth: "Wzrost konwersji",
+    field_roomie_cost: "Koszt Roomie",
+    field_current_bookings: "Bieżące rezerwacje miesięczne",
+    field_additional_service_revenue: "Dodatkowy przychód z usług na rezerwację",
+    
+    // Calculator Tooltips
+    tooltip_daily_requests: "Średnia liczba zapytań gości dziennie (przez czat, telefon, na recepcji)",
+    tooltip_adr: "Średnia stawka za pokój na dobę w Twojej walucie",
+    tooltip_los: "Średnia liczba nocy, które goście spędzają w hotelu",
+    tooltip_ota_commission: "Procent prowizji, którą płacisz OTA (Booking.com, Airbnb itp.)",
+    tooltip_processing_cost: "Procent kwoty rezerwacji, który idzie na przetwarzanie płatności przy płatnościach bezpośrednich",
+    tooltip_base_direct_share: "Jaki procent wszystkich rezerwacji pochodzi bezpośrednio (nie przez OTA)",
+    tooltip_direct_share_growth: "O ile procent wzrośnie udział rezerwacji bezpośrednich z asystentem AI",
+    tooltip_conversion_growth: "O ile procent wzrośnie konwersja z zapytań do rezerwacji",
+    tooltip_roomie_cost: "Miesięczny koszt Roomie w Twojej walucie",
+    tooltip_current_bookings: "Ile rezerwacji otrzymujesz miesięcznie obecnie",
+    tooltip_additional_service_revenue: "Ile dodatkowego przychodu przynosi jedna rezerwacja (śniadanie, wycieczki itp.)",
+    
+    // Calculator Results
+    results_empty_bookings: "Wprowadź swoje rezerwacje, aby zobaczyć dokładne liczby",
+    results_commission_savings: "💰 Oszczędności na prowizjach OTA",
+    results_additional_revenue: "📈 Dodatkowy przychód ze wzrostu konwersji",
+    results_time_savings: "⏰ Oszczędności operacyjne:",
+    results_additional_bookings_title: "Dodatkowe zarobki:",
+    results_new_bookings: "Nowe rezerwacje z lepszej obsługi:",
+    results_additional_bookings: "Dodatkowe rezerwacje miesięcznie:",
+    results_additional_room_revenue: "Dodatkowy przychód z pokoi:",
+    results_additional_service_revenue: "Dodatkowy przychód z usług:",
+    results_roomie_cost: "Koszt Roomie:",
+    results_total_effect: "Całkowity efekt:",
+    results_time_savings_label: "Oszczędność czasu zespołu:",
+    results_calculation_note: "Zysk = nowe rezerwacje × rentowność kanałów",
+    
+    // Trust Statement
+    trust_title: "O uczciwości obliczeń",
+    trust_description: "Jeśli Twoje liczby pokażą zerowy efekt — to też jest wynik. Nie sprzedajemy cudów, liczymy. Naszym zadaniem jest pokazanie prawdziwego obrazu, a nie kuszenie pięknymi obietnicami.",
+    
+    // Formula Explanation
+    simple_words: "Prościej mówiąc:",
+    formula_explanation_main: "Bierzemy Twoje miesięczne zapytania, odejmujemy procent pominiętych zapytań przez ludzi i AI, mnożymy przez konwersję rezerwacji i średni czek. Różnica to dodatkowy przychód.",
+    formula_explanation_additional: "Plus oszczędności na prowizjach OTA i wzrost sprzedaży dodatkowej.",
+    formula_title: "Formuła obliczeń",
+    additional_revenue: "Dodatkowy przychód",
+    saved_requests_formula: "(zaoszczędzone zapytania × konwersja × średni czek)",
+    ota_savings: "Oszczędności OTA",
+    direct_bookings_commission: "(rezerwacje bezpośrednie × prowizja)",
+    monthly_subscription: "(subskrypcja miesięczna)",
+    costs_comparison: "Porównanie strat",
+    losses_without_ai: "Straty bez AI",
+    
+    // Mobile Info
+    mobile_info_title: "Informacje o rozliczeniach",
+    mobile_usage_info: "Płatność za użycie",
+    mobile_monthly_info: "Stała płatność miesięczna",
+    mobile_yearly_info: "Płatność roczna ze zniżką",
+    
+    // FAQ
+    faq_title: "Często zadawane pytania",
+    faq_integration_question: "Jak działa integracja AI?",
+    faq_integration_answer: "Łączymy się z Twoim PMS i kanałami przez API. Podstawowe uruchomienie zajmuje 1 dzień roboczy i nie przeszkadza w pracy recepcji. Asystent starannie przestrzega polityk cenowych, stop-sales i zasad anulowania",
+    faq_billing_question: "Czy mogę zmieniać tryby płatności?",
+    faq_billing_answer: "Tak, możesz zmienić preferencje płatności w dowolnym momencie. Zmiany wchodzą w życie od początku następnego okresu rozliczeniowego.",
+    faq_security_question: "A co z bezpieczeństwem i danymi osobowymi?",
+    faq_security_answer: "Przestrzegamy RODO. Dane są szyfrowane. Na żądanie podpisujemy DPA i umieszczamy dane w wymaganym regionie (UE/EMEA/USA). Twoje dane nie są wykorzystywane do trenowania modeli ogólnych bez Twojej zgody.",
+    faq_plans_question: "Czym PRO różni się od PREMIUM w skrócie?",
+    faq_plans_answer: "PRO — 'wszystko potrzebne do automatyzacji komunikacji z gośćmi z AI'. PREMIUM — 'wszystko z PRO' + Własny panel administracyjny, zaawansowana analityka, osobiste szkolenie AI na Twoich danych, white-label i menedżer konta.",
+    
+    // Footer
+    footer_description: "Rewolucjonizujemy hotelarstwo dzięki inteligentnej automatyzacji i spersonalizowanym doświadczeniom gości.",
+    footer_copyright: "© 2024 Roomie. Wszelkie prawa zastrzeżone.",
+    
+    // Calculator Actions
+    calculator_action: "Kalkulator",
+    information_action: "Informacje",
+    save_data: "Zapisz dane",
+    share_results: "Udostępnij wyniki",
+    advanced_settings: "Ustawienia zaawansowane",
+    currency_label: "Waluta",
+    data_saved: "Dane zapisane na tym urządzeniu",
+    yearly_savings: "Zaoszczędź do 20% przy płatności rocznej",
+    
+    // Trust Indicators
+    requests_handled: "zapytań obsłużonych bez personelu recepcji",
+    guest_service: "pokrycie obsługi gości",
+    
+    // Calculator Additional Text
+    calculate_savings: "Oblicz moje oszczędności",
+    how_we_calculate: "Jak liczymy?",
+    share_calculation: "Udostępnij obliczenia",
+    share_label: "Udostępnij",
+    our_formula: "Nasza formuła oszczędności:",
+    time_savings_formula: "Oszczędność czasu: 2-4 godziny/dzień × wynagrodzenie pracownika",
+    direct_bookings_formula: "Wzrost rezerwacji bezpośrednich: +15-25%",
+    ota_commission_formula: "Redukcja prowizji OTA: 10-15% oszczędności",
+    automation_formula: "Automatyzacja rutyny: ponad 80% zapytań bez udziału personelu",
+    average_savings: "Średnie oszczędności dla hotelu z 20 pokojami: $3,000-6,000/miesiąc",
+    
+    // Toast Messages
+    copy_link_success_title: "Link skopiowany",
+    copy_link_success_desc: "Udostępnij obliczenia współpracownikom",
+    copy_link_error_title: "Nie udało się skopiować linku — zrób to ręcznie",
+    
+    // Additional UI Text
+    try_roomie: "Wypróbuj Roomie",
+    close: "Zamknij",
+    additional_room_revenue: "Dodatkowy przychód z pokoi:",
+    additional_service_revenue: "Dodatkowy przychód z usług:",
+    roomie_cost_label: "Koszt Roomie:",
+    missed_bookings: "Utracone rezerwacje",
+    ota_commissions: "Prowizje OTA",
+    response_time: "Koszt zaniedbania gości",
+    calculation_explanation: "Bierzemy Twoje miesięczne zapytania, odejmujemy procent pominiętych połączeń przez ludzi i AI, mnożymy przez konwersję do rezerwacji i średni czek. Różnica to dodatkowy przychód.",
+    calculation_additional: "Plus oszczędności na prowizjach OTA i sprzedaż usług dodatkowych. Minus koszt Roomie.",
+    
+    // Pricing Labels
+    addon_pricing_usage: "+0,5 centa/zapytanie",
+    addon_pricing_logo_removal: "+1 cent/zapytanie",
+    addon_pricing_included: "Wliczone",
+    price_7_cents: "5 centów =0,05$",
+    price_8_cents: "8 centów =0,08$",
+    price_35_cents: "20 centów =0,20$",
+    price_basic: "$99",
+    plan_basic_limits: "150 czatów ≈ 3000 wiadomości ≈ 150 000 znaków",
+    plan_basic_limits_array: ["500 wiadomości"],
+    plan_basic_overage: "Potem: za każde 1000 wiadomości - 12$",
+    plan_pro_limits: "1700 wiadomości",
+    plan_premium_limits: "Nieograniczone czaty i wiadomości",
+    plan_premium_limits_array: ["Taryfikacja obejmuje pełny cykl usług doradczych i wdrożeniowych.", " ", " ", "Warunki i zakres usług są obliczane indywidualnie na podstawie opisu i analizy zadań biznesowych klienta.", " ", " ", "Ostateczna oferta handlowa jest przygotowywana po uzgodnieniu wymagań i celów projektu."],
+    
+    // Calculator Form Labels
+    bookings_per_month_current: "Rezerwacje miesięcznie (obecnie)",
+    bookings_suffix: "rezerwacje",
+    direct_share_current: "Udział rezerwacji bezpośrednich (obecnie)",
+    direct_share_growth_label: "Wzrost udziału rezerwacji bezpośrednich",
+    
+    // Calculator Results
+    enter_bookings_message: "Wprowadź swoje rezerwacje, aby zobaczyć dokładne liczby",
+    savings_per_month: "Oszczędności/miesiąc",
+    additional_bookings_per_month: "Dodatkowe rezerwacje/miesiąc",
+    additional_earnings_per_month: "Dodatkowe zarobki/miesiąc",
+    additional_earnings_explanation: "+8% do Twoich rezerwacji dzięki odpowiedziom w nocy i braku oczekiwania w kolejce w godzinach szczytu",
+    total_effect_per_month: "Całkowity efekt/miesiąc",
+    savings_plus_additional_earnings: "Oszczędności + Dodatkowe zarobki",
+    total_savings_and_additional_earnings: "Całkowite oszczędności + dodatkowe zarobki",
+    savings_plus_additional_earnings_short: "Oszczędności +dodatkowe zarobki",
+    total_losses: "Całkowite straty",
+    savings_label: "Oszczędności",
+    commission_savings_tooltip: "Oszczędności prowizji (Przejście OTA → Bezpośrednie)",
+    ota_to_direct_transition: "Przejście z OTA na rezerwacje bezpośrednie:",
+    new_bookings_better_service: "Nowe rezerwacje z lepszej obsługi:",
+    daily_requests_label: "Zapytania dziennie",
+    adr_label: "Średnia stawka dzienna (ADR)",
+    subscribe_now: "Subskrybuj teraz",
+    show_calculation_to_manager: "Pokaż obliczenia menedżerowi",
+    contact_manager_text: "Kliknij \"Wypróbuj Roomie\", aby skontaktować się z naszym menedżerem. Lub udostępnij te obliczenia swojemu menedżerowi w celu podjęcia decyzji.",
+    included: "wliczone",
+    average_stay_duration: "Średni czas pobytu",
+    processing_cost_label: "Koszt przetwarzania",
+    additional_service_revenue_label: "Dodatkowy przychód z usług na rezerwację",
+    show_additional_fields: "+ Pokaż dodatkowe pola",
+    requests_suffix: "zapytania",
+    nights_suffix: "noce",
+    per_month_suffix: "/miesiąc",
+    per_month: "miesięcznie",
+    per_month_yearly: "miesięcznie przy płatności rocznej",
+    per_request: "za zapytanie",
+    ota_commission_label: "Prowizja OTA",
+    roomie_cost_field_label: "Koszt Roomie",
+    your_benefits: "Twoje korzyści",
+    benefit_free_connection: "Bezpłatne podłączenie:",
+    benefit_free_connection_desc: "Podłączymy Twój hotel do serwisu bez opłat startowych i ukrytych kosztów",
+    benefit_no_cancellation_fee: "Brak opłaty za anulowanie:",
+    benefit_no_cancellation_fee_desc: "Możesz przestać korzystać z serwisu w dowolnym momencie bez kar i grzywien",
+    benefit_personal_manager: "Osobisty menedżer:",
+    benefit_personal_manager_desc: "Na starcie i podczas pracy towarzyszy Ci dedykowany specjalista gotowy odpowiedzieć na wszystkie pytania",
+    benefit_free_updates: "Bezpłatne regularne aktualizacje:",
+    benefit_free_updates_desc: "Wszystkie nowe funkcje są wliczone w taryfę bez ukrytych dopłat",
+    benefit_24_7_support: "Wsparcie 24/7 w messengerze:",
+    benefit_24_7_support_desc: "Zespół wsparcia jest zawsze dostępny nawet w nocy, w weekendy i święta",
+    benefit_no_hidden_fees: "Bez ukrytych opłat:",
+    benefit_no_hidden_fees_desc: "Stała cena subskrypcji, bez dodatkowych opłat",
+    
+    // Demo button
+    try_demo: "Wypróbuj DEMO",
+    no_registration: "bez rejestracji",
+    view_presentation: "Zobacz prezentację",
   }
 } as const;
 

@@ -22,7 +22,8 @@ export default function PricingPage() {
   const languages = [
     { code: "ru" as const, flag: "🇷🇺", label: "RU", name: "Русский" },
     { code: "ua" as const, flag: "🇺🇦", label: "UA", name: "Українська" },
-    { code: "en" as const, flag: "🇺🇸", label: "EN", name: "English" }
+    { code: "en" as const, flag: "🇺🇸", label: "EN", name: "English" },
+    { code: "pl" as const, flag: "🇵🇱", label: "PL", name: "Polski" }
   ];
 
   const currentLanguage = languages.find(lang => lang.code === language);
