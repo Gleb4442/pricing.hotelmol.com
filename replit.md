@@ -97,7 +97,7 @@ The application is organized with clear separation of concerns:
 
 # Recent Changes
 
-## November 13, 2024
+## November 16, 2024
 
 ### Updated Message Limits for Fixed Payment Plans
 - **BASIC Plan**: Increased from 500 to **1500 messages** per month
@@ -105,6 +105,13 @@ The application is organized with clear separation of concerns:
 - **Scope**: Changes apply to fixed monthly/yearly billing modes only (not usage-based)
 - **Translation Updates**: Updated all 4 languages (RU, UA, EN, PL) with new limits
 - **Status**: ✅ All translations updated, application ready for production
+
+### Updated Plan Visibility in Usage-Based Mode
+- **Usage-based mode**: Now shows only PRO plan (5 cents per request)
+- **BASIC plan**: Hidden in usage-based mode (only available for monthly/yearly)
+- **PREMIUM plan**: Hidden in usage-based mode (only available for monthly/yearly)
+- **Reason**: Simplified pricing structure for pay-as-you-go customers
+- **Status**: ✅ Tested and verified across all billing modes
 
 ### Removed "Cost of Guest Neglect" Metric from Calculator
 - **Removed**: The arbitrary "timeSavings" metric that calculated `dailyRequests × 75 USD × currencyRates`
