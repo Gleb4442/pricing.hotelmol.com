@@ -80,8 +80,8 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-primary/5">
       {/* Header */}
-      <header className="border-b border-blue-200 bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 backdrop-blur-sm sticky top-0 z-50 shadow-lg shadow-blue-500/25">
-        <div className="container mx-auto px-4 py-4">
+      <header className="sticky top-4 z-50 px-4">
+        <div className="container mx-auto px-4 py-3 rounded-3xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-opacity-70 backdrop-blur-xl shadow-xl shadow-blue-500/30">
           {/* Desktop: Logo left, Hotel Type & Language right */}
           <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center">
