@@ -118,7 +118,7 @@ export function PricingCard({
   } : { current: calculatePrice() };
 
   return (
-    <div className="relative pt-6">
+    <div className={`relative ${isPopular && billingMode !== "usage" ? "pt-8" : "pt-0"}`}>
       {/* Most Popular Badge */}
       {isPopular && billingMode !== "usage" && (
         <div className="most-popular-badge" data-testid="most-popular-badge">
