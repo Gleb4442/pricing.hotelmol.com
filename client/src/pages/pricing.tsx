@@ -85,7 +85,7 @@ export default function PricingPage() {
           {/* Desktop: Logo left, Hotel Type & Language right */}
           <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center">
-              <div>
+              <div className="ml-[15px]">
                 <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
               </div>
             </div>
