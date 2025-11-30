@@ -90,7 +90,7 @@ export default function PricingPage() {
               </div>
             </div>
             
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-3 -mr-[10px]">
               {/* Hotel Type Toggle */}
               {!isCalculatorOpen && (
                 <div className="flex items-center bg-blue-800/30 rounded-lg p-1">
