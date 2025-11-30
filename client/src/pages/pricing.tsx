@@ -403,7 +403,7 @@ export default function PricingPage() {
             data-testid="button-demo"
           >
             <a 
-              href="https://demo.hotelmind.xyz" 
+              href="https://demo.hotelmol.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex flex-col items-center justify-center -space-y-2"
