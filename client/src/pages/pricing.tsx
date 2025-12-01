@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+import { ChevronDown, ChevronUp } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
 import { useLanguage } from "@/hooks/use-language";
 import { useHotelType } from "@/hooks/use-hotel-type";
@@ -18,6 +18,20 @@ export default function PricingPage() {
   const { hotelType, toggleHotelType } = useHotelType();
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 300);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const languages = [
     { code: "ru" as const, flag: "🇷🇺", label: "RU", name: "Русский" },
@@ -494,6 +508,18 @@ export default function PricingPage() {
           ))}
         </DropdownMenuContent>
       </DropdownMenu>
+
+      {/* Scroll to Top Button (Desktop Only) */}
+      {showScrollTop && (
+        <button
+          onClick={scrollToTop}
+          className="hidden md:flex fixed bottom-8 right-8 z-40 h-12 w-12 items-center justify-center rounded-full bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-xl transition-all duration-300"
+          aria-label="Scroll to top"
+          data-testid="button-scroll-to-top"
+        >
+          <ChevronUp className="h-6 w-6" />
+        </button>
+      )}
     </div>
   );
 }
