@@ -19,23 +19,23 @@ export default function PricingPage() {
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
-  const calculatorRef = useRef<HTMLDivElement>(null);
+  const faqRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(
       ([entry]) => {
-        setShowScrollTop(!entry.isIntersecting);
+        setShowScrollTop(entry.isIntersecting);
       },
       { threshold: 0 }
     );
 
-    if (calculatorRef.current) {
-      observer.observe(calculatorRef.current);
+    if (faqRef.current) {
+      observer.observe(faqRef.current);
     }
 
     return () => {
-      if (calculatorRef.current) {
-        observer.unobserve(calculatorRef.current);
+      if (faqRef.current) {
+        observer.unobserve(faqRef.current);
       }
     };
   }, []);
@@ -305,7 +305,7 @@ export default function PricingPage() {
         </div>
 
         {/* Savings Calculator */}
-        <div ref={calculatorRef} className="mt-16 max-w-4xl mx-auto">
+        <div className="mt-16 max-w-4xl mx-auto">
           <SavingsCalculator onModalToggle={setIsCalculatorOpen} />
         </div>
 
@@ -376,7 +376,7 @@ export default function PricingPage() {
         </div>
 
         {/* FAQ Section */}
-        <div className="mt-20">
+        <div ref={faqRef} className="mt-20">
           <h2 className="text-3xl font-bold text-center text-foreground mb-12">
             {t("faq_title")}
           </h2>
