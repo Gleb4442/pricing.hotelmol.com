@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
 import { useLanguage } from "@/hooks/use-language";
@@ -19,14 +19,25 @@ export default function PricingPage() {
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
   const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+  const calculatorRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowScrollTop(window.scrollY > 300);
-    };
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowScrollTop(!entry.isIntersecting);
+      },
+      { threshold: 0 }
+    );
 
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    if (calculatorRef.current) {
+      observer.observe(calculatorRef.current);
+    }
+
+    return () => {
+      if (calculatorRef.current) {
+        observer.unobserve(calculatorRef.current);
+      }
+    };
   }, []);
 
   const scrollToTop = () => {
@@ -294,7 +305,7 @@ export default function PricingPage() {
         </div>
 
         {/* Savings Calculator */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        <div ref={calculatorRef} className="mt-16 max-w-4xl mx-auto">
           <SavingsCalculator onModalToggle={setIsCalculatorOpen} />
         </div>
 
