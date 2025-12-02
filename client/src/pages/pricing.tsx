@@ -393,25 +393,19 @@ export default function PricingPage() {
       </main>
 
       {/* Demo Buttons */}
-      <div className="py-16 text-center">
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center max-w-2xl mx-auto">
+      <div className="py-12 px-4 text-center">
+        <div className="flex justify-center">
           {/* Demo Button */}
-          <Button 
-            asChild
-            size="lg"
-            className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-10 py-7 text-lg font-medium shadow-md rounded-lg flex-1 sm:flex-initial w-full sm:w-auto"
+          <a 
+            href="https://demo.hotelmol.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="bg-green-500 hover:bg-green-600 text-white font-medium shadow-lg rounded-3xl px-8 py-6 sm:px-12 sm:py-8 inline-flex flex-col items-center justify-center transition-all max-w-md"
             data-testid="button-demo"
           >
-            <a 
-              href="https://demo.hotelmol.com" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex flex-col items-center justify-center -space-y-2"
-            >
-              <span className="whitespace-nowrap">{t("try_demo")}</span>
-              <span className="text-xs font-normal opacity-80 whitespace-nowrap">{t("no_registration")}</span>
-            </a>
-          </Button>
+            <span className="text-base sm:text-lg whitespace-nowrap">{t("try_demo")}</span>
+            <span className="text-xs sm:text-sm font-normal opacity-90 whitespace-nowrap mt-1">{t("no_registration")}</span>
+          </a>
         </div>
       </div>
 
