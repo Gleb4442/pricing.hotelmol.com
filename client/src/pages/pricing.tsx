@@ -400,11 +400,11 @@ export default function PricingPage() {
             href="https://demo.hotelmol.com" 
             target="_blank" 
             rel="noopener noreferrer"
-            className="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-bold shadow-lg hover:shadow-2xl rounded-3xl px-8 py-5 sm:px-14 sm:py-7 inline-flex flex-col items-center justify-center transition-all"
+            className="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-bold shadow-lg hover:shadow-2xl rounded-3xl px-10 py-6 sm:px-16 sm:py-9 inline-flex flex-col items-center justify-center transition-all"
             data-testid="button-demo"
           >
-            <span className="text-base sm:text-lg whitespace-nowrap leading-tight">{t("try_demo")}</span>
-            <span className="text-xs sm:text-sm font-semibold opacity-90 whitespace-nowrap mt-1">{t("no_registration")}</span>
+            <span className="text-lg sm:text-xl whitespace-nowrap leading-tight">{t("try_demo")}</span>
+            <span className="text-sm sm:text-base font-semibold opacity-90 whitespace-nowrap mt-1">{t("no_registration")}</span>
           </a>
         </div>
       </div>
