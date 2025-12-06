@@ -1,16 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <!-- Круглый фон -->
   <circle cx="100" cy="100" r="100" fill="#0052A3"/>
-  
-  <!-- Белый символ доллара с ровной вертикальной линией -->
-  <!-- Вертикальная линия -->
-  <line x1="100" y1="35" x2="100" y2="165" stroke="white" stroke-width="16" stroke-linecap="round"/>
-  
-  <!-- Верхняя кривая (дуга) -->
-  <path d="M 65 60 Q 65 50 80 50 Q 95 50 100 60 Q 105 70 105 80" 
-        fill="none" stroke="white" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
-  
-  <!-- Нижняя кривая (дуга) -->
-  <path d="M 135 140 Q 135 150 120 150 Q 105 150 100 140 Q 95 130 95 120" 
-        fill="none" stroke="white" stroke-width="16" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Белый символ доллара (большой и по центру) -->
+  <text x="100" y="100" font-size="160" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif">$</text>
 </svg>
