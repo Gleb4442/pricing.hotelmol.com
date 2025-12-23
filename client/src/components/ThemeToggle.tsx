@@ -27,7 +27,7 @@ export function ThemeToggle() {
       variant="ghost"
       size="sm"
       onClick={toggleTheme}
-      className="h-9 px-3 hover:bg-blue-500/30 text-white hover:text-blue-100 border-0 bg-transparent"
+      className="h-9 px-3 hover:bg-[#306BA1]/30 text-white hover:text-[#d4e5f3] border-0 bg-transparent"
       data-testid="theme-toggle"
       aria-label="Toggle theme"
     >

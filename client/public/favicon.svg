@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
   <!-- Круглый фон -->
-  <circle cx="100" cy="100" r="100" fill="#0052A3"/>
+  <circle cx="100" cy="100" r="100" fill="#306BA1"/>
   <!-- Белый символ доллара (большой и по центру) -->
   <text x="100" y="100" font-size="160" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif">$</text>
 </svg>

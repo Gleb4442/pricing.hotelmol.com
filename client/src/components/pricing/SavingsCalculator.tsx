@@ -343,7 +343,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
             <Button 
               variant="default"
               onClick={toggleMobileModal}
-              className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+              className="bg-gradient-to-r from-[#306BA1] via-[#254d7a] to-[#1e4473] hover:from-[#254d7a] hover:via-[#1e4473] hover:to-[#152a42] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
               data-testid="button-open-fullscreen-calculator"
             >
               {t("calculator_title")}
@@ -367,7 +367,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
                   <Button 
                     variant="default"
                     onClick={toggleCalculator}
-                    className="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 justify-between min-w-[280px]"
+                    className="bg-[#306BA1] hover:bg-[#254d7a] text-white font-semibold px-6 py-3 justify-between min-w-[280px]"
                     data-testid="button-toggle-calculator"
                   >
                     <span>{t("calculate_savings")}</span>
@@ -431,7 +431,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
       <div className="lg:hidden mb-6 flex justify-center">
         <Button 
           onClick={toggleMobileModal}
-          className="bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 hover:from-blue-700 hover:via-blue-800 hover:to-blue-900 text-white font-semibold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          className="bg-gradient-to-r from-[#306BA1] via-[#254d7a] to-[#1e4473] hover:from-[#254d7a] hover:via-[#1e4473] hover:to-[#152a42] text-white font-semibold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           data-testid="mobile-savings-banner"
         >
           {t("calculator_title")}
@@ -608,7 +608,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 }}
                 className={`flex-1 px-3 py-2 text-sm font-medium rounded-sm transition-all duration-300 ${
                   inputs.currency === currency
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/30 border-2 border-blue-400'
+                    ? 'bg-[#306BA1] text-white shadow-lg shadow-[#306BA1]/30 border-2 border-[#7ca3c8]'
                     : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
                 }`}
                 data-testid={`currency-${currency.toLowerCase()}`}
@@ -684,9 +684,9 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 </div>
 
                 {/* Дополнительный заработок/мес */}
-                <div className="bg-white border-2 border-blue-200 rounded-xl p-6 text-center" data-testid="main-additional-earnings">
+                <div className="bg-white border-2 border-[#a8c5e0] rounded-xl p-6 text-center" data-testid="main-additional-earnings">
                   <div className="text-sm text-muted-foreground mb-2 font-medium">{t('additional_earnings_per_month')}</div>
-                  <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">{formatNumber(savings.totalAdditionalEarnings)}</div>
+                  <div className="text-2xl font-bold text-[#306BA1] dark:text-[#7ca3c8]">{formatNumber(savings.totalAdditionalEarnings)}</div>
                   
                   {/* Пояснительный текст под цифрой */}
                   <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
@@ -841,7 +841,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
         <Button 
           asChild
           size="lg" 
-          className="w-full h-14 text-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white border-0"
+          className="w-full h-14 text-lg font-semibold bg-[#306BA1] hover:bg-[#254d7a] text-white border-0"
           data-testid="cta-try-roomie"
         >
           <a 
@@ -859,7 +859,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
           onClick={onShareCalculation}
           variant="outline"
           size="lg"
-          className="w-full h-12 border-blue-300 text-blue-700 hover:bg-blue-50 dark:border-blue-600 dark:text-blue-300 dark:hover:bg-blue-900/20"
+          className="w-full h-12 border-[#7ca3c8] text-[#306BA1] hover:bg-[#f0f5fa] dark:border-[#306BA1] dark:text-[#7ca3c8] dark:hover:bg-[#306BA1]/20"
           data-testid="cta-share-calculation"
         >
           <Copy className="h-4 w-4 mr-2" />

@@ -81,7 +81,7 @@ export default function PricingPage() {
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-primary/5">
       {/* Header */}
       <header className="sticky top-4 z-50 px-4 w-full">
-        <div className="container mx-auto px-4 py-3 rounded-3xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-opacity-70 backdrop-blur-xl shadow-xl shadow-blue-500/30">
+        <div className="container mx-auto px-4 py-3 rounded-3xl bg-gradient-to-r from-[#306BA1] via-[#254d7a] to-[#1e4473] bg-opacity-70 backdrop-blur-xl shadow-xl shadow-[#306BA1]/30">
           {/* Desktop: Logo left, Hotel Type & Language right */}
           <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center">
@@ -93,13 +93,13 @@ export default function PricingPage() {
             <div className="flex items-center space-x-3">
               {/* Hotel Type Toggle */}
               {!isCalculatorOpen && (
-                <div className="flex items-center bg-blue-800/30 rounded-lg p-1">
+                <div className="flex items-center bg-[#254d7a]/30 rounded-lg p-1">
                   <button
                     onClick={() => hotelType === "network" && toggleHotelType()}
                     className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                       hotelType === "single"
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "text-blue-200 hover:text-white"
+                        ? "bg-[#306BA1] text-white shadow-md"
+                        : "text-[#a8c5e0] hover:text-white"
                     }`}
                     data-testid="hotel-type-single"
                   >
@@ -109,8 +109,8 @@ export default function PricingPage() {
                     onClick={() => hotelType === "single" && toggleHotelType()}
                     className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
                       hotelType === "network"
-                        ? "bg-blue-600 text-white shadow-md"
-                        : "text-blue-200 hover:text-white"
+                        ? "bg-[#306BA1] text-white shadow-md"
+                        : "text-[#a8c5e0] hover:text-white"
                     }`}
                     data-testid="hotel-type-network"
                   >
@@ -125,7 +125,7 @@ export default function PricingPage() {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="h-9 px-3 text-sm border-2 border-blue-300 bg-transparent hover:bg-blue-500/20 text-white hover:text-blue-100"
+                    className="h-9 px-3 text-sm border-2 border-[#7ca3c8] bg-transparent hover:bg-[#306BA1]/20 text-white hover:text-[#d4e5f3]"
                     data-testid="language-switcher"
                   >
                     <span className="flex items-center space-x-1">
@@ -140,7 +140,7 @@ export default function PricingPage() {
                     <DropdownMenuItem
                       key={lang.code}
                       onClick={() => setLanguage(lang.code)}
-                      className={`cursor-pointer ${language === lang.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
+                      className={`cursor-pointer ${language === lang.code ? 'bg-[#f0f5fa] dark:bg-[#306BA1]/20' : ''}`}
                       data-testid={`language-option-${lang.code}`}
                     >
                       <span className="flex items-center space-x-2">
@@ -249,8 +249,8 @@ export default function PricingPage() {
 
         {/* Benefits Section */}
         <div className="mt-16 max-w-4xl mx-auto">
-          <div className="bg-blue-50 dark:bg-blue-900/20 rounded-2xl p-8 shadow-lg" data-testid="benefits-block">
-            <h5 className="text-lg font-medium text-blue-800 dark:text-blue-200 mb-6 text-center">{t('your_benefits')}</h5>
+          <div className="bg-[#f0f5fa] dark:bg-[#306BA1]/20 rounded-2xl p-8 shadow-lg" data-testid="benefits-block">
+            <h5 className="text-lg font-medium text-[#254d7a] dark:text-[#7ca3c8] mb-6 text-center">{t('your_benefits')}</h5>
             <Accordion type="multiple" className="w-full space-y-3">
               {[
                 { title: t('benefit_free_connection'), desc: t('benefit_free_connection_desc') },
@@ -263,15 +263,15 @@ export default function PricingPage() {
                 <AccordionItem 
                   key={index} 
                   value={`item-${index}`}
-                  className="border-0 bg-white dark:bg-blue-800/20 rounded-xl px-4"
+                  className="border-0 bg-white dark:bg-[#306BA1]/20 rounded-xl px-4"
                   data-testid={`benefit-item-${index}`}
                 >
                   <AccordionTrigger className="flex items-start space-x-3 py-4 px-0 hover:no-underline text-left">
-                    <div className="h-2 w-2 rounded-full bg-blue-500 mt-2 flex-shrink-0" />
-                    <span className="text-sm font-medium text-blue-800 dark:text-blue-200 flex-1">{benefit.title}</span>
+                    <div className="h-2 w-2 rounded-full bg-[#306BA1] mt-2 flex-shrink-0" />
+                    <span className="text-sm font-medium text-[#254d7a] dark:text-[#7ca3c8] flex-1">{benefit.title}</span>
                   </AccordionTrigger>
                   <AccordionContent className="pb-4 pt-0">
-                    <p className="text-sm text-blue-700 dark:text-blue-300 ml-5">{benefit.desc}</p>
+                    <p className="text-sm text-[#1e4473] dark:text-[#a8c5e0] ml-5">{benefit.desc}</p>
                   </AccordionContent>
                 </AccordionItem>
               ))}
@@ -410,18 +410,18 @@ export default function PricingPage() {
       </div>
 
       {/* Footer */}
-      <footer className="border-t border-blue-200 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900 mt-20 shadow-2xl shadow-blue-500/20">
+      <footer className="border-t border-[#7ca3c8] bg-gradient-to-br from-[#254d7a] via-[#1e4473] to-[#152a42] mt-20 shadow-2xl shadow-[#306BA1]/20">
         <div className="container mx-auto px-4 py-12">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
               <span className="font-bold text-white text-xl">{t("company_name")}</span>
             </div>
-            <p className="text-blue-100 text-sm max-w-md mx-auto">
+            <p className="text-[#a8c5e0] text-sm max-w-md mx-auto">
               {t("footer_description")}
             </p>
           </div>
-          <div className="border-t border-blue-600 mt-12 pt-8 text-center">
-            <p className="text-blue-200 text-sm">
+          <div className="border-t border-[#306BA1] mt-12 pt-8 text-center">
+            <p className="text-[#7ca3c8] text-sm">
               {t("footer_copyright")}
             </p>
           </div>
@@ -430,13 +430,13 @@ export default function PricingPage() {
 
       {/* Mobile Hotel Type Toggle */}
       {!isCalculatorOpen && (
-        <div className="md:hidden fixed bottom-4 left-4 right-4 z-50 flex items-center bg-blue-800/30 rounded-lg p-1 shadow-lg max-w-fit">
+        <div className="md:hidden fixed bottom-4 left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
           <button
             onClick={() => hotelType === "network" && toggleHotelType()}
             className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${
               hotelType === "single"
-                ? "bg-blue-600 text-white shadow-md"
-                : "text-blue-200 hover:text-white"
+                ? "bg-[#306BA1] text-white shadow-md"
+                : "text-[#a8c5e0] hover:text-white"
             }`}
             data-testid="mobile-hotel-type-single"
           >
@@ -446,8 +446,8 @@ export default function PricingPage() {
             onClick={() => hotelType === "single" && toggleHotelType()}
             className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${
               hotelType === "network"
-                ? "bg-blue-600 text-white shadow-md"
-                : "text-blue-200 hover:text-white"
+                ? "bg-[#306BA1] text-white shadow-md"
+                : "text-[#a8c5e0] hover:text-white"
             }`}
             data-testid="mobile-hotel-type-network"
           >
@@ -462,7 +462,7 @@ export default function PricingPage() {
           <Button
             variant="outline"
             size="sm"
-            className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-3 text-sm border-2 border-blue-400 bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-foreground shadow-lg"
+            className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-3 text-sm border-2 border-[#7ca3c8] bg-white dark:bg-gray-800 hover:bg-[#f0f5fa] dark:hover:bg-gray-700 text-foreground shadow-lg"
             data-testid="mobile-language-switcher"
           >
             <span className="flex items-center space-x-1">
@@ -477,7 +477,7 @@ export default function PricingPage() {
             <DropdownMenuItem
               key={lang.code}
               onClick={() => setLanguage(lang.code)}
-              className={`cursor-pointer ${language === lang.code ? 'bg-blue-50 dark:bg-blue-900/20' : ''}`}
+              className={`cursor-pointer ${language === lang.code ? 'bg-[#f0f5fa] dark:bg-[#306BA1]/20' : ''}`}
               data-testid={`mobile-language-option-${lang.code}`}
             >
               <span className="flex items-center space-x-2">
