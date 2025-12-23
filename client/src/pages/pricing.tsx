@@ -80,7 +80,7 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-primary/5">
       {/* Header */}
-      <header className="sticky top-4 z-50 px-4">
+      <header className="sticky top-4 z-50 px-4 w-full">
         <div className="container mx-auto px-4 py-3 rounded-3xl bg-gradient-to-r from-blue-600 via-blue-700 to-blue-800 bg-opacity-70 backdrop-blur-xl shadow-xl shadow-blue-500/30">
           {/* Desktop: Logo left, Hotel Type & Language right */}
           <div className="hidden md:flex items-center justify-between">
@@ -430,7 +430,7 @@ export default function PricingPage() {
 
       {/* Mobile Hotel Type Toggle */}
       {!isCalculatorOpen && (
-        <div className="md:hidden fixed bottom-4 left-4 z-50 flex items-center bg-blue-800/30 rounded-lg p-1 shadow-lg">
+        <div className="md:hidden fixed bottom-4 left-4 right-4 z-50 flex items-center bg-blue-800/30 rounded-lg p-1 shadow-lg max-w-fit">
           <button
             onClick={() => hotelType === "network" && toggleHotelType()}
             className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${
@@ -462,7 +462,7 @@ export default function PricingPage() {
           <Button
             variant="outline"
             size="sm"
-            className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-4 text-sm border-2 border-blue-400 bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-foreground shadow-lg"
+            className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-3 text-sm border-2 border-blue-400 bg-white dark:bg-gray-800 hover:bg-blue-50 dark:hover:bg-gray-700 text-foreground shadow-lg"
             data-testid="mobile-language-switcher"
           >
             <span className="flex items-center space-x-1">
