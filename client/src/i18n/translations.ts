@@ -200,6 +200,10 @@ export const translations = {
     // Pricing Labels
     addon_pricing_usage: "+0,5 центов/запрос",
     addon_pricing_logo_removal: "+1 цент/запрос",
+    addon_pricing_messenger: "+1 цент/запрос",
+    addon_pricing_whatsapp: "+1 цент/запрос",
+    addon_pricing_instagram: "+1 цент/запрос",
+    addon_pricing_telegram: "+1 цент/запрос",
     addon_pricing_included: "Включено",
     price_7_cents: "5 центов =0.05$",
     price_8_cents: "8 центов =0.08$",
@@ -472,6 +476,10 @@ export const translations = {
     // Pricing Labels
     addon_pricing_usage: "+0,5 центів/запит",
     addon_pricing_logo_removal: "+1 цент/запит",
+    addon_pricing_messenger: "+1 цент/запит",
+    addon_pricing_whatsapp: "+1 цент/запит",
+    addon_pricing_instagram: "+1 цент/запит",
+    addon_pricing_telegram: "+1 цент/запит",
     addon_pricing_included: "Включено",
     price_7_cents: "5 центів =0.05$",
     price_8_cents: "8 центів =0.08$",
@@ -744,6 +752,10 @@ export const translations = {
     // Pricing Labels
     addon_pricing_usage: "+0.5 cents/request",
     addon_pricing_logo_removal: "+1 cent/request",
+    addon_pricing_messenger: "+1 cent/request",
+    addon_pricing_whatsapp: "+1 cent/request",
+    addon_pricing_instagram: "+1 cent/request",
+    addon_pricing_telegram: "+1 cent/request",
     addon_pricing_included: "Included",
     price_7_cents: "5 cents =0.05$",
     price_8_cents: "8 cents =0.08$",
@@ -1016,6 +1028,10 @@ export const translations = {
     // Pricing Labels
     addon_pricing_usage: "+0,5 centa/zapytanie",
     addon_pricing_logo_removal: "+1 cent/zapytanie",
+    addon_pricing_messenger: "+1 cent/zapytanie",
+    addon_pricing_whatsapp: "+1 cent/zapytanie",
+    addon_pricing_instagram: "+1 cent/zapytanie",
+    addon_pricing_telegram: "+1 cent/zapytanie",
     addon_pricing_included: "Wliczone",
     price_7_cents: "5 centów =0,05$",
     price_8_cents: "8 centów =0,08$",

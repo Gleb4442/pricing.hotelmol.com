@@ -66,10 +66,20 @@ export default function PricingPage() {
     {
       text: t("feature_telegram_bot"),
       tooltip: t("tooltip_telegram_bot"),
+      addonPricing: { usage: t("addon_pricing_telegram"), monthly: t("addon_pricing_included") },
     },
-    { text: t("feature_messenger") },
-    { text: t("feature_whatsapp") },
-    { text: t("feature_instagram") },
+    {
+      text: t("feature_messenger"),
+      addonPricing: { usage: t("addon_pricing_messenger"), monthly: t("addon_pricing_included") },
+    },
+    {
+      text: t("feature_whatsapp"),
+      addonPricing: { usage: t("addon_pricing_whatsapp"), monthly: t("addon_pricing_included") },
+    },
+    {
+      text: t("feature_instagram"),
+      addonPricing: { usage: t("addon_pricing_instagram"), monthly: t("addon_pricing_included") },
+    },
     { text: t("feature_unique_design") },
     {
       text: t("feature_remove_logo"),

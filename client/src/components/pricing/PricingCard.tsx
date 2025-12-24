@@ -216,14 +216,18 @@ export function PricingCard({
                             variant="outline"
                             size="sm"
                             onClick={() => toggleFeature(index)}
-                            className={`w-4 h-4 p-0 rounded-full transition-all duration-200 flex-shrink-0 ${
+                            className={`w-5 h-5 p-0 rounded-full transition-all duration-200 flex-shrink-0 flex items-center justify-center ${
                               addedFeatures.has(index)
-                                ? "bg-primary text-white border-primary"
+                                ? "bg-green-500 text-white border-green-500 shadow-md"
                                 : "bg-background text-muted-foreground border-border hover:border-primary"
                             }`}
                             data-testid={`add-feature-${index}`}
                           >
-                            <Plus className="w-2 h-2" />
+                            {addedFeatures.has(index) ? (
+                              <Check className="w-3 h-3" />
+                            ) : (
+                              <Plus className="w-3 h-3" />
+                            )}
                           </Button>
                         </>
                       )}
