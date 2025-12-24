@@ -69,16 +69,8 @@ export default function PricingPage() {
       addonPricing: { usage: t("addon_pricing_telegram"), monthly: t("addon_pricing_included") },
     },
     {
-      text: t("feature_messenger"),
-      addonPricing: { usage: t("addon_pricing_messenger"), monthly: t("addon_pricing_included") },
-    },
-    {
-      text: t("feature_whatsapp"),
-      addonPricing: { usage: t("addon_pricing_whatsapp"), monthly: t("addon_pricing_included") },
-    },
-    {
-      text: t("feature_instagram"),
-      addonPricing: { usage: t("addon_pricing_instagram"), monthly: t("addon_pricing_included") },
+      text: t("feature_communication_channels"),
+      isChannels: true,
     },
     { text: t("feature_unique_design") },
     {

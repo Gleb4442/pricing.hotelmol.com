@@ -4,6 +4,7 @@ import { BillingMode } from "@/hooks/use-billing-mode";
 import { Tooltip } from "./TooltipProvider";
 import { useState } from "react";
 import { useLanguage } from "@/hooks/use-language";
+import { SiTelegram, SiFacebook, SiWhatsapp } from "react-icons/si";
 
 interface PricingFeature {
   text: string;
@@ -13,6 +14,7 @@ interface PricingFeature {
     monthly: string;
     yearly?: string;
   };
+  isChannels?: boolean;
 }
 
 interface PricingCardProps {
@@ -195,7 +197,20 @@ export function PricingCard({
                       </Tooltip>
                     )}
                   </div>
-                  {feature.addonPricing && (
+                  {feature.isChannels && (billingMode === "monthly" || billingMode === "yearly") && (
+                    <div className="flex items-center space-x-2 mt-2">
+                      <div className="w-8 h-8 rounded-full bg-[#0088cc] flex items-center justify-center flex-shrink-0">
+                        <SiTelegram className="w-4 h-4 text-white" />
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center flex-shrink-0">
+                        <SiFacebook className="w-4 h-4 text-white" />
+                      </div>
+                      <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
+                        <SiWhatsapp className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                  )}
+                  {feature.addonPricing && !feature.isChannels && (
                     <div className="flex items-center space-x-1 mt-1">
                       {billingMode === "yearly" || billingMode === "monthly" ? (
                         <span
