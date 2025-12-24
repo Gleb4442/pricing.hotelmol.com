@@ -64,11 +64,6 @@ export default function PricingPage() {
     { text: t("feature_priority_support") },
     { text: t("feature_pms_integration") },
     {
-      text: t("feature_telegram_bot"),
-      tooltip: t("tooltip_telegram_bot"),
-      addonPricing: { usage: t("addon_pricing_telegram"), monthly: t("addon_pricing_included") },
-    },
-    {
       text: t("feature_communication_channels"),
       isChannels: true,
     },
