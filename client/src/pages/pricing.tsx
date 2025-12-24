@@ -80,8 +80,8 @@ export default function PricingPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/20 to-primary/5">
       {/* Header */}
-      <header className="sticky top-4 z-50 px-4 w-full">
-        <div className="container mx-auto px-4 py-3 rounded-3xl bg-gradient-to-r from-[#306BA1] via-[#254d7a] to-[#1e4473] bg-opacity-70 backdrop-blur-xl shadow-xl shadow-[#306BA1]/30">
+      <header className="fixed top-0 left-0 right-0 z-50 px-4 w-full">
+        <div className="container mx-auto px-4 py-3 rounded-3xl bg-gradient-to-r from-[#306BA1] via-[#254d7a] to-[#1e4473] bg-opacity-70 backdrop-blur-xl shadow-xl shadow-[#306BA1]/30 mt-4">
           {/* Desktop: Logo left, Hotel Type & Language right */}
           <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center">
@@ -154,15 +154,46 @@ export default function PricingPage() {
             </div>
           </div>
 
-          {/* Mobile: Centered Roomie only */}
-          <div className="md:hidden flex items-center justify-center">
+          {/* Mobile: Logo center + Language switcher right */}
+          <div className="md:hidden flex items-center justify-between">
+            <div></div>
             <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="h-9 px-3 text-sm border-2 border-[#7ca3c8] bg-transparent hover:bg-[#306BA1]/20 text-white hover:text-[#d4e5f3]"
+                  data-testid="mobile-header-language-switcher"
+                >
+                  <span className="flex items-center space-x-1">
+                    <span>{currentLanguage?.flag}</span>
+                    <span>{currentLanguage?.label}</span>
+                  </span>
+                </Button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                {languages.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => setLanguage(lang.code)}
+                    className={`cursor-pointer ${language === lang.code ? 'bg-[#f0f5fa] dark:bg-[#306BA1]/20' : ''}`}
+                    data-testid={`mobile-header-language-option-${lang.code}`}
+                  >
+                    <span className="flex items-center space-x-2">
+                      <span>{lang.flag}</span>
+                      <span>{lang.name}</span>
+                    </span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-16 mt-24 md:mt-0">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -456,38 +487,16 @@ export default function PricingPage() {
         </div>
       )}
 
-      {/* Mobile Language Switcher */}
-      <DropdownMenu>
-        <DropdownMenuTrigger asChild>
-          <Button
-            variant="outline"
-            size="sm"
-            className="md:hidden fixed bottom-4 right-4 z-50 h-10 px-3 text-sm border-2 border-[#7ca3c8] bg-white dark:bg-gray-800 hover:bg-[#f0f5fa] dark:hover:bg-gray-700 text-foreground shadow-lg"
-            data-testid="mobile-language-switcher"
-          >
-            <span className="flex items-center space-x-1">
-              <span>{currentLanguage?.flag}</span>
-              <span className="font-medium">{currentLanguage?.label}</span>
-              <ChevronDown className="h-3 w-3 ml-1" />
-            </span>
-          </Button>
-        </DropdownMenuTrigger>
-        <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-          {languages.map((lang) => (
-            <DropdownMenuItem
-              key={lang.code}
-              onClick={() => setLanguage(lang.code)}
-              className={`cursor-pointer ${language === lang.code ? 'bg-[#f0f5fa] dark:bg-[#306BA1]/20' : ''}`}
-              data-testid={`mobile-language-option-${lang.code}`}
-            >
-              <span className="flex items-center space-x-2">
-                <span>{lang.flag}</span>
-                <span>{lang.name}</span>
-              </span>
-            </DropdownMenuItem>
-          ))}
-        </DropdownMenuContent>
-      </DropdownMenu>
+      {/* Mobile Telegram Button */}
+      <a
+        href="https://t.me/hotelmolmanager"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center justify-center bg-[#306BA1] hover:bg-[#254d7a] text-white font-semibold px-6 py-3 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
+        data-testid="mobile-telegram-button"
+      >
+        <span>Telegram</span>
+      </a>
     </div>
   );
 }
