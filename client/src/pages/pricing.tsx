@@ -67,6 +67,9 @@ export default function PricingPage() {
       text: t("feature_telegram_bot"),
       tooltip: t("tooltip_telegram_bot"),
     },
+    { text: t("feature_messenger") },
+    { text: t("feature_whatsapp") },
+    { text: t("feature_instagram") },
     { text: t("feature_unique_design") },
     {
       text: t("feature_remove_logo"),
@@ -219,7 +222,7 @@ export default function PricingPage() {
                 description={t("plan_basic_description")}
                 pricing={{
                   usage: { current: t("price_basic") },
-                  monthly: { current: t("price_basic") },
+                  monthly: { current: "$119" },
                   yearly: { current: t("price_basic") },
                 }}
                 features={basicFeatures}

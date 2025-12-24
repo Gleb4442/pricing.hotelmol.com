@@ -42,6 +42,9 @@ export const translations = {
     feature_custom_design: "Индивидуальный дизайн виджета с брендингом вашей компании",
     feature_online_chat: "Online chat",
     feature_unique_design: "Уникальный дизайн",
+    feature_messenger: "Facebook Messenger",
+    feature_whatsapp: "WhatsApp",
+    feature_instagram: "Instagram",
     
     // Tooltips
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
@@ -311,6 +314,9 @@ export const translations = {
     feature_custom_design: "Індивідуальний дизайн віджету з брендингом вашої компанії",
     feature_online_chat: "Online chat",
     feature_unique_design: "Унікальний дизайн",
+    feature_messenger: "Facebook Messenger",
+    feature_whatsapp: "WhatsApp",
+    feature_instagram: "Instagram",
     
     // Tooltips
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
@@ -580,6 +586,9 @@ export const translations = {
     feature_custom_design: "Custom widget design with your company branding",
     feature_online_chat: "Online chat",
     feature_unique_design: "Unique design",
+    feature_messenger: "Facebook Messenger",
+    feature_whatsapp: "WhatsApp",
+    feature_instagram: "Instagram",
     
     // Tooltips
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",
@@ -849,6 +858,9 @@ export const translations = {
     feature_custom_design: "Indywidualny projekt widżetu z brandingiem Twojej firmy",
     feature_online_chat: "Chat online",
     feature_unique_design: "Unikalny projekt",
+    feature_messenger: "Facebook Messenger",
+    feature_whatsapp: "WhatsApp",
+    feature_instagram: "Instagram",
     
     // Tooltips
     tooltip_telegram_bot: "Otrzymaj własnego markowego bota Telegram do interakcji z gośćmi",
