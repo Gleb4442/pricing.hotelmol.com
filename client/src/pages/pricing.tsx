@@ -154,40 +154,41 @@ export default function PricingPage() {
             </div>
           </div>
 
-          {/* Mobile: Logo center + Language switcher right */}
-          <div className="md:hidden flex items-center justify-between">
-            <div></div>
+          {/* Mobile: Logo centered + Language switcher absolute right */}
+          <div className="md:hidden flex items-center justify-center relative">
             <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
-            <DropdownMenu>
-              <DropdownMenuTrigger asChild>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="h-9 px-3 text-sm border-2 border-[#7ca3c8] bg-transparent hover:bg-[#306BA1]/20 text-white hover:text-[#d4e5f3]"
-                  data-testid="mobile-header-language-switcher"
-                >
-                  <span className="flex items-center space-x-1">
-                    <span>{currentLanguage?.flag}</span>
-                    <span>{currentLanguage?.label}</span>
-                  </span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
-                {languages.map((lang) => (
-                  <DropdownMenuItem
-                    key={lang.code}
-                    onClick={() => setLanguage(lang.code)}
-                    className={`cursor-pointer ${language === lang.code ? 'bg-[#f0f5fa] dark:bg-[#306BA1]/20' : ''}`}
-                    data-testid={`mobile-header-language-option-${lang.code}`}
+            <div className="absolute right-0">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-9 px-3 text-sm border-2 border-[#7ca3c8] bg-transparent hover:bg-[#306BA1]/20 text-white hover:text-[#d4e5f3]"
+                    data-testid="mobile-header-language-switcher"
                   >
-                    <span className="flex items-center space-x-2">
-                      <span>{lang.flag}</span>
-                      <span>{lang.name}</span>
+                    <span className="flex items-center space-x-1">
+                      <span>{currentLanguage?.flag}</span>
+                      <span>{currentLanguage?.label}</span>
                     </span>
-                  </DropdownMenuItem>
-                ))}
-              </DropdownMenuContent>
-            </DropdownMenu>
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700">
+                  {languages.map((lang) => (
+                    <DropdownMenuItem
+                      key={lang.code}
+                      onClick={() => setLanguage(lang.code)}
+                      className={`cursor-pointer ${language === lang.code ? 'bg-[#f0f5fa] dark:bg-[#306BA1]/20' : ''}`}
+                      data-testid={`mobile-header-language-option-${lang.code}`}
+                    >
+                      <span className="flex items-center space-x-2">
+                        <span>{lang.flag}</span>
+                        <span>{lang.name}</span>
+                      </span>
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+            </div>
           </div>
         </div>
       </header>
