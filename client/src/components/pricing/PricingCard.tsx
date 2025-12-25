@@ -202,8 +202,16 @@ export function PricingCard({
                 <Check className="text-primary w-4 h-4 flex-shrink-0 mt-0.5" />
                 <div className="flex-1 min-w-0">
                     <div className="flex items-center space-x-3">
-                      <div className="flex items-center space-x-1 flex-wrap">
+                      <div className="flex items-center space-x-1">
                         <span className="text-sm leading-tight">{feature.text}</span>
+                        {feature.tooltip && (
+                          <Tooltip content={feature.tooltip}>
+                            <Info
+                              className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
+                              data-testid={`tooltip-trigger-${index}`}
+                            />
+                          </Tooltip>
+                        )}
                       </div>
 
                       {/* Plus/Check Button for non-channel addons in usage mode */}
