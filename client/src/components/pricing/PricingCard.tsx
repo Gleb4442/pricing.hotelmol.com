@@ -201,38 +201,41 @@ export function PricingCard({
               <div key={index} className="flex items-start space-x-2 relative">
                 <Check className="text-primary w-4 h-4 flex-shrink-0 mt-0.5" />
                 <div className="flex-1 min-w-0">
-                    <div className="flex items-center space-x-1">
+                    <div className="flex items-center space-x-3">
                       <div className="flex items-center space-x-1 flex-wrap">
                         <span className="text-sm leading-tight">{feature.text}</span>
-                        {feature.tooltip && (
-                          <Tooltip content={feature.tooltip}>
-                            <Info
-                              className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
-                              data-testid={`tooltip-trigger-${index}`}
-                            />
-                          </Tooltip>
-                        )}
                       </div>
 
                       {/* Plus/Check Button for non-channel addons in usage mode */}
                       {feature.addonPricing && !feature.isChannels && billingMode === "usage" && (
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          onClick={() => toggleFeature(index)}
-                          className={`w-5 h-5 p-0 rounded-full transition-all duration-200 flex-shrink-0 flex items-center justify-center ${
-                            addedFeatures.has(index)
-                              ? "bg-green-500 text-white border-green-500 shadow-md"
-                              : "bg-background text-muted-foreground border-border hover:border-primary"
-                          }`}
-                          data-testid={`add-feature-${index}`}
-                        >
-                          {addedFeatures.has(index) ? (
-                            <Check className="w-3 h-3" />
-                          ) : (
-                            <Plus className="w-3 h-3" />
+                        <div className="flex items-center space-x-3">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => toggleFeature(index)}
+                            className={`w-5 h-5 p-0 rounded-full transition-all duration-200 flex-shrink-0 flex items-center justify-center ${
+                              addedFeatures.has(index)
+                                ? "bg-green-500 text-white border-green-500 shadow-md"
+                                : "bg-background text-muted-foreground border-border hover:border-primary"
+                            }`}
+                            data-testid={`add-feature-${index}`}
+                          >
+                            {addedFeatures.has(index) ? (
+                              <Check className="w-3 h-3" />
+                            ) : (
+                              <Plus className="w-3 h-3" />
+                            )}
+                          </Button>
+                          
+                          {feature.tooltip && (
+                            <Tooltip content={feature.tooltip}>
+                              <Info
+                                className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
+                                data-testid={`tooltip-trigger-${index}`}
+                              />
+                            </Tooltip>
                           )}
-                        </Button>
+                        </div>
                       )}
                     </div>
                   {feature.isChannels && (billingMode === "monthly" || billingMode === "yearly") && (
