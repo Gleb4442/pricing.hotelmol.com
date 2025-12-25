@@ -153,16 +153,16 @@ export default function PricingPage() {
     { text: t("feature_analytics") },
     { text: t("feature_priority_support") },
     { text: t("feature_pms_integration") },
-    {
-      text: billingMode === "usage" ? t("feature_available_channels") : t("feature_communication_channels"),
-      tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
-      isChannels: true,
-    },
     { text: t("feature_unique_design") },
     {
       text: t("feature_remove_logo"),
       tooltip: t("tooltip_remove_logo"),
       addonPricing: { usage: t("addon_pricing_logo_removal"), monthly: "" },
+    },
+    {
+      text: billingMode === "usage" ? t("feature_available_channels") : t("feature_communication_channels"),
+      tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
+      isChannels: true,
     },
   ];
 
