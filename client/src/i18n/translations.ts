@@ -56,7 +56,7 @@ export const translations = {
     
     // Buttons
     btn_subscribe: "Подписаться",
-    btn_contact_telegram: "Связаться в Telegram",
+    btn_contact_telegram: "Помощь 24/7",
     
     // Info Sidebar
     info_usage_title: "Оплата за использование",
@@ -336,7 +336,7 @@ export const translations = {
     
     // Buttons
     btn_subscribe: "Підписатися",
-    btn_contact_telegram: "Зв'язатися в Telegram",
+    btn_contact_telegram: "Допомога 24/7",
     
     // Info Sidebar
     info_usage_title: "Оплата за використання",
@@ -616,7 +616,7 @@ export const translations = {
     
     // Buttons
     btn_subscribe: "Subscribe",
-    btn_contact_telegram: "Contact via Telegram",
+    btn_contact_telegram: "Help 24/7",
     
     // Info Sidebar
     info_usage_title: "Pay per use",
@@ -896,7 +896,7 @@ export const translations = {
     
     // Buttons
     btn_subscribe: "Subskrybuj",
-    btn_contact_telegram: "Skontaktuj się przez Telegram",
+    btn_contact_telegram: "Pomoc 24/7",
     
     // Info Sidebar
     info_usage_title: "Płatność za użycie",

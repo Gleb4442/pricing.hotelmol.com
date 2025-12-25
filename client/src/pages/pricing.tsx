@@ -491,24 +491,24 @@ export default function PricingPage() {
 
       {/* Mobile Telegram Button */}
       <a
-        href="https://t.me/hotelmolmanager"
+        href="https://t.me/sh_nikolas"
         target="_blank"
         rel="noopener noreferrer"
-        className="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center justify-center bg-[#349AC8] hover:bg-[#2a7fa8] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105"
+        className="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center justify-center bg-[#306BA1] hover:bg-[#254d7a] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105"
         data-testid="mobile-telegram-button"
       >
-        <span>Telegram</span>
+        <span>{t("btn_contact_telegram")}</span>
       </a>
 
       {/* Desktop Telegram Button */}
       <a
-        href="https://t.me/hotelmolmanager"
+        href="https://t.me/sh_nikolas"
         target="_blank"
         rel="noopener noreferrer"
-        className="hidden md:inline-flex fixed bottom-4 right-4 z-50 items-center justify-center bg-[#349AC8] hover:bg-[#2a7fa8] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105"
+        className="hidden md:inline-flex fixed bottom-4 right-4 z-50 items-center justify-center bg-[#306BA1] hover:bg-[#254d7a] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105"
         data-testid="desktop-telegram-button"
       >
-        <span>Telegram</span>
+        <span>{t("btn_contact_telegram")}</span>
       </a>
     </div>
   );
