@@ -4,7 +4,7 @@ import { BillingMode } from "@/hooks/use-billing-mode";
 import { Tooltip } from "./TooltipProvider";
 import { useState } from "react";
 import { useLanguage } from "@/hooks/use-language";
-import { SiTelegram, SiFacebook, SiWhatsapp } from "react-icons/si";
+import { SiTelegram, SiFacebook, SiWhatsapp, SiInstagram } from "react-icons/si";
 
 interface PricingFeature {
   text: string;
@@ -208,17 +208,22 @@ export function PricingCard({
                       <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
                         <SiWhatsapp className="w-4 h-4 text-white" />
                       </div>
+                      <div className="w-8 h-8 rounded-full bg-[#E4405F] flex items-center justify-center flex-shrink-0">
+                        <SiInstagram className="w-4 h-4 text-white" />
+                      </div>
                     </div>
                   )}
                   {feature.addonPricing && !feature.isChannels && (
                     <div className="flex items-center space-x-1 mt-1">
                       {billingMode === "yearly" || billingMode === "monthly" ? (
-                        <span
-                          className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded-md"
-                          data-testid={`addon-included-${index}`}
-                        >
-                          {t('included')}
-                        </span>
+                        feature.addonPricing.monthly && (
+                          <span
+                            className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded-md"
+                            data-testid={`addon-included-${index}`}
+                          >
+                            {t('included')}
+                          </span>
+                        )
                       ) : (
                         <>
                           <span

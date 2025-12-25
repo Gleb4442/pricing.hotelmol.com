@@ -65,13 +65,14 @@ export default function PricingPage() {
     { text: t("feature_pms_integration") },
     {
       text: t("feature_communication_channels"),
+      tooltip: t("tooltip_communication_channels"),
       isChannels: true,
     },
     { text: t("feature_unique_design") },
     {
       text: t("feature_remove_logo"),
       tooltip: t("tooltip_remove_logo"),
-      addonPricing: { usage: t("addon_pricing_logo_removal"), monthly: t("addon_pricing_included") },
+      addonPricing: { usage: t("addon_pricing_logo_removal"), monthly: "" },
     },
   ];
 
