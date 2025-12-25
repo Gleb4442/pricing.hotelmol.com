@@ -201,15 +201,38 @@ export function PricingCard({
               <div key={index} className="flex items-start space-x-2 relative">
                 <Check className="text-primary w-4 h-4 flex-shrink-0 mt-0.5" />
                 <div className="flex-1 min-w-0">
-                  <div className="flex items-center space-x-1 flex-wrap">
-                    <span className="text-sm leading-tight">{feature.text}</span>
-                    {feature.tooltip && (
-                      <Tooltip content={feature.tooltip}>
-                        <Info
-                          className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
-                          data-testid={`tooltip-trigger-${index}`}
-                        />
-                      </Tooltip>
+                  <div className="flex items-center justify-between space-x-1">
+                    <div className="flex items-center space-x-1 flex-wrap">
+                      <span className="text-sm leading-tight">{feature.text}</span>
+                      {feature.tooltip && (
+                        <Tooltip content={feature.tooltip}>
+                          <Info
+                            className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0"
+                            data-testid={`tooltip-trigger-${index}`}
+                          />
+                        </Tooltip>
+                      )}
+                    </div>
+
+                    {/* Plus/Check Button for non-channel addons in usage mode */}
+                    {feature.addonPricing && !feature.isChannels && billingMode === "usage" && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => toggleFeature(index)}
+                        className={`w-5 h-5 p-0 rounded-full transition-all duration-200 flex-shrink-0 flex items-center justify-center ${
+                          addedFeatures.has(index)
+                            ? "bg-green-500 text-white border-green-500 shadow-md"
+                            : "bg-background text-muted-foreground border-border hover:border-primary"
+                        }`}
+                        data-testid={`add-feature-${index}`}
+                      >
+                        {addedFeatures.has(index) ? (
+                          <Check className="w-3 h-3" />
+                        ) : (
+                          <Plus className="w-3 h-3" />
+                        )}
+                      </Button>
                     )}
                   </div>
                   {feature.isChannels && (billingMode === "monthly" || billingMode === "yearly") && (
@@ -268,63 +291,6 @@ export function PricingCard({
                       <Tooltip content={t("tooltip_channel_cost")}>
                         <Info className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0" />
                       </Tooltip>
-
-                      {/* Mobile Dialog Trigger - Only on mobile */}
-                      <div className="md:hidden">
-                        <Dialog>
-                          <DialogTrigger asChild>
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              className="w-8 h-8 p-0 rounded-full bg-gray-200/50 text-gray-500 border-none"
-                            >
-                              <Plus className="w-4 h-4" />
-                            </Button>
-                          </DialogTrigger>
-                          <DialogContent className="sm:max-w-[425px]">
-                            <DialogHeader>
-                              <DialogTitle>{t("feature_available_channels")}</DialogTitle>
-                              <DialogDescription>
-                                {t("tooltip_channel_cost")}
-                              </DialogDescription>
-                            </DialogHeader>
-                            <div className="grid grid-cols-2 gap-4 py-4">
-                              {[
-                                { icon: SiTelegram, color: "#0088cc", id: "usage-tg", name: "Telegram" },
-                                { icon: SiFacebook, color: "#0A66C2", id: "usage-fb", name: "Messenger" },
-                                { icon: SiWhatsapp, color: "#25D366", id: "usage-wa", name: "WhatsApp" },
-                                { icon: SiInstagram, color: "#E4405F", id: "usage-ig", name: "Instagram" }
-                              ].map((channel) => (
-                                <Button
-                                  key={channel.id}
-                                  variant="outline"
-                                  className={`flex items-center justify-between p-4 h-auto ${
-                                    addedFeatures.has(`${index}-${channel.id}`)
-                                      ? "border-green-500 bg-green-50"
-                                      : ""
-                                  }`}
-                                  onClick={() => toggleFeature(`${index}-${channel.id}`)}
-                                >
-                                  <div className="flex items-center space-x-2">
-                                    <div
-                                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
-                                      style={{ backgroundColor: channel.color }}
-                                    >
-                                      <channel.icon className="w-4 h-4 text-white" />
-                                    </div>
-                                    <span className="font-medium">{channel.name}</span>
-                                  </div>
-                                  {addedFeatures.has(`${index}-${channel.id}`) ? (
-                                    <Check className="w-5 h-5 text-green-500" />
-                                  ) : (
-                                    <Plus className="w-5 h-5 text-muted-foreground" />
-                                  )}
-                                </Button>
-                              ))}
-                            </div>
-                          </DialogContent>
-                        </Dialog>
-                      </div>
                     </div>
                   )}
                   {feature.addonPricing && !feature.isChannels && (
@@ -348,23 +314,6 @@ export function PricingCard({
                               {feature.addonPricing.usage}
                             </span>
                           )}
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            onClick={() => toggleFeature(index)}
-                            className={`w-5 h-5 p-0 rounded-full transition-all duration-200 flex-shrink-0 flex items-center justify-center ${
-                              addedFeatures.has(index)
-                                ? "bg-green-500 text-white border-green-500 shadow-md"
-                                : "bg-background text-muted-foreground border-border hover:border-primary"
-                            }`}
-                            data-testid={`add-feature-${index}`}
-                          >
-                            {addedFeatures.has(index) ? (
-                              <Check className="w-3 h-3" />
-                            ) : (
-                              <Plus className="w-3 h-3" />
-                            )}
-                          </Button>
                         </div>
                       )}
                     </div>
