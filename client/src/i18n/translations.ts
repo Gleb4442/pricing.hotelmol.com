@@ -50,7 +50,7 @@ export const translations = {
     
     // Tooltips
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
-    tooltip_remove_logo: "Уберите наш брендинг с интерфейсов для гостей",
+    tooltip_remove_logo: "Уберите наш брендинг с интерфейсов для гостей. Опция добавляет к стоимости тарифа один цент.",
     tooltip_communication_channels: "2 канала связи на выбор включено в стоимость тарифа",
     tooltip_channel_cost: "Стоимость каждого канала коммуникации один цент",
     
@@ -330,7 +330,7 @@ export const translations = {
     
     // Tooltips
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
-    tooltip_remove_logo: "Приберіть наш брендинг з інтерфейсів для гостей",
+    tooltip_remove_logo: "Приберіть наш брендинг з інтерфейсів для гостей. Опція додає до вартості тарифу один цент.",
     tooltip_communication_channels: "2 канали зв'язку на вибір включено у вартість тарифу",
     tooltip_channel_cost: "Вартість кожного каналу комунікації один цент",
     
@@ -610,7 +610,7 @@ export const translations = {
     
     // Tooltips
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",
-    tooltip_remove_logo: "Remove our branding from guest interfaces",
+    tooltip_remove_logo: "Remove our branding from guest interfaces. This option adds one cent to the plan price.",
     tooltip_communication_channels: "2 communication channels of your choice are included in the price",
     tooltip_channel_cost: "The cost of each communication channel is one cent",
     
@@ -890,7 +890,7 @@ export const translations = {
     
     // Tooltips
     tooltip_telegram_bot: "Otrzymaj własnego markowego bota Telegram do interakcji z gośćmi",
-    tooltip_remove_logo: "Usuń nasz branding z interfejsów gości",
+    tooltip_remove_logo: "Usuń nasz branding z interfejsów gości. Ta opcja dodaje jeden cent do ceny planu.",
     tooltip_communication_channels: "2 kanały komunikacji do wyboru są wliczone w cenę",
     tooltip_channel_cost: "Koszt każdego kanału komunikacji to jeden cent",
     

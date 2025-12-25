@@ -5,6 +5,14 @@ import { Tooltip } from "./TooltipProvider";
 import { useState } from "react";
 import { useLanguage } from "@/hooks/use-language";
 import { SiTelegram, SiFacebook, SiWhatsapp, SiInstagram } from "react-icons/si";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 
 interface PricingFeature {
   text: string;
@@ -254,12 +262,6 @@ export function PricingCard({
                               )}
                             </Button>
                           </div>
-                          {/* Usage Tooltip for each channel */}
-                          {addedFeatures.has(`${index}-${channel.id}`) && (
-                            <div className="hidden md:block absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-bold text-primary bg-white px-1 rounded shadow-sm border border-primary/20">
-                              0.01$
-                            </div>
-                          )}
                         </div>
                       ))}
                       {/* Cost Tooltip */}
@@ -267,28 +269,66 @@ export function PricingCard({
                         <Info className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0" />
                       </Tooltip>
 
-                      {/* Mobile Dialog/Drawer Trigger - Only on mobile */}
+                      {/* Mobile Dialog Trigger - Only on mobile */}
                       <div className="md:hidden">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          className="w-8 h-8 p-0 rounded-full bg-gray-200/50 text-gray-500 border-none"
-                          onClick={() => {
-                            // In a real app we'd use a Dialog, but here we can simulate a simple state
-                            const confirmed = confirm(`${t("tooltip_channel_cost")}. Proceed to select channels?`);
-                            if (confirmed) {
-                                // For simplicity in this edit, we'll just toggle all as a demo or open a generic prompt
-                                // Real implementation would use shadcn Dialog
-                            }
-                          }}
-                        >
-                          <Plus className="w-4 h-4" />
-                        </Button>
+                        <Dialog>
+                          <DialogTrigger asChild>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              className="w-8 h-8 p-0 rounded-full bg-gray-200/50 text-gray-500 border-none"
+                            >
+                              <Plus className="w-4 h-4" />
+                            </Button>
+                          </DialogTrigger>
+                          <DialogContent className="sm:max-w-[425px]">
+                            <DialogHeader>
+                              <DialogTitle>{t("feature_available_channels")}</DialogTitle>
+                              <DialogDescription>
+                                {t("tooltip_channel_cost")}
+                              </DialogDescription>
+                            </DialogHeader>
+                            <div className="grid grid-cols-2 gap-4 py-4">
+                              {[
+                                { icon: SiTelegram, color: "#0088cc", id: "usage-tg", name: "Telegram" },
+                                { icon: SiFacebook, color: "#0A66C2", id: "usage-fb", name: "Messenger" },
+                                { icon: SiWhatsapp, color: "#25D366", id: "usage-wa", name: "WhatsApp" },
+                                { icon: SiInstagram, color: "#E4405F", id: "usage-ig", name: "Instagram" }
+                              ].map((channel) => (
+                                <Button
+                                  key={channel.id}
+                                  variant="outline"
+                                  className={`flex items-center justify-between p-4 h-auto ${
+                                    addedFeatures.has(`${index}-${channel.id}`)
+                                      ? "border-green-500 bg-green-50"
+                                      : ""
+                                  }`}
+                                  onClick={() => toggleFeature(`${index}-${channel.id}`)}
+                                >
+                                  <div className="flex items-center space-x-2">
+                                    <div
+                                      className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0"
+                                      style={{ backgroundColor: channel.color }}
+                                    >
+                                      <channel.icon className="w-4 h-4 text-white" />
+                                    </div>
+                                    <span className="font-medium">{channel.name}</span>
+                                  </div>
+                                  {addedFeatures.has(`${index}-${channel.id}`) ? (
+                                    <Check className="w-5 h-5 text-green-500" />
+                                  ) : (
+                                    <Plus className="w-5 h-5 text-muted-foreground" />
+                                  )}
+                                </Button>
+                              ))}
+                            </div>
+                          </DialogContent>
+                        </Dialog>
                       </div>
                     </div>
                   )}
                   {feature.addonPricing && !feature.isChannels && (
-                    <div className="flex items-center space-x-1 mt-1">
+                    <div className="flex items-center space-x-2 mt-1">
                       {billingMode === "yearly" || billingMode === "monthly" ? (
                         feature.addonPricing.monthly && (
                           <span
@@ -299,13 +339,15 @@ export function PricingCard({
                           </span>
                         )
                       ) : (
-                        <>
-                          <span
-                            className="text-primary text-xs font-medium"
-                            data-testid={`addon-pricing-${index}`}
-                          >
-                            {feature.addonPricing.usage}
-                          </span>
+                        <div className="flex items-center space-x-2 ml-auto">
+                          {feature.addonPricing.usage && !feature.text.toLowerCase().includes(t('feature_remove_logo').toLowerCase()) && (
+                            <span
+                              className="text-primary text-xs font-medium"
+                              data-testid={`addon-pricing-${index}`}
+                            >
+                              {feature.addonPricing.usage}
+                            </span>
+                          )}
                           <Button
                             variant="outline"
                             size="sm"
@@ -323,7 +365,7 @@ export function PricingCard({
                               <Plus className="w-3 h-3" />
                             )}
                           </Button>
-                        </>
+                        </div>
                       )}
                     </div>
                   )}
