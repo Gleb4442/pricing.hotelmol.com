@@ -82,8 +82,8 @@ const ContactWidget = () => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xml:space="preserve"
-            width="48px"
-            height="48px"
+            width="58px"
+            height="58px"
             version="1.1"
             style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", imageRendering: "optimizeQuality", fillRule: "evenodd", clipRule: "evenodd" }}
             viewBox="0 0 203.18 203.18"
