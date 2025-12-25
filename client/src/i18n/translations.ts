@@ -35,6 +35,7 @@ export const translations = {
     feature_pms_integration: "Интеграция с PMS",
     feature_telegram_bot: "Telegram-бот",
     feature_communication_channels: "Каналы коммуникации на выбор (2)",
+    feature_available_channels: "Доступные каналы",
     feature_remove_logo: "Удаление логотипа",
     feature_all_pro: "Всё что включено в PRO",
     feature_analytics: "Расширенная аналитика",
@@ -51,6 +52,7 @@ export const translations = {
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
     tooltip_remove_logo: "Уберите наш брендинг с интерфейсов для гостей",
     tooltip_communication_channels: "2 канала связи на выбор включено в стоимость тарифа",
+    tooltip_channel_cost: "Стоимость каждого канала коммуникации один цент",
     
     // Buttons
     btn_subscribe: "Подписаться",
@@ -313,6 +315,7 @@ export const translations = {
     feature_pms_integration: "Інтеграція з PMS",
     feature_telegram_bot: "Telegram-бот",
     feature_communication_channels: "Канали комунікації на вибір (2)",
+    feature_available_channels: "Доступні канали",
     feature_remove_logo: "Видалення логотипу",
     feature_all_pro: "Все що включено в PRO",
     feature_analytics: "Розширена аналітика",
@@ -329,6 +332,7 @@ export const translations = {
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
     tooltip_remove_logo: "Приберіть наш брендинг з інтерфейсів для гостей",
     tooltip_communication_channels: "2 канали зв'язку на вибір включено у вартість тарифу",
+    tooltip_channel_cost: "Вартість кожного каналу комунікації один цент",
     
     // Buttons
     btn_subscribe: "Підписатися",
@@ -591,6 +595,7 @@ export const translations = {
     feature_pms_integration: "PMS Integration",
     feature_telegram_bot: "Telegram bot",
     feature_communication_channels: "Communication channels of choice (2)",
+    feature_available_channels: "Available channels",
     feature_remove_logo: "Logo removal",
     feature_all_pro: "Everything included in PRO",
     feature_analytics: "Advanced analytics",
@@ -607,6 +612,7 @@ export const translations = {
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",
     tooltip_remove_logo: "Remove our branding from guest interfaces",
     tooltip_communication_channels: "2 communication channels of your choice are included in the price",
+    tooltip_channel_cost: "The cost of each communication channel is one cent",
     
     // Buttons
     btn_subscribe: "Subscribe",
@@ -869,6 +875,7 @@ export const translations = {
     feature_pms_integration: "Integracja PMS",
     feature_telegram_bot: "Bot Telegram",
     feature_communication_channels: "Kanały komunikacji do wyboru (2)",
+    feature_available_channels: "Dostępne kanały",
     feature_remove_logo: "Usunięcie logo",
     feature_all_pro: "Wszystko z planu PRO",
     feature_analytics: "Zaawansowana analityka",
@@ -885,6 +892,7 @@ export const translations = {
     tooltip_telegram_bot: "Otrzymaj własnego markowego bota Telegram do interakcji z gośćmi",
     tooltip_remove_logo: "Usuń nasz branding z interfejsów gości",
     tooltip_communication_channels: "2 kanały komunikacji do wyboru są wliczone w cenę",
+    tooltip_channel_cost: "Koszt każdego kanału komunikacji to jeden cent",
     
     // Buttons
     btn_subscribe: "Subskrybuj",

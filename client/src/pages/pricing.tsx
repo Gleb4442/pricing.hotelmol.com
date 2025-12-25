@@ -64,8 +64,8 @@ export default function PricingPage() {
     { text: t("feature_priority_support") },
     { text: t("feature_pms_integration") },
     {
-      text: t("feature_communication_channels"),
-      tooltip: t("tooltip_communication_channels"),
+      text: billingMode === "usage" ? t("feature_available_channels") : t("feature_communication_channels"),
+      tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
       isChannels: true,
     },
     { text: t("feature_unique_design") },

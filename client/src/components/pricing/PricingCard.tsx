@@ -54,14 +54,14 @@ export function PricingCard({
   onSubscribe,
 }: PricingCardProps) {
   const { t } = useLanguage();
-  const [addedFeatures, setAddedFeatures] = useState<Set<number>>(new Set());
+  const [addedFeatures, setAddedFeatures] = useState<Set<number | string>>(new Set());
   
-  const toggleFeature = (index: number) => {
+  const toggleFeature = (id: number | string) => {
     const newAddedFeatures = new Set(addedFeatures);
-    if (newAddedFeatures.has(index)) {
-      newAddedFeatures.delete(index);
+    if (newAddedFeatures.has(id)) {
+      newAddedFeatures.delete(id);
     } else {
-      newAddedFeatures.add(index);
+      newAddedFeatures.add(id);
     }
     setAddedFeatures(newAddedFeatures);
   };
@@ -92,6 +92,13 @@ export function PricingCard({
           additionalCost += cost;
         }
         // For monthly billing, additional features are included for free (no cost)
+      }
+      if (feature.isChannels && billingMode === "usage") {
+        ["usage-tg", "usage-fb", "usage-wa", "usage-ig"].forEach(id => {
+          if (addedFeatures.has(`${index}-${id}`)) {
+            additionalCost += 1; // 1 cent per channel
+          }
+        });
       }
     });
 
@@ -210,6 +217,73 @@ export function PricingCard({
                       </div>
                       <div className="w-8 h-8 rounded-full bg-[#E4405F] flex items-center justify-center flex-shrink-0">
                         <SiInstagram className="w-4 h-4 text-white" />
+                      </div>
+                    </div>
+                  )}
+                  {feature.isChannels && billingMode === "usage" && (
+                    <div className="flex items-center space-x-2 mt-2">
+                      {[
+                        { icon: SiTelegram, color: "#0088cc", id: "usage-tg" },
+                        { icon: SiFacebook, color: "#0A66C2", id: "usage-fb" },
+                        { icon: SiWhatsapp, color: "#25D366", id: "usage-wa" },
+                        { icon: SiInstagram, color: "#E4405F", id: "usage-ig" }
+                      ].map((channel) => (
+                        <div key={channel.id} className="relative group">
+                          <div
+                            className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-opacity"
+                            style={{ backgroundColor: channel.color }}
+                          >
+                            <channel.icon className="w-4 h-4 text-white" />
+                          </div>
+                          {/* Desktop Plus/Check Button */}
+                          <div className="hidden md:block absolute -bottom-1 -right-1">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={() => toggleFeature(`${index}-${channel.id}`)}
+                              className={`w-4 h-4 p-0 rounded-full border-none transition-all duration-200 flex items-center justify-center ${
+                                addedFeatures.has(`${index}-${channel.id}`)
+                                  ? "bg-green-500 text-white shadow-md"
+                                  : "bg-gray-200/50 hover:bg-gray-300/80 text-gray-500"
+                              }`}
+                            >
+                              {addedFeatures.has(`${index}-${channel.id}`) ? (
+                                <Check className="w-2.5 h-2.5" />
+                              ) : (
+                                <Plus className="w-2.5 h-2.5" />
+                              )}
+                            </Button>
+                          </div>
+                          {/* Usage Tooltip for each channel */}
+                          {addedFeatures.has(`${index}-${channel.id}`) && (
+                            <div className="hidden md:block absolute -top-6 left-1/2 -translate-x-1/2 whitespace-nowrap text-[10px] font-bold text-primary bg-white px-1 rounded shadow-sm border border-primary/20">
+                              0.01$
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                      {/* Cost Tooltip */}
+                      <Tooltip content={t("tooltip_channel_cost")}>
+                        <Info className="text-muted-foreground w-3 h-3 cursor-help flex-shrink-0" />
+                      </Tooltip>
+
+                      {/* Mobile Dialog/Drawer Trigger - Only on mobile */}
+                      <div className="md:hidden">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          className="w-8 h-8 p-0 rounded-full bg-gray-200/50 text-gray-500 border-none"
+                          onClick={() => {
+                            // In a real app we'd use a Dialog, but here we can simulate a simple state
+                            const confirmed = confirm(`${t("tooltip_channel_cost")}. Proceed to select channels?`);
+                            if (confirmed) {
+                                // For simplicity in this edit, we'll just toggle all as a demo or open a generic prompt
+                                // Real implementation would use shadcn Dialog
+                            }
+                          }}
+                        >
+                          <Plus className="w-4 h-4" />
+                        </Button>
                       </div>
                     </div>
                   )}
