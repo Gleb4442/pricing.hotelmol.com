@@ -11,6 +11,96 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { SiTelegram, SiFacebook, SiWhatsapp, SiViber } from "react-icons/si";
+import { motion, AnimatePresence } from "framer-motion";
+
+const ContactWidget = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const { t } = useLanguage();
+
+  const messengers = [
+    {
+      name: "Telegram",
+      icon: SiTelegram,
+      href: "https://t.me/sh_nikolas",
+      color: "bg-[#0088cc]",
+    },
+    {
+      name: "WhatsApp",
+      icon: SiWhatsapp,
+      href: "https://wa.me/your_number",
+      color: "bg-[#25D366]",
+    },
+    {
+      name: "Messenger",
+      icon: SiFacebook,
+      href: "https://m.me/your_id",
+      color: "bg-[#0084FF]",
+    },
+    {
+      name: "Viber",
+      icon: SiViber,
+      href: "viber://chat?number=your_number",
+      color: "bg-[#7360f2]",
+    },
+  ];
+
+  return (
+    <div className="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-4">
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.8 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.8 }}
+            className="flex flex-col gap-3 mb-2"
+          >
+            {messengers.map((m, i) => (
+              <motion.a
+                key={m.name}
+                href={m.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: i * 0.1 }}
+                className={`${m.color} text-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center`}
+                title={m.name}
+              >
+                <m.icon className="w-6 h-6" />
+              </motion.a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-16 h-16 bg-[#306BA1] hover:bg-[#254d7a] text-white rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center group"
+      >
+        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            xml:space="preserve"
+            width="32px"
+            height="32px"
+            version="1.1"
+            style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", imageRendering: "optimizeQuality", fillRule: "evenodd", clipRule: "evenodd" }}
+            viewBox="0 0 203.18 203.18"
+          >
+            <g id="Слой_x0020_1">
+              <metadata id="CorelCorpID_0Corel-Layer" />
+              <g id="_2278661208240">
+                <circle style={{ fill: "none" }} cx="101.59" cy="101.59" r="101.6" />
+                <path style={{ fill: "white" }} d="M106.13 53.03c22.55,2.08 40.65,19.52 43.75,41.75l-96.58 0c3.18,-22.75 22.05,-40.47 45.33,-41.87l0 -4.17 -2.36 0c-2.32,0 -4.23,-1.91 -4.23,-4.23l0 0c0,-2.33 1.91,-4.23 4.23,-4.23l12.4 0c2.33,0 4.23,1.9 4.23,4.23l0 0c0,2.32 -1.9,4.23 -4.23,4.23l-2.54 0 0 4.29zm15.16 63.75c1.5,-1.94 4.29,-2.3 6.23,-0.8 1.94,1.5 2.3,4.29 0.8,6.23 -3.14,4.07 -7.19,7.4 -11.86,9.7 -4.51,2.21 -9.56,3.46 -14.87,3.46 -5.31,0 -10.36,-1.25 -14.87,-3.46 -4.67,-2.3 -8.72,-5.63 -11.86,-9.7 -1.5,-1.94 -1.14,-4.73 0.8,-6.23 1.94,-1.5 4.73,-1.14 6.23,0.8 2.33,3.01 5.31,5.47 8.74,7.15 3.28,1.62 7,2.52 10.96,2.52 3.96,0 7.68,-0.9 10.96,-2.52 3.43,-1.68 6.41,-4.14 8.74,-7.15zm-10.04 39.85c-1.68,1.41 -4.25,2.17 -4.31,-1.17 -0.02,-0.99 -0.04,-1.26 -0.06,-2.26 -0.81,-2.45 -3.2,-2.84 -5.68,-2.84l0 -0.01c-25.76,-0.2 -46.76,-20.38 -48.29,-45.8l97.36 0c-0.71,11.75 -5.05,23.66 -13.15,30.44l-25.87 21.64z" />
+              </g>
+            </g>
+          </svg>
+        </div>
+      </button>
+    </div>
+  );
+};
 
 export default function PricingPage() {
   const { billingMode, setBillingMode } = useBillingMode();
@@ -489,27 +579,7 @@ export default function PricingPage() {
         </div>
       )}
 
-      {/* Mobile Telegram Button */}
-      <a
-        href="https://t.me/sh_nikolas"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="md:hidden fixed bottom-4 right-4 z-50 inline-flex items-center justify-center bg-[#306BA1] hover:bg-[#254d7a] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105"
-        data-testid="mobile-telegram-button"
-      >
-        <span>{t("btn_contact_telegram")}</span>
-      </a>
-
-      {/* Desktop Telegram Button */}
-      <a
-        href="https://t.me/sh_nikolas"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="hidden md:inline-flex fixed bottom-4 right-4 z-50 items-center justify-center bg-[#306BA1] hover:bg-[#254d7a] text-white font-semibold px-6 py-3 rounded-2xl shadow-lg transition-all duration-300 transform hover:scale-105"
-        data-testid="desktop-telegram-button"
-      >
-        <span>{t("btn_contact_telegram")}</span>
-      </a>
+      <ContactWidget />
     </div>
   );
 }
