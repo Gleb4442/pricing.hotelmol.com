@@ -78,14 +78,14 @@ const ContactWidget = () => {
         onClick={() => setIsOpen(!isOpen)}
         className="w-16 h-16 bg-[#306BA1] hover:bg-[#254d7a] text-white rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center group"
       >
-        <div className={`transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+        <div className={`transition-transform duration-500 ${isOpen ? 'rotate-[360deg]' : ''}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            xml:space="preserve"
+            xmlSpace="preserve"
             width="58px"
             height="58px"
             version="1.1"
-            style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", imageRendering: "optimizeQuality", fillRule: "evenodd", clipRule: "evenodd" }}
+            style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", imageRendering: "auto", fillRule: "evenodd", clipRule: "evenodd" }}
             viewBox="0 0 203.18 203.18"
           >
             <g id="Слой_x0020_1">
