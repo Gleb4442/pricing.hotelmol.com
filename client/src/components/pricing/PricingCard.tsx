@@ -248,34 +248,114 @@ export function PricingCard({
                     </div>
                   {feature.isChannels && (billingMode === "monthly" || billingMode === "yearly") && (
                     <div className="flex items-center space-x-2 mt-2">
-                      <div className="w-8 h-8 rounded-full bg-[#0088cc] flex items-center justify-center flex-shrink-0">
-                        <SiTelegram className="w-4 h-4 text-white" />
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.1 240.1" className="w-8 h-8">
+                          <linearGradient id="Oval_1_fixed" gradientUnits="userSpaceOnUse" x1="-838.041" y1="660.581" x2="-838.041" y2="660.3427" gradientTransform="matrix(1000 0 0 -1000 838161 660581)">
+                            <stop offset="0" style={{stopColor: "#2AABEE"}}/>
+                            <stop offset="1" style={{stopColor: "#229ED9"}}/>
+                          </linearGradient>
+                          <circle fillRule="evenodd" clipRule="evenodd" fill="url(#Oval_1_fixed)" cx="120.1" cy="120.1" r="120.1"/>
+                          <path fillRule="evenodd" clipRule="evenodd" fill="#FFFFFF" d="M54.3,118.8c35-15.2,58.3-25.3,70-30.2 c33.3-13.9,40.3-16.3,44.8-16.4c1,0,3.2,0.2,4.7,1.4c1.2,1,1.5,2.3,1.7,3.3s0.4,3.1,0.2,4.7c-1.8,19-9.6,65.1-13.6,86.3 c-1.7,9-5,12-8.2,12.3c-7,0.6-12.3-4.6-19-9c-10.6-6.9-16.5-11.2-26.8-18c-11.9-7.8-4.2-12.1,2.6-19.1c1.8-1.8,32.5-29.8,33.1-32.3 c0.1-0.3,0.1-1.5-0.6-2.1c-0.7-0.6-1.7-0.4-2.5-0.2c-1.1,0.2-17.9,11.4-50.6,33.5c-4.8,3.3-9.1,4.9-13,4.8 c-4.3-0.1-12.5-2.4-18.7-4.4c-7.5-2.4-13.5-3.7-13-7.9C45.7,123.3,48.7,121.1,54.3,118.8z"/>
+                        </svg>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-[#0A66C2] flex items-center justify-center flex-shrink-0">
-                        <SiFacebook className="w-4 h-4 text-white" />
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" className="w-8 h-8">
+                          <circle cx="500" cy="500" r="500" fill="#1877F2"/>
+                          <path d="M685 510h-90v325H460V510h-65V395h65v-75c0-105 45-165 160-165h95v115h-60c-48 0-50 18-50 50v75h110l-15 115z" fill="#FFF"/>
+                        </svg>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-[#25D366] flex items-center justify-center flex-shrink-0">
-                        <SiWhatsapp className="w-4 h-4 text-white" />
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552" className="w-8 h-8">
+                          <defs>
+                            <linearGradient id="b_fixed" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
+                              <stop offset="0" stopColor="#57d163"/>
+                              <stop offset="1" stopColor="#23b33a"/>
+                            </linearGradient>
+                          </defs>
+                          <path fill="#fff" d="m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z"/>
+                          <path fill="url(#b_fixed)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"/>
+                          <path fill="#fff" fillRule="evenodd" d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.309-.016-3.441.31-5.241 2.269-1.8 1.959-6.864 6.708-6.864 16.353s7.016 18.988 8.003 20.306c.987 1.318 13.524 21.169 33.242 29.155 19.718 7.986 19.718 5.324 23.243 5.016s11.375-4.653 12.984-9.157 1.609-8.35.34-11.413c-1.269-3.061-4.706-4.887-9.872-7.472-5.166-2.585-3.061-3.864-2.235-5.166 1.318-1.959 5.86-7.398 7.238-9.387 1.378-1.989 2.508-3.324 2.508-6.023s-1.378-5.324-2.828-6.864c-1.45-1.54-13.313-13.844-18.257-14.868z"/>
+                        </svg>
                       </div>
-                      <div className="w-8 h-8 rounded-full bg-[#E4405F] flex items-center justify-center flex-shrink-0">
-                        <SiInstagram className="w-4 h-4 text-white" />
+                      <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264.5833 264.5833" className="w-8 h-8">
+                          <defs>
+                            <radialGradient id="ig_f_fixed" cx="158.429" cy="578.088" r="52.3515" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2273 942.2356)">
+                              <stop offset="0" stopColor="#fc0"/><stop offset=".1242" stopColor="#fc0"/><stop offset=".5672" stopColor="#fe4a05"/><stop offset=".6942" stopColor="#ff0f3f"/><stop offset="1" stopColor="#fe0657" stopOpacity="0"/>
+                            </radialGradient>
+                          </defs>
+                          <circle cx="132.29" cy="132.29" r="132.29" fill="url(#ig_f_fixed)"/>
+                          <path d="M132.29 70c-16.97 0-19.09.07-25.75.37-6.65.3-11.19 1.36-15.17 2.91a30.65 30.65 0 0 0-11.09 7.22 30.65 30.65 0 0 0-7.22 11.09c-1.55 3.98-2.61 8.52-2.91 15.17-.3 6.66-.37 8.78-.37 25.75s.07 19.09.37 25.75c.3 6.65 1.36 11.19 2.91 15.17a30.65 30.65 0 0 0 7.22 11.09 30.65 30.65 0 0 0 11.09 7.22c3.98 1.55 8.52 2.61 15.17 2.91 6.66.3 8.78.37 25.75.37s19.09-.07 25.75-.37c6.65-.3 11.19-1.36 15.17-2.91a30.65 30.65 0 0 0 11.09-7.22 30.65 30.65 0 0 0 7.22-11.09c1.55-3.98 2.61-8.52 2.91-15.17.3-6.66.37-8.78.37-25.75s-.07-19.09-.37-25.75c-.3-6.65-1.36-11.19-2.91-15.17a30.65 30.65 0 0 0-7.22-11.09 30.65 30.65 0 0 0-11.09-7.22c-3.98-1.55-8.52-2.61-15.17-2.91-6.66-.3-8.78-.37-25.75-.37zm0 11.23c16.69 0 18.67.06 25.26.36 6.1.28 9.42 1.3 11.62 2.16a19.42 19.42 0 0 1 7.2 4.68 19.42 19.42 0 0 1 4.68 7.2c.86 2.2 1.88 5.52 2.16 11.62.3 6.59.36 8.57.36 25.26s-.06 18.67-.36 25.26c-.28 6.1-1.3 9.42-2.16 11.62a19.42 19.42 0 0 1-4.68 7.2 19.42 19.42 0 0 1-7.2 4.68c-2.2.86-5.52 1.88-11.62 2.16-6.59.3-8.57.36-25.26.36s-18.67-.06-25.26-.36c-6.1-.28-9.42-1.3-11.62-2.16a19.42 19.42 0 0 1-7.2-4.68 19.42 19.42 0 0 1-4.68-7.2c-.86-2.2-1.88-5.52-2.16-11.62-.3-6.59-.36-8.57-.36-25.26s.06-18.67.36-25.26c.28-6.1 1.3-9.42 2.16-11.62a19.42 19.42 0 0 1 4.68-7.2 19.42 19.42 0 0 1 7.2-4.68c2.2-.86 5.52-1.88 11.62-2.16 6.59-.3 8.57-.36 25.26-.36zM132.29 100.27a32.02 32.02 0 1 0 0 64.04 32.02 32.02 0 0 0 0-64.04zm0 52.81a20.79 20.79 0 1 1 0-41.58 20.79 20.79 0 0 1 0 41.58zm33.36-50.64a7.49 7.49 0 1 1-14.98 0 7.49 7.49 0 0 1 14.98 0z" fill="#FFF"/>
+                        </svg>
                       </div>
                     </div>
                   )}
                   {feature.isChannels && billingMode === "usage" && (
                     <div className="flex items-center space-x-2 mt-2">
                       {[
-                        { icon: SiTelegram, color: "#0088cc", id: "usage-tg" },
-                        { icon: SiFacebook, color: "#0A66C2", id: "usage-fb" },
-                        { icon: SiWhatsapp, color: "#25D366", id: "usage-wa" },
-                        { icon: SiInstagram, color: "#E4405F", id: "usage-ig" }
+                        { 
+                          icon: () => (
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240.1 240.1" className="w-8 h-8">
+                              <linearGradient id="Oval_1_" gradientUnits="userSpaceOnUse" x1="-838.041" y1="660.581" x2="-838.041" y2="660.3427" gradientTransform="matrix(1000 0 0 -1000 838161 660581)">
+                                <stop offset="0" style={{stopColor: "#2AABEE"}}/>
+                                <stop offset="1" style={{stopColor: "#229ED9"}}/>
+                              </linearGradient>
+                              <circle fillRule="evenodd" clipRule="evenodd" fill="url(#Oval_1_)" cx="120.1" cy="120.1" r="120.1"/>
+                              <path fillRule="evenodd" clipRule="evenodd" fill="#FFFFFF" d="M54.3,118.8c35-15.2,58.3-25.3,70-30.2 c33.3-13.9,40.3-16.3,44.8-16.4c1,0,3.2,0.2,4.7,1.4c1.2,1,1.5,2.3,1.7,3.3s0.4,3.1,0.2,4.7c-1.8,19-9.6,65.1-13.6,86.3 c-1.7,9-5,12-8.2,12.3c-7,0.6-12.3-4.6-19-9c-10.6-6.9-16.5-11.2-26.8-18c-11.9-7.8-4.2-12.1,2.6-19.1c1.8-1.8,32.5-29.8,33.1-32.3 c0.1-0.3,0.1-1.5-0.6-2.1c-0.7-0.6-1.7-0.4-2.5-0.2c-1.1,0.2-17.9,11.4-50.6,33.5c-4.8,3.3-9.1,4.9-13,4.8 c-4.3-0.1-12.5-2.4-18.7-4.4c-7.5-2.4-13.5-3.7-13-7.9C45.7,123.3,48.7,121.1,54.3,118.8z"/>
+                            </svg>
+                          ), 
+                          color: "transparent", 
+                          id: "usage-tg" 
+                        },
+                        { 
+                          icon: () => (
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" className="w-8 h-8">
+                              <circle cx="500" cy="500" r="500" fill="#1877F2"/>
+                              <path d="M685 510h-90v325H460V510h-65V395h65v-75c0-105 45-165 160-165h95v115h-60c-48 0-50 18-50 50v75h110l-15 115z" fill="#FFF"/>
+                            </svg>
+                          ), 
+                          color: "transparent", 
+                          id: "usage-fb" 
+                        },
+                        { 
+                          icon: () => (
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 175.216 175.552" className="w-8 h-8">
+                              <defs>
+                                <linearGradient id="b_usage" x1="85.915" x2="86.535" y1="32.567" y2="137.092" gradientUnits="userSpaceOnUse">
+                                  <stop offset="0" stopColor="#57d163"/>
+                                  <stop offset="1" stopColor="#23b33a"/>
+                                </linearGradient>
+                              </defs>
+                              <path fill="#fff" d="m12.966 161.238 10.439-38.114a73.42 73.42 0 0 1-9.821-36.772c.017-40.556 33.021-73.55 73.578-73.55 19.681.01 38.154 7.669 52.047 21.572s21.537 32.383 21.53 52.037c-.018 40.553-33.027 73.553-73.578 73.553h-.032c-12.313-.005-24.412-3.094-35.159-8.954z"/>
+                              <path fill="url(#b_usage)" d="M87.184 25.227c-33.733 0-61.166 27.423-61.178 61.13a60.98 60.98 0 0 0 9.349 32.535l1.455 2.313-6.179 22.558 23.146-6.069 2.235 1.324c9.387 5.571 20.15 8.517 31.126 8.523h.023c33.707 0 61.14-27.426 61.153-61.135a60.75 60.75 0 0 0-17.895-43.251 60.75 60.75 0 0 0-43.235-17.928z"/>
+                              <path fill="#fff" fillRule="evenodd" d="M68.772 55.603c-1.378-3.061-2.828-3.123-4.137-3.176l-3.524-.043c-1.309-.016-3.441.31-5.241 2.269-1.8 1.959-6.864 6.708-6.864 16.353s7.016 18.988 8.003 20.306c.987 1.318 13.524 21.169 33.242 29.155 19.718 7.986 19.718 5.324 23.243 5.016s11.375-4.653 12.984-9.157 1.609-8.35.34-11.413c-1.269-3.061-4.706-4.887-9.872-7.472-5.166-2.585-3.061-3.864-2.235-5.166 1.318-1.959 5.86-7.398 7.238-9.387 1.378-1.989 2.508-3.324 2.508-6.023s-1.378-5.324-2.828-6.864c-1.45-1.54-13.313-13.844-18.257-14.868z"/>
+                            </svg>
+                          ),
+                          color: "transparent", 
+                          id: "usage-wa" 
+                        },
+                        { 
+                          icon: () => (
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264.5833 264.5833" className="w-8 h-8">
+                              <defs>
+                                <radialGradient id="ig_f_usage" cx="158.429" cy="578.088" r="52.3515" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0 -4.03418 4.28018 0 -2332.2273 942.2356)">
+                                  <stop offset="0" stopColor="#fc0"/><stop offset=".1242" stopColor="#fc0"/><stop offset=".5672" stopColor="#fe4a05"/><stop offset=".6942" stopColor="#ff0f3f"/><stop offset="1" stopColor="#fe0657" stopOpacity="0"/>
+                                </radialGradient>
+                              </defs>
+                              <circle cx="132.29" cy="132.29" r="132.29" fill="url(#ig_f_usage)"/>
+                              <path d="M132.29 70c-16.97 0-19.09.07-25.75.37-6.65.3-11.19 1.36-15.17 2.91a30.65 30.65 0 0 0-11.09 7.22 30.65 30.65 0 0 0-7.22 11.09c-1.55 3.98-2.61 8.52-2.91 15.17-.3 6.66-.37 8.78-.37 25.75s.07 19.09.37 25.75c.3 6.65 1.36 11.19 2.91 15.17a30.65 30.65 0 0 0 7.22 11.09 30.65 30.65 0 0 0 11.09 7.22c3.98 1.55 8.52 2.61 15.17 2.91 6.66.3 8.78.37 25.75.37s19.09-.07 25.75-.37c6.65-.3 11.19-1.36 15.17-2.91a30.65 30.65 0 0 0 11.09-7.22 30.65 30.65 0 0 0 7.22-11.09c1.55-3.98 2.61-8.52 2.91-15.17.3-6.66.37-8.78.37-25.75s-.07-19.09-.37-25.75c-.3-6.65-1.36-11.19-2.91-15.17a30.65 30.65 0 0 0-7.22-11.09 30.65 30.65 0 0 0-11.09-7.22c-3.98-1.55-8.52-2.61-15.17-2.91-6.66-.3-8.78-.37-25.75-.37zm0 11.23c16.69 0 18.67.06 25.26.36 6.1.28 9.42 1.3 11.62 2.16a19.42 19.42 0 0 1 7.2 4.68 19.42 19.42 0 0 1 4.68 7.2c.86 2.2 1.88 5.52 2.16 11.62.3 6.59.36 8.57.36 25.26s-.06 18.67-.36 25.26c-.28 6.1-1.3 9.42-2.16 11.62a19.42 19.42 0 0 1-4.68 7.2 19.42 19.42 0 0 1-7.2 4.68c-2.2.86-5.52 1.88-11.62 2.16-6.59.3-8.57.36-25.26.36s-18.67-.06-25.26-.36c-6.1-.28-9.42-1.3-11.62-2.16a19.42 19.42 0 0 1-7.2-4.68 19.42 19.42 0 0 1-4.68-7.2c-.86-2.2-1.88-5.52-2.16-11.62-.3-6.59-.36-8.57-.36-25.26s.06-18.67.36-25.26c.28-6.1 1.3-9.42 2.16-11.62a19.42 19.42 0 0 1 4.68-7.2 19.42 19.42 0 0 1 7.2-4.68c2.2-.86 5.52-1.88 11.62-2.16 6.59-.3 8.57-.36 25.26-.36zM132.29 100.27a32.02 32.02 0 1 0 0 64.04 32.02 32.02 0 0 0 0-64.04zm0 52.81a20.79 20.79 0 1 1 0-41.58 20.79 20.79 0 0 1 0 41.58zm33.36-50.64a7.49 7.49 0 1 1-14.98 0 7.49 7.49 0 0 1 14.98 0z" fill="#FFF"/>
+                            </svg>
+                          ),
+                          color: "transparent", 
+                          id: "usage-ig" 
+                        }
                       ].map((channel) => (
                         <div key={channel.id} className="relative group">
                           <div
-                            className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-opacity"
+                            className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-opacity overflow-hidden"
                             style={{ backgroundColor: channel.color }}
                           >
-                            <channel.icon className="w-4 h-4 text-white" />
+                            {typeof channel.icon === 'function' ? channel.icon() : <channel.icon className="w-4 h-4 text-white" />}
                           </div>
                           {/* Desktop Plus/Check Button */}
                           <div className="hidden md:block absolute -bottom-1 -right-1">
