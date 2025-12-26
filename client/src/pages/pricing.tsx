@@ -285,7 +285,7 @@ export default function PricingPage() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-16 mt-24 md:mt-0">
+      <main className="container mx-auto px-4 py-16 mt-64 md:mt-40">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">

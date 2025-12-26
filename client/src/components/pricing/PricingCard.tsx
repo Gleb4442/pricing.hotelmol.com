@@ -259,9 +259,15 @@ export function PricingCard({
                         </svg>
                       </div>
                       <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
-                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" className="w-8 h-8">
-                          <circle cx="500" cy="500" r="500" fill="#1877F2"/>
-                          <path d="M685 510h-90v325H460V510h-65V395h65v-75c0-105 45-165 160-165h95v115h-60c-48 0-50 18-50 50v75h110l-15 115z" fill="#FFF"/>
+                        <svg viewBox="48.61 50.201 402.77399999999994 402.77399999999994" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+                          <linearGradient id="ms_fixed" x1="50%" x2="50%" y1="0%" y2="100.001%">
+                            <stop offset="0" stopColor="#00b2ff"/>
+                            <stop offset="1" stopColor="#006aff"/>
+                          </linearGradient>
+                          <g fill="none" fillRule="evenodd">
+                            <path d="M250 50.201c-112.676 0-200 82.452-200 193.81 0 58.25 23.903 108.582 62.817 143.356 3.26 2.935 5.231 6.995 5.392 11.377l1.087 35.537c.362 11.337 12.072 18.694 22.455 14.151l39.678-17.487a15.974 15.974 0 0 1 10.664-.804c18.229 5.025 37.666 7.678 57.907 7.678 112.676 0 200-82.452 200-193.809S362.676 50.201 250 50.201z" fill="url(#ms_fixed)"/>
+                            <path d="M129.92 300.693l58.752-93.105c9.336-14.794 29.376-18.493 43.38-8l46.72 35.015a12.022 12.022 0 0 0 14.447-.04l63.099-47.84c8.41-6.391 19.437 3.7 13.762 12.624l-58.712 93.065c-9.336 14.794-29.376 18.493-43.38 8l-46.72-35.015a12.022 12.022 0 0 0-14.447.04l-63.139 47.88c-8.41 6.392-19.437-3.699-13.762-12.624z" fill="#ffffff"/>
+                          </g>
                         </svg>
                       </div>
                       <div className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
@@ -309,9 +315,15 @@ export function PricingCard({
                         },
                         { 
                           icon: () => (
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" className="w-8 h-8">
-                              <circle cx="500" cy="500" r="500" fill="#1877F2"/>
-                              <path d="M685 510h-90v325H460V510h-65V395h65v-75c0-105 45-165 160-165h95v115h-60c-48 0-50 18-50 50v75h110l-15 115z" fill="#FFF"/>
+                            <svg viewBox="48.61 50.201 402.77399999999994 402.77399999999994" xmlns="http://www.w3.org/2000/svg" className="w-8 h-8">
+                              <linearGradient id="ms_usage" x1="50%" x2="50%" y1="0%" y2="100.001%">
+                                <stop offset="0" stopColor="#00b2ff"/>
+                                <stop offset="1" stopColor="#006aff"/>
+                              </linearGradient>
+                              <g fill="none" fillRule="evenodd">
+                                <path d="M250 50.201c-112.676 0-200 82.452-200 193.81 0 58.25 23.903 108.582 62.817 143.356 3.26 2.935 5.231 6.995 5.392 11.377l1.087 35.537c.362 11.337 12.072 18.694 22.455 14.151l39.678-17.487a15.974 15.974 0 0 1 10.664-.804c18.229 5.025 37.666 7.678 57.907 7.678 112.676 0 200-82.452 200-193.809S362.676 50.201 250 50.201z" fill="url(#ms_usage)"/>
+                                <path d="M129.92 300.693l58.752-93.105c9.336-14.794 29.376-18.493 43.38-8l46.72 35.015a12.022 12.022 0 0 0 14.447-.04l63.099-47.84c8.41-6.391 19.437 3.7 13.762 12.624l-58.712 93.065c-9.336 14.794-29.376 18.493-43.38 8l-46.72-35.015a12.022 12.022 0 0 0-14.447.04l-63.139 47.88c-8.41 6.392-19.437-3.699-13.762-12.624z" fill="#ffffff"/>
+                              </g>
                             </svg>
                           ), 
                           color: "transparent", 
@@ -355,7 +367,16 @@ export function PricingCard({
                             className="w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 transition-opacity overflow-hidden"
                             style={{ backgroundColor: channel.color }}
                           >
-                            {typeof channel.icon === 'function' ? channel.icon() : <channel.icon className="w-4 h-4 text-white" />}
+                            {typeof channel.icon === 'function' ? (
+                              (channel.icon as any)()
+                            ) : (
+                              <div className="w-4 h-4 text-white">
+                                {(() => {
+                                  const Icon = channel.icon as any;
+                                  return <Icon className="w-full h-full" />;
+                                })()}
+                              </div>
+                            )}
                           </div>
                           {/* Desktop Plus/Check Button */}
                           <div className="hidden md:block absolute -bottom-1 -right-1">
