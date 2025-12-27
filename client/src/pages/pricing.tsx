@@ -110,7 +110,7 @@ const ContactWidget = () => {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlSpace="preserve"
-            className="w-8 h-8 md:w-[58px] md:h-[58px]"
+            className="w-[42px] h-[42px] md:w-[58px] md:h-[58px]"
             version="1.1"
             style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", imageRendering: "auto", fillRule: "evenodd", clipRule: "evenodd" }}
             viewBox="0 0 203.18 203.18"
