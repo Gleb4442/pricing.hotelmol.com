@@ -11,8 +11,36 @@ import { Button } from "@/components/ui/button";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
-import { SiTelegram, SiFacebook, SiWhatsapp, SiViber } from "react-icons/si";
+import { SiTelegram, SiMessenger, SiWhatsapp, SiViber, SiInstagram } from "react-icons/si";
 import { motion, AnimatePresence } from "framer-motion";
+
+const BrandIcons = {
+  Telegram: () => (
+    <div className="w-full h-full bg-[#2AABEE] rounded-full flex items-center justify-center text-white">
+      <SiTelegram className="w-1/2 h-1/2" />
+    </div>
+  ),
+  Messenger: () => (
+    <div className="w-full h-full bg-[#0084FF] rounded-full flex items-center justify-center text-white">
+      <SiMessenger className="w-1/2 h-1/2" />
+    </div>
+  ),
+  Instagram: () => (
+    <div className="w-full h-full bg-gradient-to-tr from-[#fdf497] via-[#fd5949] to-[#d6249f] rounded-xl flex items-center justify-center text-white">
+      <SiInstagram className="w-1/2 h-1/2" />
+    </div>
+  ),
+  WhatsApp: () => (
+    <div className="w-full h-full bg-[#25D366] rounded-full flex items-center justify-center text-white">
+      <SiWhatsapp className="w-1/2 h-1/2" />
+    </div>
+  ),
+  Viber: () => (
+    <div className="w-full h-full bg-[#7360f2] rounded-full flex items-center justify-center text-white">
+      <SiViber className="w-1/2 h-1/2" />
+    </div>
+  )
+};
 
 const ContactWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -21,27 +49,27 @@ const ContactWidget = () => {
   const messengers = [
     {
       name: "Telegram",
-      icon: SiTelegram,
-      href: "https://t.me/sh_nikolas",
-      color: "bg-[#0088cc]",
+      icon: BrandIcons.Telegram,
+      href: "https://t.me/hotelmolmanager",
+      color: "",
     },
     {
       name: "WhatsApp",
-      icon: SiWhatsapp,
-      href: "https://wa.me/your_number",
-      color: "bg-[#25D366]",
+      icon: BrandIcons.WhatsApp,
+      href: "https://wa.me/380931603830",
+      color: "",
     },
     {
       name: "Messenger",
-      icon: SiFacebook,
-      href: "https://m.me/your_id",
-      color: "bg-[#0084FF]",
+      icon: BrandIcons.Messenger,
+      href: "https://m.me/hotelmolmanager",
+      color: "",
     },
     {
       name: "Viber",
-      icon: SiViber,
-      href: "viber://chat?number=your_number",
-      color: "bg-[#7360f2]",
+      icon: BrandIcons.Viber,
+      href: "viber://chat?number=%2B380931603830",
+      color: "",
     },
   ];
 
@@ -64,10 +92,10 @@ const ContactWidget = () => {
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: i * 0.1 }}
-                className={`${m.color} text-white p-3 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center`}
+                className={`${m.color} h-12 w-12 rounded-full shadow-lg hover:scale-110 transition-transform flex items-center justify-center overflow-hidden`}
                 title={m.name}
               >
-                <m.icon className="w-6 h-6" />
+                <m.icon />
               </motion.a>
             ))}
           </motion.div>
@@ -126,14 +154,14 @@ export default function PricingPage() {
   // Calculate price with network discount (10% off for PRO and PREMIUM)
   const getNetworkPrice = (basePrice: string): string => {
     if (hotelType === "single") return basePrice;
-    
+
     // Remove $ and commas, calculate 10% discount
     const numericPrice = parseFloat(basePrice.replace(/[$,]/g, ''));
     const discountedPrice = Math.round(numericPrice * 0.9);
-    
+
     // Format with $ and commas if needed
-    return discountedPrice >= 1000 
-      ? `$${discountedPrice.toLocaleString()}` 
+    return discountedPrice >= 1000
+      ? `$${discountedPrice.toLocaleString()}`
       : `$${discountedPrice}`;
   };
 
@@ -180,36 +208,34 @@ export default function PricingPage() {
                 <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
               </div>
             </div>
-            
+
             <div className="flex items-center space-x-3">
               {/* Hotel Type Toggle */}
               {!isCalculatorOpen && (
                 <div className="flex items-center bg-[#254d7a]/30 rounded-lg p-1">
                   <button
                     onClick={() => hotelType === "network" && toggleHotelType()}
-                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-                      hotelType === "single"
-                        ? "bg-[#306BA1] text-white shadow-md"
-                        : "text-[#a8c5e0] hover:text-white"
-                    }`}
+                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${hotelType === "single"
+                      ? "bg-[#306BA1] text-white shadow-md"
+                      : "text-[#a8c5e0] hover:text-white"
+                      }`}
                     data-testid="hotel-type-single"
                   >
                     {t("hotel_type_single")}
                   </button>
                   <button
                     onClick={() => hotelType === "single" && toggleHotelType()}
-                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${
-                      hotelType === "network"
-                        ? "bg-[#306BA1] text-white shadow-md"
-                        : "text-[#a8c5e0] hover:text-white"
-                    }`}
+                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${hotelType === "network"
+                      ? "bg-[#306BA1] text-white shadow-md"
+                      : "text-[#a8c5e0] hover:text-white"
+                      }`}
                     data-testid="hotel-type-network"
                   >
                     {t("hotel_type_network")}
                   </button>
                 </div>
               )}
-              
+
               {/* Language Switcher */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
@@ -285,7 +311,7 @@ export default function PricingPage() {
       </header>
 
       {/* Main Content */}
-      <main className="container mx-auto px-4 py-16 mt-64 md:mt-40">
+      <main className="container mx-auto px-4 pb-16 pt-4 mt-32 md:mt-24">
         {/* Hero Section */}
         <div className="text-center mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
@@ -328,13 +354,13 @@ export default function PricingPage() {
               description={t("plan_pro_description")}
               pricing={{
                 usage: { current: t("price_7_cents") },
-                monthly: { 
-                  current: getNetworkPrice("$299"), 
-                  original: hotelType === "network" ? "$299" : undefined 
+                monthly: {
+                  current: getNetworkPrice("$299"),
+                  original: hotelType === "network" ? "$299" : undefined
                 },
-                yearly: { 
-                  current: getNetworkPrice("$239"), 
-                  original: hotelType === "network" ? "$239" : undefined 
+                yearly: {
+                  current: getNetworkPrice("$239"),
+                  original: hotelType === "network" ? "$239" : undefined
                 },
               }}
               features={proFeatures}
@@ -353,10 +379,10 @@ export default function PricingPage() {
                 description={t("plan_premium_description")}
                 pricing={{
                   usage: { current: t("price_35_cents") },
-                  monthly: { 
+                  monthly: {
                     current: "$1,099"
                   },
-                  yearly: { 
+                  yearly: {
                     current: "$879"
                   },
                 }}
@@ -383,8 +409,8 @@ export default function PricingPage() {
                 { title: t('benefit_24_7_support'), desc: t('benefit_24_7_support_desc') },
                 { title: t('benefit_no_hidden_fees'), desc: t('benefit_no_hidden_fees_desc') }
               ].map((benefit, index) => (
-                <AccordionItem 
-                  key={index} 
+                <AccordionItem
+                  key={index}
                   value={`item-${index}`}
                   className="border-0 bg-white dark:bg-[#306BA1]/20 rounded-xl px-4"
                   data-testid={`benefit-item-${index}`}
@@ -419,9 +445,8 @@ export default function PricingPage() {
                 >
                   <h4 className="text-lg font-semibold text-foreground">{t("mobile_info_title")}</h4>
                   <ChevronDown
-                    className={`text-muted-foreground transition-transform duration-300 ${
-                      mobileInfoOpen ? "rotate-180" : ""
-                    }`}
+                    className={`text-muted-foreground transition-transform duration-300 ${mobileInfoOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </Button>
               </CollapsibleTrigger>
@@ -519,9 +544,9 @@ export default function PricingPage() {
       <div className="py-8 px-4 text-center md:py-16">
         <div className="flex justify-center">
           {/* Demo Button */}
-          <a 
-            href="https://demo.hotelmol.com" 
-            target="_blank" 
+          <a
+            href="https://demo.hotelmol.com"
+            target="_blank"
             rel="noopener noreferrer"
             className="bg-gradient-to-r from-green-400 to-green-600 hover:from-green-500 hover:to-green-700 text-white font-bold shadow-lg hover:shadow-2xl rounded-3xl px-10 py-6 sm:px-16 sm:py-9 inline-flex flex-col items-center justify-center transition-all"
             data-testid="button-demo"
@@ -556,22 +581,20 @@ export default function PricingPage() {
         <div className="md:hidden fixed bottom-4 left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
           <button
             onClick={() => hotelType === "network" && toggleHotelType()}
-            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${
-              hotelType === "single"
-                ? "bg-[#306BA1] text-white shadow-md"
-                : "text-[#a8c5e0] hover:text-white"
-            }`}
+            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${hotelType === "single"
+              ? "bg-[#306BA1] text-white shadow-md"
+              : "text-[#a8c5e0] hover:text-white"
+              }`}
             data-testid="mobile-hotel-type-single"
           >
             {t("hotel_type_single")}
           </button>
           <button
             onClick={() => hotelType === "single" && toggleHotelType()}
-            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${
-              hotelType === "network"
-                ? "bg-[#306BA1] text-white shadow-md"
-                : "text-[#a8c5e0] hover:text-white"
-            }`}
+            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${hotelType === "network"
+              ? "bg-[#306BA1] text-white shadow-md"
+              : "text-[#a8c5e0] hover:text-white"
+              }`}
             data-testid="mobile-hotel-type-network"
           >
             {t("hotel_type_network")}

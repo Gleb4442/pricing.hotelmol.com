@@ -41,7 +41,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
   const [showCalculator, setShowCalculator] = useState(false);
   const [mobileCalculatorMode, setMobileCalculatorMode] = useState<'info' | 'calculator'>('info');
   const [clickedCurrency, setClickedCurrency] = useState<Currency | null>(null);
-  
+
   const [inputs, setInputs] = useState<CalculatorInputs>({
     dailyRequests: 30,
     adr: 4000, // Средняя цена за номер в сутки
@@ -100,7 +100,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
   const parseUrlParams = useCallback((): Partial<CalculatorInputs> => {
     const urlParams = new URLSearchParams(window.location.search);
     const params: any = {};
-    
+
     // Parse numeric values
     const numericFields = ['dailyRequests', 'adr', 'los', 'otaCommission', 'processingCost', 'baseDirectShare', 'directShareGrowth', 'conversionGrowth', 'currentBookingsPerMonth', 'additionalServiceRevenuePerBooking'];
     numericFields.forEach(field => {
@@ -123,21 +123,21 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
   const generateSharableUrl = useCallback(() => {
     const baseUrl = window.location.origin + window.location.pathname;
     const params = new URLSearchParams();
-    
+
     Object.entries(inputs).forEach(([key, value]) => {
       params.set(key, value.toString());
     });
-    
+
     return `${baseUrl}?${params.toString()}`;
   }, [inputs]);
 
   const handleSaveCalculation = useCallback(async () => {
     const url = generateSharableUrl();
     const saveData = { ...inputs };
-    
+
     // Save to localStorage with toast notification
     saveToLocalStorage(saveData, true);
-    
+
     try {
       await navigator.clipboard.writeText(url);
       toast({
@@ -160,10 +160,10 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
   useEffect(() => {
     const urlParams = parseUrlParams();
     const savedData = loadFromLocalStorage();
-    
+
     // Priority: URL params > localStorage > defaults
     const mergedData = { ...savedData, ...urlParams };
-    
+
     if (Object.keys(mergedData).length > 0) {
       const newInputs = { ...inputs };
       let hasChanges = false;
@@ -234,10 +234,10 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
 
   const handleTouchMove = (e: React.TouchEvent) => {
     if (!touchStartY) return;
-    
+
     const touchY = e.touches[0].clientY;
     const deltaY = touchY - touchStartY;
-    
+
     // Only allow swipe down from the top area of the modal
     if (deltaY > 100 && touchStartY < 100) {
       closeMobileModal();
@@ -259,11 +259,11 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
 
   // Расчёт экономии
   const calculateSavings = () => {
-    const { 
-      dailyRequests, 
+    const {
+      dailyRequests,
       adr,
       los,
-      otaCommission, 
+      otaCommission,
       processingCost,
       baseDirectShare,
       directShareGrowth,
@@ -271,47 +271,47 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
       currentBookingsPerMonth,
       additionalServiceRevenuePerBooking
     } = inputs;
-    
+
     // Константы
     const baseConversionRate = 35; // Фиксированная конверсия 35%
     const daysInPeriod = 30; // Полные дни месяца
     const avgBookingRevenue = adr * los; // R = ADR × LOS
-    
+
     // Базовые расчёты
     const B0 = dailyRequests * (baseConversionRate / 100); // Бронирования/день до Roomie
     const B1 = B0 * (1 + conversionGrowth / 100); // Бронирования/день после Roomie
     const s0 = baseDirectShare / 100; // Базовая доля direct
     const s1 = Math.min(1, s0 * (1 + directShareGrowth / 100)); // Новая доля direct
-    
+
     // Экономия на комиссии (только переток OTA → Direct)
     const directOnlyConv = B1 * s0; // Direct если бы только конверсия выросла
     const direct1 = B1 * s1; // Реальный direct после Roomie
     const deltaDirectShift = Math.max(0, direct1 - directOnlyConv); // Переток из OTA
-    
+
     // Экономия комиссии/месяц
     const commissionSavings = deltaDirectShift * avgBookingRevenue * (otaCommission - processingCost) / 100 * daysInPeriod;
-    
+
     // Дополнительная прибыль от прироста бронирований
     const deltaB = B1 - B0; // Прирост бронирований
     const additionalDirectRevenue = deltaB * s1 * avgBookingRevenue * (1 - processingCost / 100) * daysInPeriod;
     const additionalOtaRevenue = deltaB * (1 - s1) * avgBookingRevenue * (1 - otaCommission / 100) * daysInPeriod;
     const additionalRevenueFromConversion = additionalDirectRevenue + additionalOtaRevenue;
-    
+
     // Расчёт дополнительного заработка (фиксированно 8% рост)
-    const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ? 
+    const additionalBookingsPerMonth = currentBookingsPerMonth > 0 ?
       Math.round(currentBookingsPerMonth * (8 / 100)) : 0;
-    
+
     const additionalRoomRevenue = additionalBookingsPerMonth * avgBookingRevenue;
     const additionalServiceRevenue = additionalBookingsPerMonth * additionalServiceRevenuePerBooking;
     const totalAdditionalEarnings = additionalRoomRevenue + additionalServiceRevenue;
-    
+
     // Общие показатели
     const totalSavings = commissionSavings + additionalRevenueFromConversion;
-    
+
     // Дополнительные показатели
     const additionalDirectBookingsPerMonth = deltaDirectShift * daysInPeriod;
     const totalEffect = totalSavings + totalAdditionalEarnings;
-    
+
     return {
       // Новая структура результатов
       commissionSavings,
@@ -340,7 +340,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
       <div className={`hidden lg:block ${className}`}>
         <div className="sticky top-24">
           <div className="flex justify-center">
-            <Button 
+            <Button
               variant="default"
               onClick={toggleMobileModal}
               className="bg-gradient-to-r from-[#306BA1] via-[#254d7a] to-[#1e4473] hover:from-[#254d7a] hover:via-[#1e4473] hover:to-[#152a42] text-white font-semibold px-8 py-6 text-lg rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
@@ -364,7 +364,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
             <CardContent className="pt-0 space-y-4">
               <div className="space-y-3">
                 <div className="flex justify-center">
-                  <Button 
+                  <Button
                     variant="default"
                     onClick={toggleCalculator}
                     className="bg-[#306BA1] hover:bg-[#254d7a] text-white font-semibold px-6 py-3 justify-between min-w-[280px]"
@@ -374,10 +374,10 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
                     <ChevronDown className={`h-4 w-4 transition-transform ${showCalculator ? 'rotate-180' : ''}`} />
                   </Button>
                 </div>
-                
+
                 <Collapsible open={showCalculator} onOpenChange={setShowCalculator}>
                   <CollapsibleContent>
-                    <CalculatorForm 
+                    <CalculatorForm
                       inputs={inputs}
                       onInputChange={updateInput}
                       savings={savings}
@@ -429,7 +429,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
 
       {/* Mobile Banner */}
       <div className="lg:hidden mb-6 flex justify-center">
-        <Button 
+        <Button
           onClick={toggleMobileModal}
           className="bg-gradient-to-r from-[#306BA1] via-[#254d7a] to-[#1e4473] hover:from-[#254d7a] hover:via-[#1e4473] hover:to-[#152a42] text-white font-semibold px-6 py-4 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
           data-testid="mobile-savings-banner"
@@ -441,7 +441,7 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
       {/* Mobile Modal */}
       <AnimatePresence>
         {showMobileModal && (
-          <div 
+          <div
             className="fixed inset-0 bg-white z-50 flex items-center justify-center"
             data-testid="mobile-modal-backdrop"
           >
@@ -463,34 +463,34 @@ export function SavingsCalculator({ className = "", onModalToggle }: SavingsCalc
                 <div className="flex justify-center py-2">
                   <div className="w-12 h-1 bg-muted-foreground/30 rounded-full" />
                 </div>
-                
-                <div className="flex-1 p-8 overflow-y-auto bg-white max-w-6xl mx-auto w-full">
-                <div className="flex items-center justify-between mb-8">
-                  <h3 className="text-3xl font-bold text-foreground">
-                    {t("calculator_title_mobile")}
-                  </h3>
-                  <Button 
-                    variant="ghost" 
-                    size="lg" 
-                    onClick={closeMobileModal}
-                    className="hover:bg-gray-100 rounded-full p-2"
-                    data-testid="button-close-modal"
-                  >
-                    <X className="h-6 w-6" />
-                  </Button>
-                </div>
-                
 
-                <div className="space-y-6">
-                  <CalculatorForm 
-                    inputs={inputs}
-                    onInputChange={updateInput}
-                    savings={savings}
-                    currencySymbols={currencySymbols}
-                    currencyLocales={currencyLocales}
-                    onShareCalculation={handleSaveCalculation}
-                  />
-                </div>
+                <div className="flex-1 p-8 overflow-y-auto bg-white max-w-6xl mx-auto w-full">
+                  <div className="flex items-center justify-between mb-8">
+                    <h3 className="text-3xl font-bold text-foreground">
+                      {t("calculator_title_mobile")}
+                    </h3>
+                    <Button
+                      variant="ghost"
+                      size="lg"
+                      onClick={closeMobileModal}
+                      className="hover:bg-gray-100 rounded-full p-2"
+                      data-testid="button-close-modal"
+                    >
+                      <X className="h-6 w-6" />
+                    </Button>
+                  </div>
+
+
+                  <div className="space-y-6">
+                    <CalculatorForm
+                      inputs={inputs}
+                      onInputChange={updateInput}
+                      savings={savings}
+                      currencySymbols={currencySymbols}
+                      currencyLocales={currencyLocales}
+                      onShareCalculation={handleSaveCalculation}
+                    />
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -606,11 +606,10 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 onClick={() => {
                   onInputChange('currency', currency as any);
                 }}
-                className={`flex-1 px-3 py-2 text-sm font-medium rounded-sm transition-all duration-300 ${
-                  inputs.currency === currency
-                    ? 'bg-[#306BA1] text-white shadow-lg shadow-[#306BA1]/30 border-2 border-[#7ca3c8]'
-                    : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
-                }`}
+                className={`flex-1 px-3 py-2 text-sm font-medium rounded-sm transition-all duration-300 ${inputs.currency === currency
+                  ? 'bg-[#306BA1] text-white shadow-lg shadow-[#306BA1]/30 border-2 border-[#7ca3c8]'
+                  : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
+                  }`}
                 data-testid={`currency-${currency.toLowerCase()}`}
                 whileTap={{ scale: 0.95 }}
               >
@@ -647,10 +646,18 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 <Input
                   type="number"
                   min="0"
-                  value={inputs[field.key]}
-                  onChange={(e) => onInputChange(field.key, Math.max(0, parseFloat(e.target.value) || 0))}
+                  step="any"
+                  // Show empty string when value is 0 so user doesn't have to delete it
+                  value={inputs[field.key] === 0 ? '' : inputs[field.key]}
+                  onChange={(e) => {
+                    const val = e.target.value;
+                    // For integers/floats, 0 is our 'empty' or base state
+                    onInputChange(field.key, val === '' ? 0 : parseFloat(val));
+                  }}
+                  onFocus={(e) => e.target.select()}
+                  onWheel={(e) => (e.target as HTMLInputElement).blur()}
                   className={`text-base h-12 ${field.prefix ? 'pl-8' : ''} ${field.suffix ? 'pr-20' : ''} ${(field as any).required && inputs[field.key] === 0 ? 'border-red-300' : ''}`}
-                  placeholder={(field as any).placeholder}
+                  placeholder=""
                   data-testid={`input-${field.key}`}
                 />
                 {field.suffix && (
@@ -687,7 +694,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
                 <div className="bg-white border-2 border-[#a8c5e0] rounded-xl p-6 text-center" data-testid="main-additional-earnings">
                   <div className="text-sm text-muted-foreground mb-2 font-medium">{t('additional_earnings_per_month')}</div>
                   <div className="text-2xl font-bold text-[#306BA1] dark:text-[#7ca3c8]">{formatNumber(savings.totalAdditionalEarnings)}</div>
-                  
+
                   {/* Пояснительный текст под цифрой */}
                   <div className="text-sm text-muted-foreground mt-3 leading-relaxed">
                     {t('additional_earnings_explanation')}
@@ -714,7 +721,7 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
         </div>
 
         {/* Блок доверия и конверсии */}
-        <TrustAndConversionBlock 
+        <TrustAndConversionBlock
           savings={savings}
           currency={inputs.currency}
           onShareCalculation={onShareCalculation}
@@ -735,7 +742,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
   const [isHowWeCountExpanded, setIsHowWeCountExpanded] = useState(false);
 
   const currencySymbols: Record<Currency, string> = {
-    UAH: '₴', 
+    UAH: '₴',
     USD: '$',
     EUR: '€'
   };
@@ -760,8 +767,8 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
       {/* Раскрывающийся блок "Как мы считаем?" */}
       <Collapsible open={isHowWeCountExpanded} onOpenChange={setIsHowWeCountExpanded}>
         <CollapsibleTrigger asChild>
-          <Button 
-            variant="ghost" 
+          <Button
+            variant="ghost"
             className="w-full justify-between p-0 h-auto text-left"
             data-testid="toggle-how-we-count"
           >
@@ -838,15 +845,15 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
       {/* CTA блок */}
       <div className="space-y-4 pt-2">
         {/* Основная CTA кнопка */}
-        <Button 
+        <Button
           asChild
-          size="lg" 
+          size="lg"
           className="w-full h-14 text-lg font-semibold bg-[#306BA1] hover:bg-[#254d7a] text-white border-0"
           data-testid="cta-try-roomie"
         >
-          <a 
-            href="https://t.me/hotelmolmanager" 
-            target="_blank" 
+          <a
+            href="https://t.me/hotelmolmanager"
+            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center justify-center"
           >
