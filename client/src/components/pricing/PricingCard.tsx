@@ -17,7 +17,7 @@ import {
 const BrandIcons = {
   Telegram: () => (
     <div className="w-full h-full bg-[#2AABEE] rounded-full flex items-center justify-center text-white">
-      <SiTelegram className="w-1/2 h-1/2 ml-[5%]" />
+      <SiTelegram className="w-1/2 h-1/2" />
     </div>
   ),
   Messenger: () => (
