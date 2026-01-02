@@ -2,5 +2,5 @@
   <!-- Круглый фон -->
   <circle cx="100" cy="100" r="100" fill="#306BA1"/>
   <!-- Белый символ доллара (большой и по центру) -->
-  <text x="100" y="100" font-size="160" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="middle" font-family="Arial, sans-serif">$</text>
+  <text x="50%" y="50%" font-size="160" font-weight="bold" fill="white" text-anchor="middle" dominant-baseline="central" font-family="Arial, sans-serif">$</text>
 </svg>
