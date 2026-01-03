@@ -79,7 +79,8 @@
     @apply border-border;
   }
 
-  html, body {
+  html,
+  body {
     @apply overflow-x-hidden;
   }
 
@@ -94,11 +95,11 @@
     color: hsl(var(--primary-foreground));
     box-shadow: 0 4px 12px hsl(var(--primary) / 0.3);
   }
-  
+
   .billing-toggle:not(.active) {
     color: hsl(var(--muted-foreground));
   }
-  
+
   .billing-toggle:not(.active):hover {
     color: hsl(var(--foreground));
     background-color: hsl(var(--muted) / 0.5);
@@ -107,10 +108,10 @@
   .pricing-card-pro {
     border: 3px solid transparent;
     background: linear-gradient(white, white) padding-box,
-                linear-gradient(135deg, #306BA1 0%, #1e4473 50%, #ff6b35 100%) border-box;
-    box-shadow: 0 25px 50px -15px rgba(48, 107, 161, 0.4), 
-                0 15px 30px -10px rgba(255, 107, 53, 0.3),
-                0 8px 16px -4px rgba(0, 0, 0, 0.15);
+      linear-gradient(135deg, #306BA1 0%, #1e4473 50%, #ff6b35 100%) border-box;
+    box-shadow: 0 25px 50px -15px rgba(48, 107, 161, 0.4),
+      0 15px 30px -10px rgba(255, 107, 53, 0.3),
+      0 8px 16px -4px rgba(0, 0, 0, 0.15);
     transform: scale(1.05);
     position: relative;
     z-index: 5;
@@ -118,9 +119,9 @@
 
   .pricing-card-pro:hover {
     transform: scale(1.08) translateY(-8px);
-    box-shadow: 0 35px 70px -20px rgba(48, 107, 161, 0.5), 
-                0 20px 40px -15px rgba(255, 107, 53, 0.4),
-                0 10px 20px -5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 35px 70px -20px rgba(48, 107, 161, 0.5),
+      0 20px 40px -15px rgba(255, 107, 53, 0.4),
+      0 10px 20px -5px rgba(0, 0, 0, 0.2);
     animation: float 3s ease-in-out infinite;
   }
 
@@ -191,6 +192,7 @@
 
 /* Remove arrow buttons from number inputs */
 @layer base {
+
   input[type="number"]::-webkit-outer-spin-button,
   input[type="number"]::-webkit-inner-spin-button {
     -webkit-appearance: none;
@@ -200,4 +202,90 @@
   input[type="number"] {
     -moz-appearance: textfield;
   }
+}
+
+/* New Year Animations */
+@keyframes blink-1 {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #ff0000;
+  }
+
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px #ff0000;
+  }
+}
+
+@keyframes blink-2 {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px #00ff00;
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px #00ff00;
+  }
+}
+
+@keyframes blink-3 {
+
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 10px #0000ff;
+  }
+
+  50% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px #0000ff;
+  }
+}
+
+@keyframes blink-4 {
+
+  0%,
+  100% {
+    opacity: 0.4;
+    box-shadow: 0 0 2px #ffff00;
+  }
+
+  50% {
+    opacity: 1;
+    box-shadow: 0 0 10px #ffff00;
+  }
+}
+
+.bulb-yellow {
+  background-color: #ffff00;
+  animation: blink-4 1.3s infinite;
+}
+
+.santa-hat-container {
+  position: absolute;
+  top: -25px;
+  /* Adjust to sit on top corner */
+  right: -15px;
+  z-index: 25;
+  filter: drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.3));
+  transform: rotate(15deg);
+}
+
+.discount-banner {
+  background: linear-gradient(135deg, #ff0000 0%, #cc0000 100%);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transform: rotate(-2deg);
+  display: inline-block;
+  margin-left: 10px;
+  border: 1px solid white;
 }

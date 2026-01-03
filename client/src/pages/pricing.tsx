@@ -354,18 +354,37 @@ export default function PricingPage() {
               pricing={{
                 usage: { current: t("price_7_cents") },
                 monthly: {
-                  current: getNetworkPrice("$299"),
-                  original: hotelType === "network" ? "$299" : undefined
+                  current: billingMode !== "usage"
+                    ? (() => {
+                      const networkPrice = getNetworkPrice("$299");
+                      const numeric = parseFloat(networkPrice.replace(/[$,]/g, ''));
+                      const discount = Math.round(numeric * 0.8);
+                      return `$${discount.toLocaleString()}`;
+                    })()
+                    : getNetworkPrice("$299"),
+                  original: billingMode !== "usage"
+                    ? getNetworkPrice("$299") // Show network price crossed out
+                    : (hotelType === "network" ? "$299" : undefined)
                 },
                 yearly: {
-                  current: getNetworkPrice("$239"),
-                  original: hotelType === "network" ? "$239" : undefined
+                  current: billingMode !== "usage"
+                    ? (() => {
+                      const networkPrice = getNetworkPrice("$239");
+                      const numeric = parseFloat(networkPrice.replace(/[$,]/g, ''));
+                      const discount = Math.round(numeric * 0.8);
+                      return `$${discount.toLocaleString()}`;
+                    })()
+                    : getNetworkPrice("$239"),
+                  original: billingMode !== "usage"
+                    ? getNetworkPrice("$239")
+                    : (hotelType === "network" ? "$239" : undefined)
                 },
               }}
               features={proFeatures}
               usageLimits={billingMode !== "usage" ? [t("plan_pro_limits")] : undefined}
               billingMode={billingMode}
               isPopular={true}
+              isNewYear={billingMode !== "usage"}
               onSubscribe={() => handleSubscribe("pro")}
             />
 

@@ -75,6 +75,7 @@ interface PricingCardProps {
   usageLimits?: string[];
   billingMode: BillingMode;
   isPopular?: boolean;
+  isNewYear?: boolean;
   onSubscribe: () => void;
 }
 
@@ -87,6 +88,7 @@ export function PricingCard({
   usageLimits,
   billingMode,
   isPopular = false,
+  isNewYear = false,
   onSubscribe,
 }: PricingCardProps) {
   const { t } = useLanguage();
@@ -171,6 +173,17 @@ export function PricingCard({
         </div>
       )}
 
+      {/* New Year Hat */}
+      {isNewYear && (
+        <div className="santa-hat-container">
+          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M10 80 C 10 70, 90 70, 90 80 C 90 90, 10 90, 10 80" fill="white" />
+            <path d="M15 75 C 20 20, 80 20, 85 75" fill="#D32F2F" />
+            <circle cx="90" cy="80" r="10" fill="white" />
+          </svg>
+        </div>
+      )}
+
       <div
         className={`bg-card border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col ${isPopular ? "pricing-card-pro" : "border-border"
           }`}
@@ -178,9 +191,9 @@ export function PricingCard({
       >
         <div className="flex-1 flex flex-col">
           <div className="text-center mb-8">
-            <div className="flex items-center justify-center gap-2 mb-2">
+            <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
               <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-              {currentPricing.original && (
+              {currentPricing.original && !isNewYear && (
                 <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md" data-testid="network-discount-badge">
                   {t("network_discount_badge")}
                 </span>
@@ -191,7 +204,12 @@ export function PricingCard({
 
           {/* Pricing Display */}
           <div className="text-center mb-8">
-            <div className="flex items-center justify-center space-x-2 mb-2">
+            {isNewYear && (
+              <div className="text-[#D32F2F] font-bold mb-2 text-sm uppercase tracking-wide">
+                🎄 New Year Discount
+              </div>
+            )}
+            <div className="flex items-center justify-center space-x-2 mb-2 flex-wrap">
               {currentPricing.original && (
                 <span className="text-sm text-muted-foreground/60 line-through opacity-75">
                   {currentPricing.original}
@@ -204,6 +222,9 @@ export function PricingCard({
               >
                 {currentPricing.current}
               </span>
+              {isNewYear && (
+                <span className="discount-banner">-20%</span>
+              )}
             </div>
             <p className="text-muted-foreground">
               {billingMode === "usage" ? t('per_request') : billingMode === "monthly" ? t('per_month') : t('per_month_yearly')}
