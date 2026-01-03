@@ -2,7 +2,7 @@ import { Check, Info, Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { BillingMode } from "@/hooks/use-billing-mode";
 import { Tooltip } from "./TooltipProvider";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useLanguage } from "@/hooks/use-language";
 import { SiTelegram, SiMessenger, SiWhatsapp, SiInstagram, SiViber } from "react-icons/si";
 import {
