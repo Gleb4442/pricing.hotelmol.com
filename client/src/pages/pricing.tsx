@@ -74,7 +74,7 @@ const ContactWidget = ({ hiddenOnMobile }: { hiddenOnMobile?: boolean }) => {
   ];
 
   return (
-    <div className={`fixed bottom-4 md:bottom-6 right-6 z-50 flex-col items-end gap-4 ${hiddenOnMobile ? 'hidden md:flex' : 'flex'}`}>
+    <div className={`fixed bottom-2 md:bottom-6 right-6 z-50 flex-col items-end gap-4 ${hiddenOnMobile ? 'hidden md:flex' : 'flex'}`}>
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -596,7 +596,7 @@ export default function PricingPage() {
 
       {/* Mobile Hotel Type Toggle */}
       {!isCalculatorOpen && (
-        <div className="md:hidden fixed bottom-[13px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
+        <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
           <button
             onClick={() => hotelType === "network" && toggleHotelType()}
             className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${hotelType === "single"
