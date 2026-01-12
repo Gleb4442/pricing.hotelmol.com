@@ -356,28 +356,28 @@ export default function PricingPage() {
                 monthly: {
                   current: billingMode !== "usage"
                     ? (() => {
-                      const networkPrice = getNetworkPrice("$299");
+                      const networkPrice = getNetworkPrice("$399");
                       const numeric = parseFloat(networkPrice.replace(/[$,]/g, ''));
                       const discount = Math.round(numeric * 0.8);
                       return `$${discount.toLocaleString()}`;
                     })()
-                    : getNetworkPrice("$299"),
+                    : getNetworkPrice("$399"),
                   original: billingMode !== "usage"
-                    ? getNetworkPrice("$299") // Show network price crossed out
-                    : (hotelType === "network" ? "$299" : undefined)
+                    ? getNetworkPrice("$399") // Show network price crossed out
+                    : (hotelType === "network" ? "$399" : undefined)
                 },
                 yearly: {
                   current: billingMode !== "usage"
                     ? (() => {
-                      const networkPrice = getNetworkPrice("$239");
+                      const networkPrice = getNetworkPrice("$319");
                       const numeric = parseFloat(networkPrice.replace(/[$,]/g, ''));
                       const discount = Math.round(numeric * 0.8);
                       return `$${discount.toLocaleString()}`;
                     })()
-                    : getNetworkPrice("$239"),
+                    : getNetworkPrice("$319"),
                   original: billingMode !== "usage"
-                    ? getNetworkPrice("$239")
-                    : (hotelType === "network" ? "$239" : undefined)
+                    ? getNetworkPrice("$319")
+                    : (hotelType === "network" ? "$319" : undefined)
                 },
               }}
               features={proFeatures}
