@@ -355,28 +355,18 @@ export default function PricingPage() {
                 usage: { current: t("price_7_cents") },
                 monthly: {
                   current: billingMode !== "usage"
-                    ? (() => {
-                      const networkPrice = getNetworkPrice("$399");
-                      const numeric = parseFloat(networkPrice.replace(/[$,]/g, ''));
-                      const discount = Math.round(numeric * 0.8);
-                      return `$${discount.toLocaleString()}`;
-                    })()
+                    ? getNetworkPrice("$399")
                     : getNetworkPrice("$399"),
                   original: billingMode !== "usage"
-                    ? getNetworkPrice("$399") // Show network price crossed out
+                    ? (hotelType === "network" ? "$399" : undefined)
                     : (hotelType === "network" ? "$399" : undefined)
                 },
                 yearly: {
                   current: billingMode !== "usage"
-                    ? (() => {
-                      const networkPrice = getNetworkPrice("$319");
-                      const numeric = parseFloat(networkPrice.replace(/[$,]/g, ''));
-                      const discount = Math.round(numeric * 0.8);
-                      return `$${discount.toLocaleString()}`;
-                    })()
+                    ? getNetworkPrice("$319")
                     : getNetworkPrice("$319"),
                   original: billingMode !== "usage"
-                    ? getNetworkPrice("$319")
+                    ? (hotelType === "network" ? "$319" : undefined)
                     : (hotelType === "network" ? "$319" : undefined)
                 },
               }}
@@ -384,7 +374,6 @@ export default function PricingPage() {
               usageLimits={billingMode !== "usage" ? [t("plan_pro_limits")] : undefined}
               billingMode={billingMode}
               isPopular={true}
-              isNewYear={billingMode !== "usage"}
               onSubscribe={() => handleSubscribe("pro")}
             />
 

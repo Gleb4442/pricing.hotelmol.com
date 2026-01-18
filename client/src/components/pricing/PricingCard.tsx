@@ -1,4 +1,5 @@
 import { Check, Info, Plus } from "lucide-react";
+import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { BillingMode } from "@/hooks/use-billing-mode";
 import { Tooltip } from "./TooltipProvider";
@@ -75,7 +76,6 @@ interface PricingCardProps {
   usageLimits?: string[];
   billingMode: BillingMode;
   isPopular?: boolean;
-  isNewYear?: boolean;
   onSubscribe: () => void;
 }
 
@@ -88,7 +88,6 @@ export function PricingCard({
   usageLimits,
   billingMode,
   isPopular = false,
-  isNewYear = false,
   onSubscribe,
 }: PricingCardProps) {
   const { t } = useLanguage();
@@ -173,18 +172,9 @@ export function PricingCard({
         </div>
       )}
 
-      {/* New Year Hat */}
-      {isNewYear && (
-        <div className="santa-hat-container">
-          <svg width="60" height="60" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10 80 C 10 70, 90 70, 90 80 C 90 90, 10 90, 10 80" fill="white" />
-            <path d="M15 75 C 20 20, 80 20, 85 75" fill="#D32F2F" />
-            <circle cx="90" cy="80" r="10" fill="white" />
-          </svg>
-        </div>
-      )}
 
       <div
+
         className={`bg-card border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col ${isPopular ? "pricing-card-pro" : "border-border"
           }`}
         data-testid={`pricing-card-${plan}`}
@@ -193,7 +183,7 @@ export function PricingCard({
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
               <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-              {currentPricing.original && !isNewYear && (
+              {currentPricing.original && (
                 <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md" data-testid="network-discount-badge">
                   {t("network_discount_badge")}
                 </span>
@@ -204,11 +194,6 @@ export function PricingCard({
 
           {/* Pricing Display */}
           <div className="text-center mb-8">
-            {isNewYear && (
-              <div className="text-[#D32F2F] font-bold mb-2 text-sm uppercase tracking-wide">
-                🎄 New Year Discount
-              </div>
-            )}
             <div className="flex items-center justify-center space-x-2 mb-2 flex-wrap">
               {currentPricing.original && (
                 <span className="text-sm text-muted-foreground/60 line-through opacity-75">
@@ -222,14 +207,59 @@ export function PricingCard({
               >
                 {currentPricing.current}
               </span>
-              {isNewYear && (
-                <span className="discount-banner">-20%</span>
-              )}
             </div>
             <p className="text-muted-foreground">
               {billingMode === "usage" ? t('per_request') : billingMode === "monthly" ? t('per_month') : t('per_month_yearly')}
             </p>
           </div>
+
+          {/* First Month Free Promo */}
+          {plan !== "premium" && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="mb-6 mx-2"
+            >
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                className="relative overflow-hidden rounded-xl border-2 border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent p-4"
+              >
+                <motion.div
+                  animate={{
+                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
+                  }}
+                  transition={{
+                    duration: 5,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="absolute inset-0 opacity-10 bg-gradient-to-r from-transparent via-[#306BA1] to-transparent bg-[length:200%_100%]"
+                />
+                <div className="relative flex items-center gap-3">
+                  <motion.div
+                    animate={{ rotate: [0, 10, -10, 0] }}
+                    transition={{
+                      duration: 2,
+                      repeat: Infinity,
+                      repeatDelay: 3
+                    }}
+                    className="text-2xl filter drop-shadow-sm"
+                  >
+                    🎁
+                  </motion.div>
+                  <div className="flex-1 text-left">
+                    <h4 className="font-bold text-[#306BA1] text-sm leading-tight uppercase tracking-wide">
+                      {t('first_month_free_title')}
+                    </h4>
+                    <p className="text-xs text-muted-foreground mt-0.5 font-medium">
+                      {t('first_month_free_desc')}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
+          )}
 
           {/* Usage Limits */}
           {usageLimits && usageLimits.length > 0 && (

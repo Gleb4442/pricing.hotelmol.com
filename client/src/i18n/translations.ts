@@ -2,21 +2,21 @@ export const translations = {
   ru: {
     // Header
     company_name: "Roomie",
-    
+
     // Hero Section
     hero_title: "Выберите ваш план",
     hero_title_highlight: "ИИ Помощника",
     hero_description: "Расширьте возможности отеля с помощью интеллектуальной автоматизации. Гибкие тарифы для любого размера собственности.",
-    
+
     // Billing Toggle
     billing_usage: "За использование",
     billing_monthly: "Ежемесячно",
     billing_yearly: "Ежегодно",
-    
+
     // Hotel Type Toggle
     hotel_type_single: "1 отель",
     hotel_type_network: "Сеть отелей",
-    
+
     // Pricing Plans
     plan_basic_title: "BASIC",
     plan_basic_description: "Базовый план для начинающих",
@@ -25,7 +25,9 @@ export const translations = {
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Корпоративное решение",
     network_discount_badge: "-10% для сетей",
-    
+    first_month_free_title: "Первый месяц — бесплатно",
+    first_month_free_desc: "Использование любого из тарифов (кроме Премиум)",
+
     // Features
     feature_ai_help: "ИИ помощь гостям",
     feature_booking_automation: "Автоматизированное управление бронированием",
@@ -47,30 +49,30 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
-    
+
     // Tooltips
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
     tooltip_remove_logo: "Уберите наш брендинг с интерфейсов для гостей. Опция добавляет к стоимости тарифа один цент.",
     tooltip_communication_channels: "2 канала связи на выбор включено в стоимость тарифа",
     tooltip_channel_cost: "каждый выбранный канал коммуникации добавляет к стоимости тарифа один цент.",
-    
+
     // Buttons
     btn_subscribe: "Подписаться",
     btn_contact_telegram: "Помощь 24/7",
-    
+
     // Info Sidebar
     info_usage_title: "Оплата за использование",
     info_usage_description: "Платите только за то, что используете. Идеально для сезонных объектов или тестирования ИИ.",
     info_usage_benefits: ["Без месячных обязательств", "Масштабирование по потребности", "Прозрачное ценообразование"],
-    
+
     info_monthly_title: "Фиксированная помесячная оплата",
     info_monthly_description: "Предсказуемые расходы с неограниченным использованием. Лучше всего для объектов с высокой нагрузкой.",
     info_monthly_benefits: ["Неограниченные запросы", "Предсказуемость бюджета", "Максимальная экономия при масштабе"],
-    
+
     info_yearly_title: "Годовая оплата со скидкой",
     info_yearly_description: "Максимальная экономия до 20% при оплате за год вперед. Идеально для долгосрочного планирования.",
     info_yearly_benefits: ["Скидка до 20%", "Приоритетная поддержка", "Неограниченные запросы", "Стабильность цен на год"],
-    
+
     // Calculator
     calculator_title: "Сколько вы сэкономите с Roomie?",
     calculator_description: "Узнайте, как ИИ-помощник повлияет на ваш бизнес. Все расчёты основаны на реальных данных отельного рынка.",
@@ -83,7 +85,7 @@ export const translations = {
       benefits: "➕ Экономия на комиссионных ОТА и рост допродаж"
     },
     how_we_calculate_mobile: "Как мы считаем?",
-    
+
     // Calculator Fields
     field_daily_requests: "Запросов в день",
     field_adr: "Средняя цена за номер (ADR)",
@@ -96,7 +98,7 @@ export const translations = {
     field_roomie_cost: "Стоимость Roomie",
     field_current_bookings: "Текущие брони в месяц",
     field_additional_service_revenue: "Доп. доход с услуг на бронь",
-    
+
     // Calculator Tooltips
     tooltip_daily_requests: "Среднее количество запросов от гостей в день (через чат, телефон, на ресепшне)",
     tooltip_adr: "Средняя цена за номер в сутки в вашей валюте",
@@ -109,7 +111,7 @@ export const translations = {
     tooltip_roomie_cost: "Месячная стоимость Roomie в вашей валюте",
     tooltip_current_bookings: "Сколько бронирований вы получаете в месяц сейчас",
     tooltip_additional_service_revenue: "Сколько дополнительного дохода приносит одна бронь (завтраки, экскурсии, etc.)",
-    
+
     // Calculator Results
     results_empty_bookings: "Введите ваши брони, чтобы увидеть точные цифры",
     results_commission_savings: "💰 Экономия на комиссиях OTA",
@@ -122,11 +124,11 @@ export const translations = {
     results_roomie_cost: "Стоимость Roomie:",
     results_total_effect: "Общий эффект:",
     results_calculation_note: "Прибыль = новые брони × доходность каналов",
-    
+
     // Trust Statement
     trust_title: "О честности расчётов",
     trust_description: "Если ваши цифры покажут нулевой эффект — это тоже результат. Мы не продаём чудеса, мы считаем. Наша задача — показать реальную картину, а не завлечь красивыми обещаниями.",
-    
+
     // Formula Explanation
     simple_words: "Простыми словами:",
     formula_explanation_main: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
@@ -139,13 +141,13 @@ export const translations = {
     monthly_subscription: "(ежемесячная подписка)",
     costs_comparison: "Сравнение потерь",
     losses_without_ai: "Потери без ИИ",
-    
+
     // Mobile Info
     mobile_info_title: "Информация о биллинге",
     mobile_usage_info: "Оплата за использование",
     mobile_monthly_info: "Фиксированная помесячная оплата",
     mobile_yearly_info: "Годовая оплата со скидкой",
-    
+
     // FAQ
     faq_title: "Часто задаваемые вопросы",
     faq_integration_question: "Как работает интеграция с ИИ?",
@@ -156,11 +158,11 @@ export const translations = {
     faq_security_answer: "Соблюдаем GDPR. Данные шифруются. По запросу заключаем DPA и размещаем данные в нужном регионе (EU/EMEA/US). Ваши данные не используются для обучения общих моделей без вашего согласия.",
     faq_plans_question: "Чем PRO отличается от PREMIUM в двух словах?",
     faq_plans_answer: "PRO — «всё необходимое чтобы аввтоматизировать коммуникацию с гостями с помощью ИИ». PREMIUM — «всё из PRO» + Собственная админ панель, расширенная аналитика, персональное обучение ИИ на ваших данных, white-label и менеджер аккаунта.",
-    
+
     // Footer
     footer_description: "Revolutionizing hospitality with intelligent automation and personalized guest experiences.",
     footer_copyright: "© 2024 Roomie. All rights reserved.",
-    
+
     // Calculator Actions
     calculator_action: "Калькулятор",
     information_action: "Информация",
@@ -170,11 +172,11 @@ export const translations = {
     currency_label: "Валюта",
     data_saved: "Данные сохранены на этом устройстве",
     yearly_savings: "Экономия до 20% при годовой оплате",
-    
+
     // Trust Indicators
     requests_handled: "запросов обработанных без участия ресепшн",
     guest_service: "обслуживание ваших гостей",
-    
+
     // Calculator Additional Text
     calculate_savings: "Рассчитать мою экономию",
     how_we_calculate: "Как мы считаем?",
@@ -185,12 +187,12 @@ export const translations = {
     ota_commission_formula: "Снижение комиссий OTA: экономия 10-15%",
     automation_formula: "Автоматизация рутины: более 80% запросов без участия персонала",
     average_savings: "Средняя экономия для отеля на 20 номеров: 108,000-225,000₽/месяц",
-    
+
     // Toast Messages
     copy_link_success_title: "Ссылка скопирована",
     copy_link_success_desc: "Поделитесь расчётом с коллегами",
     copy_link_error_title: "Не удалось скопировать ссылку — сделайте это вручную",
-    
+
     // Additional UI Text
     try_roomie: "Попробовать Roomie",
     close: "Закрыть",
@@ -200,7 +202,7 @@ export const translations = {
     ota_commissions: "Комиссии OTA",
     calculation_explanation: "Мы берём ваши обращения в месяц, вычитаем долю пропусков у человека и у ИИ, умножаем на конверсию в бронирование и средний чек. Разница — это дополнительная выручка.",
     calculation_additional: "Плюс экономия на комиссионных OTA и рост допродаж.",
-    
+
     // Pricing Labels
     addon_pricing_usage: "+0,5 центов/запрос",
     addon_pricing_logo_removal: "+1 цент/запрос",
@@ -219,13 +221,13 @@ export const translations = {
     plan_pro_limits: "3000 сообщений",
     plan_premium_limits: "Безлимитное количество чатов и сообщений",
     plan_premium_limits_array: ["В рамках тарифа предусмотрен полный цикл консалтинговых и внедренческих услуг.", " ", " ", "Условия и объем предоставляемых услуг рассчитываются индивидуально на основе описания и анализа бизнес-задач клиента.", " ", " ", "Итоговое коммерческое предложение подготавливается после согласования требований и целей проекта."],
-    
+
     // Calculator Form Labels
     bookings_per_month_current: "Брони в месяц (сейчас)",
     bookings_suffix: "брони",
     direct_share_current: "Доля прямых бронирований (сейчас)",
     direct_share_growth_label: "Прирост доли прямых бронирований",
-    
+
     // Calculator Results
     enter_bookings_message: "Введите ваши брони, чтобы увидеть точные цифры",
     savings_per_month: "Экономия/мес",
@@ -272,31 +274,31 @@ export const translations = {
     benefit_24_7_support_desc: "Команда поддержки всегда на связи даже ночью, в выходные и праздники",
     benefit_no_hidden_fees: "Без скрытых платежей:",
     benefit_no_hidden_fees_desc: "Фиксированная цена подписки, никаких дополнительных сборов",
-    
+
     // Demo button
     try_demo: "Попробовать ДЭМО",
     no_registration: "без регистрации",
     view_presentation: "Посмотреть презентацию",
   },
-  
+
   ua: {
     // Header
     company_name: "Roomie",
-    
+
     // Hero Section
     hero_title: "Оберіть ваш план",
     hero_title_highlight: "ШІ Помічника",
     hero_description: "Розширте можливості готелю за допомогою інтелектуальної автоматизації. Гнучкі тарифи для будь-якого розміру власності.",
-    
+
     // Billing Toggle
     billing_usage: "За використання",
     billing_monthly: "Щомісячно",
     billing_yearly: "Щорічно",
-    
+
     // Hotel Type Toggle
     hotel_type_single: "1 готель",
     hotel_type_network: "Мережа готелів",
-    
+
     // Pricing Plans
     plan_basic_title: "BASIC",
     plan_basic_description: "Базовий план для початківців",
@@ -305,7 +307,9 @@ export const translations = {
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Корпоративне рішення",
     network_discount_badge: "-10% для мереж",
-    
+    first_month_free_title: "Перший місяць — безкоштовно",
+    first_month_free_desc: "Використання будь-якого тарифу (крім Преміум)",
+
     // Features
     feature_ai_help: "ШІ допомога гостям",
     feature_booking_automation: "Автоматизоване управління бронюванням",
@@ -327,30 +331,30 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
-    
+
     // Tooltips
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
     tooltip_remove_logo: "Приберіть наш брендинг з інтерфейсів для гостей. Опція додає до вартості тарифу один цент.",
     tooltip_communication_channels: "2 канали зв'язку на вибір включено у вартість тарифу",
     tooltip_channel_cost: "кожен обраний канал комунікації додає до вартості тарифу один цент.",
-    
+
     // Buttons
     btn_subscribe: "Підписатися",
     btn_contact_telegram: "Допомога 24/7",
-    
+
     // Info Sidebar
     info_usage_title: "Оплата за використання",
     info_usage_description: "Платіть тільки за те, що використовуєте. Ідеально для сезонних об'єктів або тестування ШІ.",
     info_usage_benefits: ["Без місячних зобов'язань", "Масштабування за потребою", "Прозоре ціноутворення"],
-    
+
     info_monthly_title: "Фіксована щомісячна оплата",
     info_monthly_description: "Передбачувані витрати з необмеженим використанням. Найкраще для об'єктів з високим навантаженням.",
     info_monthly_benefits: ["Необмежені запити", "Передбачуваність бюджету", "Максимальна економія при масштабі"],
-    
+
     info_yearly_title: "Річна оплата зі знижкою",
     info_yearly_description: "Максимальна економія до 20% при оплаті за рік наперед. Ідеально для довгострокового планування.",
     info_yearly_benefits: ["Знижка до 20%", "Пріоритетна підтримка", "Необмежені запити", "Стабільність цін на рік"],
-    
+
     // Calculator
     calculator_title: "Калькулятор доходності",
     calculator_description: "Дізнайтеся, як ШІ-помічник вплине на ваш бізнес. Всі розрахунки засновані на реальних даних готельного ринку.",
@@ -363,7 +367,7 @@ export const translations = {
       benefits: "➕ Економія на комісійних ОТА і врятовані бронювання"
     },
     how_we_calculate_mobile: "Як ми рахуємо?",
-    
+
     // Calculator Fields
     field_daily_requests: "Запитів на день",
     field_adr: "Середня ціна за номер (ADR)",
@@ -376,7 +380,7 @@ export const translations = {
     field_roomie_cost: "Вартість Roomie",
     field_current_bookings: "Поточні броні в місяць",
     field_additional_service_revenue: "Дод. дохід з послуг на бронь",
-    
+
     // Calculator Tooltips
     tooltip_daily_requests: "Середня кількість запитів від гостей на день (через чат, телефон, на ресепшені)",
     tooltip_adr: "Середня ціна за номер на добу у вашій валюті",
@@ -389,7 +393,7 @@ export const translations = {
     tooltip_roomie_cost: "Місячна вартість Roomie у вашій валюті",
     tooltip_current_bookings: "Скільки бронювань ви отримуєте в місяць зараз",
     tooltip_additional_service_revenue: "Скільки додаткового доходу приносить одне бронювання (сніданки, екскурсії, тощо)",
-    
+
     // Calculator Results
     results_empty_bookings: "Введіть ваші броні, щоб побачити точні цифри",
     results_commission_savings: "💰 Економія на комісіях OTA",
@@ -402,11 +406,11 @@ export const translations = {
     results_roomie_cost: "Вартість Roomie:",
     results_total_effect: "Загальний ефект:",
     results_calculation_note: "Прибуток = нові броні × дохідність каналів",
-    
+
     // Trust Statement
     trust_title: "Про чесність розрахунків",
     trust_description: "Якщо ваші цифри покажуть нульовий ефект — це теж результат. Ми не продаємо чудеса, ми рахуємо. Наше завдання — показати реальну картину, а не заманити красивими обіцянками.",
-    
+
     // Formula Explanation
     simple_words: "Простими словами:",
     formula_explanation_main: "Ми беремо ваші звернення в місяць, віднімаємо частку пропусків у людини і у ШІ, помножуємо на конверсію в бронювання і середній чек. Різниця — це додаткова виручка.",
@@ -419,13 +423,13 @@ export const translations = {
     monthly_subscription: "(щомісячна підписка)",
     costs_comparison: "Порівняння втрат",
     losses_without_ai: "Втрати без ШІ",
-    
+
     // Mobile Info
     mobile_info_title: "Інформація про білінг",
     mobile_usage_info: "Оплата за використання",
     mobile_monthly_info: "Фіксована щомісячна оплата",
     mobile_yearly_info: "Річна оплата зі знижкою",
-    
+
     // FAQ
     faq_title: "Часто задавані питання",
     faq_integration_question: "Як працює інтеграція з ШІ?",
@@ -436,11 +440,11 @@ export const translations = {
     faq_security_answer: "Дотримуємося GDPR. Дані шифруються. За запитом укладаємо DPA і розміщуємо дані в потрібному регіоні (EU/EMEA/US). Ваші дані не використовуються для навчання загальних моделей без вашої згоди.",
     faq_plans_question: "Чим PRO відрізняється від PREMIUM у двох словах?",
     faq_plans_answer: "PRO — «все необхідне щоб автоматизувати комунікацію з гостями за допомогою ШІ». PREMIUM — «все з PRO» + Власна адмін панель, розширена аналітика, персональне навчання ШІ на ваших даних, white-label і менеджер аккаунту.",
-    
+
     // Footer
     footer_description: "Революціонізуємо гостинність з інтелектуальною автоматизацією та персоналізованим досвідом гостей.",
     footer_copyright: "© 2024 Roomie. Всі права захищені.",
-    
+
     // Calculator Actions
     calculator_action: "Калькулятор",
     information_action: "Інформація",
@@ -450,11 +454,11 @@ export const translations = {
     currency_label: "Валюта",
     data_saved: "Дані збережені на цьому пристрої",
     yearly_savings: "Економія до 20% при річній оплаті",
-    
+
     // Trust Indicators
     requests_handled: "запитів оброблено без участі ресепшен",
     guest_service: "обслуговування ваших гостей",
-    
+
     // Calculator Additional Text
     calculate_savings: "Розрахувати мою економію",
     how_we_calculate: "Як ми рахуємо?",
@@ -465,12 +469,12 @@ export const translations = {
     ota_commission_formula: "Зменшення комісій OTA: економія 10-15%",
     automation_formula: "Автоматизація рутини: понад 80% запитів без участі персоналу",
     average_savings: "Середня економія для готелю на 20 номерів: 108,000-225,000₴/місяць",
-    
+
     // Toast Messages
     copy_link_success_title: "Посилання скопійовано",
     copy_link_success_desc: "Поділіться розрахунком з колегами",
     copy_link_error_title: "Не вдалося скопіювати посилання — зробіть це вручну",
-    
+
     // Additional UI Text
     try_roomie: "Спробувати Roomie",
     close: "Закрити",
@@ -480,7 +484,7 @@ export const translations = {
     ota_commissions: "Комісії OTA",
     calculation_explanation: "Ми беремо ваші звернення на місяць, віднімаємо частку пропусків у людини та у ШІ, помножуємо на конверсію в бронювання та середній чек. Різниця — це додатковий дохід.",
     calculation_additional: "Плюс економія на комісійних OTA та зростання допродажів. Мінус — вартість Roomie.",
-    
+
     // Pricing Labels
     addon_pricing_usage: "+0,5 центів/запит",
     addon_pricing_logo_removal: "+1 цент/запит",
@@ -499,13 +503,13 @@ export const translations = {
     plan_pro_limits: "3000 повідомлень",
     plan_premium_limits: "Безлімітна кількість чатів і повідомлень",
     plan_premium_limits_array: ["В рамках тарифу передбачено повний цикл консалтингових та впровадницьких послуг.", " ", " ", "Умови та обсяг послуг, що надаються, розраховуються індивідуально на основі опису та аналізу бізнес-задач клієнта.", " ", " ", "Підсумкова комерційна пропозиція готується після узгодження вимог і цілей проєкту."],
-    
+
     // Calculator Form Labels
     bookings_per_month_current: "Бронювання на місяць (зараз)",
     bookings_suffix: "бронювання",
     direct_share_current: "Частка прямих бронювань (зараз)",
     direct_share_growth_label: "Приріст частки прямих бронювань",
-    
+
     // Calculator Results
     enter_bookings_message: "Введіть ваші бронювання, щоб побачити точні цифри",
     savings_per_month: "Економія/міс",
@@ -552,31 +556,31 @@ export const translations = {
     benefit_24_7_support_desc: "Команда підтримки завжди на зв'язку навіть вночі, у вихідні та свята",
     benefit_no_hidden_fees: "Без прихованих платежів:",
     benefit_no_hidden_fees_desc: "Фіксована ціна підписки, ніяких додаткових зборів",
-    
+
     // Demo button
     try_demo: "Спробувати ДЕМО",
     no_registration: "без реєстрації",
     view_presentation: "Переглянути презентацію",
   },
-  
+
   en: {
     // Header
     company_name: "Roomie",
-    
+
     // Hero Section
     hero_title: "Choose your",
     hero_title_highlight: "AI Assistant plan",
     hero_description: "Expand your hotel capabilities with intelligent automation. Flexible pricing for any property size.",
-    
+
     // Billing Toggle
     billing_usage: "Pay per use",
     billing_monthly: "Monthly",
     billing_yearly: "Yearly",
-    
+
     // Hotel Type Toggle
     hotel_type_single: "1 hotel",
     hotel_type_network: "Hotel chain",
-    
+
     // Pricing Plans
     plan_basic_title: "BASIC",
     plan_basic_description: "Basic plan for beginners",
@@ -585,7 +589,9 @@ export const translations = {
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Enterprise solution",
     network_discount_badge: "-10% for chains",
-    
+    first_month_free_title: "First month — free",
+    first_month_free_desc: "Use of any plan (except Premium)",
+
     // Features
     feature_ai_help: "AI guest assistance",
     feature_booking_automation: "Automated booking management",
@@ -607,30 +613,30 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
-    
+
     // Tooltips
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",
     tooltip_remove_logo: "Remove our branding from guest interfaces. This option adds one cent to the plan price.",
     tooltip_communication_channels: "2 communication channels of your choice are included in the price",
     tooltip_channel_cost: "each selected communication channel adds one cent to the plan price.",
-    
+
     // Buttons
     btn_subscribe: "Subscribe",
     btn_contact_telegram: "Help 24/7",
-    
+
     // Info Sidebar
     info_usage_title: "Pay per use",
     info_usage_description: "Pay only for what you use. Perfect for seasonal properties or AI testing.",
     info_usage_benefits: ["No monthly commitments", "Scale as needed", "Transparent pricing"],
-    
+
     info_monthly_title: "Fixed monthly payment",
     info_monthly_description: "Predictable costs with unlimited usage. Best for high-traffic properties.",
     info_monthly_benefits: ["Unlimited requests", "Budget predictability", "Maximum savings at scale"],
-    
+
     info_yearly_title: "Annual payment with discount",
     info_yearly_description: "Maximum savings up to 20% when paying a year in advance. Perfect for long-term planning.",
     info_yearly_benefits: ["Up to 20% discount", "Priority support", "Unlimited requests", "Price stability for a year"],
-    
+
     // Calculator
     calculator_title: "How much will you save with Roomie?",
     calculator_description: "Find out how AI assistant will impact your business. All calculations are based on real hotel market data.",
@@ -643,7 +649,7 @@ export const translations = {
       benefits: "➕ Savings on OTA commissions and increased upsales"
     },
     how_we_calculate_mobile: "How do we calculate?",
-    
+
     // Calculator Fields
     field_daily_requests: "Daily requests",
     field_adr: "Average daily rate (ADR)",
@@ -656,7 +662,7 @@ export const translations = {
     field_roomie_cost: "Roomie cost",
     field_current_bookings: "Current monthly bookings",
     field_additional_service_revenue: "Additional service revenue per booking",
-    
+
     // Calculator Tooltips
     tooltip_daily_requests: "Average number of guest requests per day (via chat, phone, at reception)",
     tooltip_adr: "Average room rate per night in your currency",
@@ -669,7 +675,7 @@ export const translations = {
     tooltip_roomie_cost: "Monthly Roomie cost in your currency",
     tooltip_current_bookings: "How many bookings you get per month currently",
     tooltip_additional_service_revenue: "How much additional revenue one booking brings (breakfast, tours, etc.)",
-    
+
     // Calculator Results
     results_empty_bookings: "Enter your bookings to see exact figures",
     results_commission_savings: "💰 OTA commission savings",
@@ -682,11 +688,11 @@ export const translations = {
     results_roomie_cost: "Roomie cost:",
     results_total_effect: "Total effect:",
     results_calculation_note: "Profit = new bookings × channel profitability",
-    
+
     // Trust Statement
     trust_title: "About calculation honesty",
     trust_description: "If your numbers show zero effect — that's also a result. We don't sell miracles, we calculate. Our task is to show the real picture, not lure with beautiful promises.",
-    
+
     // Formula Explanation
     simple_words: "In simple words:",
     formula_explanation_main: "We take your monthly inquiries, subtract the percentage of missed inquiries by humans and AI, multiply by booking conversion and average check. The difference is additional revenue.",
@@ -699,13 +705,13 @@ export const translations = {
     monthly_subscription: "(monthly subscription)",
     costs_comparison: "Loss comparison",
     losses_without_ai: "Losses without AI",
-    
+
     // Mobile Info
     mobile_info_title: "Billing information",
     mobile_usage_info: "Pay per use",
     mobile_monthly_info: "Fixed monthly payment",
     mobile_yearly_info: "Annual payment with discount",
-    
+
     // FAQ
     faq_title: "Frequently asked questions",
     faq_integration_question: "How does AI integration work?",
@@ -716,11 +722,11 @@ export const translations = {
     faq_security_answer: "We comply with GDPR. Data is encrypted. Upon request, we sign DPA and place data in the required region (EU/EMEA/US). Your data is not used to train general models without your consent.",
     faq_plans_question: "How does PRO differ from PREMIUM in a nutshell?",
     faq_plans_answer: "PRO — 'everything needed to automate guest communication with AI'. PREMIUM — 'everything from PRO' + Own admin panel, advanced analytics, personal AI training on your data, white-label and account manager.",
-    
+
     // Footer
     footer_description: "Revolutionizing hospitality with intelligent automation and personalized guest experiences.",
     footer_copyright: "© 2024 Roomie. All rights reserved.",
-    
+
     // Calculator Actions
     calculator_action: "Calculator",
     information_action: "Information",
@@ -730,11 +736,11 @@ export const translations = {
     currency_label: "Currency",
     data_saved: "Data saved on this device",
     yearly_savings: "Save up to 20% with annual payment",
-    
+
     // Trust Indicators
     requests_handled: "requests handled without reception staff",
     guest_service: "guest service coverage",
-    
+
     // Calculator Additional Text
     calculate_savings: "Calculate my savings",
     how_we_calculate: "How we calculate?",
@@ -745,12 +751,12 @@ export const translations = {
     ota_commission_formula: "OTA commission reduction: 10-15% savings",
     automation_formula: "Routine automation: over 80% of requests without staff involvement",
     average_savings: "Average savings for a 20-room hotel: $3,000-6,000/month",
-    
+
     // Toast Messages
     copy_link_success_title: "Link copied",
     copy_link_success_desc: "Share the calculation with colleagues",
     copy_link_error_title: "Failed to copy link — please do it manually",
-    
+
     // Additional UI Text
     try_roomie: "Try Roomie",
     close: "Close",
@@ -760,7 +766,7 @@ export const translations = {
     ota_commissions: "OTA commissions",
     calculation_explanation: "We take your monthly inquiries, subtract the percentage of missed calls by humans and AI, multiply by conversion to bookings and average check. The difference is additional revenue.",
     calculation_additional: "Plus savings on OTA commissions and additional service sales. Minus Roomie cost.",
-    
+
     // Pricing Labels
     addon_pricing_usage: "+0.5 cents/request",
     addon_pricing_logo_removal: "+1 cent/request",
@@ -779,13 +785,13 @@ export const translations = {
     plan_pro_limits: "3000 messages",
     plan_premium_limits: "Unlimited chats and messages",
     plan_premium_limits_array: ["The tariff includes a full cycle of consulting and implementation services.", " ", " ", "The terms and scope of services are calculated individually based on the description and analysis of the client's business tasks.", " ", " ", "The final commercial proposal is prepared after agreeing on the requirements and objectives of the project."],
-    
+
     // Calculator Form Labels
     bookings_per_month_current: "Bookings per month (current)",
     bookings_suffix: "bookings",
     direct_share_current: "Direct bookings share (current)",
     direct_share_growth_label: "Direct bookings share growth",
-    
+
     // Calculator Results
     enter_bookings_message: "Enter your bookings to see exact figures",
     savings_per_month: "Savings/month",
@@ -832,31 +838,31 @@ export const translations = {
     benefit_24_7_support_desc: "Support team is always available even at night, on weekends and holidays",
     benefit_no_hidden_fees: "No hidden fees:",
     benefit_no_hidden_fees_desc: "Fixed subscription price, no additional charges",
-    
+
     // Demo button
     try_demo: "Try DEMO",
     no_registration: "no registration",
     view_presentation: "View presentation",
   },
-  
+
   pl: {
     // Header
     company_name: "Roomie",
-    
+
     // Hero Section
     hero_title: "Wybierz swój plan",
     hero_title_highlight: "Asystenta AI",
     hero_description: "Rozszerz możliwości hotelu dzięki inteligentnej automatyzacji. Elastyczne ceny dla każdej wielkości obiektu.",
-    
+
     // Billing Toggle
     billing_usage: "Płatność za użycie",
     billing_monthly: "Miesięcznie",
     billing_yearly: "Rocznie",
-    
+
     // Hotel Type Toggle
     hotel_type_single: "1 hotel",
     hotel_type_network: "Sieć hoteli",
-    
+
     // Pricing Plans
     plan_basic_title: "BASIC",
     plan_basic_description: "Plan podstawowy dla początkujących",
@@ -865,7 +871,7 @@ export const translations = {
     plan_premium_title: "PREMIUM",
     plan_premium_description: "Rozwiązanie korporacyjne",
     network_discount_badge: "-10% dla sieci",
-    
+
     // Features
     feature_ai_help: "Asystent AI dla gości",
     feature_booking_automation: "Zautomatyzowane zarządzanie rezerwacjami",
@@ -887,30 +893,30 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
-    
+
     // Tooltips
     tooltip_telegram_bot: "Otrzymaj własnego markowego bota Telegram do interakcji z gośćmi",
     tooltip_remove_logo: "Usuń nasz branding z interfejsów gości. Ta opcja dodaje jeden cent do ceny planu.",
     tooltip_communication_channels: "2 kanały komunikacji do wyboru są wliczone w cenę",
     tooltip_channel_cost: "każdy wybrany kanał komunikacji dodaje jeden cent do ceny planu.",
-    
+
     // Buttons
     btn_subscribe: "Subskrybuj",
     btn_contact_telegram: "Pomoc 24/7",
-    
+
     // Info Sidebar
     info_usage_title: "Płatność za użycie",
     info_usage_description: "Płać tylko za to, z czego korzystasz. Idealne dla obiektów sezonowych lub testowania AI.",
     info_usage_benefits: ["Bez zobowiązań miesięcznych", "Skalowanie według potrzeb", "Przejrzyste ceny"],
-    
+
     info_monthly_title: "Stała płatność miesięczna",
     info_monthly_description: "Przewidywalne koszty z nieograniczonym użyciem. Najlepsze dla obiektów o wysokim ruchu.",
     info_monthly_benefits: ["Nieograniczone zapytania", "Przewidywalność budżetu", "Maksymalne oszczędności przy skali"],
-    
+
     info_yearly_title: "Płatność roczna ze zniżką",
     info_yearly_description: "Maksymalne oszczędności do 20% przy płatności z góry za rok. Idealne do planowania długoterminowego.",
     info_yearly_benefits: ["Do 20% zniżki", "Wsparcie priorytetowe", "Nieograniczone zapytania", "Stabilność cen przez rok"],
-    
+
     // Calculator
     calculator_title: "Ile zaoszczędzisz z Roomie?",
     calculator_description: "Dowiedz się, jak asystent AI wpłynie na Twój biznes. Wszystkie obliczenia oparte są na rzeczywistych danych rynku hotelowego.",
@@ -923,7 +929,7 @@ export const translations = {
       benefits: "➕ Oszczędności na prowizjach OTA i wzrost sprzedaży dodatkowej"
     },
     how_we_calculate_mobile: "Jak liczymy?",
-    
+
     // Calculator Fields
     field_daily_requests: "Zapytań dziennie",
     field_adr: "Średnia stawka dzienna (ADR)",
@@ -936,7 +942,7 @@ export const translations = {
     field_roomie_cost: "Koszt Roomie",
     field_current_bookings: "Bieżące rezerwacje miesięczne",
     field_additional_service_revenue: "Dodatkowy przychód z usług na rezerwację",
-    
+
     // Calculator Tooltips
     tooltip_daily_requests: "Średnia liczba zapytań gości dziennie (przez czat, telefon, na recepcji)",
     tooltip_adr: "Średnia stawka za pokój na dobę w Twojej walucie",
@@ -949,7 +955,7 @@ export const translations = {
     tooltip_roomie_cost: "Miesięczny koszt Roomie w Twojej walucie",
     tooltip_current_bookings: "Ile rezerwacji otrzymujesz miesięcznie obecnie",
     tooltip_additional_service_revenue: "Ile dodatkowego przychodu przynosi jedna rezerwacja (śniadanie, wycieczki itp.)",
-    
+
     // Calculator Results
     results_empty_bookings: "Wprowadź swoje rezerwacje, aby zobaczyć dokładne liczby",
     results_commission_savings: "💰 Oszczędności na prowizjach OTA",
@@ -962,11 +968,11 @@ export const translations = {
     results_roomie_cost: "Koszt Roomie:",
     results_total_effect: "Całkowity efekt:",
     results_calculation_note: "Zysk = nowe rezerwacje × rentowność kanałów",
-    
+
     // Trust Statement
     trust_title: "O uczciwości obliczeń",
     trust_description: "Jeśli Twoje liczby pokażą zerowy efekt — to też jest wynik. Nie sprzedajemy cudów, liczymy. Naszym zadaniem jest pokazanie prawdziwego obrazu, a nie kuszenie pięknymi obietnicami.",
-    
+
     // Formula Explanation
     simple_words: "Prościej mówiąc:",
     formula_explanation_main: "Bierzemy Twoje miesięczne zapytania, odejmujemy procent pominiętych zapytań przez ludzi i AI, mnożymy przez konwersję rezerwacji i średni czek. Różnica to dodatkowy przychód.",
@@ -979,13 +985,13 @@ export const translations = {
     monthly_subscription: "(subskrypcja miesięczna)",
     costs_comparison: "Porównanie strat",
     losses_without_ai: "Straty bez AI",
-    
+
     // Mobile Info
     mobile_info_title: "Informacje o rozliczeniach",
     mobile_usage_info: "Płatność za użycie",
     mobile_monthly_info: "Stała płatność miesięczna",
     mobile_yearly_info: "Płatność roczna ze zniżką",
-    
+
     // FAQ
     faq_title: "Często zadawane pytania",
     faq_integration_question: "Jak działa integracja AI?",
@@ -996,11 +1002,11 @@ export const translations = {
     faq_security_answer: "Przestrzegamy RODO. Dane są szyfrowane. Na żądanie podpisujemy DPA i umieszczamy dane w wymaganym regionie (UE/EMEA/USA). Twoje dane nie są wykorzystywane do trenowania modeli ogólnych bez Twojej zgody.",
     faq_plans_question: "Czym PRO różni się od PREMIUM w skrócie?",
     faq_plans_answer: "PRO — 'wszystko potrzebne do automatyzacji komunikacji z gośćmi z AI'. PREMIUM — 'wszystko z PRO' + Własny panel administracyjny, zaawansowana analityka, osobiste szkolenie AI na Twoich danych, white-label i menedżer konta.",
-    
+
     // Footer
     footer_description: "Rewolucjonizujemy hotelarstwo dzięki inteligentnej automatyzacji i spersonalizowanym doświadczeniom gości.",
     footer_copyright: "© 2024 Roomie. Wszelkie prawa zastrzeżone.",
-    
+
     // Calculator Actions
     calculator_action: "Kalkulator",
     information_action: "Informacje",
@@ -1010,11 +1016,11 @@ export const translations = {
     currency_label: "Waluta",
     data_saved: "Dane zapisane na tym urządzeniu",
     yearly_savings: "Zaoszczędź do 20% przy płatności rocznej",
-    
+
     // Trust Indicators
     requests_handled: "zapytań obsłużonych bez personelu recepcji",
     guest_service: "pokrycie obsługi gości",
-    
+
     // Calculator Additional Text
     calculate_savings: "Oblicz moje oszczędności",
     how_we_calculate: "Jak liczymy?",
@@ -1025,12 +1031,12 @@ export const translations = {
     ota_commission_formula: "Redukcja prowizji OTA: 10-15% oszczędności",
     automation_formula: "Automatyzacja rutyny: ponad 80% zapytań bez udziału personelu",
     average_savings: "Średnie oszczędności dla hotelu z 20 pokojami: $3,000-6,000/miesiąc",
-    
+
     // Toast Messages
     copy_link_success_title: "Link skopiowany",
     copy_link_success_desc: "Udostępnij obliczenia współpracownikom",
     copy_link_error_title: "Nie udało się skopiować linku — zrób to ręcznie",
-    
+
     // Additional UI Text
     try_roomie: "Wypróbuj Roomie",
     close: "Zamknij",
@@ -1040,7 +1046,7 @@ export const translations = {
     ota_commissions: "Prowizje OTA",
     calculation_explanation: "Bierzemy Twoje miesięczne zapytania, odejmujemy procent pominiętych połączeń przez ludzi i AI, mnożymy przez konwersję do rezerwacji i średni czek. Różnica to dodatkowy przychód.",
     calculation_additional: "Plus oszczędności na prowizjach OTA i sprzedaż usług dodatkowych. Minus koszt Roomie.",
-    
+
     // Pricing Labels
     addon_pricing_usage: "+0,5 centa/zapytanie",
     addon_pricing_logo_removal: "+1 cent/zapytanie",
@@ -1059,13 +1065,13 @@ export const translations = {
     plan_pro_limits: "3000 wiadomości",
     plan_premium_limits: "Nieograniczone czaty i wiadomości",
     plan_premium_limits_array: ["Taryfikacja obejmuje pełny cykl usług doradczych i wdrożeniowych.", " ", " ", "Warunki i zakres usług są obliczane indywidualnie na podstawie opisu i analizy zadań biznesowych klienta.", " ", " ", "Ostateczna oferta handlowa jest przygotowywana po uzgodnieniu wymagań i celów projektu."],
-    
+
     // Calculator Form Labels
     bookings_per_month_current: "Rezerwacje miesięcznie (obecnie)",
     bookings_suffix: "rezerwacje",
     direct_share_current: "Udział rezerwacji bezpośrednich (obecnie)",
     direct_share_growth_label: "Wzrost udziału rezerwacji bezpośrednich",
-    
+
     // Calculator Results
     enter_bookings_message: "Wprowadź swoje rezerwacje, aby zobaczyć dokładne liczby",
     savings_per_month: "Oszczędności/miesiąc",
@@ -1112,7 +1118,7 @@ export const translations = {
     benefit_24_7_support_desc: "Zespół wsparcia jest zawsze dostępny nawet w nocy, w weekendy i święta",
     benefit_no_hidden_fees: "Bez ukrytych opłat:",
     benefit_no_hidden_fees_desc: "Stała cena subskrypcji, bez dodatkowych opłat",
-    
+
     // Demo button
     try_demo: "Wypróbuj DEMO",
     no_registration: "bez rejestracji",
