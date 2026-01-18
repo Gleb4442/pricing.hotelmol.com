@@ -174,13 +174,13 @@ export default function PricingPage() {
   ];
 
   const proFeatures = [
-    { text: t("feature_ai_help") },
+    ...(billingMode === "usage" ? [{ text: t("feature_ai_help") }] : []),
     { text: t("feature_booking_automation") },
-    { text: t("feature_multilang") },
+    ...(billingMode === "usage" ? [{ text: t("feature_multilang") }] : []),
     { text: t("feature_analytics") },
     { text: t("feature_priority_support") },
-    { text: t("feature_pms_integration") },
-    { text: t("feature_unique_design") },
+    ...(billingMode === "usage" ? [{ text: t("feature_pms_integration") }] : []),
+    ...(billingMode === "usage" ? [{ text: t("feature_unique_design") }] : []),
     {
       text: t("feature_remove_logo"),
       tooltip: t("tooltip_remove_logo"),
