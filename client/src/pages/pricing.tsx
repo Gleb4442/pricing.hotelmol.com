@@ -4,7 +4,6 @@ import { useBillingMode } from "@/hooks/use-billing-mode";
 import { useLanguage } from "@/hooks/use-language";
 import { useHotelType } from "@/hooks/use-hotel-type";
 import { BillingToggle } from "@/components/pricing/BillingToggle";
-import { HotelTypeToggle } from "@/components/pricing/HotelTypeToggle";
 import { PricingCard } from "@/components/pricing/PricingCard";
 import { SavingsCalculator } from "@/components/pricing/SavingsCalculator";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -212,7 +211,28 @@ export default function PricingPage() {
             <div className="flex items-center space-x-3">
               {/* Hotel Type Toggle */}
               {!isCalculatorOpen && (
-                <HotelTypeToggle hotelType={hotelType} toggleHotelType={toggleHotelType} />
+                <div className="flex items-center bg-[#254d7a]/30 rounded-lg p-1">
+                  <button
+                    onClick={() => hotelType === "network" && toggleHotelType()}
+                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${hotelType === "single"
+                      ? "bg-[#306BA1] text-white shadow-md"
+                      : "text-[#a8c5e0] hover:text-white"
+                      }`}
+                    data-testid="hotel-type-single"
+                  >
+                    {t("hotel_type_single")}
+                  </button>
+                  <button
+                    onClick={() => hotelType === "single" && toggleHotelType()}
+                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${hotelType === "network"
+                      ? "bg-[#306BA1] text-white shadow-md"
+                      : "text-[#a8c5e0] hover:text-white"
+                      }`}
+                    data-testid="hotel-type-network"
+                  >
+                    {t("hotel_type_network")}
+                  </button>
+                </div>
               )}
 
               {/* Language Switcher */}
@@ -570,10 +590,27 @@ export default function PricingPage() {
 
       {/* Mobile Hotel Type Toggle */}
       {!isCalculatorOpen && (
-        <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center justify-center pointer-events-none">
-          <div className="bg-[#254d7a]/90 rounded-lg shadow-lg pointer-events-auto backdrop-blur-sm">
-            <HotelTypeToggle hotelType={hotelType} toggleHotelType={toggleHotelType} />
-          </div>
+        <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
+          <button
+            onClick={() => hotelType === "network" && toggleHotelType()}
+            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${hotelType === "single"
+              ? "bg-[#306BA1] text-white shadow-md"
+              : "text-[#a8c5e0] hover:text-white"
+              }`}
+            data-testid="mobile-hotel-type-single"
+          >
+            {t("hotel_type_single")}
+          </button>
+          <button
+            onClick={() => hotelType === "single" && toggleHotelType()}
+            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${hotelType === "network"
+              ? "bg-[#306BA1] text-white shadow-md"
+              : "text-[#a8c5e0] hover:text-white"
+              }`}
+            data-testid="mobile-hotel-type-network"
+          >
+            {t("hotel_type_network")}
+          </button>
         </div>
       )}
 
