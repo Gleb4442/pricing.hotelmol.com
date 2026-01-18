@@ -9,7 +9,7 @@ export const translations = {
     hero_description: "Расширьте возможности отеля с помощью интеллектуальной автоматизации. Гибкие тарифы для любого размера собственности.",
 
     // Billing Toggle
-    billing_usage: "За использование",
+    billing_usage: "По факту",
     billing_monthly: "Ежемесячно",
     billing_yearly: "Ежегодно",
 
