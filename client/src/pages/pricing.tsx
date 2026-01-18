@@ -176,22 +176,22 @@ export default function PricingPage() {
   const proFeatures = [
     {
       text: t("feature_ai_help"),
-      hidden: billingMode === "usage" || billingMode === "yearly"
+      hidden: billingMode === "monthly" || billingMode === "yearly"
     },
     { text: t("feature_booking_automation") },
     {
       text: t("feature_multilang"),
-      hidden: billingMode === "usage" || billingMode === "yearly"
+      hidden: billingMode === "monthly" || billingMode === "yearly"
     },
     { text: t("feature_analytics") },
     { text: t("feature_priority_support") },
     {
       text: t("feature_pms_integration"),
-      hidden: billingMode === "usage" || billingMode === "yearly"
+      hidden: billingMode === "monthly" || billingMode === "yearly"
     },
     {
       text: t("feature_unique_design"),
-      hidden: billingMode === "usage" || billingMode === "yearly"
+      hidden: billingMode === "monthly" || billingMode === "yearly"
     },
     {
       text: t("feature_remove_logo"),
