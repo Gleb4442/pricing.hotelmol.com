@@ -174,13 +174,25 @@ export default function PricingPage() {
   ];
 
   const proFeatures = [
-    { text: t("feature_ai_help") },
+    {
+      text: t("feature_ai_help"),
+      hidden: billingMode === "usage" || billingMode === "yearly"
+    },
     { text: t("feature_booking_automation") },
-    { text: t("feature_multilang") },
+    {
+      text: t("feature_multilang"),
+      hidden: billingMode === "usage" || billingMode === "yearly"
+    },
     { text: t("feature_analytics") },
     { text: t("feature_priority_support") },
-    { text: t("feature_pms_integration") },
-    { text: t("feature_unique_design") },
+    {
+      text: t("feature_pms_integration"),
+      hidden: billingMode === "usage" || billingMode === "yearly"
+    },
+    {
+      text: t("feature_unique_design"),
+      hidden: billingMode === "usage" || billingMode === "yearly"
+    },
     {
       text: t("feature_remove_logo"),
       tooltip: t("tooltip_remove_logo"),
@@ -191,7 +203,7 @@ export default function PricingPage() {
       tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
       isChannels: true,
     },
-  ];
+  ].filter(f => !f.hidden);
 
   const premiumFeatures: { text: string; tooltip?: string; addonPricing?: { usage: string; monthly: string; } }[] = [];
 
