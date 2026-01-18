@@ -214,7 +214,7 @@ export function PricingCard({
           </div>
 
           {/* First Month Free Promo */}
-          {plan !== "premium" && (
+          {plan !== "premium" && billingMode !== "usage" && (
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -252,9 +252,6 @@ export function PricingCard({
                     <h4 className="font-bold text-[#306BA1] text-sm leading-tight uppercase tracking-wide">
                       {t('first_month_free_title')}
                     </h4>
-                    <p className="text-xs text-muted-foreground mt-0.5 font-medium">
-                      {t('first_month_free_desc')}
-                    </p>
                   </div>
                 </div>
               </motion.div>
