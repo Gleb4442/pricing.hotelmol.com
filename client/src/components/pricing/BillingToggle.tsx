@@ -9,21 +9,21 @@ interface BillingToggleProps {
 
 export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggleProps) {
   const { t } = useLanguage();
-  
+
   return (
     <div className="flex flex-col items-center justify-center mb-6 space-y-3">
-      <motion.div 
+      <motion.div
         className="bg-muted rounded-full p-1 flex items-center relative"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        {/* Анимированный фон для активной кнопки */}
+        {/* Animated background for active button */}
         <motion.div
-          className="absolute bg-primary rounded-full h-[calc(100%-8px)] z-0"
+          className="absolute bg-primary rounded-full h-[calc(100%-8px)] z-0 shadow-sm"
           animate={{
-            x: billingMode === "usage" ? 4 : billingMode === "monthly" ? "calc(100% + 4px)" : 4,
-            width: billingMode === "usage" ? "calc(50% - 6px)" : billingMode === "monthly" ? "calc(50% - 6px)" : "calc(50% - 6px)"
+            x: billingMode === "usage" ? 4 : billingMode === "monthly" ? "calc(100% + 4px)" : "calc(200% + 4px)",
+            width: "calc(33.33% - 5.33px)"
           }}
           transition={{
             type: "spring",
@@ -31,84 +31,58 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
             damping: 30
           }}
         />
-        
+
         <motion.button
           data-testid="billing-usage-button"
           onClick={() => onBillingModeChange("usage")}
-          className={`relative z-10 px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-200 ${
-            billingMode === "usage" 
-              ? "text-primary-foreground" 
+          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "usage"
+              ? "text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"
-          }`}
-          whileHover={{ scale: 1.02 }}
+            }`}
           whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           {t("billing_usage")}
         </motion.button>
-        
+
         <motion.button
           data-testid="billing-monthly-button"
           onClick={() => onBillingModeChange("monthly")}
-          className={`relative z-10 px-8 py-4 rounded-full text-lg font-semibold transition-colors duration-200 ${
-            billingMode === "monthly" 
-              ? "text-primary-foreground" 
+          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "monthly"
+              ? "text-primary-foreground"
               : "text-muted-foreground hover:text-foreground"
-          }`}
-          whileHover={{ scale: 1.02 }}
+            }`}
           whileTap={{ scale: 0.98 }}
-          transition={{ type: "spring", stiffness: 400, damping: 25 }}
         >
           {t("billing_monthly")}
         </motion.button>
+
+        <motion.button
+          data-testid="billing-yearly-button"
+          onClick={() => onBillingModeChange("yearly")}
+          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "yearly"
+              ? "text-primary-foreground"
+              : "text-muted-foreground hover:text-foreground"
+            }`}
+          whileTap={{ scale: 0.98 }}
+        >
+          {t("billing_yearly")}
+        </motion.button>
       </motion.div>
-      
-      <motion.button
-        data-testid="billing-yearly-button"
-        onClick={() => onBillingModeChange("yearly")}
-        className={`px-8 py-4 rounded-full text-lg font-semibold transition-all duration-300 ${
-          billingMode === "yearly" 
-            ? "bg-primary text-primary-foreground shadow-lg" 
-            : "bg-muted text-muted-foreground hover:bg-muted/80"
-        }`}
-        style={{
-          boxShadow: billingMode === "yearly" 
-            ? "0 4px 12px rgba(0,0,0,0.1)" 
-            : "0 0px 0px rgba(0,0,0,0)"
-        }}
-        whileHover={{ 
-          scale: 1.05,
-          boxShadow: billingMode === "yearly" 
-            ? "0 10px 25px rgba(0,0,0,0.15)" 
-            : "0 4px 12px rgba(0,0,0,0.1)"
-        }}
-        whileTap={{ scale: 0.95 }}
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ 
-          duration: 0.4, 
-          delay: 0.2,
-          type: "spring",
-          stiffness: 300
-        }}
-      >
-        {t("billing_yearly")}
-      </motion.button>
-      
+
       <AnimatePresence>
         {billingMode === "yearly" && (
-          <motion.div 
+          <motion.div
             className="text-sm text-green-600 font-medium"
             initial={{ opacity: 0, y: -10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.9 }}
-            transition={{ 
+            transition={{
               type: "spring",
               stiffness: 400,
               damping: 25
             }}
           >
-            Экономия до 20% при годовой оплате
+            {t("yearly_savings")}
           </motion.div>
         )}
       </AnimatePresence>

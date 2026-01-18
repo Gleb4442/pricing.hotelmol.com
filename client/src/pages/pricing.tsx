@@ -510,39 +510,44 @@ export default function PricingPage() {
           <h2 className="text-3xl font-bold text-center text-foreground mb-12">
             {t("faq_title")}
           </h2>
-          <div className="max-w-3xl mx-auto space-y-6">
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
-              <h4 className="text-lg font-semibold text-foreground mb-2">
-                {t("faq_integration_question")}
-              </h4>
-              <p className="text-muted-foreground">
-                {t("faq_integration_answer")}
-              </p>
-            </div>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
-              <h4 className="text-lg font-semibold text-foreground mb-2">
-                {t("faq_billing_question")}
-              </h4>
-              <p className="text-muted-foreground">
-                {t("faq_billing_answer")}
-              </p>
-            </div>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
-              <h4 className="text-lg font-semibold text-foreground mb-2">
-                {t("faq_security_question")}
-              </h4>
-              <p className="text-muted-foreground">
-                {t("faq_security_answer")}
-              </p>
-            </div>
-            <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
-              <h4 className="text-lg font-semibold text-foreground mb-2">
-                {t("faq_plans_question")}
-              </h4>
-              <p className="text-muted-foreground">
-                {t("faq_plans_answer")}
-              </p>
-            </div>
+          <div className="max-w-3xl mx-auto">
+            <Accordion type="single" collapsible className="w-full space-y-4">
+              <AccordionItem value="integration" className="bg-card border border-border rounded-2xl px-6 shadow-sm">
+                <AccordionTrigger className="text-lg font-semibold text-foreground hover:no-underline py-6">
+                  {t("faq_integration_question")}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
+                  {t("faq_integration_answer")}
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="billing" className="bg-card border border-border rounded-2xl px-6 shadow-sm">
+                <AccordionTrigger className="text-lg font-semibold text-foreground hover:no-underline py-6">
+                  {t("faq_billing_question")}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
+                  {t("faq_billing_answer")}
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="security" className="bg-card border border-border rounded-2xl px-6 shadow-sm">
+                <AccordionTrigger className="text-lg font-semibold text-foreground hover:no-underline py-6">
+                  {t("faq_security_question")}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
+                  {t("faq_security_answer")}
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="plans" className="bg-card border border-border rounded-2xl px-6 shadow-sm">
+                <AccordionTrigger className="text-lg font-semibold text-foreground hover:no-underline py-6">
+                  {t("faq_plans_question")}
+                </AccordionTrigger>
+                <AccordionContent className="text-muted-foreground pb-6 text-base leading-relaxed">
+                  {t("faq_plans_answer")}
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </main>
