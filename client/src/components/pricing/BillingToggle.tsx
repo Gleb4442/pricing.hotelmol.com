@@ -20,10 +20,12 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
       >
         {/* Animated background for active button */}
         <motion.div
-          className="absolute bg-primary rounded-full h-[calc(100%-12px)] z-0 shadow-md"
+          className="absolute bg-primary rounded-full shadow-md top-1/2 -translate-y-1/2"
+          initial={false}
           animate={{
-            x: billingMode === "usage" ? 6 : billingMode === "monthly" ? "calc(100% + 6px)" : "calc(200% + 6px)",
-            width: "calc(33.33% - 8px)"
+            left: billingMode === "usage" ? "1.67%" : billingMode === "monthly" ? "35%" : "68.33%",
+            width: "30%",
+            height: "80%"
           }}
           transition={{
             type: "spring",
