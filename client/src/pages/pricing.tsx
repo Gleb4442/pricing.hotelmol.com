@@ -186,16 +186,16 @@ export default function PricingPage() {
       tooltip: t("tooltip_remove_logo"),
       addonPricing: { usage: t("addon_pricing_logo_removal"), monthly: "" },
     },
-    {
-      text: billingMode === "usage" ? t("feature_available_channels") : t("feature_communication_channels"),
-      tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
-      isChannels: true,
-    },
     ...(billingMode !== "usage" ? [
       { text: t("feature_google_reviews") },
       { text: t("feature_guest_reviews") },
       { text: t("feature_extended_kb") },
     ] : []),
+    {
+      text: billingMode === "usage" ? t("feature_available_channels") : t("feature_communication_channels"),
+      tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
+      isChannels: true,
+    },
   ];
 
   const premiumFeatures: { text: string; tooltip?: string; addonPricing?: { usage: string; monthly: string; } }[] = [];
