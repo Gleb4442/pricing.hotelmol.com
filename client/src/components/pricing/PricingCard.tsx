@@ -275,24 +275,30 @@ export function PricingCard({
                   />
 
                   <div className="relative flex items-center gap-3">
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg">
-                      {/* Sound Wave Icon / Animation */}
-                      <div className="flex items-center gap-0.5 h-4">
-                        {[1, 2, 3, 4].map((i) => (
-                          <motion.div
-                            key={i}
-                            className="w-1 bg-white rounded-full"
-                            animate={{ height: ["40%", "100%", "40%"] }}
-                            transition={{
-                              duration: 0.8,
-                              repeat: Infinity,
-                              ease: "easeInOut",
-                              delay: i * 0.1,
-                            }}
-                            style={{ height: "40%" }}
-                          />
-                        ))}
-                      </div>
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-black to-gray-800 shadow-lg ring-1 ring-white/10 overflow-hidden">
+                      {/* Voice Orb Animation */}
+                      <motion.div
+                        className="w-full h-full absolute inset-0 bg-gradient-to-t from-indigo-500/20 via-purple-500/10 to-transparent rounded-full"
+                        animate={{ opacity: [0.5, 0.8, 0.5] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                      />
+                      <motion.div
+                        className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.6)]"
+                        animate={{
+                          scale: [1, 1.1, 1],
+                          opacity: [0.9, 1, 0.9],
+                          boxShadow: [
+                            "0 0 10px rgba(255,255,255,0.5)",
+                            "0 0 20px rgba(255,255,255,0.8)",
+                            "0 0 10px rgba(255,255,255,0.5)"
+                          ]
+                        }}
+                        transition={{
+                          duration: 4,
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      />
                     </div>
 
                     <div className="flex-1">
