@@ -224,7 +224,7 @@ export const translations = {
     plan_basic_overage: "После: за каждые 1000 сообщений - 12$",
     plan_pro_limits: "5000 сообщений",
     plan_premium_limits: "Безлимитное количество чатов и сообщений",
-    plan_premium_limits_array: ["В рамках тарифа предусмотрен полный цикл консалтинговых и внедренческих услуг.", " ", " ", "Условия и объем предоставляемых услуг рассчитываются индивидуально на основе описания и анализа бизнес-задач клиента.", " ", " ", "Итоговое коммерческое предложение подготавливается после согласования требований и целей проекта."],
+    plan_premium_limits_array: ["В рамках тарифа предусмотрен полный цикл консалтинговых и внедренческих услуг.", " ", " ", " ", "Условия и объем предоставляемых услуг рассчитываются индивидуально на основе описания и анализа бизнес-задач клиента.", " ", " ", " ", "Итоговое коммерческое предложение подготавливается после согласования требований и целей проекта."],
 
     // Calculator Form Labels
     bookings_per_month_current: "Брони в месяц (сейчас)",
@@ -510,7 +510,7 @@ export const translations = {
     plan_basic_overage: "Після: за кожні 1000 повідомлень - 12$",
     plan_pro_limits: "5000 повідомлень",
     plan_premium_limits: "Безлімітна кількість чатів і повідомлень",
-    plan_premium_limits_array: ["В рамках тарифу передбачено повний цикл консалтингових та впровадницьких послуг.", " ", " ", "Умови та обсяг послуг, що надаються, розраховуються індивідуально на основі опису та аналізу бізнес-задач клієнта.", " ", " ", "Підсумкова комерційна пропозиція готується після узгодження вимог і цілей проєкту."],
+    plan_premium_limits_array: ["В рамках тарифу передбачено повний цикл консалтингових та впровадницьких послуг.", " ", " ", " ", "Умови та обсяг послуг, що надаються, розраховуються індивідуально на основі опису та аналізу бізнес-задач клієнта.", " ", " ", " ", "Підсумкова комерційна пропозиція готується після узгодження вимог і цілей проєкту."],
 
     // Calculator Form Labels
     bookings_per_month_current: "Бронювання на місяць (зараз)",
@@ -796,7 +796,7 @@ export const translations = {
     plan_basic_overage: "After: for every 1000 messages - 12$",
     plan_pro_limits: "5000 messages",
     plan_premium_limits: "Unlimited chats and messages",
-    plan_premium_limits_array: ["The tariff includes a full cycle of consulting and implementation services.", " ", " ", "The terms and scope of services are calculated individually based on the description and analysis of the client's business tasks.", " ", " ", "The final commercial proposal is prepared after agreeing on the requirements and objectives of the project."],
+    plan_premium_limits_array: ["The tariff includes a full cycle of consulting and implementation services.", " ", " ", " ", "The terms and scope of services are calculated individually based on the description and analysis of the client's business tasks.", " ", " ", " ", "The final commercial proposal is prepared after agreeing on the requirements and objectives of the project."],
 
     // Calculator Form Labels
     bookings_per_month_current: "Bookings per month (current)",
@@ -1076,7 +1076,7 @@ export const translations = {
     plan_basic_overage: "Potem: za każde 1000 wiadomości - 12$",
     plan_pro_limits: "5000 wiadomości",
     plan_premium_limits: "Nieograniczone czaty i wiadomości",
-    plan_premium_limits_array: ["Taryfikacja obejmuje pełny cykl usług doradczych i wdrożeniowych.", " ", " ", "Warunki i zakres usług są obliczane indywidualnie na podstawie opisu i analizy zadań biznesowych klienta.", " ", " ", "Ostateczna oferta handlowa jest przygotowywana po uzgodnieniu wymagań i celów projektu."],
+    plan_premium_limits_array: ["Taryfikacja obejmuje pełny cykl usług doradczych i wdrożeniowych.", " ", " ", " ", "Warunki i zakres usług są obliczane indywidualnie na podstawie opisu i analizy zadań biznesowych klienta.", " ", " ", " ", "Ostateczna oferta handlowa jest przygotowywana po uzgodnieniu wymagań i celów projektu."],
 
     // Calculator Form Labels
     bookings_per_month_current: "Rezerwacje miesięcznie (obecnie)",
