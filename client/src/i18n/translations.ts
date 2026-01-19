@@ -50,6 +50,9 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
+    feature_google_reviews: "Автоматические ответы на отзывы в Google",
+    feature_guest_reviews: "Сбор отзывов от гостей",
+    feature_extended_kb: "Расширенная База Знаний для агента",
 
     // Tooltips
     tooltip_telegram_bot: "Получите собственного брендированного Telegram-бота для взаимодействия с гостями",
@@ -333,6 +336,9 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
+    feature_google_reviews: "Автоматичні відповіді на відгуки в Google",
+    feature_guest_reviews: "Збір відгуків від гостей",
+    feature_extended_kb: "Розширена База Знань для агента",
 
     // Tooltips
     tooltip_telegram_bot: "Отримайте власного брендованого Telegram-бота для взаємодії з гостями",
@@ -616,6 +622,9 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
+    feature_google_reviews: "Automated Google review responses",
+    feature_guest_reviews: "Guest review collection",
+    feature_extended_kb: "Extended Knowledge Base for agent",
 
     // Tooltips
     tooltip_telegram_bot: "Get your own branded Telegram bot for guest interactions",

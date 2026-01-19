@@ -191,6 +191,11 @@ export default function PricingPage() {
       tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
       isChannels: true,
     },
+    ...(billingMode !== "usage" ? [
+      { text: t("feature_google_reviews") },
+      { text: t("feature_guest_reviews") },
+      { text: t("feature_extended_kb") },
+    ] : []),
   ];
 
   const premiumFeatures: { text: string; tooltip?: string; addonPricing?: { usage: string; monthly: string; } }[] = [];
