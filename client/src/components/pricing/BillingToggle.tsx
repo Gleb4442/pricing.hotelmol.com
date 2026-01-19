@@ -23,8 +23,8 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           className="absolute bg-white dark:bg-gray-700 rounded-full shadow-md top-1/2 -translate-y-1/2"
           initial={false}
           animate={{
-            left: billingMode === "usage" ? "8px" : billingMode === "monthly" ? "calc(33.33% + 8px)" : "calc(66.66% + 8px)",
-            width: "calc(33.33% - 16px)",
+            left: billingMode === "usage" ? "12px" : billingMode === "monthly" ? "calc(33.33% + 12px)" : "calc(66.66% + 12px)",
+            width: "calc(33.33% - 24px)",
             height: "calc(100% - 16px)"
           }}
           transition={{
