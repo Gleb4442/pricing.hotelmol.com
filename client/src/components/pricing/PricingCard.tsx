@@ -276,27 +276,35 @@ export function PricingCard({
 
                   <div className="relative flex items-center gap-3">
                     <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-black to-gray-800 shadow-lg ring-1 ring-white/10 overflow-hidden">
-                      {/* Voice Orb Animation */}
+                      {/* Talking State Animation */}
                       <motion.div
-                        className="w-full h-full absolute inset-0 bg-gradient-to-t from-indigo-500/20 via-purple-500/10 to-transparent rounded-full"
-                        animate={{ opacity: [0.5, 0.8, 0.5] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute inset-0 bg-gradient-to-t from-indigo-500/30 via-purple-500/20 to-transparent rounded-full"
+                        animate={{ opacity: [0.3, 0.7, 0.3] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                       />
+                      {/* Ripple Effect */}
                       <motion.div
-                        className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.6)]"
+                        className="absolute w-full h-full rounded-full border border-white/20"
+                        animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
+                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                      />
+                      {/* Core Speaking Orb */}
+                      <motion.div
+                        className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
                         animate={{
-                          scale: [1, 1.1, 1],
+                          scale: [1, 1.2, 0.9, 1.1, 1],
                           opacity: [0.9, 1, 0.9],
                           boxShadow: [
                             "0 0 10px rgba(255,255,255,0.5)",
-                            "0 0 20px rgba(255,255,255,0.8)",
+                            "0 0 25px rgba(255,255,255,0.9)",
                             "0 0 10px rgba(255,255,255,0.5)"
                           ]
                         }}
                         transition={{
-                          duration: 4,
+                          duration: 1.2,
                           repeat: Infinity,
-                          ease: "easeInOut"
+                          ease: "easeInOut",
+                          times: [0, 0.25, 0.5, 0.75, 1]
                         }}
                       />
                     </div>
