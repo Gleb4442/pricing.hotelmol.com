@@ -265,26 +265,26 @@ export function PricingCard({
                   animate={{ opacity: 1, scale: 1 }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.4 }}
-                  className="relative overflow-hidden rounded-xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-3"
+                  className="relative overflow-hidden rounded-xl border border-[#306BA1]/20 bg-gradient-to-r from-[#306BA1]/10 to-cyan-500/10 p-3"
                 >
                   {/* Pulse Animation Background */}
                   <motion.div
-                    className="absolute inset-0 bg-indigo-500/5"
+                    className="absolute inset-0 bg-[#306BA1]/5"
                     animate={{ opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   />
 
                   <div className="relative flex items-center gap-3">
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-black to-gray-800 shadow-lg ring-1 ring-white/10 overflow-hidden">
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-slate-900 to-[#306BA1]/40 shadow-lg ring-1 ring-white/20 overflow-hidden">
                       {/* Talking State Animation */}
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-t from-indigo-500/30 via-purple-500/20 to-transparent rounded-full"
+                        className="absolute inset-0 bg-gradient-to-t from-[#306BA1]/40 via-cyan-400/20 to-transparent rounded-full"
                         animate={{ opacity: [0.3, 0.7, 0.3] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                       />
                       {/* Ripple Effect */}
                       <motion.div
-                        className="absolute w-full h-full rounded-full border border-white/20"
+                        className="absolute w-full h-full rounded-full border border-cyan-400/30"
                         animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
                         transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
                       />
@@ -310,7 +310,7 @@ export function PricingCard({
                     </div>
 
                     <div className="flex-1">
-                      <h4 className="font-bold text-indigo-700 dark:text-indigo-300 text-sm leading-tight">
+                      <h4 className="font-bold text-[#306BA1] dark:text-cyan-300 text-sm leading-tight">
                         {t('voice_agent_available')}
                       </h4>
                     </div>
