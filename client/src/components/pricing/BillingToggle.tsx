@@ -13,17 +13,17 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
   return (
     <div className="flex flex-col items-center justify-center mb-6 space-y-3">
       <motion.div
-        className="bg-muted rounded-full p-1 flex items-center relative"
+        className="bg-muted/50 border-2 border-primary/20 rounded-full p-1.5 flex items-center relative shadow-lg"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
         {/* Animated background for active button */}
         <motion.div
-          className="absolute bg-primary rounded-full h-[calc(100%-8px)] z-0 shadow-sm"
+          className="absolute bg-primary rounded-full h-[calc(100%-12px)] z-0 shadow-md"
           animate={{
-            x: billingMode === "usage" ? 4 : billingMode === "monthly" ? "calc(100% + 4px)" : "calc(200% + 4px)",
-            width: "calc(33.33% - 5.33px)"
+            x: billingMode === "usage" ? 6 : billingMode === "monthly" ? "calc(100% + 6px)" : "calc(200% + 6px)",
+            width: "calc(33.33% - 8px)"
           }}
           transition={{
             type: "spring",
@@ -36,8 +36,8 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           data-testid="billing-usage-button"
           onClick={() => onBillingModeChange("usage")}
           className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "usage"
-              ? "text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground"
+            ? "text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
             }`}
           whileTap={{ scale: 0.98 }}
         >
@@ -48,8 +48,8 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           data-testid="billing-monthly-button"
           onClick={() => onBillingModeChange("monthly")}
           className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "monthly"
-              ? "text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground"
+            ? "text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
             }`}
           whileTap={{ scale: 0.98 }}
         >
@@ -60,8 +60,8 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           data-testid="billing-yearly-button"
           onClick={() => onBillingModeChange("yearly")}
           className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "yearly"
-              ? "text-primary-foreground"
-              : "text-muted-foreground hover:text-foreground"
+            ? "text-primary-foreground"
+            : "text-muted-foreground hover:text-foreground"
             }`}
           whileTap={{ scale: 0.98 }}
         >

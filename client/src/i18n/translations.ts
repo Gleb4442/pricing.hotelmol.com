@@ -291,7 +291,7 @@ export const translations = {
     hero_description: "Розширте можливості готелю за допомогою інтелектуальної автоматизації. Гнучкі тарифи для будь-якого розміру власності.",
 
     // Billing Toggle
-    billing_usage: "За використання",
+    billing_usage: "По факту",
     billing_monthly: "Щомісячно",
     billing_yearly: "Щорічно",
 
@@ -573,7 +573,7 @@ export const translations = {
     hero_description: "Expand your hotel capabilities with intelligent automation. Flexible pricing for any property size.",
 
     // Billing Toggle
-    billing_usage: "Pay per use",
+    billing_usage: "Pay-per-usage",
     billing_monthly: "Monthly",
     billing_yearly: "Yearly",
 
