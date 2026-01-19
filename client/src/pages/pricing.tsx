@@ -406,10 +406,10 @@ export default function PricingPage() {
                 pricing={{
                   usage: { current: t("price_35_cents") },
                   monthly: {
-                    current: "$1,250"
+                    current: "$1,249"
                   },
                   yearly: {
-                    current: "$1,000"
+                    current: "$999"
                   },
                 }}
                 features={premiumFeatures}

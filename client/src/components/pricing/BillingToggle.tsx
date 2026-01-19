@@ -23,9 +23,9 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
           className="absolute bg-primary rounded-full shadow-md top-1/2 -translate-y-1/2"
           initial={false}
           animate={{
-            left: billingMode === "usage" ? "1.67%" : billingMode === "monthly" ? "35%" : "68.33%",
-            width: "30%",
-            height: "80%"
+            left: billingMode === "usage" ? "2.67%" : billingMode === "monthly" ? "36%" : "69.33%",
+            width: "28%",
+            height: "70%"
           }}
           transition={{
             type: "spring",
