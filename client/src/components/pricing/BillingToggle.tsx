@@ -13,7 +13,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
   return (
     <div className="flex flex-col items-center justify-center mb-6 space-y-3">
       <motion.div
-        className="bg-gray-200 dark:bg-gray-800 rounded-full p-1.5 grid grid-cols-3 items-center relative shadow-2xl w-full max-w-2xl"
+        className="bg-gray-100/80 dark:bg-gray-800/50 backdrop-blur-sm rounded-full p-1.5 grid grid-cols-3 items-center relative shadow-xl border border-gray-200/50 dark:border-gray-700/50 w-full max-w-2xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
