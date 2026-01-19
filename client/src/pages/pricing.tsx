@@ -214,23 +214,37 @@ export default function PricingPage() {
                 <div className="flex items-center bg-[#254d7a]/30 rounded-lg p-1">
                   <button
                     onClick={() => hotelType === "network" && toggleHotelType()}
-                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${hotelType === "single"
-                      ? "bg-[#306BA1] text-white shadow-md"
+                    className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${hotelType === "single"
+                      ? "text-white"
                       : "text-[#a8c5e0] hover:text-white"
                       }`}
                     data-testid="hotel-type-single"
                   >
-                    {t("hotel_type_single")}
+                    {hotelType === "single" && (
+                      <motion.div
+                        layoutId="active-hotel-type-desktop"
+                        className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">{t("hotel_type_single")}</span>
                   </button>
                   <button
                     onClick={() => hotelType === "single" && toggleHotelType()}
-                    className={`px-3 py-1.5 rounded-md text-sm font-medium transition-all ${hotelType === "network"
-                      ? "bg-[#306BA1] text-white shadow-md"
+                    className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${hotelType === "network"
+                      ? "text-white"
                       : "text-[#a8c5e0] hover:text-white"
                       }`}
                     data-testid="hotel-type-network"
                   >
-                    {t("hotel_type_network")}
+                    {hotelType === "network" && (
+                      <motion.div
+                        layoutId="active-hotel-type-desktop"
+                        className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                      />
+                    )}
+                    <span className="relative z-10">{t("hotel_type_network")}</span>
                   </button>
                 </div>
               )}
@@ -593,23 +607,37 @@ export default function PricingPage() {
         <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
           <button
             onClick={() => hotelType === "network" && toggleHotelType()}
-            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${hotelType === "single"
-              ? "bg-[#306BA1] text-white shadow-md"
+            className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "single"
+              ? "text-white"
               : "text-[#a8c5e0] hover:text-white"
               }`}
             data-testid="mobile-hotel-type-single"
           >
-            {t("hotel_type_single")}
+            {hotelType === "single" && (
+              <motion.div
+                layoutId="active-hotel-type-mobile"
+                className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10">{t("hotel_type_single")}</span>
           </button>
           <button
             onClick={() => hotelType === "single" && toggleHotelType()}
-            className={`px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-all whitespace-nowrap ${hotelType === "network"
-              ? "bg-[#306BA1] text-white shadow-md"
+            className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "network"
+              ? "text-white"
               : "text-[#a8c5e0] hover:text-white"
               }`}
             data-testid="mobile-hotel-type-network"
           >
-            {t("hotel_type_network")}
+            {hotelType === "network" && (
+              <motion.div
+                layoutId="active-hotel-type-mobile"
+                className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <span className="relative z-10">{t("hotel_type_network")}</span>
           </button>
         </div>
       )}
