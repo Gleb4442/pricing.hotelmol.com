@@ -276,25 +276,32 @@ export function PricingCard({
 
                   <div className="relative flex items-center gap-3">
                     <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-black to-gray-800 shadow-lg ring-1 ring-white/10 overflow-hidden">
-                      {/* Voice Orb Animation */}
+                      {/* Listening State Animation */}
                       <motion.div
-                        className="w-full h-full absolute inset-0 bg-gradient-to-t from-indigo-500/20 via-purple-500/10 to-transparent rounded-full"
-                        animate={{ opacity: [0.5, 0.8, 0.5] }}
-                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+                        className="absolute inset-0 bg-indigo-500/30 rounded-full blur-sm"
+                        animate={{
+                          scale: [1, 1.5, 1],
+                          opacity: [0, 0.5, 0]
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: "easeOut"
+                        }}
                       />
                       <motion.div
-                        className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.6)]"
+                        className="w-3.5 h-3.5 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-10"
                         animate={{
                           scale: [1, 1.1, 1],
                           opacity: [0.9, 1, 0.9],
                           boxShadow: [
-                            "0 0 10px rgba(255,255,255,0.5)",
-                            "0 0 20px rgba(255,255,255,0.8)",
-                            "0 0 10px rgba(255,255,255,0.5)"
+                            "0 0 10px rgba(255,255,255,0.6)",
+                            "0 0 20px rgba(255,255,255,0.9)",
+                            "0 0 10px rgba(255,255,255,0.6)"
                           ]
                         }}
                         transition={{
-                          duration: 4,
+                          duration: 1.5,
                           repeat: Infinity,
                           ease: "easeInOut"
                         }}
