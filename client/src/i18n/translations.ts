@@ -27,6 +27,7 @@ export const translations = {
     network_discount_badge: "-10% для сетей",
     first_month_free_title: "Первый месяц — бесплатно",
     first_month_free_desc: "Использование любого из тарифов (кроме Премиум)",
+    voice_agent_available: "Доступен голосовой агент",
 
     // Features
     feature_ai_help: "ИИ помощь гостям",
@@ -309,6 +310,7 @@ export const translations = {
     network_discount_badge: "-10% для мереж",
     first_month_free_title: "Перший місяць — безкоштовно",
     first_month_free_desc: "Використання будь-якого тарифу (крім Преміум)",
+    voice_agent_available: "Доступний голосовий агент",
 
     // Features
     feature_ai_help: "ШІ допомога гостям",
@@ -591,6 +593,7 @@ export const translations = {
     network_discount_badge: "-10% for chains",
     first_month_free_title: "First month — free",
     first_month_free_desc: "Use of any plan (except Premium)",
+    voice_agent_available: "Voice agent available",
 
     // Features
     feature_ai_help: "AI guest assistance",

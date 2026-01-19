@@ -214,48 +214,96 @@ export function PricingCard({
           </div>
 
           {/* First Month Free Promo */}
+          {/* First Month Free Promo */}
           {plan !== "premium" && billingMode !== "usage" && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="mb-6 mx-2"
-            >
+            <div className="flex flex-col gap-3 mb-6 mx-2">
               <motion.div
-                whileHover={{ scale: 1.02 }}
-                className="relative overflow-hidden rounded-xl border-2 border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent p-4"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.2 }}
               >
                 <motion.div
-                  animate={{
-                    backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                  }}
-                  transition={{
-                    duration: 5,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                  className="absolute inset-0 opacity-10 bg-gradient-to-r from-transparent via-[#306BA1] to-transparent bg-[length:200%_100%]"
-                />
-                <div className="relative flex items-center gap-3">
+                  whileHover={{ scale: 1.02 }}
+                  className="relative overflow-hidden rounded-xl border-2 border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent p-4"
+                >
                   <motion.div
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatDelay: 3
+                    animate={{
+                      backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                     }}
-                    className="text-2xl filter drop-shadow-sm"
-                  >
-                    🎁
-                  </motion.div>
-                  <div className="flex-1 text-left">
-                    <h4 className="font-bold text-[#306BA1] text-sm leading-tight uppercase tracking-wide">
-                      {t('first_month_free_title')}
-                    </h4>
+                    transition={{
+                      duration: 5,
+                      repeat: Infinity,
+                      ease: "linear",
+                    }}
+                    className="absolute inset-0 opacity-10 bg-gradient-to-r from-transparent via-[#306BA1] to-transparent bg-[length:200%_100%]"
+                  />
+                  <div className="relative flex items-center gap-3">
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{
+                        duration: 2,
+                        repeat: Infinity,
+                        repeatDelay: 3
+                      }}
+                      className="text-2xl filter drop-shadow-sm"
+                    >
+                      🎁
+                    </motion.div>
+                    <div className="flex-1 text-left">
+                      <h4 className="font-bold text-[#306BA1] text-sm leading-tight uppercase tracking-wide">
+                        {t('first_month_free_title')}
+                      </h4>
+                    </div>
                   </div>
-                </div>
+                </motion.div>
               </motion.div>
-            </motion.div>
+
+              {/* Voice Agent Promo for Pro Plan (Monthly/Yearly) */}
+              {plan === "pro" && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ duration: 0.4 }}
+                  className="relative overflow-hidden rounded-xl border border-indigo-500/30 bg-gradient-to-r from-indigo-500/10 to-purple-500/10 p-3"
+                >
+                  {/* Pulse Animation Background */}
+                  <motion.div
+                    className="absolute inset-0 bg-indigo-500/5"
+                    animate={{ opacity: [0.3, 0.6, 0.3] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                  />
+
+                  <div className="relative flex items-center gap-3">
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-indigo-500 to-purple-600 shadow-lg">
+                      {/* Sound Wave Icon / Animation */}
+                      <div className="flex items-center gap-0.5 h-4">
+                        {[1, 2, 3, 4].map((i) => (
+                          <motion.div
+                            key={i}
+                            className="w-1 bg-white rounded-full"
+                            animate={{ height: ["40%", "100%", "40%"] }}
+                            transition={{
+                              duration: 0.8,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              delay: i * 0.1,
+                            }}
+                            style={{ height: "40%" }}
+                          />
+                        ))}
+                      </div>
+                    </div>
+
+                    <div className="flex-1">
+                      <h4 className="font-bold text-indigo-700 dark:text-indigo-300 text-sm leading-tight">
+                        {t('voice_agent_available')}
+                      </h4>
+                    </div>
+                  </div>
+                </motion.div>
+              )}
+            </div>
           )}
 
           {/* Usage Limits */}
