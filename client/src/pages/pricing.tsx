@@ -374,19 +374,19 @@ export default function PricingPage() {
                 usage: { current: t("price_7_cents") },
                 monthly: {
                   current: billingMode !== "usage"
-                    ? getNetworkPrice("$1299")
-                    : getNetworkPrice("$1299"),
+                    ? getNetworkPrice("$399")
+                    : getNetworkPrice("$399"),
                   original: billingMode !== "usage"
-                    ? (hotelType === "network" ? "$1299" : undefined)
-                    : (hotelType === "network" ? "$1299" : undefined)
+                    ? (hotelType === "network" ? "$399" : undefined)
+                    : (hotelType === "network" ? "$399" : undefined)
                 },
                 yearly: {
                   current: billingMode !== "usage"
-                    ? getNetworkPrice("$1039")
-                    : getNetworkPrice("$1039"),
+                    ? getNetworkPrice("$319")
+                    : getNetworkPrice("$319"),
                   original: billingMode !== "usage"
-                    ? (hotelType === "network" ? "$1039" : undefined)
-                    : (hotelType === "network" ? "$1039" : undefined)
+                    ? (hotelType === "network" ? "$319" : undefined)
+                    : (hotelType === "network" ? "$319" : undefined)
                 },
               }}
               features={proFeatures}
@@ -406,10 +406,10 @@ export default function PricingPage() {
                 pricing={{
                   usage: { current: t("price_35_cents") },
                   monthly: {
-                    current: "$1,099"
+                    current: "$1,299"
                   },
                   yearly: {
-                    current: "$879"
+                    current: "$1,039"
                   },
                 }}
                 features={premiumFeatures}

@@ -276,32 +276,25 @@ export function PricingCard({
 
                   <div className="relative flex items-center gap-3">
                     <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-black to-gray-800 shadow-lg ring-1 ring-white/10 overflow-hidden">
-                      {/* Listening State Animation */}
+                      {/* Voice Orb Animation */}
                       <motion.div
-                        className="absolute inset-0 bg-indigo-500/30 rounded-full blur-sm"
-                        animate={{
-                          scale: [1, 1.5, 1],
-                          opacity: [0, 0.5, 0]
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: "easeOut"
-                        }}
+                        className="w-full h-full absolute inset-0 bg-gradient-to-t from-indigo-500/20 via-purple-500/10 to-transparent rounded-full"
+                        animate={{ opacity: [0.5, 0.8, 0.5] }}
+                        transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
                       />
                       <motion.div
-                        className="w-3.5 h-3.5 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)] z-10"
+                        className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.6)]"
                         animate={{
                           scale: [1, 1.1, 1],
                           opacity: [0.9, 1, 0.9],
                           boxShadow: [
-                            "0 0 10px rgba(255,255,255,0.6)",
-                            "0 0 20px rgba(255,255,255,0.9)",
-                            "0 0 10px rgba(255,255,255,0.6)"
+                            "0 0 10px rgba(255,255,255,0.5)",
+                            "0 0 20px rgba(255,255,255,0.8)",
+                            "0 0 10px rgba(255,255,255,0.5)"
                           ]
                         }}
                         transition={{
-                          duration: 1.5,
+                          duration: 4,
                           repeat: Infinity,
                           ease: "easeInOut"
                         }}
@@ -323,7 +316,7 @@ export function PricingCard({
           {usageLimits && usageLimits.length > 0 && (
             <div className="mb-6 px-2">
               {usageLimits.map((limit, index) => (
-                <div key={index} className="text-sm text-muted-foreground mb-1">
+                <div key={index} className={`text-sm text-muted-foreground ${limit.trim() === "" ? "h-[20px]" : "mb-1"}`}>
                   {limit}
                 </div>
               ))}
