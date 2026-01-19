@@ -13,7 +13,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
   return (
     <div className="flex flex-col items-center justify-center mb-6 space-y-3">
       <motion.div
-        className="bg-gray-200 dark:bg-gray-800 border-2 border-primary/20 rounded-full p-1.5 flex items-center relative shadow-lg"
+        className="bg-gray-200 dark:bg-gray-800 rounded-full p-1.5 flex items-center relative shadow-2xl"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -35,7 +35,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         <motion.button
           data-testid="billing-usage-button"
           onClick={() => onBillingModeChange("usage")}
-          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "usage"
+          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center whitespace-nowrap ${billingMode === "usage"
             ? "text-primary-foreground"
             : "text-muted-foreground hover:text-foreground"
             }`}
@@ -47,7 +47,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         <motion.button
           data-testid="billing-monthly-button"
           onClick={() => onBillingModeChange("monthly")}
-          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "monthly"
+          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center whitespace-nowrap ${billingMode === "monthly"
             ? "text-primary-foreground"
             : "text-muted-foreground hover:text-foreground"
             }`}
@@ -59,7 +59,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         <motion.button
           data-testid="billing-yearly-button"
           onClick={() => onBillingModeChange("yearly")}
-          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center ${billingMode === "yearly"
+          className={`relative z-10 px-6 py-3 rounded-full text-base sm:text-lg font-semibold transition-colors duration-200 w-1/3 text-center whitespace-nowrap ${billingMode === "yearly"
             ? "text-primary-foreground"
             : "text-muted-foreground hover:text-foreground"
             }`}
