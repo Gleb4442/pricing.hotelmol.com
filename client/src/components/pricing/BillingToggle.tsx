@@ -13,60 +13,65 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
   return (
     <div className="flex flex-col items-center justify-center mb-6 space-y-3">
       <motion.div
-        className="bg-gray-100/80 dark:bg-gray-800/50 backdrop-blur-sm rounded-full p-1.5 grid grid-cols-3 items-center relative shadow-xl border border-gray-200/50 dark:border-gray-700/50 w-full max-w-2xl"
+        className="bg-gray-100/80 dark:bg-gray-800/50 backdrop-blur-sm rounded-full p-1.5 flex items-center justify-center relative shadow-xl border border-gray-200/50 dark:border-gray-700/50 w-fit mx-auto"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        {/* Animated background for active button */}
-        <motion.div
-          className="absolute bg-white dark:bg-gray-700 rounded-full shadow-md top-1/2 -translate-y-1/2"
-          initial={false}
-          animate={{
-            left: billingMode === "usage" ? "12px" : billingMode === "monthly" ? "calc(33.33% + 12px)" : "calc(66.66% + 12px)",
-            width: "calc(33.33% - 24px)",
-            height: "calc(100% - 16px)"
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 300,
-            damping: 30
-          }}
-        />
-
         <motion.button
           data-testid="billing-usage-button"
           onClick={() => onBillingModeChange("usage")}
-          className={`relative z-10 px-2 sm:px-6 py-3 rounded-full text-xs sm:text-lg font-bold transition-colors duration-200 w-full text-center whitespace-nowrap ${billingMode === "usage"
+          className={`relative z-10 px-4 sm:px-8 py-3 rounded-full text-xs sm:text-lg font-bold transition-colors duration-200 whitespace-nowrap ${billingMode === "usage"
             ? "text-primary"
             : "text-muted-foreground hover:text-foreground"
             }`}
           whileTap={{ scale: 0.98 }}
         >
+          {billingMode === "usage" && (
+            <motion.div
+              layoutId="active-billing-indicator"
+              className="absolute inset-0 bg-white dark:bg-gray-700 rounded-full shadow-md -z-10"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
           {t("billing_usage")}
         </motion.button>
 
         <motion.button
           data-testid="billing-monthly-button"
           onClick={() => onBillingModeChange("monthly")}
-          className={`relative z-10 px-2 sm:px-6 py-3 rounded-full text-xs sm:text-lg font-bold transition-colors duration-200 w-full text-center whitespace-nowrap ${billingMode === "monthly"
+          className={`relative z-10 px-4 sm:px-8 py-3 rounded-full text-xs sm:text-lg font-bold transition-colors duration-200 whitespace-nowrap ${billingMode === "monthly"
             ? "text-primary"
             : "text-muted-foreground hover:text-foreground"
             }`}
           whileTap={{ scale: 0.98 }}
         >
+          {billingMode === "monthly" && (
+            <motion.div
+              layoutId="active-billing-indicator"
+              className="absolute inset-0 bg-white dark:bg-gray-700 rounded-full shadow-md -z-10"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
           {t("billing_monthly")}
         </motion.button>
 
         <motion.button
           data-testid="billing-yearly-button"
           onClick={() => onBillingModeChange("yearly")}
-          className={`relative z-10 px-2 sm:px-6 py-3 rounded-full text-xs sm:text-lg font-bold transition-colors duration-200 w-full text-center whitespace-nowrap ${billingMode === "yearly"
+          className={`relative z-10 px-4 sm:px-8 py-3 rounded-full text-xs sm:text-lg font-bold transition-colors duration-200 whitespace-nowrap ${billingMode === "yearly"
             ? "text-primary"
             : "text-muted-foreground hover:text-foreground"
             }`}
           whileTap={{ scale: 0.98 }}
         >
+          {billingMode === "yearly" && (
+            <motion.div
+              layoutId="active-billing-indicator"
+              className="absolute inset-0 bg-white dark:bg-gray-700 rounded-full shadow-md -z-10"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
           {t("billing_yearly")}
         </motion.button>
       </motion.div>
