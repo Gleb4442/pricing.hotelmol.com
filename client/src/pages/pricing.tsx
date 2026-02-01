@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, Home } from "lucide-react";
 import { useBillingMode } from "@/hooks/use-billing-mode";
 import { useLanguage } from "@/hooks/use-language";
 import { useHotelType } from "@/hooks/use-hotel-type";
@@ -208,6 +208,13 @@ export default function PricingPage() {
           {/* Desktop: Logo left, Hotel Type & Language right */}
           <div className="hidden md:flex items-center justify-between">
             <div className="flex items-center">
+              <a
+                href="https://www.hotelmol.com/"
+                className="h-9 w-9 flex items-center justify-center rounded-lg border-2 border-[#7ca3c8] bg-transparent hover:bg-[#306BA1]/20 text-white transition-colors"
+                aria-label="Home"
+              >
+                <Home className="h-5 w-5" />
+              </a>
               <div className="ml-[15px]">
                 <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
               </div>
@@ -291,6 +298,15 @@ export default function PricingPage() {
 
           {/* Mobile: Logo centered + Language switcher absolute right */}
           <div className="md:hidden flex items-center justify-center relative">
+            <div className="absolute left-0">
+              <a
+                href="https://www.hotelmol.com/"
+                className="h-9 w-9 flex items-center justify-center rounded-lg border-2 border-[#7ca3c8] bg-transparent hover:bg-[#306BA1]/20 text-white transition-colors"
+                aria-label="Home"
+              >
+                <Home className="h-5 w-5" />
+              </a>
+            </div>
             <h1 className="text-xl font-bold text-white">{t("company_name")}</h1>
             <div className="absolute right-0">
               <DropdownMenu>
