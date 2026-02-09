@@ -10,29 +10,28 @@ interface InfoSidebarProps {
 
 export function InfoSidebar({ billingMode }: InfoSidebarProps) {
   const { t, tArray } = useLanguage();
-  
+
   return (
     <div className="lg:row-span-1 space-y-6 lg:mt-6">
-      {/* Usage Info Card */}
+      {/* Monthly Info Card */}
       <div
-        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 ${
-          billingMode === "usage" ? "block" : "hidden"
-        }`}
-        data-testid="usage-info-card"
+        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 hidden md:block ${billingMode === "monthly" ? "" : "!hidden"
+          }`}
+        data-testid="monthly-info-card"
       >
         <div className="flex items-start space-x-4">
-          <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center flex-shrink-0">
-            <TrendingUp className="text-primary w-6 h-6" />
+          <div className="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center flex-shrink-0">
+            <Calendar className="text-blue-600 w-6 h-6" />
           </div>
           <div>
             <h4 className="text-lg font-semibold text-foreground mb-2">
-              {t("info_usage_title")}
+              {t("info_monthly_title")}
             </h4>
             <p className="text-muted-foreground text-sm mb-3">
-              {t("info_usage_description")}
+              {t("info_monthly_description")}
             </p>
             <ul className="text-sm text-muted-foreground space-y-1">
-              {tArray("info_usage_benefits").map((benefit, index) => (
+              {tArray("info_monthly_benefits").map((benefit, index) => (
                 <li key={index}>• {benefit}</li>
               ))}
             </ul>
@@ -42,9 +41,8 @@ export function InfoSidebar({ billingMode }: InfoSidebarProps) {
 
 
       <div
-        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 hidden md:block ${
-          billingMode === "yearly" ? "" : "!hidden"
-        }`}
+        className={`bg-card border border-border rounded-2xl p-6 shadow-lg transition-all duration-300 hidden md:block ${billingMode === "yearly" ? "" : "!hidden"
+          }`}
         data-testid="yearly-info-card"
       >
         <div className="flex items-start space-x-4">

@@ -9,7 +9,6 @@ export const translations = {
     hero_description: "Расширьте возможности отеля с помощью интеллектуальной автоматизации. Гибкие тарифы для любого размера собственности.",
 
     // Billing Toggle
-    billing_usage: "По факту",
     billing_monthly: "Ежемесячно",
     billing_yearly: "Ежегодно",
 
@@ -18,16 +17,19 @@ export const translations = {
     hotel_type_network: "Сеть отелей",
 
     // Pricing Plans
-    plan_basic_title: "BASIC",
-    plan_basic_description: "Базовый план для начинающих",
+    plan_basic_title: "CORE AI",
+    plan_basic_description: "Все что необходимо",
     plan_pro_title: "PRO",
     plan_pro_description: "Идеально для растущих отелей",
-    plan_premium_title: "PREMIUM",
+    plan_misterio_title: "MISTERIO+",
+    plan_misterio_description: "Воспользуйтесь уникальной системой персонализации как в Ritz-Carlton",
+    plan_premium_title: "ENTERPRISE",
     plan_premium_description: "Корпоративное решение",
     network_discount_badge: "-10% для сетей",
     first_month_free_title: "Первый месяц — бесплатно",
-    first_month_free_desc: "Использование любого из тарифов (кроме Премиум)",
+    first_month_free_desc: "Использование любого из тарифов (кроме Enterprise)",
     voice_agent_available: "Доступен голосовой агент",
+    online_meeting_available: "Онлайн-планёрка для сотрудников с AI",
 
     // Features
     feature_ai_help: "ИИ помощь гостям",
@@ -64,10 +66,6 @@ export const translations = {
     btn_subscribe: "Подписаться",
     btn_contact_telegram: "Помощь 24/7",
 
-    // Info Sidebar
-    info_usage_title: "Оплата за использование",
-    info_usage_description: "Платите только за то, что используете. Идеально для сезонных объектов или тестирования ИИ.",
-    info_usage_benefits: ["Без месячных обязательств", "Масштабирование по потребности", "Прозрачное ценообразование"],
 
     info_monthly_title: "Фиксированная помесячная оплата",
     info_monthly_description: "Предсказуемые расходы с неограниченным использованием. Лучше всего для объектов с высокой нагрузкой.",
@@ -146,9 +144,7 @@ export const translations = {
     costs_comparison: "Сравнение потерь",
     losses_without_ai: "Потери без ИИ",
 
-    // Mobile Info
     mobile_info_title: "Информация о биллинге",
-    mobile_usage_info: "Оплата за использование",
     mobile_monthly_info: "Фиксированная помесячная оплата",
     mobile_yearly_info: "Годовая оплата со скидкой",
 
@@ -208,21 +204,18 @@ export const translations = {
     calculation_additional: "Плюс экономия на комиссионных OTA и рост допродаж.",
 
     // Pricing Labels
-    addon_pricing_usage: "+0,5 центов/запрос",
     addon_pricing_logo_removal: "+1 цент/запрос",
     addon_pricing_messenger: "+1 цент/запрос",
     addon_pricing_whatsapp: "+1 цент/запрос",
     addon_pricing_instagram: "+1 цент/запрос",
     addon_pricing_telegram: "+1 цент/запрос",
     addon_pricing_included: "Включено",
-    price_7_cents: "5 центов =0.05$",
-    price_8_cents: "8 центов =0.08$",
-    price_35_cents: "20 центов =0.20$",
-    price_basic: "$99",
-    plan_basic_limits: "75 чатов ≈ 1500 сообщений ≈ 75 000 символов",
-    plan_basic_limits_array: ["1500 сообщений"],
+    price_basic: "$419",
+    plan_basic_limits: "4000 сообщений",
+    plan_basic_limits_array: ["4000 сообщений"],
     plan_basic_overage: "После: за каждые 1000 сообщений - 12$",
-    plan_pro_limits: "5000 сообщений",
+    plan_pro_limits: "7000 сообщений",
+    plan_misterio_limits_array: ["10 000 сообщений", "+500 сообщений в чате для сотрудников"],
     plan_premium_limits: "Безлимитное количество чатов и сообщений",
     plan_premium_limits_array: ["В рамках тарифа предусмотрен полный цикл консалтинговых и внедренческих услуг.", " ", "Условия и объем предоставляемых услуг рассчитываются индивидуально на основе описания и анализа бизнес-задач клиента.", " ", "Итоговое коммерческое предложение подготавливается после согласования требований и целей проекта."],
 
@@ -304,16 +297,19 @@ export const translations = {
     hotel_type_network: "Мережа готелів",
 
     // Pricing Plans
-    plan_basic_title: "BASIC",
-    plan_basic_description: "Базовий план для початківців",
+    plan_basic_title: "CORE AI",
+    plan_basic_description: "Все що необхідно",
     plan_pro_title: "PRO",
     plan_pro_description: "Ідеально для зростаючих готелів",
-    plan_premium_title: "PREMIUM",
+    plan_misterio_title: "MISTERIO+",
+    plan_misterio_description: "Скористайтеся унікальною системою персоналізації як у Ritz-Carlton",
+    plan_premium_title: "ENTERPRISE",
     plan_premium_description: "Корпоративне рішення",
     network_discount_badge: "-10% для мереж",
     first_month_free_title: "Перший місяць — безкоштовно",
     first_month_free_desc: "Використання будь-якого тарифу (крім Преміум)",
     voice_agent_available: "Доступний голосовий агент",
+    online_meeting_available: "Онлайн-планірка для співробітників з AI",
 
     // Features
     feature_ai_help: "ШІ допомога гостям",
@@ -504,11 +500,12 @@ export const translations = {
     price_7_cents: "5 центів =0.05$",
     price_8_cents: "8 центів =0.08$",
     price_35_cents: "20 центів =0.20$",
-    price_basic: "$99",
-    plan_basic_limits: "75 чатів ≈ 1500 повідомлень ≈ 75 000 символів",
-    plan_basic_limits_array: ["1500 повідомлень"],
+    price_basic: "$419",
+    plan_basic_limits: "4000 повідомлень",
+    plan_basic_limits_array: ["4000 повідомлень"],
     plan_basic_overage: "Після: за кожні 1000 повідомлень - 12$",
-    plan_pro_limits: "5000 повідомлень",
+    plan_pro_limits: "7000 повідомлень",
+    plan_misterio_limits_array: ["10 000 повідомлень", "+500 повідомлень у чаті для співробітників"],
     plan_premium_limits: "Безлімітна кількість чатів і повідомлень",
     plan_premium_limits_array: ["В рамках тарифу передбачено повний цикл консалтингових та впровадницьких послуг.", " ", "Умови та обсяг послуг, що надаються, розраховуються індивідуально на основі опису та аналізу бізнес-задач клієнта.", " ", "Підсумкова комерційна пропозиція готується після узгодження вимог і цілей проєкту."],
 
@@ -590,16 +587,19 @@ export const translations = {
     hotel_type_network: "Hotel chain",
 
     // Pricing Plans
-    plan_basic_title: "BASIC",
-    plan_basic_description: "Basic plan for beginners",
+    plan_basic_title: "CORE AI",
+    plan_basic_description: "Everything you need",
     plan_pro_title: "PRO",
     plan_pro_description: "Perfect for growing hotels",
-    plan_premium_title: "PREMIUM",
+    plan_misterio_title: "MISTERIO+",
+    plan_misterio_description: "Experience unique personalization like Ritz-Carlton",
+    plan_premium_title: "ENTERPRISE",
     plan_premium_description: "Enterprise solution",
     network_discount_badge: "-10% for chains",
     first_month_free_title: "First month — free",
-    first_month_free_desc: "Use of any plan (except Premium)",
+    first_month_free_desc: "Use of any plan (except Enterprise)",
     voice_agent_available: "Voice agent available",
+    online_meeting_available: "Online meeting for employees with AI",
 
     // Features
     feature_ai_help: "AI guest assistance",
@@ -790,11 +790,12 @@ export const translations = {
     price_7_cents: "5 cents =0.05$",
     price_8_cents: "8 cents =0.08$",
     price_35_cents: "20 cents =0.20$",
-    price_basic: "$99",
-    plan_basic_limits: "75 chats ≈ 1500 messages ≈ 75 000 characters",
-    plan_basic_limits_array: ["1500 messages"],
+    price_basic: "$419",
+    plan_basic_limits: "4000 messages",
+    plan_basic_limits_array: ["4000 messages"],
     plan_basic_overage: "After: for every 1000 messages - 12$",
-    plan_pro_limits: "5000 messages",
+    plan_pro_limits: "7000 messages",
+    plan_misterio_limits_array: ["10 000 messages", "+500 messages in employee chat"],
     plan_premium_limits: "Unlimited chats and messages",
     plan_premium_limits_array: ["The tariff includes a full cycle of consulting and implementation services.", " ", "The terms and scope of services are calculated individually based on the description and analysis of the client's business tasks.", " ", "The final commercial proposal is prepared after agreeing on the requirements and objectives of the project."],
 

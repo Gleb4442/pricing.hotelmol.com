@@ -150,13 +150,13 @@ export default function PricingPage() {
     window.open('https://t.me/hotelmolmanager', '_blank');
   };
 
-  // Calculate price with network discount (10% off for PRO and PREMIUM)
-  const getNetworkPrice = (basePrice: string): string => {
+  // Calculate price with network discount
+  const getNetworkPrice = (basePrice: string, discountRate: number): string => {
     if (hotelType === "single") return basePrice;
 
-    // Remove $ and commas, calculate 10% discount
+    // Remove $ and commas, calculate discount
     const numericPrice = parseFloat(basePrice.replace(/[$,]/g, ''));
-    const discountedPrice = Math.round(numericPrice * 0.9);
+    const discountedPrice = Math.round(numericPrice * (1 - discountRate));
 
     // Format with $ and commas if needed
     return discountedPrice >= 1000
@@ -174,26 +174,20 @@ export default function PricingPage() {
   ];
 
   const proFeatures = [
-    ...(billingMode === "usage" ? [{ text: t("feature_ai_help") }] : []),
     { text: t("feature_booking_automation") },
-    ...(billingMode === "usage" ? [{ text: t("feature_multilang") }] : []),
     { text: t("feature_analytics") },
     { text: t("feature_priority_support") },
-    ...(billingMode === "usage" ? [{ text: t("feature_pms_integration") }] : []),
-    ...(billingMode === "usage" ? [{ text: t("feature_unique_design") }] : []),
     {
       text: t("feature_remove_logo"),
       tooltip: t("tooltip_remove_logo"),
       addonPricing: { usage: t("addon_pricing_logo_removal"), monthly: "" },
     },
-    ...(billingMode !== "usage" ? [
-      { text: t("feature_google_reviews") },
-      { text: t("feature_guest_reviews") },
-      { text: t("feature_extended_kb") },
-    ] : []),
+    { text: t("feature_google_reviews") },
+    { text: t("feature_guest_reviews") },
+    { text: t("feature_extended_kb") },
     {
-      text: billingMode === "usage" ? t("feature_available_channels") : t("feature_communication_channels"),
-      tooltip: billingMode === "usage" ? undefined : t("tooltip_communication_channels"),
+      text: t("feature_communication_channels"),
+      tooltip: t("tooltip_communication_channels"),
       isChannels: true,
     },
   ];
@@ -359,26 +353,29 @@ export default function PricingPage() {
         </div>
 
         {/* Pricing Section */}
-        <div className="max-w-7xl mx-auto">
-          <div className={`grid gap-8 ${billingMode === "usage" ? "lg:grid-cols-1 max-w-md mx-auto" : "lg:grid-cols-3"}`}>
-            {/* BASIC Plan - только для monthly и yearly */}
-            {billingMode !== "usage" && (
-              <PricingCard
-                key={`basic-${hotelType}`}
-                plan="basic"
-                title={t("plan_basic_title")}
-                description={t("plan_basic_description")}
-                pricing={{
-                  usage: { current: t("price_basic") },
-                  monthly: { current: "$119" },
-                  yearly: { current: t("price_basic") },
-                }}
-                features={basicFeatures}
-                usageLimits={tArray("plan_basic_limits_array")}
-                billingMode={billingMode}
-                onSubscribe={() => handleSubscribe("basic")}
-              />
-            )}
+        <div className="max-w-screen-2xl mx-auto">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+            {/* CORE AI Plan (formerly BASIC) */}
+            <PricingCard
+              key={`basic-${hotelType}`}
+              plan="basic"
+              title={t("plan_basic_title")}
+              description={t("plan_basic_description")}
+              pricing={{
+                monthly: {
+                  current: getNetworkPrice("$499", 0.07),
+                  original: hotelType === "network" ? "$499" : undefined
+                },
+                yearly: {
+                  current: getNetworkPrice("$349", 0.07),
+                  original: hotelType === "network" ? "$349" : undefined
+                },
+              }}
+              features={basicFeatures}
+              usageLimits={tArray("plan_basic_limits_array")}
+              billingMode={billingMode}
+              onSubscribe={() => handleSubscribe("basic")}
+            />
 
             {/* PRO Plan */}
             <PricingCard
@@ -387,59 +384,73 @@ export default function PricingPage() {
               title={t("plan_pro_title")}
               description={t("plan_pro_description")}
               pricing={{
-                usage: { current: t("price_7_cents") },
                 monthly: {
-                  current: billingMode !== "usage"
-                    ? getNetworkPrice("$399")
-                    : getNetworkPrice("$399"),
-                  original: billingMode !== "usage"
-                    ? (hotelType === "network" ? "$399" : undefined)
-                    : (hotelType === "network" ? "$399" : undefined)
+                  current: getNetworkPrice("$599", 0.10),
+                  original: hotelType === "network" ? "$599" : undefined
                 },
                 yearly: {
-                  current: billingMode !== "usage"
-                    ? getNetworkPrice("$319")
-                    : getNetworkPrice("$319"),
-                  original: billingMode !== "usage"
-                    ? (hotelType === "network" ? "$319" : undefined)
-                    : (hotelType === "network" ? "$319" : undefined)
+                  current: getNetworkPrice("$419", 0.10),
+                  original: hotelType === "network" ? "$419" : undefined
                 },
               }}
               features={proFeatures}
-              usageLimits={billingMode !== "usage" ? [t("plan_pro_limits")] : undefined}
+              usageLimits={[t("plan_pro_limits")]}
               billingMode={billingMode}
-              isPopular={true}
+              isPopular={false}
               onSubscribe={() => handleSubscribe("pro")}
             />
 
-            {/* PREMIUM Plan - только для monthly и yearly */}
-            {billingMode !== "usage" && (
-              <PricingCard
-                key={`premium-${hotelType}`}
-                plan="premium"
-                title={t("plan_premium_title")}
-                description={t("plan_premium_description")}
-                pricing={{
-                  usage: { current: t("price_35_cents") },
-                  monthly: {
-                    current: "$1,249"
-                  },
-                  yearly: {
-                    current: "$999"
-                  },
-                }}
-                features={premiumFeatures}
-                usageLimits={tArray("plan_premium_limits_array")}
-                billingMode={billingMode}
-                onSubscribe={() => handleSubscribe("premium")}
-              />
-            )}
+            {/* MISTERIO+ Plan */}
+            <PricingCard
+              key={`misterio-${hotelType}`}
+              plan="misterio"
+              title={t("plan_misterio_title")}
+              description={t("plan_misterio_description")}
+              pricing={{
+                monthly: {
+                  current: getNetworkPrice("$899", 0.15),
+                  original: hotelType === "network" ? "$899" : undefined
+                },
+                yearly: {
+                  current: getNetworkPrice("$629", 0.15),
+                  original: hotelType === "network" ? "$629" : undefined
+                },
+              }}
+              features={[
+                { text: t("feature_all_pro") },
+                { text: t("feature_unique_design") },
+                { text: t("feature_ai_training") },
+              ]}
+              usageLimits={tArray("plan_misterio_limits_array")}
+              billingMode={billingMode}
+              isPopular={true}
+              onSubscribe={() => handleSubscribe("misterio")}
+            />
 
+            {/* ENTERPRISE Plan (formerly PREMIUM) */}
+            <PricingCard
+              key={`premium-${hotelType}`}
+              plan="premium"
+              title={t("plan_premium_title")}
+              description={t("plan_premium_description")}
+              pricing={{
+                monthly: {
+                  current: "$1,499"
+                },
+                yearly: {
+                  current: "$1,049"
+                },
+              }}
+              features={premiumFeatures}
+              usageLimits={tArray("plan_premium_limits_array")}
+              billingMode={billingMode}
+              onSubscribe={() => handleSubscribe("premium")}
+            />
           </div>
         </div>
 
         {/* Benefits Section */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        < div className="mt-16 max-w-4xl mx-auto" >
           <div className="bg-[#f0f5fa] dark:bg-[#306BA1]/20 rounded-2xl p-8 shadow-lg" data-testid="benefits-block">
             <h5 className="text-lg font-medium text-[#254d7a] dark:text-[#7ca3c8] mb-6 text-center">{t('your_benefits')}</h5>
             <Accordion type="multiple" className="w-full space-y-3">
@@ -468,15 +479,15 @@ export default function PricingPage() {
               ))}
             </Accordion>
           </div>
-        </div>
+        </div >
 
         {/* Savings Calculator */}
-        <div className="mt-16 max-w-4xl mx-auto">
+        < div className="mt-16 max-w-4xl mx-auto" >
           <SavingsCalculator onModalToggle={setIsCalculatorOpen} />
-        </div>
+        </div >
 
         {/* Mobile Responsive Accordion */}
-        <div className="lg:hidden mt-12">
+        < div className="lg:hidden mt-12" >
           <div className="bg-card border border-border rounded-2xl p-6 shadow-lg">
             <Collapsible open={mobileInfoOpen} onOpenChange={setMobileInfoOpen}>
               <CollapsibleTrigger asChild>
@@ -493,20 +504,6 @@ export default function PricingPage() {
                 </Button>
               </CollapsibleTrigger>
               <CollapsibleContent className="mt-4 space-y-4">
-                <div
-                  className={`${billingMode === "usage" ? "block" : "hidden"}`}
-                  data-testid="mobile-usage-info"
-                >
-                  <h5 className="font-medium text-foreground mb-2">{t("mobile_usage_info")}</h5>
-                  <p className="text-muted-foreground text-sm mb-2">
-                    {t("info_usage_description")}
-                  </p>
-                  <ul className="text-sm text-muted-foreground space-y-1">
-                    {tArray("info_usage_benefits").map((benefit, index) => (
-                      <li key={index}>• {benefit}</li>
-                    ))}
-                  </ul>
-                </div>
                 <div
                   className={`${billingMode === "monthly" ? "block" : "hidden"}`}
                   data-testid="mobile-monthly-info"
@@ -538,10 +535,10 @@ export default function PricingPage() {
               </CollapsibleContent>
             </Collapsible>
           </div>
-        </div>
+        </div >
 
         {/* FAQ Section */}
-        <div className="mt-20">
+        < div className="mt-20" >
           <h2 className="text-3xl font-bold text-center text-foreground mb-12">
             {t("faq_title")}
           </h2>
@@ -584,11 +581,11 @@ export default function PricingPage() {
               </AccordionItem>
             </Accordion>
           </div>
-        </div>
-      </main>
+        </div >
+      </main >
 
       {/* Demo Buttons */}
-      <div className="py-8 px-4 text-center md:py-16">
+      < div className="py-8 px-4 text-center md:py-16" >
         <div className="flex justify-center">
           {/* Demo Button */}
           <a
@@ -602,10 +599,10 @@ export default function PricingPage() {
             <span className="text-base sm:text-lg font-semibold opacity-90 whitespace-nowrap mt-1">{t("no_registration")}</span>
           </a>
         </div>
-      </div>
+      </div >
 
       {/* Footer */}
-      <footer className="border-t border-[#7ca3c8] bg-gradient-to-br from-[#254d7a] via-[#1e4473] to-[#152a42] mt-20 shadow-2xl shadow-[#306BA1]/20">
+      < footer className="border-t border-[#7ca3c8] bg-gradient-to-br from-[#254d7a] via-[#1e4473] to-[#152a42] mt-20 shadow-2xl shadow-[#306BA1]/20" >
         <div className="container mx-auto px-4 py-12">
           <div className="text-center">
             <div className="flex items-center justify-center mb-4">
@@ -621,49 +618,51 @@ export default function PricingPage() {
             </p>
           </div>
         </div>
-      </footer>
+      </footer >
 
       {/* Mobile Hotel Type Toggle */}
-      {!isCalculatorOpen && (
-        <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
-          <button
-            onClick={() => hotelType === "network" && toggleHotelType()}
-            className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "single"
-              ? "text-white"
-              : "text-[#a8c5e0] hover:text-white"
-              }`}
-            data-testid="mobile-hotel-type-single"
-          >
-            {hotelType === "single" && (
-              <motion.div
-                layoutId="active-hotel-type-mobile"
-                className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            <span className="relative z-10">{t("hotel_type_single")}</span>
-          </button>
-          <button
-            onClick={() => hotelType === "single" && toggleHotelType()}
-            className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "network"
-              ? "text-white"
-              : "text-[#a8c5e0] hover:text-white"
-              }`}
-            data-testid="mobile-hotel-type-network"
-          >
-            {hotelType === "network" && (
-              <motion.div
-                layoutId="active-hotel-type-mobile"
-                className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
-                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-              />
-            )}
-            <span className="relative z-10">{t("hotel_type_network")}</span>
-          </button>
-        </div>
-      )}
+      {
+        !isCalculatorOpen && (
+          <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
+            <button
+              onClick={() => hotelType === "network" && toggleHotelType()}
+              className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "single"
+                ? "text-white"
+                : "text-[#a8c5e0] hover:text-white"
+                }`}
+              data-testid="mobile-hotel-type-single"
+            >
+              {hotelType === "single" && (
+                <motion.div
+                  layoutId="active-hotel-type-mobile"
+                  className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className="relative z-10">{t("hotel_type_single")}</span>
+            </button>
+            <button
+              onClick={() => hotelType === "single" && toggleHotelType()}
+              className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "network"
+                ? "text-white"
+                : "text-[#a8c5e0] hover:text-white"
+                }`}
+              data-testid="mobile-hotel-type-network"
+            >
+              {hotelType === "network" && (
+                <motion.div
+                  layoutId="active-hotel-type-mobile"
+                  className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                />
+              )}
+              <span className="relative z-10">{t("hotel_type_network")}</span>
+            </button>
+          </div>
+        )
+      }
 
       <ContactWidget hiddenOnMobile={isCalculatorOpen} />
-    </div>
+    </div >
   );
 }

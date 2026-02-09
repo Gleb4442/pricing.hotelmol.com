@@ -18,24 +18,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
       >
-        <motion.button
-          data-testid="billing-usage-button"
-          onClick={() => onBillingModeChange("usage")}
-          className={`relative z-10 px-4 sm:px-8 py-3 rounded-full text-xs sm:text-lg font-bold transition-colors duration-200 whitespace-nowrap ${billingMode === "usage"
-            ? "text-primary"
-            : "text-muted-foreground hover:text-foreground"
-            }`}
-          whileTap={{ scale: 0.98 }}
-        >
-          {billingMode === "usage" && (
-            <motion.div
-              layoutId="active-billing-indicator"
-              className="absolute inset-0 bg-white dark:bg-gray-700 rounded-full shadow-md -z-10"
-              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-            />
-          )}
-          {t("billing_usage")}
-        </motion.button>
+
 
         <motion.button
           data-testid="billing-monthly-button"
