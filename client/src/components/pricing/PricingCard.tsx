@@ -72,7 +72,8 @@ interface PricingCardProps {
   features: PricingFeature[];
   usageLimits?: string[];
   billingMode: BillingMode;
-  isPopular?: boolean;
+  highlight?: "popular" | "best-value";
+  discountBadgeText?: string;
   onSubscribe: () => void;
 }
 
@@ -84,7 +85,8 @@ export function PricingCard({
   features,
   usageLimits,
   billingMode,
-  isPopular = false,
+  highlight,
+  discountBadgeText,
   onSubscribe,
 }: PricingCardProps) {
   const { t } = useLanguage();
@@ -122,18 +124,29 @@ export function PricingCard({
   } : { current: calculatePrice() };
 
   return (
-    <div className="relative pt-6">
-      {/* Most Popular Badge */}
-      {isPopular && (
-        <div className="most-popular-badge" data-testid="most-popular-badge">
-          MOST POPULAR
+    <div className="relative pt-6 h-full flex flex-col">
+      {/* Highlight Badge */}
+      {highlight === "popular" && (
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+          <span className="bg-[#306BA1] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md whitespace-nowrap border border-[#306BA1]">
+            {t("label_most_popular")}
+          </span>
+        </div>
+      )}
+      {highlight === "best-value" && (
+        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
+          <span className="bg-[#FFD700] text-[#8B7500] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md whitespace-nowrap border border-[#FFD700]">
+            {t("label_best_value")}
+          </span>
         </div>
       )}
 
-
       <div
-
-        className={`bg-card border rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 h-full flex flex-col ${isPopular ? "pricing-card-pro" : "border-border"
+        className={`bg-card border-2 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col h-full relative ${highlight === "popular"
+          ? "border-[#306BA1] mt-4"
+          : highlight === "best-value"
+            ? "border-[#FFD700] mt-4"
+            : "border-border mt-0"
           }`}
         data-testid={`pricing-card-${plan}`}
       >
@@ -143,7 +156,7 @@ export function PricingCard({
               <h3 className="text-2xl font-bold text-foreground">{title}</h3>
               {currentPricing.original && (
                 <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md" data-testid="network-discount-badge">
-                  {t("network_discount_badge")}
+                  {discountBadgeText || t("network_discount_badge")}
                 </span>
               )}
             </div>
@@ -159,7 +172,7 @@ export function PricingCard({
                 </span>
               )}
               <span
-                className={`text-4xl font-bold ${isPopular ? "text-primary" : "text-foreground"
+                className={`text-4xl font-bold ${highlight === "popular" ? "text-primary" : "text-foreground"
                   }`}
                 data-testid={`${plan}-price-${billingMode}`}
               >
@@ -405,9 +418,11 @@ export function PricingCard({
 
         <Button
           onClick={onSubscribe}
-          className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${isPopular
-            ? "bg-[#306BA1] text-white hover:bg-[#254d7a] shadow-2xl py-6 text-lg font-bold hover:shadow-[#306BA1]/25 hover:shadow-2xl"
-            : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
+          className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${highlight === "popular"
+              ? "bg-[#306BA1] text-white hover:bg-[#254d7a] shadow-2xl py-6 text-lg font-bold hover:shadow-[#306BA1]/25 hover:shadow-2xl"
+              : highlight === "best-value"
+                ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-2xl py-6 text-lg font-bold hover:shadow-[#FFD700]/25 hover:shadow-2xl"
+                : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
             }`}
           data-testid={`subscribe-button-${plan}`}
         >

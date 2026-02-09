@@ -375,6 +375,7 @@ export default function PricingPage() {
               usageLimits={tArray("plan_basic_limits_array")}
               billingMode={billingMode}
               onSubscribe={() => handleSubscribe("basic")}
+              discountBadgeText={t("network_discount_7")}
             />
 
             {/* PRO Plan */}
@@ -396,7 +397,8 @@ export default function PricingPage() {
               features={proFeatures}
               usageLimits={[t("plan_pro_limits")]}
               billingMode={billingMode}
-              isPopular={false}
+              highlight="popular"
+              discountBadgeText={t("network_discount_10")}
               onSubscribe={() => handleSubscribe("pro")}
             />
 
@@ -423,7 +425,8 @@ export default function PricingPage() {
               ]}
               usageLimits={tArray("plan_misterio_limits_array")}
               billingMode={billingMode}
-              isPopular={true}
+              highlight="best-value"
+              discountBadgeText={t("network_discount_15")}
               onSubscribe={() => handleSubscribe("misterio")}
             />
 
