@@ -147,7 +147,7 @@ export function PricingCard({
             </span>
           </div>
           {highlight === "popular" && (
-            <div className="bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full border border-black/5 shadow-sm">
+            <div className="bg-white/80 backdrop-blur-sm px-2 py-1 rounded-full border border-black/5 shadow-sm flex items-center">
               <span className="text-[9px] font-bold text-slate-800 uppercase tracking-tight">AI Powered</span>
             </div>
           )}
@@ -200,7 +200,10 @@ export function PricingCard({
               >
                 <motion.div
                   whileHover={{ scale: 1.02 }}
-                  className="relative overflow-hidden rounded-xl border-2 border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent p-4"
+                  className={`relative overflow-hidden rounded-xl border-2 p-4 ${plan === "misterio"
+                      ? "border-[#FFD700]/30 bg-gradient-to-br from-[#FFD700]/10 to-[#FDB931]/10"
+                      : "border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent"
+                    }`}
                 >
                   <motion.div
                     animate={{
@@ -211,7 +214,10 @@ export function PricingCard({
                       repeat: Infinity,
                       ease: "linear",
                     }}
-                    className="absolute inset-0 opacity-10 bg-gradient-to-r from-transparent via-[#306BA1] to-transparent bg-[length:200%_100%]"
+                    className={`absolute inset-0 opacity-10 bg-[length:200%_100%] ${plan === "misterio"
+                        ? "bg-gradient-to-r from-transparent via-[#FFD700] to-transparent"
+                        : "bg-gradient-to-r from-transparent via-[#306BA1] to-transparent"
+                      }`}
                   />
                   <div className="relative flex items-center gap-3">
                     <motion.div
@@ -226,7 +232,8 @@ export function PricingCard({
                       🎁
                     </motion.div>
                     <div className="flex-1 text-left">
-                      <h4 className="font-bold text-[#306BA1] text-sm leading-tight uppercase tracking-wide">
+                      <h4 className={`font-bold text-sm leading-tight uppercase tracking-wide ${plan === "misterio" ? "text-[#8B7500] dark:text-[#FFD700]" : "text-[#306BA1]"
+                        }`}>
                         {t('first_month_free_title')}
                       </h4>
                     </div>
@@ -425,10 +432,10 @@ export function PricingCard({
         <Button
           onClick={onSubscribe}
           className={`w-full py-4 rounded-3xl font-black uppercase tracking-normal transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg ${highlight === "popular"
-              ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-6 text-base"
-              : highlight === "best-value"
-                ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-[#FFD700]/25 py-6 text-base"
-                : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border py-6"
+            ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-6 text-base"
+            : highlight === "best-value"
+              ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-[#FFD700]/25 py-6 text-base"
+              : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border py-6"
             }`}
           data-testid={`subscribe-button-${plan}`}
         >
