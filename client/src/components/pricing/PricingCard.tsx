@@ -136,9 +136,9 @@ export function PricingCard({
       {/* Integrated Header for Highlighted Plans */}
       {highlight && (
         <div
-          className={`absolute -top-4 left-1/2 -translate-x-1/2 z-20 py-2 px-6 flex items-center gap-3 rounded-full shadow-xl whitespace-nowrap border-2 ${highlight === "popular"
-              ? "bg-[#BEF264] border-[#BEF264] text-slate-900"
-              : "bg-[#FFD700] border-[#FFD700] text-[#8B7500]"
+          className={`absolute -top-6 left-1/2 -translate-x-1/2 z-20 py-2.5 px-6 flex items-center gap-3 rounded-full whitespace-nowrap border-4 ${highlight === "popular"
+            ? "bg-[#BEF264] border-[#BEF264] text-slate-900"
+            : "bg-[#FFD700] border-[#FFD700] text-[#8B7500]"
             }`}
         >
           <div className="flex items-center gap-2">
