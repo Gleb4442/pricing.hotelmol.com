@@ -136,7 +136,7 @@ export function PricingCard({
       {/* Integrated Header for Highlighted Plans */}
       {highlight && (
         <div
-          className={`py-3 px-6 flex items-center justify-between ${highlight === "popular" ? "bg-[#BEF264]" : "bg-[#FFD700]"
+          className={`absolute top-0 left-0 right-0 z-10 py-3 px-6 flex items-center justify-between ${highlight === "popular" ? "bg-[#BEF264]" : "bg-[#FFD700]"
             }`}
         >
           <div className="flex items-center gap-2">
@@ -154,7 +154,7 @@ export function PricingCard({
         </div>
       )}
 
-      <div className={`p-6 sm:p-8 flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
+      <div className={`p-6 sm:p-8 pt-[4.5rem] sm:pt-[5rem] flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
         <div className="flex-1 flex flex-col">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
