@@ -65,10 +65,10 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
             opacity: billingMode === "yearly" ? 1 : 0.4,
             scale: billingMode === "yearly" ? 1.05 : 1,
             backgroundColor: billingMode === "yearly"
-              ? "rgba(34, 197, 94, 0.15)"
-              : "rgba(34, 197, 94, 0.05)",
+              ? "rgb(34, 197, 94)"
+              : "rgba(34, 197, 94, 0.1)",
             borderColor: billingMode === "yearly"
-              ? "rgba(34, 197, 94, 0.4)"
+              ? "rgb(22, 163, 74)"
               : "rgba(34, 197, 94, 0.2)",
             filter: billingMode === "yearly" ? "saturate(1.2) brightness(1.1)" : "saturate(0.5) brightness(0.9)",
           }}
@@ -87,9 +87,8 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
             />
           )}
 
-          <span className={`text-[10px] sm:text-xs font-black uppercase tracking-tighter whitespace-nowrap flex items-center gap-1 ${billingMode === "yearly" ? "text-green-600 dark:text-green-400" : "text-green-700/70 dark:text-green-500/70"
+          <span className={`text-[10px] sm:text-xs font-black uppercase tracking-tight whitespace-nowrap flex items-center gap-1 ${billingMode === "yearly" ? "text-white" : "text-green-700/70"
             }`}>
-            <span className="text-sm sm:text-base">🔥</span>
             30% OFF
           </span>
         </motion.div>
