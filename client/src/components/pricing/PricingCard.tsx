@@ -424,11 +424,11 @@ export function PricingCard({
 
         <Button
           onClick={onSubscribe}
-          className={`w-full py-4 rounded-3xl font-black uppercase tracking-widest transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg ${highlight === "popular"
-            ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-7 text-lg"
-            : highlight === "best-value"
-              ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-[#FFD700]/25 py-7 text-lg"
-              : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border py-6"
+          className={`w-full py-4 rounded-3xl font-black uppercase tracking-normal transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg ${highlight === "popular"
+              ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-6 text-base"
+              : highlight === "best-value"
+                ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-[#FFD700]/25 py-6 text-base"
+                : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border py-6"
             }`}
           data-testid={`subscribe-button-${plan}`}
         >
