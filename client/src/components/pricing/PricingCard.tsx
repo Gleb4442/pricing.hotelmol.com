@@ -124,32 +124,37 @@ export function PricingCard({
   } : { current: calculatePrice() };
 
   return (
-    <div className="relative pt-6 h-full flex flex-col">
-      {/* Highlight Badge */}
-      {highlight === "popular" && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-          <span className="bg-[#306BA1] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md whitespace-nowrap border border-[#306BA1]">
-            {t("label_most_popular")}
-          </span>
-        </div>
-      )}
-      {highlight === "best-value" && (
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-10">
-          <span className="bg-[#FFD700] text-[#8B7500] text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider shadow-md whitespace-nowrap border border-[#FFD700]">
-            {t("label_best_value")}
-          </span>
+    <div
+      className={`group relative h-full flex flex-col border-4 rounded-[2.5rem] overflow-hidden transition-all duration-300 shadow-xl hover:shadow-2xl ${highlight === "popular"
+        ? "border-[#BEF264] bg-[#0A1A0A]"
+        : highlight === "best-value"
+          ? "border-[#FFD700] bg-card"
+          : "border-border bg-card"
+        }`}
+      data-testid={`pricing-card-${plan}`}
+    >
+      {/* Integrated Header for Highlighted Plans */}
+      {highlight && (
+        <div
+          className={`py-3 px-6 flex items-center justify-between ${highlight === "popular" ? "bg-[#BEF264]" : "bg-[#FFD700]"
+            }`}
+        >
+          <div className="flex items-center gap-2">
+            {highlight === "popular" && <div className="w-2 h-2 rounded-full bg-slate-900 animate-pulse" />}
+            <span className={`text-[10px] sm:text-xs font-black uppercase tracking-[0.15em] ${highlight === "popular" ? "text-slate-900" : "text-[#8B7500]"
+              }`}>
+              {highlight === "popular" ? t("label_most_popular") : t("label_best_value")}
+            </span>
+          </div>
+          {highlight === "popular" && (
+            <div className="bg-white/80 backdrop-blur-sm px-2 py-0.5 rounded-full border border-black/5 shadow-sm">
+              <span className="text-[9px] font-bold text-slate-800 uppercase tracking-tight">AI Powered</span>
+            </div>
+          )}
         </div>
       )}
 
-      <div
-        className={`bg-card border-2 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 flex flex-col h-full relative ${highlight === "popular"
-          ? "border-[#306BA1] mt-4"
-          : highlight === "best-value"
-            ? "border-[#FFD700] mt-4"
-            : "border-border mt-0"
-          }`}
-        data-testid={`pricing-card-${plan}`}
-      >
+      <div className={`p-6 sm:p-8 flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
         <div className="flex-1 flex flex-col">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
@@ -366,7 +371,7 @@ export function PricingCard({
           <div className="space-y-3 mb-8 px-2">
             {features.map((feature, index) => (
               <div key={index} className="flex items-start space-x-2 relative">
-                <Check className="text-primary w-4 h-4 flex-shrink-0 mt-0.5" />
+                <Check className={`${highlight === "popular" ? "text-[#BEF264]" : "text-primary"} w-4 h-4 flex-shrink-0 mt-0.5`} />
                 <div className="flex-1 min-w-0">
                   <div className="flex items-center space-x-3">
                     <div className="flex items-center space-x-1">
@@ -402,7 +407,10 @@ export function PricingCard({
                     <div className="flex items-center space-x-2 mt-1">
                       {feature.addonPricing.monthly && (
                         <span
-                          className="text-green-600 text-xs font-medium bg-green-50 px-2 py-0.5 rounded-md"
+                          className={`text-xs font-bold px-2 py-0.5 rounded-md ${highlight === "popular"
+                              ? "text-[#BEF264] bg-[#BEF264]/10"
+                              : "text-green-600 bg-green-50"
+                            }`}
                           data-testid={`addon-included-${index}`}
                         >
                           {t('included')}
@@ -418,11 +426,11 @@ export function PricingCard({
 
         <Button
           onClick={onSubscribe}
-          className={`w-full py-4 rounded-xl font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg ${highlight === "popular"
-              ? "bg-[#306BA1] text-white hover:bg-[#254d7a] shadow-2xl py-6 text-lg font-bold hover:shadow-[#306BA1]/25 hover:shadow-2xl"
+          className={`w-full py-4 rounded-3xl font-black uppercase tracking-widest transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg ${highlight === "popular"
+              ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-7 text-lg"
               : highlight === "best-value"
-                ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-2xl py-6 text-lg font-bold hover:shadow-[#FFD700]/25 hover:shadow-2xl"
-                : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border"
+                ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-[#FFD700]/25 py-7 text-lg"
+                : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border py-6"
             }`}
           data-testid={`subscribe-button-${plan}`}
         >
