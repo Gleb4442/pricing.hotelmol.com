@@ -77,8 +77,8 @@ export const translations = {
     info_monthly_benefits: ["Неограниченные запросы", "Предсказуемость бюджета", "Максимальная экономия при масштабе"],
 
     info_yearly_title: "Годовая оплата со скидкой",
-    info_yearly_description: "Максимальная экономия до 20% при оплате за год вперед. Идеально для долгосрочного планирования.",
-    info_yearly_benefits: ["Скидка до 20%", "Приоритетная поддержка", "Неограниченные запросы", "Стабильность цен на год"],
+    info_yearly_description: "Максимальная экономия до 30% при оплате за год вперед. Идеально для долгосрочного планирования.",
+    info_yearly_benefits: ["Скидка до 30%", "Приоритетная поддержка", "Неограниченные запросы", "Стабильность цен на год"],
 
     // Calculator
     calculator_title: "Сколько вы сэкономите с Roomie?",
@@ -176,7 +176,7 @@ export const translations = {
     advanced_settings: "Расширенные настройки",
     currency_label: "Валюта",
     data_saved: "Данные сохранены на этом устройстве",
-    yearly_savings: "Экономия до 20% при годовой оплате",
+    yearly_savings: "Экономия до 30% при годовой оплате",
 
     // Trust Indicators
     requests_handled: "запросов обработанных без участия ресепшн",
@@ -366,8 +366,8 @@ export const translations = {
     info_monthly_benefits: ["Необмежені запити", "Передбачуваність бюджету", "Максимальна економія при масштабі"],
 
     info_yearly_title: "Річна оплата зі знижкою",
-    info_yearly_description: "Максимальна економія до 20% при оплаті за рік наперед. Ідеально для довгострокового планування.",
-    info_yearly_benefits: ["Знижка до 20%", "Пріоритетна підтримка", "Необмежені запити", "Стабільність цін на рік"],
+    info_yearly_description: "Максимальна економія до 30% при оплаті за рік наперед. Ідеально для довгострокового планування.",
+    info_yearly_benefits: ["Знижка до 30%", "Пріоритетна підтримка", "Необмежені запити", "Стабільність цін на рік"],
 
     // Calculator
     calculator_title: "Калькулятор доходності",
@@ -467,7 +467,7 @@ export const translations = {
     advanced_settings: "Розширені налаштування",
     currency_label: "Валюта",
     data_saved: "Дані збережені на цьому пристрої",
-    yearly_savings: "Економія до 20% при річній оплаті",
+    yearly_savings: "Економія до 30% при річній оплаті",
 
     // Trust Indicators
     requests_handled: "запитів оброблено без участі ресепшен",
@@ -661,8 +661,8 @@ export const translations = {
     info_monthly_benefits: ["Unlimited requests", "Budget predictability", "Maximum savings at scale"],
 
     info_yearly_title: "Annual payment with discount",
-    info_yearly_description: "Maximum savings up to 20% when paying a year in advance. Perfect for long-term planning.",
-    info_yearly_benefits: ["Up to 20% discount", "Priority support", "Unlimited requests", "Price stability for a year"],
+    info_yearly_description: "Maximum savings up to 30% when paying a year in advance. Perfect for long-term planning.",
+    info_yearly_benefits: ["Up to 30% discount", "Priority support", "Unlimited requests", "Price stability for a year"],
 
     // Calculator
     calculator_title: "How much will you save with Roomie?",
@@ -762,7 +762,7 @@ export const translations = {
     advanced_settings: "Advanced settings",
     currency_label: "Currency",
     data_saved: "Data saved on this device",
-    yearly_savings: "Save up to 20% with annual payment",
+    yearly_savings: "Save up to 30% with annual payment",
 
     // Trust Indicators
     requests_handled: "requests handled without reception staff",
@@ -947,8 +947,8 @@ export const translations = {
     info_monthly_benefits: ["Nieograniczone zapytania", "Przewidywalność budżetu", "Maksymalne oszczędności przy skali"],
 
     info_yearly_title: "Płatność roczna ze zniżką",
-    info_yearly_description: "Maksymalne oszczędności do 20% przy płatności z góry za rok. Idealne do planowania długoterminowego.",
-    info_yearly_benefits: ["Do 20% zniżki", "Wsparcie priorytetowe", "Nieograniczone zapytania", "Stabilność cen przez rok"],
+    info_yearly_description: "Maksymalne oszczędności do 30% przy płatności z góry za rok. Idealne do planowania długoterminowego.",
+    info_yearly_benefits: ["Do 30% zniżki", "Wsparcie priorytetowe", "Nieograniczone zapytania", "Stabilność cen przez rok"],
 
     // Calculator
     calculator_title: "Ile zaoszczędzisz z Roomie?",
@@ -1048,7 +1048,7 @@ export const translations = {
     advanced_settings: "Ustawienia zaawansowane",
     currency_label: "Waluta",
     data_saved: "Dane zapisane na tym urządzeniu",
-    yearly_savings: "Zaoszczędź do 20% przy płatności rocznej",
+    yearly_savings: "Zaoszczędź do 30% przy płatności rocznej",
 
     // Trust Indicators
     requests_handled: "zapytań obsłużonych bez personelu recepcji",
