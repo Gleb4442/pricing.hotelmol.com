@@ -1,4 +1,4 @@
-import { Check, Info, Plus } from "lucide-react";
+import { Check, Info, Plus, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { BillingMode } from "@/hooks/use-billing-mode";
@@ -301,52 +301,50 @@ export function PricingCard({
                   animate={{ opacity: 1, scale: 1 }}
                   whileHover={{ scale: 1.02 }}
                   transition={{ duration: 0.4 }}
-                  className="relative overflow-hidden rounded-xl border border-[#306BA1]/20 bg-gradient-to-r from-[#306BA1]/10 to-cyan-500/10 p-3 mt-3"
+                  className="relative overflow-hidden rounded-xl border border-[#FFD700]/30 bg-gradient-to-r from-[#FFD700]/10 to-[#FDB931]/10 p-3 mt-3"
                 >
                   {/* Pulse Animation Background */}
                   <motion.div
-                    className="absolute inset-0 bg-[#306BA1]/5"
+                    className="absolute inset-0 bg-[#FFD700]/5"
                     animate={{ opacity: [0.3, 0.6, 0.3] }}
                     transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
                   />
 
                   <div className="relative flex items-center gap-3">
-                    <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-slate-900 to-[#306BA1]/40 shadow-lg ring-1 ring-white/20 overflow-hidden">
-                      {/* Talking State Animation */}
+                    <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-b from-slate-900 to-[#FFD700]/40 shadow-lg ring-1 ring-white/20 overflow-hidden">
+                      {/* Calendar Animation Container */}
                       <motion.div
-                        className="absolute inset-0 bg-gradient-to-t from-[#306BA1]/40 via-cyan-400/20 to-transparent rounded-full"
-                        animate={{ opacity: [0.3, 0.7, 0.3] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                      />
-                      {/* Ripple Effect */}
-                      <motion.div
-                        className="absolute w-full h-full rounded-full border border-cyan-400/30"
-                        animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-                        transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
-                      />
-                      {/* Core Speaking Orb */}
-                      <motion.div
-                        className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                        className="p-1.5"
                         animate={{
-                          scale: [1, 1.2, 0.9, 1.1, 1],
-                          opacity: [0.9, 1, 0.9],
-                          boxShadow: [
-                            "0 0 10px rgba(255,255,255,0.5)",
-                            "0 0 25px rgba(255,255,255,0.9)",
-                            "0 0 10px rgba(255,255,255,0.5)"
-                          ]
+                          rotateY: [0, 180, 360],
+                          scale: [1, 1.1, 1]
                         }}
                         transition={{
-                          duration: 1.2,
+                          duration: 3,
                           repeat: Infinity,
-                          ease: "easeInOut",
-                          times: [0, 0.25, 0.5, 0.75, 1]
+                          ease: "easeInOut"
+                        }}
+                      >
+                        <Calendar className="w-6 h-6 text-[#FFD700]" strokeWidth={2.5} />
+                      </motion.div>
+
+                      {/* Floating Particles/Pages */}
+                      <motion.div
+                        className="absolute w-full h-0.5 bg-[#FFD700]/40"
+                        animate={{
+                          top: ["20%", "80%", "20%"],
+                          opacity: [0, 1, 0]
+                        }}
+                        transition={{
+                          duration: 1.5,
+                          repeat: Infinity,
+                          ease: "linear"
                         }}
                       />
                     </div>
 
                     <div className="flex-1">
-                      <h4 className="font-bold text-[#306BA1] dark:text-cyan-300 text-sm leading-tight">
+                      <h4 className="font-bold text-[#8B7500] dark:text-[#FFD700] text-sm leading-tight">
                         {t('online_meeting_available')}
                       </h4>
                     </div>
@@ -408,8 +406,8 @@ export function PricingCard({
                       {feature.addonPricing.monthly && (
                         <span
                           className={`text-xs font-bold px-2 py-0.5 rounded-md ${highlight === "popular"
-                              ? "text-[#BEF264] bg-[#BEF264]/10"
-                              : "text-green-600 bg-green-50"
+                            ? "text-[#BEF264] bg-[#BEF264]/10"
+                            : "text-green-600 bg-green-50"
                             }`}
                           data-testid={`addon-included-${index}`}
                         >
@@ -427,10 +425,10 @@ export function PricingCard({
         <Button
           onClick={onSubscribe}
           className={`w-full py-4 rounded-3xl font-black uppercase tracking-widest transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg ${highlight === "popular"
-              ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-7 text-lg"
-              : highlight === "best-value"
-                ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-[#FFD700]/25 py-7 text-lg"
-                : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border py-6"
+            ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-7 text-lg"
+            : highlight === "best-value"
+              ? "bg-gradient-to-r from-[#FFD700] to-[#FDB931] text-white hover:from-[#E6C200] hover:to-[#E5A82D] shadow-[#FFD700]/25 py-7 text-lg"
+              : "bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-border py-6"
             }`}
           data-testid={`subscribe-button-${plan}`}
         >
