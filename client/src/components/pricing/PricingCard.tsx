@@ -125,7 +125,7 @@ export function PricingCard({
 
   return (
     <div
-      className={`group relative h-full flex flex-col border-4 rounded-[2.5rem] transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden ${highlight === "popular"
+      className={`group relative h-full flex flex-col border-4 rounded-[2.5rem] transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden ${!highlight ? "mt-[60px]" : ""} ${highlight === "popular"
         ? "border-[#BEF264] bg-[#0A1A0A]"
         : highlight === "best-value"
           ? "border-[#FFD700] bg-card"
@@ -136,7 +136,7 @@ export function PricingCard({
       {/* Integrated Header for Highlighted Plans */}
       {highlight && (
         <div
-          className={`w-full py-4 px-6 flex items-center justify-center gap-3 shadow-md border-b-2 ${highlight === "popular"
+          className={`w-full h-[60px] px-6 flex items-center justify-center gap-3 shadow-md border-b-2 ${highlight === "popular"
             ? "bg-[#BEF264] border-[#BEF264]/20 text-slate-900 font-black"
             : "bg-[#FFD700] border-[#FFD700]/20 text-[#8B7500] font-black"
             }`}
@@ -155,7 +155,7 @@ export function PricingCard({
         </div>
       )}
 
-      <div className={`p-6 sm:p-8 ${highlight ? "pt-4 sm:pt-6" : ""} flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
+      <div className={`p-6 sm:p-8 flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
         <div className="flex-1 flex flex-col">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
