@@ -159,9 +159,9 @@ export function PricingCard({
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
               <h3 className="text-2xl font-bold text-foreground">{title}</h3>
-              {currentPricing.original && (
+              {currentPricing.original && discountBadgeText && (
                 <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md" data-testid="network-discount-badge">
-                  {discountBadgeText || t("network_discount_badge")}
+                  {discountBadgeText}
                 </span>
               )}
             </div>
@@ -201,8 +201,8 @@ export function PricingCard({
                 <motion.div
                   whileHover={{ scale: 1.02 }}
                   className={`relative overflow-hidden rounded-xl border-2 p-4 ${plan === "misterio"
-                      ? "border-[#FFD700]/30 bg-gradient-to-br from-[#FFD700]/10 to-[#FDB931]/10"
-                      : "border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent"
+                    ? "border-[#FFD700]/30 bg-gradient-to-br from-[#FFD700]/10 to-[#FDB931]/10"
+                    : "border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent"
                     }`}
                 >
                   <motion.div
@@ -215,8 +215,8 @@ export function PricingCard({
                       ease: "linear",
                     }}
                     className={`absolute inset-0 opacity-10 bg-[length:200%_100%] ${plan === "misterio"
-                        ? "bg-gradient-to-r from-transparent via-[#FFD700] to-transparent"
-                        : "bg-gradient-to-r from-transparent via-[#306BA1] to-transparent"
+                      ? "bg-gradient-to-r from-transparent via-[#FFD700] to-transparent"
+                      : "bg-gradient-to-r from-transparent via-[#306BA1] to-transparent"
                       }`}
                   />
                   <div className="relative flex items-center gap-3">

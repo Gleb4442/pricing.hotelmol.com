@@ -375,7 +375,7 @@ export default function PricingPage() {
               usageLimits={tArray("plan_basic_limits_array")}
               billingMode={billingMode}
               onSubscribe={() => handleSubscribe("basic")}
-              discountBadgeText={t("network_discount_7")}
+              discountBadgeText={hotelType === "network" ? t("network_discount_7") : undefined}
             />
 
             {/* PRO Plan */}
@@ -398,7 +398,7 @@ export default function PricingPage() {
               usageLimits={[t("plan_pro_limits")]}
               billingMode={billingMode}
               highlight="popular"
-              discountBadgeText={t("network_discount_10")}
+              discountBadgeText={hotelType === "network" ? t("network_discount_10") : undefined}
               onSubscribe={() => handleSubscribe("pro")}
             />
 
@@ -426,7 +426,7 @@ export default function PricingPage() {
               usageLimits={tArray("plan_misterio_limits_array")}
               billingMode={billingMode}
               highlight="best-value"
-              discountBadgeText={t("network_discount_15")}
+              discountBadgeText={hotelType === "network" ? t("network_discount_15") : undefined}
               onSubscribe={() => handleSubscribe("misterio")}
             />
 
