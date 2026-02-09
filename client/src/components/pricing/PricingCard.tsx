@@ -136,26 +136,20 @@ export function PricingCard({
       {/* Integrated Header for Highlighted Plans */}
       {highlight && (
         <div
-          className={`absolute bottom-[calc(100%-12px)] left-[-4px] right-[-4px] z-10 pt-4 pb-7 px-8 flex items-center justify-between rounded-t-[3rem] border-t-4 border-l-4 border-r-4 ${highlight === "popular"
-              ? "bg-[#BEF264] border-[#BEF264]"
-              : "bg-[#FFD700] border-[#FFD700]"
+          className={`absolute -top-4 left-1/2 -translate-x-1/2 z-20 py-2 px-6 flex items-center gap-3 rounded-full shadow-xl whitespace-nowrap border-2 ${highlight === "popular"
+              ? "bg-[#BEF264] border-[#BEF264] text-slate-900"
+              : "bg-[#FFD700] border-[#FFD700] text-[#8B7500]"
             }`}
         >
           <div className="flex items-center gap-2">
-            {highlight === "popular" && (
-              <div className="relative">
-                <div className="w-2.5 h-2.5 rounded-full bg-slate-900 animate-pulse" />
-                <div className="absolute inset-0 bg-slate-900/30 rounded-full animate-ping" />
-              </div>
-            )}
-            <span className={`text-[11px] sm:text-xs font-black uppercase tracking-[0.2em] ${highlight === "popular" ? "text-slate-900" : "text-[#8B7500]"
-              }`}>
+            {highlight === "popular" && <div className="w-2 h-2 rounded-full bg-slate-900 animate-pulse" />}
+            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.15em]">
               {highlight === "popular" ? t("label_most_popular") : t("label_best_value")}
             </span>
           </div>
           {highlight === "popular" && (
-            <div className="bg-white/90 backdrop-blur-md px-3 py-1 rounded-full border border-black/10 shadow-sm flex items-center group-hover:bg-white transition-colors duration-300">
-              <span className="text-[10px] font-extrabold text-slate-800 uppercase tracking-tighter">AI Powered</span>
+            <div className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full border border-black/10 shadow-sm flex items-center">
+              <span className="text-[8px] font-black text-slate-800 uppercase tracking-tight">AI Powered</span>
             </div>
           )}
         </div>
@@ -167,7 +161,7 @@ export function PricingCard({
             <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
               <h3 className="text-2xl font-bold text-foreground">{title}</h3>
               {currentPricing.original && discountBadgeText && (
-                <span className="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-md" data-testid="network-discount-badge">
+                <span className="bg-green-500 text-white text-[10px] font-black uppercase px-2.5 py-1 rounded-full shadow-sm" data-testid="network-discount-badge">
                   {discountBadgeText}
                 </span>
               )}

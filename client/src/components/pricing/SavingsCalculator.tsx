@@ -599,14 +599,14 @@ function CalculatorForm({ inputs, onInputChange, savings, currencySymbols, curre
         {/* Выбор валюты */}
         <div className="space-y-3">
           <Label className="text-sm font-medium text-foreground">{t("currency_label")}</Label>
-          <div className="flex bg-muted rounded-md p-1" data-testid="currency-switcher">
+          <div className="flex bg-muted rounded-full p-1" data-testid="currency-switcher">
             {(['UAH', 'USD', 'EUR'] as Currency[]).map((currency) => (
               <motion.button
                 key={currency}
                 onClick={() => {
                   onInputChange('currency', currency as any);
                 }}
-                className={`flex-1 px-3 py-2 text-sm font-medium rounded-sm transition-all duration-300 ${inputs.currency === currency
+                className={`flex-1 px-3 py-2 text-sm font-medium rounded-full transition-all duration-300 ${inputs.currency === currency
                   ? 'bg-[#306BA1] text-white shadow-lg shadow-[#306BA1]/30 border-2 border-[#7ca3c8]'
                   : 'bg-muted hover:bg-muted-foreground/10 border-2 border-transparent'
                   }`}
@@ -777,7 +777,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent className="space-y-4 pt-4" data-testid="how-we-count-content">
-          <div className="bg-primary/5 rounded-lg p-4 space-y-3">
+          <div className="bg-primary/5 rounded-2xl p-4 space-y-3">
             <p className="text-sm text-foreground leading-relaxed">
               <strong>{t('simple_words')}</strong> {t('formula_explanation_main')}
             </p>
@@ -787,7 +787,7 @@ function TrustAndConversionBlock({ savings, currency, onShareCalculation }: Trus
           </div>
 
           {/* Текст о честности */}
-          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-lg p-4">
+          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-2xl p-4">
             <div className="flex items-start space-x-3">
               <Info className="h-5 w-5 text-amber-600 mt-0.5 flex-shrink-0" />
               <div className="space-y-2">
