@@ -402,7 +402,7 @@ export default function PricingPage() {
               onSubscribe={() => handleSubscribe("pro")}
             />
 
-            {/* MISTERIO+ Plan */}
+            {/* ULTRA Plan */}
             <PricingCard
               key={`misterio-${hotelType}`}
               plan="misterio"
