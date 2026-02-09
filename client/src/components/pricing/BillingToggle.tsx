@@ -62,7 +62,7 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
       <AnimatePresence>
         {billingMode === "yearly" && (
           <motion.div
-            className="text-sm text-green-600 font-medium"
+            className="px-3 py-1.5 bg-green-100 dark:bg-green-900/30 border border-green-200 dark:border-green-800/50 rounded-full shadow-sm"
             initial={{ opacity: 0, y: -10, scale: 0.9 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -10, scale: 0.9 }}
@@ -72,7 +72,9 @@ export function BillingToggle({ billingMode, onBillingModeChange }: BillingToggl
               damping: 25
             }}
           >
-            {t("yearly_savings")}
+            <span className="text-sm text-green-700 dark:text-green-400 font-bold uppercase tracking-wider">
+              30% OFF
+            </span>
           </motion.div>
         )}
       </AnimatePresence>
