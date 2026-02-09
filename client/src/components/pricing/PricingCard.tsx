@@ -125,7 +125,7 @@ export function PricingCard({
 
   return (
     <div
-      className={`group relative h-full flex flex-col border-4 rounded-[2.5rem] transition-all duration-300 shadow-xl hover:shadow-2xl ${highlight === "popular"
+      className={`group relative h-full flex flex-col border-4 rounded-[2.5rem] transition-all duration-300 shadow-xl hover:shadow-2xl overflow-hidden ${highlight === "popular"
         ? "border-[#BEF264] bg-[#0A1A0A]"
         : highlight === "best-value"
           ? "border-[#FFD700] bg-card"
@@ -136,14 +136,14 @@ export function PricingCard({
       {/* Integrated Header for Highlighted Plans */}
       {highlight && (
         <div
-          className={`absolute -top-6 left-1/2 -translate-x-1/2 z-20 py-2.5 px-6 flex items-center gap-3 rounded-full whitespace-nowrap border-4 ${highlight === "popular"
-            ? "bg-[#BEF264] border-[#BEF264] text-slate-900"
-            : "bg-[#FFD700] border-[#FFD700] text-[#8B7500]"
+          className={`w-full py-4 px-6 flex items-center justify-center gap-3 shadow-md border-b-2 ${highlight === "popular"
+            ? "bg-[#BEF264] border-[#BEF264]/20 text-slate-900 font-black"
+            : "bg-[#FFD700] border-[#FFD700]/20 text-[#8B7500] font-black"
             }`}
         >
           <div className="flex items-center gap-2">
             {highlight === "popular" && <div className="w-2 h-2 rounded-full bg-slate-900 animate-pulse" />}
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.15em]">
+            <span className="text-[10px] sm:text-xs uppercase tracking-[0.15em]">
               {highlight === "popular" ? t("label_most_popular") : t("label_best_value")}
             </span>
           </div>
@@ -155,7 +155,7 @@ export function PricingCard({
         </div>
       )}
 
-      <div className={`p-6 sm:p-8 flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
+      <div className={`p-6 sm:p-8 ${highlight ? "pt-4 sm:pt-6" : ""} flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
         <div className="flex-1 flex flex-col">
           <div className="text-center mb-8">
             <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
