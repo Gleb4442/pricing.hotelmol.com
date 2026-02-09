@@ -22,7 +22,7 @@ export const translations = {
     plan_pro_title: "PRO",
     plan_pro_description: "Идеально для растущих отелей",
     plan_misterio_title: "MISTERIO+",
-    plan_misterio_description: "Воспользуйтесь уникальной системой персонализации как в Ritz-Carlton",
+    plan_misterio_description: "Уникальная система персонализации Ritz-Carlton",
     plan_premium_title: "ENTERPRISE",
     plan_premium_description: "Корпоративное решение",
     network_discount_badge: "-10% для сетей",
