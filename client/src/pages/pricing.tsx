@@ -368,7 +368,7 @@ export default function PricingPage() {
                 },
                 yearly: {
                   current: getNetworkPrice("$349", 0.07),
-                  original: hotelType === "network" ? "$499" : undefined
+                  original: "$499"
                 },
               }}
               features={basicFeatures}
@@ -391,7 +391,7 @@ export default function PricingPage() {
                 },
                 yearly: {
                   current: getNetworkPrice("$419", 0.10),
-                  original: hotelType === "network" ? "$599" : undefined
+                  original: "$599"
                 },
               }}
               features={proFeatures}
@@ -415,7 +415,7 @@ export default function PricingPage() {
                 },
                 yearly: {
                   current: getNetworkPrice("$629", 0.15),
-                  original: hotelType === "network" ? "$899" : undefined
+                  original: "$899"
                 },
               }}
               features={[
@@ -441,7 +441,8 @@ export default function PricingPage() {
                   current: "$1,499"
                 },
                 yearly: {
-                  current: "$1,049"
+                  current: "$1,049",
+                  original: "$1,499"
                 },
               }}
               features={premiumFeatures}
