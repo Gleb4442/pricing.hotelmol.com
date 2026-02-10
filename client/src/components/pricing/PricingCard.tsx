@@ -91,6 +91,7 @@ export function PricingCard({
 }: PricingCardProps) {
   const { t } = useLanguage();
   const [addedFeatures, setAddedFeatures] = useState<Set<number | string>>(new Set());
+  const SHOW_PROMO_BLOCKS = false;
 
   const toggleFeature = (id: number | string) => {
     const newAddedFeatures = new Set(addedFeatures);
@@ -246,7 +247,7 @@ export function PricingCard({
               </motion.div>
 
               {/* Voice Agent Promo for Pro Plan (Monthly/Yearly) */}
-              {plan === "pro" && (
+              {plan === "pro" && SHOW_PROMO_BLOCKS && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
@@ -306,7 +307,7 @@ export function PricingCard({
               )}
 
               {/* Online Meeting Promo for Misterio Plan */}
-              {plan === "misterio" && (
+              {plan === "misterio" && SHOW_PROMO_BLOCKS && (
                 <motion.div
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
