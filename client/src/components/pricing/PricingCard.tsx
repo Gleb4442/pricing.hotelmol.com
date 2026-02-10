@@ -125,18 +125,21 @@ export function PricingCard({
 
   return (
     <div
-      className={`group relative h-full flex flex-col border-4 rounded-[2.5rem] transition-all duration-300 shadow-xl hover:shadow-2xl ${highlight === "popular"
-        ? "border-[#BEF264] bg-[#0A1A0A]"
-        : highlight === "best-value"
-          ? "border-[#FFD700] bg-card"
-          : "border-border bg-card"
+      className={`group relative h-full flex flex-col border-4 transition-all duration-300 shadow-xl hover:shadow-2xl ${highlight
+        ? "rounded-b-[2.5rem] rounded-t-none"
+        : "rounded-[2.5rem]"
+        } ${highlight === "popular"
+          ? "border-[#BEF264] bg-[#0A1A0A]"
+          : highlight === "best-value"
+            ? "border-[#FFD700] bg-card"
+            : "border-border bg-card"
         }`}
       data-testid={`pricing-card-${plan}`}
     >
       {/* Integrated Header for Highlighted Plans */}
       {highlight && (
         <div
-          className={`absolute -top-9 left-1/2 -translate-x-1/2 z-20 py-1.5 px-6 flex items-center gap-3 rounded-t-2xl rounded-b-none shadow-sm whitespace-nowrap border-x-4 border-t-4 border-b-0 ${highlight === "popular"
+          className={`absolute -top-[4px] -translate-y-full left-[-4px] right-[-4px] z-20 py-3 flex items-center justify-center gap-3 rounded-t-[2.5rem] rounded-b-none shadow-sm whitespace-nowrap border-x-4 border-t-4 border-b-0 ${highlight === "popular"
             ? "bg-[#BEF264] border-[#BEF264] text-slate-900"
             : "bg-[#FFD700] border-[#FFD700] text-[#8B7500]"
             }`}
