@@ -354,7 +354,7 @@ export default function PricingPage() {
 
         {/* Pricing Section */}
         <div className="max-w-[1843px] mx-auto">
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 pt-16 items-start">
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 pt-16 items-end">
             {/* CORE AI Plan (formerly BASIC) */}
             <PricingCard
               key={`basic-${hotelType}`}

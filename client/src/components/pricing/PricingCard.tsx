@@ -124,7 +124,7 @@ export function PricingCard({
   } : { current: calculatePrice() };
 
   return (
-    <div className="flex flex-col" data-testid={`pricing-card-${plan}`}>
+    <div className="flex flex-col h-full" data-testid={`pricing-card-${plan}`}>
       {/* Integrated Header for Highlighted Plans */}
       {highlight && (
         <div
@@ -148,7 +148,7 @@ export function PricingCard({
       )}
 
       <div
-        className={`group relative flex-1 flex flex-col border-4 transition-all duration-300 shadow-xl hover:shadow-2xl ${highlight === "popular"
+        className={`group relative flex-1 flex flex-col border-4 transition-all duration-300 shadow-xl hover:shadow-2xl lg:min-h-[920px] ${highlight === "popular"
           ? "border-[#BEF264] bg-[#0A1A0A] rounded-b-[2.5rem] border-t-0 rounded-t-none"
           : highlight === "best-value"
             ? "border-[#FFD700] bg-card rounded-b-[2.5rem] border-t-0 rounded-t-none"
@@ -157,7 +157,7 @@ export function PricingCard({
       >
         <div className={`p-6 sm:p-8 flex-1 flex flex-col ${highlight === "popular" ? "text-white" : ""}`}>
           <div className="flex-1 flex flex-col">
-            <div className="text-center mb-8">
+            <div className="text-center mb-8 min-h-[120px] flex flex-col justify-center">
               <div className="flex items-center justify-center gap-2 mb-2 flex-wrap">
                 <h3 className="text-2xl font-bold text-foreground">{title}</h3>
                 {currentPricing.original && discountBadgeText && (
@@ -170,7 +170,7 @@ export function PricingCard({
             </div>
 
             {/* Pricing Display */}
-            <div className="text-center mb-8">
+            <div className="text-center mb-8 min-h-[100px] flex flex-col justify-center">
               <div className="flex items-center justify-center space-x-2 mb-2 flex-wrap">
                 {currentPricing.original && (
                   <span className="text-sm text-muted-foreground/60 line-through opacity-75">
@@ -190,191 +190,193 @@ export function PricingCard({
               </p>
             </div>
 
-            {/* First Month Free Promo */}
-            {plan !== "premium" && (
-              <div className="flex flex-col gap-3 mb-6 mx-2">
-
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 }}
-                >
+            {/* Promo & Usage Section - Fixed height to keep alignment */}
+            <div className="min-h-[250px] flex flex-col gap-6">
+              {/* First Month Free Promo */}
+              {plan !== "premium" && (
+                <div className="flex flex-col gap-3 mx-2">
                   <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className={`relative overflow-hidden rounded-xl border-2 p-4 ${plan === "misterio"
-                      ? "border-[#FFD700]/30 bg-gradient-to-br from-[#FFD700]/10 to-[#FDB931]/10"
-                      : "border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent"
-                      }`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
                   >
                     <motion.div
-                      animate={{
-                        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
-                      }}
-                      transition={{
-                        duration: 5,
-                        repeat: Infinity,
-                        ease: "linear",
-                      }}
-                      className={`absolute inset-0 opacity-10 bg-[length:200%_100%] ${plan === "misterio"
-                        ? "bg-gradient-to-r from-transparent via-[#FFD700] to-transparent"
-                        : "bg-gradient-to-r from-transparent via-[#306BA1] to-transparent"
+                      whileHover={{ scale: 1.02 }}
+                      className={`relative overflow-hidden rounded-xl border-2 p-4 ${plan === "misterio"
+                        ? "border-[#FFD700]/30 bg-gradient-to-br from-[#FFD700]/10 to-[#FDB931]/10"
+                        : "border-[#306BA1]/20 bg-gradient-to-br from-[#306BA1]/5 to-transparent"
                         }`}
-                    />
-                    <div className="relative flex items-center gap-3">
+                    >
                       <motion.div
-                        animate={{ rotate: [0, 10, -10, 0] }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          repeatDelay: 3
+                        animate={{
+                          backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"],
                         }}
-                        className="text-2xl filter drop-shadow-sm"
-                      >
-                        🎁
-                      </motion.div>
-                      <div className="flex-1 text-left">
-                        <h4 className={`font-bold text-sm leading-tight uppercase tracking-wide ${plan === "misterio" ? "text-[#8B7500] dark:text-[#FFD700]" : "text-[#306BA1]"
-                          }`}>
-                          {t('first_month_free_title')}
-                        </h4>
-                      </div>
-                    </div>
-                  </motion.div>
-                </motion.div>
-
-                {/* Voice Agent Promo for Pro Plan (Monthly/Yearly) */}
-                {plan === "pro" && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4 }}
-                    className="relative overflow-hidden rounded-xl border border-[#306BA1]/20 bg-gradient-to-r from-[#306BA1]/10 to-cyan-500/10 p-3"
-                  >
-                    {/* Pulse Animation Background */}
-                    <motion.div
-                      className="absolute inset-0 bg-[#306BA1]/5"
-                      animate={{ opacity: [0.3, 0.6, 0.3] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-
-                    <div className="relative flex items-center gap-3">
-                      <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-slate-900 to-[#306BA1]/40 shadow-lg ring-1 ring-white/20 overflow-hidden">
-                        {/* Talking State Animation */}
+                        transition={{
+                          duration: 5,
+                          repeat: Infinity,
+                          ease: "linear",
+                        }}
+                        className={`absolute inset-0 opacity-10 bg-[length:200%_100%] ${plan === "misterio"
+                          ? "bg-gradient-to-r from-transparent via-[#FFD700] to-transparent"
+                          : "bg-gradient-to-r from-transparent via-[#306BA1] to-transparent"
+                          }`}
+                      />
+                      <div className="relative flex items-center gap-3">
                         <motion.div
-                          className="absolute inset-0 bg-gradient-to-t from-[#306BA1]/40 via-cyan-400/20 to-transparent rounded-full"
-                          animate={{ opacity: [0.3, 0.7, 0.3] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                        />
-                        {/* Ripple Effect */}
-                        <motion.div
-                          className="absolute w-full h-full rounded-full border border-cyan-400/30"
-                          animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
-                        />
-                        {/* Core Speaking Orb */}
-                        <motion.div
-                          className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
-                          animate={{
-                            scale: [1, 1.2, 0.9, 1.1, 1],
-                            opacity: [0.9, 1, 0.9],
-                            boxShadow: [
-                              "0 0 10px rgba(255,255,255,0.5)",
-                              "0 0 25px rgba(255,255,255,0.9)",
-                              "0 0 10px rgba(255,255,255,0.5)"
-                            ]
-                          }}
+                          animate={{ rotate: [0, 10, -10, 0] }}
                           transition={{
-                            duration: 1.2,
+                            duration: 2,
                             repeat: Infinity,
-                            ease: "easeInOut",
-                            times: [0, 0.25, 0.5, 0.75, 1]
+                            repeatDelay: 3
                           }}
-                        />
-                      </div>
-
-                      <div className="flex-1">
-                        <h4 className="font-bold text-[#306BA1] dark:text-cyan-300 text-sm leading-tight">
-                          {t('voice_agent_available')}
-                        </h4>
-                      </div>
-                    </div>
-                  </motion.div>
-                )}
-
-                {/* Online Meeting Promo for Misterio Plan */}
-                {plan === "misterio" && (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    whileHover={{ scale: 1.02 }}
-                    transition={{ duration: 0.4 }}
-                    className="relative overflow-hidden rounded-xl border border-[#FFD700]/30 bg-gradient-to-r from-[#FFD700]/10 to-[#FDB931]/10 p-3 mt-3"
-                  >
-                    {/* Pulse Animation Background */}
-                    <motion.div
-                      className="absolute inset-0 bg-[#FFD700]/5"
-                      animate={{ opacity: [0.3, 0.6, 0.3] }}
-                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-                    />
-
-                    <div className="relative flex items-center gap-3">
-                      <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-b from-slate-900 to-[#FFD700]/40 shadow-lg ring-1 ring-white/20 overflow-hidden">
-                        {/* Calendar Animation Container */}
-                        <motion.div
-                          className="p-1.5"
-                          animate={{
-                            rotateY: [0, 180, 360],
-                            scale: [1, 1.1, 1]
-                          }}
-                          transition={{
-                            duration: 3,
-                            repeat: Infinity,
-                            ease: "easeInOut"
-                          }}
+                          className="text-2xl filter drop-shadow-sm"
                         >
-                          <Calendar className="w-6 h-6 text-[#FFD700]" strokeWidth={2.5} />
+                          🎁
                         </motion.div>
-
-                        {/* Floating Particles/Pages */}
-                        <motion.div
-                          className="absolute w-full h-0.5 bg-[#FFD700]/40"
-                          animate={{
-                            top: ["20%", "80%", "20%"],
-                            opacity: [0, 1, 0]
-                          }}
-                          transition={{
-                            duration: 1.5,
-                            repeat: Infinity,
-                            ease: "linear"
-                          }}
-                        />
+                        <div className="flex-1 text-left">
+                          <h4 className={`font-bold text-sm leading-tight uppercase tracking-wide ${plan === "misterio" ? "text-[#8B7500] dark:text-[#FFD700]" : "text-[#306BA1]"
+                            }`}>
+                            {t('first_month_free_title')}
+                          </h4>
+                        </div>
                       </div>
-
-                      <div className="flex-1">
-                        <h4 className="font-bold text-[#8B7500] dark:text-[#FFD700] text-sm leading-tight">
-                          {t('online_meeting_available')}
-                        </h4>
-                      </div>
-                    </div>
+                    </motion.div>
                   </motion.div>
-                )}
-              </div>
-            )}
 
-            {/* Usage Limits */}
-            {usageLimits && usageLimits.length > 0 && (
-              <div className="mb-6 px-2">
-                {usageLimits.map((limit, index) => (
-                  <div key={index} className={`text-sm text-muted-foreground ${limit.trim() === "" ? "h-[20px]" : "mb-1"}`}>
-                    {limit}
-                  </div>
-                ))}
-              </div>
-            )}
+                  {/* Voice Agent Promo for Pro Plan (Monthly/Yearly) */}
+                  {plan === "pro" && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.4 }}
+                      className="relative overflow-hidden rounded-xl border border-[#306BA1]/20 bg-gradient-to-r from-[#306BA1]/10 to-cyan-500/10 p-3"
+                    >
+                      {/* Pulse Animation Background */}
+                      <motion.div
+                        className="absolute inset-0 bg-[#306BA1]/5"
+                        animate={{ opacity: [0.3, 0.6, 0.3] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      />
+
+                      <div className="relative flex items-center gap-3">
+                        <div className="relative flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-b from-slate-900 to-[#306BA1]/40 shadow-lg ring-1 ring-white/20 overflow-hidden">
+                          {/* Talking State Animation */}
+                          <motion.div
+                            className="absolute inset-0 bg-gradient-to-t from-[#306BA1]/40 via-cyan-400/20 to-transparent rounded-full"
+                            animate={{ opacity: [0.3, 0.7, 0.3] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                          />
+                          {/* Ripple Effect */}
+                          <motion.div
+                            className="absolute w-full h-full rounded-full border border-cyan-400/30"
+                            animate={{ scale: [1, 1.5], opacity: [0.5, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeOut" }}
+                          />
+                          {/* Core Speaking Orb */}
+                          <motion.div
+                            className="w-4 h-4 rounded-full bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
+                            animate={{
+                              scale: [1, 1.2, 0.9, 1.1, 1],
+                              opacity: [0.9, 1, 0.9],
+                              boxShadow: [
+                                "0 0 10px rgba(255,255,255,0.5)",
+                                "0 0 25px rgba(255,255,255,0.9)",
+                                "0 0 10px rgba(255,255,255,0.5)"
+                              ]
+                            }}
+                            transition={{
+                              duration: 1.2,
+                              repeat: Infinity,
+                              ease: "easeInOut",
+                              times: [0, 0.25, 0.5, 0.75, 1]
+                            }}
+                          />
+                        </div>
+
+                        <div className="flex-1">
+                          <h4 className="font-bold text-[#306BA1] dark:text-cyan-300 text-sm leading-tight">
+                            {t('voice_agent_available')}
+                          </h4>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Online Meeting Promo for Misterio Plan */}
+                  {plan === "misterio" && (
+                    <motion.div
+                      initial={{ opacity: 0, scale: 0.95 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ duration: 0.4 }}
+                      className="relative overflow-hidden rounded-xl border border-[#FFD700]/30 bg-gradient-to-r from-[#FFD700]/10 to-[#FDB931]/10 p-3 mt-3"
+                    >
+                      {/* Pulse Animation Background */}
+                      <motion.div
+                        className="absolute inset-0 bg-[#FFD700]/5"
+                        animate={{ opacity: [0.3, 0.6, 0.3] }}
+                        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                      />
+
+                      <div className="relative flex items-center gap-3">
+                        <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-b from-slate-900 to-[#FFD700]/40 shadow-lg ring-1 ring-white/20 overflow-hidden">
+                          {/* Calendar Animation Container */}
+                          <motion.div
+                            className="p-1.5"
+                            animate={{
+                              rotateY: [0, 180, 360],
+                              scale: [1, 1.1, 1]
+                            }}
+                            transition={{
+                              duration: 3,
+                              repeat: Infinity,
+                              ease: "easeInOut"
+                            }}
+                          >
+                            <Calendar className="w-6 h-6 text-[#FFD700]" strokeWidth={2.5} />
+                          </motion.div>
+
+                          {/* Floating Particles/Pages */}
+                          <motion.div
+                            className="absolute w-full h-0.5 bg-[#FFD700]/40"
+                            animate={{
+                              top: ["20%", "80%", "20%"],
+                              opacity: [0, 1, 0]
+                            }}
+                            transition={{
+                              duration: 1.5,
+                              repeat: Infinity,
+                              ease: "linear"
+                            }}
+                          />
+                        </div>
+
+                        <div className="flex-1">
+                          <h4 className="font-bold text-[#8B7500] dark:text-[#FFD700] text-sm leading-tight">
+                            {t('online_meeting_available')}
+                          </h4>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+                </div>
+              )}
+
+              {/* Usage Limits */}
+              {usageLimits && usageLimits.length > 0 && (
+                <div className="px-2">
+                  {usageLimits.map((limit, index) => (
+                    <div key={index} className={`text-sm text-muted-foreground ${limit.trim() === "" ? "h-[20px]" : "mb-1"}`}>
+                      {limit}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
 
             {/* Features */}
-            <div className="space-y-3 mb-8 px-2">
+            <div className="space-y-3 mb-8 px-2 flex-1 pt-6">
               {features.map((feature, index) => (
                 <div key={index} className="flex items-start space-x-2 relative">
                   <Check className={`${highlight === "popular" ? "text-[#BEF264]" : "text-primary"} w-4 h-4 flex-shrink-0 mt-0.5`} />
