@@ -75,6 +75,8 @@ interface PricingCardProps {
   highlight?: "popular" | "best-value";
   discountBadgeText?: string;
   onSubscribe: () => void;
+  ctaText?: string;
+  href?: string;
 }
 
 export function PricingCard({
@@ -88,6 +90,8 @@ export function PricingCard({
   highlight,
   discountBadgeText,
   onSubscribe,
+  ctaText,
+  href,
 }: PricingCardProps) {
   const { t } = useLanguage();
   const [addedFeatures, setAddedFeatures] = useState<Set<number | string>>(new Set());
@@ -435,7 +439,7 @@ export function PricingCard({
         </div>
 
         <Button
-          onClick={onSubscribe}
+          onClick={href ? () => window.open(href, '_blank') : onSubscribe}
           className={`w-full py-4 rounded-3xl font-black uppercase tracking-normal transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] shadow-lg ${highlight === "popular"
             ? "bg-[#BEF264] text-slate-900 hover:bg-[#a6d94f] shadow-[#BEF264]/20 py-6 text-base"
             : highlight === "best-value"
@@ -444,7 +448,7 @@ export function PricingCard({
             }`}
           data-testid={`subscribe-button-${plan}`}
         >
-          {t('subscribe_now')}
+          {ctaText || t('subscribe_now')}
         </Button>
       </div>
     </div >

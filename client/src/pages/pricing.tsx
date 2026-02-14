@@ -449,6 +449,8 @@ export default function PricingPage() {
               usageLimits={tArray("plan_premium_limits_array")}
               billingMode={billingMode}
               onSubscribe={() => handleSubscribe("premium")}
+              ctaText={t("btn_enterprise")}
+              href="https://cal.com/gleb.gosha/30min"
             />
           </div>
         </div>

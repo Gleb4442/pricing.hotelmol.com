@@ -69,6 +69,7 @@ export const translations = {
 
     // Buttons
     btn_subscribe: "Подписаться",
+    btn_enterprise: "Отдел продаж",
     btn_contact_telegram: "Помощь 24/7",
 
 
@@ -354,6 +355,7 @@ export const translations = {
 
     // Buttons
     btn_subscribe: "Підписатися",
+    btn_enterprise: "Відділ продажу",
     btn_contact_telegram: "Допомога 24/7",
 
     // Info Sidebar
@@ -649,6 +651,7 @@ export const translations = {
 
     // Buttons
     btn_subscribe: "Subscribe",
+    btn_enterprise: "Contact sales",
     btn_contact_telegram: "Help 24/7",
 
     // Info Sidebar
@@ -1126,6 +1129,7 @@ export const translations = {
     daily_requests_label: "Zapytania dziennie",
     adr_label: "Średnia stawka dzienna (ADR)",
     subscribe_now: "Subskrybuj teraz",
+    btn_enterprise: "Dział sprzedaży",
     show_calculation_to_manager: "Pokaż obliczenia menedżerowi",
     contact_manager_text: "Kliknij \"Wypróbuj Roomie\", aby skontaktować się z naszym menedżerem. Lub udostępnij te obliczenia swojemu menedżerowi w celu podjęcia decyzji.",
     included: "wliczone",
