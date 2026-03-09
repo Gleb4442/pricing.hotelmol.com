@@ -363,12 +363,12 @@ export default function PricingPage() {
               description={t("plan_basic_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$499", 0.07),
-                  original: hotelType === "network" ? "$499" : undefined
+                  current: getNetworkPrice("$1,299", 0.07),
+                  original: hotelType === "network" ? "$1,299" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$349", 0.07),
-                  original: "$499"
+                  current: getNetworkPrice("$909", 0.07),
+                  original: "$1,299"
                 },
               }}
               features={basicFeatures}
@@ -386,19 +386,19 @@ export default function PricingPage() {
               description={t("plan_pro_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$599", 0.10),
-                  original: hotelType === "network" ? "$599" : undefined
+                  current: getNetworkPrice("$1,999", 0.15),
+                  original: hotelType === "network" ? "$1,999" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$419", 0.10),
-                  original: "$599"
+                  current: getNetworkPrice("$1,399", 0.15),
+                  original: "$1,999"
                 },
               }}
               features={proFeatures}
               usageLimits={[t("plan_pro_limits")]}
               billingMode={billingMode}
               highlight="popular"
-              discountBadgeText={hotelType === "network" ? t("network_discount_10") : undefined}
+              discountBadgeText={hotelType === "network" ? t("network_discount_15") : undefined}
               onSubscribe={() => handleSubscribe("pro")}
             />
 
@@ -410,12 +410,12 @@ export default function PricingPage() {
               description={t("plan_misterio_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$899", 0.15),
-                  original: hotelType === "network" ? "$899" : undefined
+                  current: getNetworkPrice("$1,899", 0.10),
+                  original: hotelType === "network" ? "$1,899" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$629", 0.15),
-                  original: "$899"
+                  current: getNetworkPrice("$1,329", 0.10),
+                  original: "$1,899"
                 },
               }}
               features={[
@@ -426,7 +426,7 @@ export default function PricingPage() {
               usageLimits={tArray("plan_misterio_limits_array")}
               billingMode={billingMode}
               highlight="best-value"
-              discountBadgeText={hotelType === "network" ? t("network_discount_15") : undefined}
+              discountBadgeText={hotelType === "network" ? t("network_discount_10") : undefined}
               onSubscribe={() => handleSubscribe("misterio")}
             />
 
@@ -438,11 +438,11 @@ export default function PricingPage() {
               description={t("plan_premium_description")}
               pricing={{
                 monthly: {
-                  current: "$1,499"
+                  current: "$4,990"
                 },
                 yearly: {
-                  current: "$1,049",
-                  original: "$1,499"
+                  current: "$3,493",
+                  original: "$4,990"
                 },
               }}
               features={premiumFeatures}
