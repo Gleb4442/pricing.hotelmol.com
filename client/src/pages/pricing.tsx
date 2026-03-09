@@ -410,12 +410,12 @@ export default function PricingPage() {
               description={t("plan_misterio_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$1,899", 0.10),
-                  original: hotelType === "network" ? "$1,899" : undefined
+                  current: getNetworkPrice("$1,749", 0.10),
+                  original: hotelType === "network" ? "$1,749" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$1,329", 0.10),
-                  original: "$1,899"
+                  current: getNetworkPrice("$1,224", 0.10),
+                  original: "$1,749"
                 },
               }}
               features={[
