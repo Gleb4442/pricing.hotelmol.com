@@ -171,10 +171,17 @@ export default function PricingPage() {
     { text: t("feature_standard_support") },
     { text: t("feature_online_chat") },
     { text: t("feature_pms_integration") },
+    { text: t("feature_guest_reviews") },
+    { text: t("feature_pos_integration") },
+    {
+      text: t("feature_communication_channels"),
+      tooltip: t("tooltip_communication_channels"),
+      isChannels: true,
+    },
   ];
 
   const proFeatures = [
-    { text: t("feature_booking_automation") },
+    { text: t("feature_all_basic") },
     { text: t("feature_analytics") },
     { text: t("feature_priority_support") },
     {
@@ -182,14 +189,7 @@ export default function PricingPage() {
       tooltip: t("tooltip_remove_logo"),
       addonPricing: { usage: t("addon_pricing_logo_removal"), monthly: "" },
     },
-    { text: t("feature_google_reviews") },
-    { text: t("feature_guest_reviews") },
     { text: t("feature_extended_kb") },
-    {
-      text: t("feature_communication_channels"),
-      tooltip: t("tooltip_communication_channels"),
-      isChannels: true,
-    },
   ];
 
   const premiumFeatures: { text: string; tooltip?: string; addonPricing?: { usage: string; monthly: string; } }[] = [];
@@ -419,7 +419,7 @@ export default function PricingPage() {
                 },
               }}
               features={[
-                { text: t("feature_all_pro") },
+                { text: t("feature_all_basic") },
                 { text: t("feature_unique_design") },
                 { text: t("feature_ai_training") },
               ]}

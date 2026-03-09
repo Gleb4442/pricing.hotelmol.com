@@ -47,6 +47,7 @@ export const translations = {
     feature_communication_channels: "Каналы коммуникации (2)",
     feature_available_channels: "Доступные каналы",
     feature_remove_logo: "Удаление логотипа",
+    feature_all_basic: "Всё что включено в CORE AI",
     feature_all_pro: "Всё что включено в PRO",
     feature_analytics: "Расширенная аналитика",
     feature_ai_training: "Персональное обучение ИИ",
@@ -59,6 +60,7 @@ export const translations = {
     feature_instagram: "Instagram",
     feature_google_reviews: "Автоматические ответы на отзывы в Google",
     feature_guest_reviews: "Сбор отзывов от гостей",
+    feature_pos_integration: "Интеграция с POS",
     feature_extended_kb: "Расширенная База Знаний для агента",
 
     // Tooltips
@@ -333,6 +335,7 @@ export const translations = {
     feature_communication_channels: "Канали комунікації (2)",
     feature_available_channels: "Доступні канали",
     feature_remove_logo: "Видалення логотипу",
+    feature_all_basic: "Все що включено в CORE AI",
     feature_all_pro: "Все що включено в PRO",
     feature_analytics: "Розширена аналітика",
     feature_ai_training: "Персональне навчання ШІ",
@@ -345,6 +348,7 @@ export const translations = {
     feature_instagram: "Instagram",
     feature_google_reviews: "Автоматичні відповіді на відгуки в Google",
     feature_guest_reviews: "Збір відгуків від гостей",
+    feature_pos_integration: "Інтеграція з POS",
     feature_extended_kb: "Розширена База Знань для агента",
 
     // Tooltips
@@ -629,6 +633,7 @@ export const translations = {
     feature_communication_channels: "Communication channels (2)",
     feature_available_channels: "Available channels",
     feature_remove_logo: "Logo removal",
+    feature_all_basic: "Everything included in CORE AI",
     feature_all_pro: "Everything included in PRO",
     feature_analytics: "Advanced analytics",
     feature_ai_training: "Personal AI training",
@@ -641,6 +646,7 @@ export const translations = {
     feature_instagram: "Instagram",
     feature_google_reviews: "Automated Google review responses",
     feature_guest_reviews: "Guest review collection",
+    feature_pos_integration: "POS Integration",
     feature_extended_kb: "Extended Knowledge Base for agent",
 
     // Tooltips
@@ -921,6 +927,7 @@ export const translations = {
     feature_communication_channels: "Kanały komunikacji (2)",
     feature_available_channels: "Dostępne kanały",
     feature_remove_logo: "Usunięcie logo",
+    feature_all_basic: "Wszystko z planu CORE AI",
     feature_all_pro: "Wszystko z planu PRO",
     feature_analytics: "Zaawansowana analityka",
     feature_ai_training: "Osobiste szkolenie AI",
@@ -931,6 +938,8 @@ export const translations = {
     feature_messenger: "Facebook Messenger",
     feature_whatsapp: "WhatsApp",
     feature_instagram: "Instagram",
+    feature_guest_reviews: "Zbieranie opinii od gości",
+    feature_pos_integration: "Integracja z POS",
 
     // Tooltips
     tooltip_telegram_bot: "Otrzymaj własnego markowego bota Telegram do interakcji z gośćmi",

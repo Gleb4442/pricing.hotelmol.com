@@ -149,17 +149,9 @@ export function PricingCard({
             : "bg-[#FFD700] border-[#FFD700] text-[#8B7500]"
             }`}
         >
-          <div className="flex items-center gap-2">
-            {highlight === "popular" && <div className="w-2 h-2 rounded-full bg-slate-900 animate-pulse" />}
-            <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.15em]">
-              {highlight === "popular" ? t("label_most_popular") : t("label_best_value")}
-            </span>
-          </div>
-          {highlight === "popular" && (
-            <div className="bg-white/90 backdrop-blur-sm px-2 py-0.5 rounded-full border border-black/10 shadow-sm flex items-center">
-              <span className="text-[8px] font-black text-slate-800 uppercase tracking-tight">AI Powered</span>
-            </div>
-          )}
+          <span className="text-[10px] sm:text-xs font-black uppercase tracking-[0.15em]">
+            {highlight === "popular" ? t("label_most_popular") : t("label_best_value")}
+          </span>
         </div>
       )}
 
