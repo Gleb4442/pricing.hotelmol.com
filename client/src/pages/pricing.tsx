@@ -155,12 +155,12 @@ export default function PricingPage() {
     if (hotelType === "single") return basePrice;
 
     // Remove $ and commas, calculate discount
-    const numericPrice = parseFloat(basePrice.replace(/[$,]/g, ''));
+    const numericPrice = parseFloat(basePrice.replace(/[^\d.-]/g, ''));
     const discountedPrice = Math.round(numericPrice * (1 - discountRate));
 
     // Format with $ and commas if needed
     return discountedPrice >= 1000
-      ? `$${discountedPrice.toLocaleString()}`
+      ? `$${discountedPrice.toLocaleString('en-US')}`
       : `$${discountedPrice}`;
   };
 

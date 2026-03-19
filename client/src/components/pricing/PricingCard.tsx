@@ -112,14 +112,14 @@ export function PricingCard({
     if (!currentPricing) return "";
     const basePriceText = currentPricing.current;
 
-    // For monthly/yearly billing: extract number from "$399" or "$1,499"
-    const basePrice = parseFloat(basePriceText.replace(/[$,]/g, ''));
+    // For monthly/yearly billing: extract number from "$399" or "$1,499" or "$1 189"
+    const basePrice = parseFloat(basePriceText.replace(/[^\d.-]/g, ''));
 
     // For monthly/yearly billing, additional features are included for free (no cost)
     const totalPrice = basePrice;
 
     // Format with commas for thousands
-    return `$${Math.round(totalPrice).toLocaleString()}`;
+    return `$${Math.round(totalPrice).toLocaleString('en-US')}`;
   };
 
   const pricingData = pricing[billingMode];
