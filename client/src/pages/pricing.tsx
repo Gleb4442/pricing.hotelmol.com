@@ -104,16 +104,16 @@ const ContactWidget = ({ hiddenOnMobile }: { hiddenOnMobile?: boolean }) => {
 
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="w-[62px] h-[62px] md:w-[70px] md:h-[70px] bg-[#306BA1] hover:bg-[#254d7a] text-white rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center group"
+        className="w-12 h-12 md:w-[54px] md:h-[54px] bg-[#306BA1] hover:bg-[#254d7a] text-white rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 flex items-center justify-center group"
       >
         <div className={`transition-transform duration-500 ${isOpen ? 'rotate-[360deg]' : ''}`}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             xmlSpace="preserve"
-            className="w-[60px] h-[60px] md:w-[75px] md:h-[75px]"
+            className="w-[46px] h-[46px] md:w-[58px] md:h-[58px]"
             version="1.1"
             style={{ shapeRendering: "geometricPrecision", textRendering: "geometricPrecision", imageRendering: "auto", fillRule: "evenodd", clipRule: "evenodd" }}
-            viewBox="23.45 23.45 156.29 156.29"
+            viewBox="0 0 203.18 203.18"
           >
             <g id="Слой_x0020_1">
               <metadata id="CorelCorpID_0Corel-Layer" />
