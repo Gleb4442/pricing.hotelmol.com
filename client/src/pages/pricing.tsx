@@ -450,7 +450,7 @@ export default function PricingPage() {
               billingMode={billingMode}
               onSubscribe={() => handleSubscribe("premium")}
               ctaText={t("btn_enterprise")}
-              href="https://cal.com/gleb.gosha/30min"
+              href="https://cal.com/hotelmol.team"
             />
           </div>
         </div>
