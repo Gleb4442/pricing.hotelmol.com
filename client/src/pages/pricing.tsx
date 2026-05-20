@@ -134,7 +134,6 @@ export default function PricingPage() {
   const { language, setLanguage, t, tArray } = useLanguage();
   const { hotelType, toggleHotelType } = useHotelType();
   const [mobileInfoOpen, setMobileInfoOpen] = useState(false);
-  const [isCalculatorOpen, setIsCalculatorOpen] = useState(false);
 
   const languages = [
     { code: "ru" as const, flag: "🇷🇺", label: "RU", name: "Русский" },
@@ -216,44 +215,42 @@ export default function PricingPage() {
 
             <div className="flex items-center space-x-3">
               {/* Hotel Type Toggle */}
-              {!isCalculatorOpen && (
-                <div className="flex items-center bg-[#254d7a]/30 rounded-lg p-1">
-                  <button
-                    onClick={() => hotelType === "network" && toggleHotelType()}
-                    className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${hotelType === "single"
-                      ? "text-white"
-                      : "text-[#a8c5e0] hover:text-white"
-                      }`}
-                    data-testid="hotel-type-single"
-                  >
-                    {hotelType === "single" && (
-                      <motion.div
-                        layoutId="active-hotel-type-desktop"
-                        className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                    <span className="relative z-10">{t("hotel_type_single")}</span>
-                  </button>
-                  <button
-                    onClick={() => hotelType === "single" && toggleHotelType()}
-                    className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${hotelType === "network"
-                      ? "text-white"
-                      : "text-[#a8c5e0] hover:text-white"
-                      }`}
-                    data-testid="hotel-type-network"
-                  >
-                    {hotelType === "network" && (
-                      <motion.div
-                        layoutId="active-hotel-type-desktop"
-                        className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
-                        transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                      />
-                    )}
-                    <span className="relative z-10">{t("hotel_type_network")}</span>
-                  </button>
-                </div>
-              )}
+              <div className="flex items-center bg-[#254d7a]/30 rounded-lg p-1">
+                <button
+                  onClick={() => hotelType === "network" && toggleHotelType()}
+                  className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${hotelType === "single"
+                    ? "text-white"
+                    : "text-[#a8c5e0] hover:text-white"
+                    }`}
+                  data-testid="hotel-type-single"
+                >
+                  {hotelType === "single" && (
+                    <motion.div
+                      layoutId="active-hotel-type-desktop"
+                      className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{t("hotel_type_single")}</span>
+                </button>
+                <button
+                  onClick={() => hotelType === "single" && toggleHotelType()}
+                  className={`relative px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${hotelType === "network"
+                    ? "text-white"
+                    : "text-[#a8c5e0] hover:text-white"
+                    }`}
+                  data-testid="hotel-type-network"
+                >
+                  {hotelType === "network" && (
+                    <motion.div
+                      layoutId="active-hotel-type-desktop"
+                      className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+                      transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    />
+                  )}
+                  <span className="relative z-10">{t("hotel_type_network")}</span>
+                </button>
+              </div>
 
               {/* Language Switcher */}
               <DropdownMenu>
@@ -363,12 +360,12 @@ export default function PricingPage() {
               description={t("plan_basic_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$1,299", 0.07),
-                  original: hotelType === "network" ? "$1,299" : undefined
+                  current: getNetworkPrice("$909", 0.07),
+                  original: hotelType === "network" ? "$909" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$909", 0.07),
-                  original: "$1,299"
+                  current: getNetworkPrice("$636", 0.07),
+                  original: "$909"
                 },
               }}
               features={basicFeatures}
@@ -386,12 +383,12 @@ export default function PricingPage() {
               description={t("plan_pro_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$1,999", 0.15),
-                  original: hotelType === "network" ? "$1,999" : undefined
+                  current: getNetworkPrice("$1,399", 0.15),
+                  original: hotelType === "network" ? "$1,399" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$1,399", 0.15),
-                  original: "$1,999"
+                  current: getNetworkPrice("$979", 0.15),
+                  original: "$1,399"
                 },
               }}
               features={proFeatures}
@@ -410,12 +407,12 @@ export default function PricingPage() {
               description={t("plan_misterio_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$1,749", 0.10),
-                  original: hotelType === "network" ? "$1,749" : undefined
+                  current: getNetworkPrice("$1,224", 0.10),
+                  original: hotelType === "network" ? "$1,224" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$1,224", 0.10),
-                  original: "$1,749"
+                  current: getNetworkPrice("$857", 0.10),
+                  original: "$1,224"
                 },
               }}
               features={[
@@ -438,11 +435,11 @@ export default function PricingPage() {
               description={t("plan_premium_description")}
               pricing={{
                 monthly: {
-                  current: "$4,990"
+                  current: "$3,493"
                 },
                 yearly: {
-                  current: "$3,493",
-                  original: "$4,990"
+                  current: "$2,445",
+                  original: "$3,493"
                 },
               }}
               features={premiumFeatures}
@@ -488,8 +485,8 @@ export default function PricingPage() {
         </div >
 
         {/* Savings Calculator */}
-        < div className="mt-16 max-w-4xl mx-auto" >
-          <SavingsCalculator onModalToggle={setIsCalculatorOpen} />
+        < div className="mt-16 relative left-1/2 right-1/2 -mx-[50vw] w-screen" >
+          <SavingsCalculator />
         </div >
 
         {/* Mobile Responsive Accordion */}
@@ -610,48 +607,44 @@ export default function PricingPage() {
       </footer >
 
       {/* Mobile Hotel Type Toggle */}
-      {
-        !isCalculatorOpen && (
-          <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
-            <button
-              onClick={() => hotelType === "network" && toggleHotelType()}
-              className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "single"
-                ? "text-white"
-                : "text-[#a8c5e0] hover:text-white"
-                }`}
-              data-testid="mobile-hotel-type-single"
-            >
-              {hotelType === "single" && (
-                <motion.div
-                  layoutId="active-hotel-type-mobile"
-                  className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10">{t("hotel_type_single")}</span>
-            </button>
-            <button
-              onClick={() => hotelType === "single" && toggleHotelType()}
-              className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "network"
-                ? "text-white"
-                : "text-[#a8c5e0] hover:text-white"
-                }`}
-              data-testid="mobile-hotel-type-network"
-            >
-              {hotelType === "network" && (
-                <motion.div
-                  layoutId="active-hotel-type-mobile"
-                  className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
-                  transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
-                />
-              )}
-              <span className="relative z-10">{t("hotel_type_network")}</span>
-            </button>
-          </div>
-        )
-      }
+      <div className="md:hidden fixed bottom-[5px] left-4 right-4 z-50 flex items-center bg-[#254d7a]/30 rounded-lg p-1 shadow-lg max-w-fit">
+        <button
+          onClick={() => hotelType === "network" && toggleHotelType()}
+          className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "single"
+            ? "text-white"
+            : "text-[#a8c5e0] hover:text-white"
+            }`}
+          data-testid="mobile-hotel-type-single"
+        >
+          {hotelType === "single" && (
+            <motion.div
+              layoutId="active-hotel-type-mobile"
+              className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
+          <span className="relative z-10">{t("hotel_type_single")}</span>
+        </button>
+        <button
+          onClick={() => hotelType === "single" && toggleHotelType()}
+          className={`relative px-3 py-2.5 min-h-[44px] rounded-md text-sm font-medium transition-colors whitespace-nowrap ${hotelType === "network"
+            ? "text-white"
+            : "text-[#a8c5e0] hover:text-white"
+            }`}
+          data-testid="mobile-hotel-type-network"
+        >
+          {hotelType === "network" && (
+            <motion.div
+              layoutId="active-hotel-type-mobile"
+              className="absolute inset-0 bg-[#306BA1] rounded-md shadow-md"
+              transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+            />
+          )}
+          <span className="relative z-10">{t("hotel_type_network")}</span>
+        </button>
+      </div>
 
-      <ContactWidget hiddenOnMobile={isCalculatorOpen} />
+      <ContactWidget />
     </div >
   );
 }
