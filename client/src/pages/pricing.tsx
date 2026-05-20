@@ -360,12 +360,12 @@ export default function PricingPage() {
               description={t("plan_basic_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$909", 0.07),
-                  original: hotelType === "network" ? "$909" : undefined
+                  current: getNetworkPrice("$727", 0.07),
+                  original: hotelType === "network" ? "$727" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$636", 0.07),
-                  original: "$909"
+                  current: getNetworkPrice("$509", 0.07),
+                  original: "$727"
                 },
               }}
               features={basicFeatures}
@@ -383,12 +383,12 @@ export default function PricingPage() {
               description={t("plan_pro_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$1,399", 0.15),
-                  original: hotelType === "network" ? "$1,399" : undefined
+                  current: getNetworkPrice("$1,119", 0.15),
+                  original: hotelType === "network" ? "$1,119" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$979", 0.15),
-                  original: "$1,399"
+                  current: getNetworkPrice("$783", 0.15),
+                  original: "$1,119"
                 },
               }}
               features={proFeatures}
@@ -407,12 +407,12 @@ export default function PricingPage() {
               description={t("plan_misterio_description")}
               pricing={{
                 monthly: {
-                  current: getNetworkPrice("$1,224", 0.10),
-                  original: hotelType === "network" ? "$1,224" : undefined
+                  current: getNetworkPrice("$979", 0.10),
+                  original: hotelType === "network" ? "$979" : undefined
                 },
                 yearly: {
-                  current: getNetworkPrice("$857", 0.10),
-                  original: "$1,224"
+                  current: getNetworkPrice("$686", 0.10),
+                  original: "$979"
                 },
               }}
               features={[
@@ -435,11 +435,11 @@ export default function PricingPage() {
               description={t("plan_premium_description")}
               pricing={{
                 monthly: {
-                  current: "$3,493"
+                  current: "$2,794"
                 },
                 yearly: {
-                  current: "$2,445",
-                  original: "$3,493"
+                  current: "$1,956",
+                  original: "$2,794"
                 },
               }}
               features={premiumFeatures}
