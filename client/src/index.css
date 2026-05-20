@@ -253,32 +253,3 @@
   margin-left: 10px;
   border: 1px solid white;
 }
-
-.roi-range::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 24px;
-  height: 24px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 4px solid #0752A0;
-  box-shadow: 0 4px 10px rgba(7, 82, 160, 0.2);
-  transition: all 0.2s ease-in-out;
-}
-
-.roi-range::-webkit-slider-thumb:hover {
-  transform: scale(1.1);
-  box-shadow: 0 4px 15px rgba(7, 82, 160, 0.3);
-}
-
-.roi-range::-moz-range-thumb {
-  width: 24px;
-  height: 24px;
-  background: #ffffff;
-  border-radius: 50%;
-  cursor: pointer;
-  border: 4px solid #0752A0;
-  box-shadow: 0 4px 10px rgba(7, 82, 160, 0.2);
-  transition: all 0.2s ease-in-out;
-}
